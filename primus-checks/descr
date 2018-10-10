@@ -1,0 +1,29 @@
+runs a variety of security checks using Primus
+
+Microexecutes the program starting from each function and runs
+prebuilt security checks, that include:
+ - use-after-free
+ - buffer-overflow
+ - information flow
+ - hardcoded values
+ - warn-unused-result
+
+In terms of the CWE it covers the following entries:
+ - CWE-122 (Buffer Overwrite)
+ - CWE-125 (Buffer Overread)
+ - CWE-416 (Use after free)
+ - CWE-415 (Double free)
+ - CWE-798 (Use of Hard-coded Credentials)
+ - CWE-259 (Use of Hard-coded Password)
+ - CWE-822 (Untrusted Pointer Dereference)
+ - CWE-291 (Relience on IP Address for Authentication)
+ - CWE-170 (Improper Null Termination)
+ - CWE-138 (Improper Neutralization)
+ - CWE-74  (Command Injection)
+ - CWE-476 (NULL pointer dereference)
+ - CWE-690 (Unchecked Return Value to NULL Pointer Dereference)
+ - CWE-252 (Unchecked Return Value)
+
+All checks are reported via the incident report system and are stored
+in the working directory in the `incidents' file. The file could be
+loaded in IDA Pro for further analysis.
