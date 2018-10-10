@@ -16,10 +16,12 @@ else
 fi
 
 if [ "no-$1dest" = "no-dest" ]; then
-    DST="`opam config var prefix`/share/bap"
+    PREFIX="`opam config var prefix`" 2>&1
 
     if [ "no-$DST-opam" = "no-opam" ]; then
         DST=/usr/local/share/bap
+    else
+        DST=$PREFIX/share/bap
     fi
 fi
 
