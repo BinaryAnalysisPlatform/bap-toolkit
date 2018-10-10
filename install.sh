@@ -5,7 +5,7 @@
 #   install.sh <destination>
 #   install.sh <source> <destination>
 
-if [ "no-$2source" = "no-source" ]; then
+if [ "no$2-source" = "no-source" ]; then
     SRC=`ls`
     DST=$1
     ALL=true
@@ -15,10 +15,10 @@ else
     ALL=false
 fi
 
-if [ "no-$1dest" = "no-dest" ]; then
+if [ "no$1-dest" = "no-dest" ]; then
     PREFIX="`opam config var prefix`" 2>/dev/null
 
-    if [ "no-$DST-opam" = "no-opam" ]; then
+    if [ "no$PREFIX-opam" = "no-opam" ]; then
         DST=/usr/local/share/bap
     else
         DST=$PREFIX/share/bap
@@ -46,7 +46,8 @@ fi
 for src in $SRC; do
     if [ -d "$src" ] && [ -e $src/recipe.scm ]; then
         echo "installing $src"
-        $CP -R "$src/" "$DST/$src.recipe"
+	sh pack.sh $src
+        $CP -R "$src.recipe" "$DST/$src.recipe"
     elif [ -d "$src" ] && [ $ALL = true ]; then
         echo "Error: $src is not a recipe specification"
         exit 1
