@@ -72,7 +72,7 @@ and an arbitrary number of arguments that will be passed to the
 corresponding command line option. If there are more than one argument
 then they will be concatenated with the comman symbol, e.g.,
 
-        (optionopt a b c d)
+        (option opt a b c d)
 
 will be translated to
 
