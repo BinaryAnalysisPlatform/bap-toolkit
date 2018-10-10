@@ -6,7 +6,6 @@
 #   install.sh <source> <destination>
 
 if [ "no-$2source" = "no-source" ]; then
-    echo "no source"
     SRC=`ls`
     DST=$1
     ALL=true
@@ -16,19 +15,36 @@ else
     ALL=false
 fi
 
-if [ "no-$2source" = "no-source" ]; then
-    echo "Warning: no destination is specified, using OPAM to guess"
+if [ "no-$1dest" = "no-dest" ]; then
     DST="`opam config var prefix`/share/bap"
+
+    if [ "no-$DST-opam" = "no-opam" ]; then
+        DST=/usr/local/share/bap
+    fi
 fi
 
 
 echo "installing to $DST"
 
+if [ ! -d $DST ]; then
+    echo "The destination either doesn't exist or not a folder"
+    echo "Please, create the desintation, e.g.,"
+    echo "mkdir -p $DST"
+    exit 1
+fi
+
+if [ -w $DST ]; then
+    CP="cp"
+else
+    echo "'sudo' will be used for installation..."
+    CP="sudo cp"
+fi
+
 
 for src in $SRC; do
     if [ -d "$src" ] && [ -e $src/recipe.scm ]; then
         echo "installing $src"
-        cp -R "$src/" "$DST/$src.recipe"
+        $CP -R "$src/" "$DST/$src.recipe"
     elif [ -d "$src" ] && [ $ALL = true ]; then
         echo "Error: $src is not a recipe specification"
         exit 1
