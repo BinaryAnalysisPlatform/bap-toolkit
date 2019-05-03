@@ -1,0 +1,1 @@
+detects functions with cyclomatic complexity > 20

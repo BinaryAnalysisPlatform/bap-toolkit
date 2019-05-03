@@ -49,7 +49,6 @@ for src in $SRC; do
 	sh pack.sh $src
         $CP -R "$src.recipe" "$DST/$src.recipe"
     elif [ -d "$src" ] && [ $ALL = true ]; then
-        echo "Error: $src is not a recipe specification"
-        exit 1
+        echo "Omitting $src: not a recipe specification"
     fi
 done
