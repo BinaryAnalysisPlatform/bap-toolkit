@@ -1,11 +1,23 @@
-# BAP Cookbook
+Note: this repository is currently being updated, expect lots of changes in the upcoming few days. This README
+is also WIP.
 
-This repository is a collection of BAP recipes. A recipe consists of
-command line arguments, data files, scripts, and other supplementary
-information. Recipes enable an easy way for sharing BAP solutions.
+# Introduction
 
-This repository is meant to be a collaboration point with low entrance
-barrier, so fill free to submit your most darest ideas.
+This repository provides a collection of ready to use binary analysis tools, 
+as well as a framework and a conventional repository structure for developing
+new tools. Think of it as BAP on Rails. This repository should be seen as a collaboration
+platform encouraging everyone to fork it, implement an analysis, and share it back with 
+the community. PRs are very welcomed and accepted with no questions asked. 
+
+# Table of Contents
+
+- [Installation](#installation) - how to install all or some tools
+- [Usage](#usage) - how to run tools and analyze results
+- [Developing](#developing) - how to develop a new tool
+- [Contributing](#contributing) - how to contribute a new tool
+- Tools
+  - [primus-checks](#primus-checks) - all-in-one analysis that uses Primus
+ 
 
 ## Installation
 
@@ -30,7 +42,7 @@ e.g.,
        ./install.sh <destination> <recipe>
 
 
-## Usage
+# Usage
 
 To use the installed recipe just pass its name to the `--recipe` option, e.g.,
 
@@ -49,6 +61,8 @@ If a recipe has parameters then they could be specified as colon
 separated list of <key>=<value> pairs. See the --recipe parameter in
 `bap --help` for more information.
 
+
+# Developing
 
 ## Making Recipes
 
