@@ -1,44 +1,39 @@
 
 (defun release (val kind)
   (let ((taint (taint-get-direct kind val))
-        (sub (dict-get 'tainted-locations taint)))
+        (sub (dict-get 'maybe-unused taint)))
     (when taint
       (taint-sanitize-direct kind val)
       (when sub
-        (dict-del 'tainted-locations taint)))))
-
-(defun mark-as-read (v)
-  (let ((taint (taint-get-direct 'must-be-used v)))
-    (when taint
-      (msg "marked as read $0" taint)
-      (dict-add 'was-read taint v))))
+        (dict-del 'maybe-unused taint)))))
 
 (defmethod read (var val)
-  (when (taint-get-direct 'must-be-used val)
-    (mark-as-read val)))
+  (let ((taint (taint-get-direct 'must-be-used val)))
+    (when taint
+      (dict-add 'was-read taint val))))
 
 (defmethod stored (var val)
-  (let ((taint (taint-get-direct 'must-be-used val))
-        (sub (dict-get 'tainted-locations taint))
-        (callee (dict-get 'call-locations taint)))
+  (let ((taint  (taint-get-direct 'must-be-used val))
+        (symbol (dict-get 'maybe-unused taint))
+        (callee (dict-get 'call-site taint)))
     (when taint
       (let ((taint' (taint-introduce-directly 'must-be-loaded val)))
-        (when sub
-          (dict-add 'tainted-locations taint' sub))
+        (when symbol
+          (dict-add 'maybe-unused taint' symbol))
         (when callee
-          (dict-add 'call-locations taint' callee))))))
+          (dict-add 'call-site taint' callee))))))
 
 (defmethod loaded (_ val)
   (release val 'must-be-used)
   (release val 'must-be-loaded))
 
 (defmethod taint-finalize (taint _)
-  (let ((sub (dict-get 'tainted-locations taint))
+  (let ((sub (dict-get 'maybe-unused taint))
         (read (dict-has 'was-read taint))
         (callee (dict-get 'call-site taint)))
     (when (and sub (not read))
       (notify-unused sub callee)
-      (dict-del 'tainted-locations taint))))
+      (dict-del 'maybe-unused taint))))
 
 (defun notify-unused (sub addr)
   (notify-unused-result sub addr)
@@ -53,12 +48,12 @@
         (addr (dict-get 'call-site name))
         (old-taint (taint-get-direct 'must-be-used val)))
     (when old-taint
-      (dict-del 'tainted-locations old-taint)
+      (dict-del 'maybe-unused old-taint)
       (dict-del 'call-site old-taint)
       (taint-sanitize-direct 'must-be-used val))
     (when name
       (let ((taint (taint-introduce-directly 'must-be-used val)))
-        (dict-add 'tainted-locations taint name)
+        (dict-add 'maybe-unused taint name)
         (dict-add 'call-site taint addr)))))
 
 (defmethod jumping (_ _)
