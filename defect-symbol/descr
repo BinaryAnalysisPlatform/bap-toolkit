@@ -1,0 +1,15 @@
+runs all the analysis that checks static properties of subroutines
+
+The next checks are run:
+ - av-rule-3   - All functions shall have a cyclomatic complexity number of 20 or less
+ - av-rule-17  - The error indicator `errno` shall not be used
+ - av-rule-19  - `<locale.h>` and the `setlocale` function shall not be used.
+ - av-rule-20  - The `setjmp` macro and the `longjmp` function shall not be used.
+ - av-rule-21  - The signal handling facilities of `<signal.h>` shall not be used.
+ - av-rule-22  - The input/output library `<stdio.h>` shall not be used.
+ - av-rule-23  - The library functions `atof`, `atoi` and `atol` from library `<stdlib.h>` shall not be used.
+ - av-rule-24  - The library functions `abort`, `exit`, `getenv` and `system` from library `<stdlib.h>` shall not be used
+ - av-rule-25  - The time handling functions of library `<time.h>` shall not be used.
+ - av-rule-174 - The null pointer shall not be de-referenced.
+ - av-rule-189 - The goto statement shall not be used
+ - jpl-rule-4  - There shall be no direct or indirect use of recursive function calls

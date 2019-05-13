@@ -1,0 +1,470 @@
+
+import sys
+import os
+import os.path as path
+import string
+import subprocess
+import zipfile
+
+def exists(targets, target):
+    def is_same(t):
+        return t['name'] == target['name']
+    inds = [ i for i in range(len(targets)) if is_same(targets[i]) ]
+    return not (inds == [])
+
+
+def find(xs, cond):
+    for x in xs:
+        if cond(x):
+            return x
+    return None
+
+
+def filter_map(xs, f):
+    ys = []
+    for x in xs:
+        y = f(x)
+        if y != None:
+            ys.append(y)
+    return ys
+
+
+def run_cmd(cmd, directory=None):
+    cur = path.abspath(os.curdir)
+    if directory != None:
+        os.chdir(directory)
+    r = os.system(cmd);
+    os.chdir(cur)
+    return r
+
+
+def run_cmd_with_output(cmd, directory=None):
+#    print 'cmd %s' % cmd
+    cur = path.abspath(os.curdir)
+    if directory != None:
+        os.chdir(directory)
+    cmd = string.split(cmd)
+    res = subprocess.check_output(cmd)
+    os.chdir(cur)
+    return res
+
+
+# returns list of all targets we can build
+def default_targets():
+    dirs = []
+    ignored = ['.git', '_build']
+    for entry in os.listdir('.'):
+        if os.path.isfile(entry) or entry in ignored:
+            continue
+        else:
+            dirs.append(entry)
+    return dirs
+
+
+def has_ext(name, ext):
+    x = path.splitext(path.basename(name))
+    return len(x) == 2 and x[1] == "." + ext
+
+
+def is_ml_file(name): return has_ext(name, "ml")
+def is_lisp_file(name): return has_ext(name, "lisp")
+def is_scm_file(name): return has_ext(name, "scm")
+def dedashify(name):  return string.replace(name, "-", "_")
+def chop_ext(name): return path.splitext(name)[0]
+def has_opam(): return run_cmd('which opam > /dev/null') == 0
+
+
+def unquote(x):
+    return string.replace(x, "\"", "")
+
+
+# When we build a plugin, we need to determine what the main file is.
+# And the next steps we can take to figure out it:
+# 1) main file is set by info file (no search needed then)
+# 2) there is only one .ml file in target directory
+# 3) there is a .ml file that has the same name as a target directory
+#    (or almost same, e.g. foo-bar/foo_bar.ml, but not vice versa)
+# 4) there is a .ml file that contains "main" in its name
+def find_main(target):
+    if target.has_key('main'):
+        return target['main']
+    else:
+        files = os.listdir(target['path'])
+        files = filter(is_ml_file, files)
+        if files == []: return None
+        if len(files) == 1: return files[0]
+        else:
+            same1 = find(files, lambda f: chop_ext(f) == target['name'])
+            same2 = find(files, lambda f: chop_ext(f) == dedashify(target['name']))
+            mainf = find(files, lambda f: string.find(f, "main") != -1 )
+            return find([same1,same2,mainf], lambda f: f != None)
+
+def path_of_list(xs):
+    if xs == []: return None
+    full = xs.pop(0)
+    for x in xs:
+        full = path.join(full, x)
+    return full
+
+# TODO: need to fix parsing: doesn't work well with many nested modules.
+# e.g. in dune pkg
+# TODO: also, as an idea, we can take a look at *.cmi files
+# to be sure we don't expose anything beyond interface
+def parse_meta(p):
+    meta = path.join(p, "META")
+    if not path.exists(meta): return None
+    f = open(meta)
+    lines = f.readlines()
+    f.close()
+    lines = map(string.strip, lines)
+    data = []
+    cma = None
+    fld = None
+    lib = path.basename(p)
+    pkg = [lib]
+    for line in lines:
+        if line == '' or line[0]  == '#': continue
+        p_i = line.find('package')
+        f_i = line.find('directory')
+        a_i = line.find('archive')
+        if p_i == 0:
+            if cma != None:
+                name = string.join(pkg, '.')
+                data.append((name, fld, cma))
+            pkg.append(unquote(line.split()[1]).strip())
+            fld = None
+            cma = None
+        if f_i == 0:
+            fld = unquote(line.split('=')[1]).strip()
+        if a_i == 0:
+            s = line.find('(', a_i)
+            f = line.find(')', s)
+            if s != -1 and f != -1:
+                if line[s:f].find('byte') != -1:
+                    cma = unquote(line.split('=')[1]).strip()
+            if cma == '': cma = None
+        if line.strip() == ')':
+            name = string.join(pkg, '.')
+            data.append((name, fld, cma))
+            fld = None
+            cma = None
+            pkg.pop()
+    name = string.join(pkg, '.')
+    data.append((name, fld, cma))
+    return data
+
+# TODO: delete it, debug only
+cmas = []
+
+# Converts module names with underscores to the dot notation:
+# A__B__c --> A.B__c
+def restore_module_name(line):
+    line = line.strip()
+    if line.find('__') == -1: return line
+    parts = []
+    i = 0
+    while (i + 2 < len(line)):
+        j = line.find('__', i)
+        if j == -1:
+            parts.append(line[i:])
+            break
+        if j > 0:
+             parts.append(line[i:j])
+        parts.append('__')
+        i = j + 2
+    name = ''
+    for j in range(len(parts)):
+        if parts[j] == '__' and j + 1 < len(parts) \
+            and parts[j + 1] == parts[j + 1].capitalize():
+            name = name + '.'
+        else: name = name + parts[j]
+    return name
+
+def read_lib(p, modules):
+    packages = parse_meta(p)
+    if packages == None:
+        return
+    for pkg,fld,cma in packages:
+        if pkg == None or cma == None:
+            continue
+        if fld != None:
+            cma = path.join(p, path.join(fld, cma))
+        else:
+            cma = path.join(p, cma)
+        if path.exists(cma):
+            cmas.append(cma)
+            data = run_cmd_with_output('ocamlobjinfo ' + cma)
+            data = data.split('\n')
+            for line in data:
+                if line.find("Unit name:") != -1:
+                    line = line.split(":", 1)[1]
+                    name = restore_module_name(line)
+                    modules[name] = pkg
+
+def collect_modules():
+    if not has_opam(): return {}
+    pref = run_cmd_with_output('opam config var prefix')
+    libpath = path.join(string.strip(pref), 'lib')
+    modules = {}
+    if path.exists(libpath):
+        for lib in os.listdir(libpath):
+            full = path.join(libpath, lib)
+            read_lib(full, modules)
+    return modules
+
+
+def known_deps(modules, target):
+    files = os.listdir(target['path'])
+    inds = [ i for i in range(len(files)) if is_ml_file(files[i]) ]
+    pkgs = set()
+    for i in inds:
+        deps = run_cmd_with_output('ocamldep -modules ' + files[i], target['path'])
+        deps = string.split(deps)
+        for d in deps:
+            if modules.has_key(d):
+                pkgs.add(modules[d])
+    return list(pkgs)
+
+
+# TODO: need to add some output in case of errors
+def build_ml_target(modules, target):
+    deps = target['deps'] + known_deps(modules, target)
+    pkgs = ""
+    for d in deps:
+        pkgs += " -pkg " + d
+    print "%s: %s" % (target['name'], pkgs)
+    main = find_main(target)
+    if main == None:
+        return 1
+    else:
+        plugin = path.splitext(main)[0] + ".plugin"
+        cmd = "bapbuild %s %s" % (pkgs, plugin)
+        r = run_cmd(cmd, target['path'])
+        run_cmd('bapbundle update -desc \"%s\" %s' % (target['descr'], plugin), target['path'])
+        return r
+
+
+# parse recipes.scm and collect all the recipes names that it extends
+def find_recipe_extends(recipe):
+    exts = []
+    if path.exists(recipe):
+        f = open(recipe)
+        lines = f.readlines()
+        f.close()
+        for line in lines:
+            fields = string.splitfields(string.strip(line), "extend", maxsplit=1)
+            if len(fields) < 2: continue
+            else:
+                e = string.strip(fields[1])
+                e = string.strip(e, ")")
+                exts.append(e)
+    return exts
+
+
+# returns True if [target] has ml files
+def is_ml_target(target):
+    files = os.listdir(target['path'])
+    inds = [ True for i in range(len(files)) if is_ml_file(files[i]) ]
+    return not (inds == [])
+
+
+def parse_target(target):
+    info = path.join(target, "info")
+    recipe = path.join(target, "recipe.scm")
+    full = path.join(path.abspath(os.curdir), target)
+    exts = find_recipe_extends(recipe)
+    x = {'name':path.basename(target), 'path':full, 'descr':"",'deps':[],'exts':exts}
+    if path.exists(info):
+        f = open(info)
+        lines = f.readlines()
+        f.close()
+        for line in lines:
+            fields = string.splitfields(string.strip(line), ":", maxsplit=1)
+            if len(fields) < 2: continue
+            elif string.strip(fields[0]) == "main":
+                x['main'] = string.strip(fields[1])
+            elif string.strip(fields[0]) == "descr":
+                x['descr'] = string.strip(fields[1])
+            elif string.strip(fields[0]) == "depends":
+                x['deps'].append(string.strip(fields[1]))
+            else: continue
+    x['ml_target'] = is_ml_target(x)
+    return x
+
+# usage should be like
+# $: python makes test
+# OR
+# $: python makes test rule-42
+# in the first case every possible recipe is testes
+# in the second - the choosen one
+def test(recipe_list):
+    pass
+
+
+def pack(target):
+    cur = path.abspath(os.curdir)
+    if not path.exists(path.join(target['path'], 'recipe.scm')):
+        return
+    os.chdir(target['path'])
+    zipf = zipfile.ZipFile(target['name'] + '.recipe', 'w', zipfile.ZIP_DEFLATED)
+    for f in os.listdir(target['path']):
+        if f in ["descr", "stdin", "stdout", "stderr"] or is_lisp_file(f) or is_scm_file(f):
+            zipf.write(f)
+    zipf.close()
+    os.chdir(cur)
+
+
+def find_recipde_deps(all_targets, ml_powered_host, target, deps=[], errs=[]):
+    for e in target['exts']:
+        found = find(all_targets, lambda t: t['name'] == e)
+        if found == None:
+            errs.append('Can\'t find target ' + e)
+            errs.append('Can\'t build target ' + target['name'])
+            return deps, errs
+        if found['ml_target'] and not ml_powered_host:
+            reason = 'need build tools: bapbuild, bapbundle, ocamldep'
+            errs.append('Can\'t build target %s: %s' % (e, reason))
+            return deps, errs
+        deps,errs = find_recipde_deps(all_targets, ml_powered_host, found, deps)
+        deps.append(found)
+    return deps,errs
+
+
+def build(ml_powered_host, targets=[]):
+    all_targets = map(parse_target, default_targets())
+    targets = map(parse_target, targets)
+    if targets == []:
+        targets = all_targets
+    seq = []
+    for t in targets:
+        deps,errs = find_recipde_deps(all_targets, ml_powered_host, t)
+        if errs != []:
+            print "skip %s:" % t['name']
+            for er in errs:
+                print er
+            continue
+        seq.append(t)
+        seq += deps
+
+    ordered = []
+    seq.reverse()
+    for t in seq:
+        if not t in ordered:
+            ordered.append(t)
+
+    modules = {}
+    if ml_powered_host:
+        modules = collect_modules()
+
+    for t in ordered:
+        if ml_powered_host and t['ml_target']:
+            build_ml_target(modules, t)
+        pack(t)
+
+# add description to a bundle(or on the pack stage)!
+# here we do need to know destination
+# and we need to get all the dependencies
+# and we need to output error messages if target not found
+def install(ml_powered_host, targets=[], recipe_dest=None):
+    all_targets = map(parse_target, default_targets())
+    targets = map(parse_target, targets)
+    if targets == []:
+        targets = all_targets
+    if recipe_dest == None:
+        recipe_dest = run_cmd_with_output('opam config var prefix')
+        recipe_dest = recipe_dest.strip() + '/share/bap'
+    for t in targets:
+        if ml_powered_host and t['ml_target']:
+            run_cmd('bapbundle install *.plugin', t['path'])
+        for f in os.listdir(t['path']):
+            if has_ext(f, 'recipe'):
+                run_cmd('cp %s %s' % (f, recipe_dest), t['path'])
+
+def uninstall(ml_powered_host, targets=[]):
+    pass
+
+# rm .plugin, .recipe and garbage after ml builds
+def clean(ml_powered_host, targets=[]):
+    all_targets = map(parse_target, default_targets())
+    targets = map(parse_target, targets)
+    if targets == []:
+        targets = all_targets
+    for t in targets:
+        if ml_powered_host and t['ml_target']:
+            run_cmd('bapbuild -clean', t['path'])
+        run_cmd('rm -f *.recipe', t['path'])
+
+
+def is_ml_powered_host():
+    cmds = ['bapbuild', 'bapbundle', 'ocamldep', 'ocamlobjinfo']
+    res = [i for i in range(len(cmds)) if run_cmd('which ' + cmds[i] + " > /dev/null") != 0]
+    for r in res:
+        print "%s not found" % cmds[r]
+    return res == []
+
+
+# TODO:  make an option to choose the destination
+# DST=/usr/local/share/bap OR/AND cp
+def install_destination():
+    pass
+
+
+def parse_args():
+    args = sys.argv
+    args.pop(0)
+    if len(args) == 0:
+        print 'command expected, poosible are: build, clean, install, uninstall, test'
+        exit(1)
+    s = ""
+    for a in args:
+        s = s + " " + a
+    s = s.replace(',', ' ')
+    start = s.find('[')
+    if start  == -1:
+        command = args.pop(0)
+        targets = args
+        return [command], targets
+    else:
+        finish = s.find(']', start + 1)
+        if finish == -1:
+            print "can't parse input: unclosed ["
+            exit(1)
+        commands = s[start + 1:finish]
+        commands = commands.split()
+        commands = map(lambda s: s.strip(), commands)
+        targets = s[finish + 1:]
+        targets = targets.split()
+        targets = map(lambda s: s.strip(), targets)
+        return commands, targets
+
+
+def run_command(has_ml_power, command, targets):
+    if   command == 'build': build(has_ml_power, targets)
+    elif command == 'clean': clean(has_ml_power, targets)
+    elif command == 'install': install(has_ml_power, targets)
+    elif command == 'uninstall': uninstall(has_ml_power, targets)
+    elif command == 'test': test(targets)
+    else:
+        print "error: unknown command %s, exiting ..." % command
+        exit(1)
+
+#TODO a prefix to commands ??
+if __name__ == '__main__':
+    commands, targets = parse_args()
+    args = sys.argv
+    has_ml_power = is_ml_powered_host()
+    map(lambda c: run_command(has_ml_power, c, targets), commands)
+
+# data = parse_meta("/home/oleg/.opam/4.07.1/lib/zarith")
+# for x,y,z in data:
+#     print "%s %s %s" % (x, y, z)
+
+# modules = {}
+# read_lib("/home/oleg/.opam/4.07.1/lib/zarith", modules)
+
+# modules = collect_modules()
+# for m,lib in modules.items():
+#     print "%s from %s" % (m, lib)
+
+# for cma in cmas:
+#     print path.basename(cma)

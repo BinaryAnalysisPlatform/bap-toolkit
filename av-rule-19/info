@@ -1,0 +1,1 @@
+descr: detects a usage of the setlocale function from <locale.h>

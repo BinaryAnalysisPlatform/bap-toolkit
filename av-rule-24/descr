@@ -1,1 +1,11 @@
-detects symbols abort, exit, getenv and system
+The library functions abort, exit, getenv and system from library <stdlib.h> shall not be used
+
+Checks the program for a usage of the next functions defined in the file <stdlib.h>:
+ - abort
+ - exit
+ - getenv
+ - system
+
+The algorithm is pretty straightforward: we check the input edges for every subroutine
+in the program callgraph, and if there are some then the subroutine is considered as a used one,
+i.e. there is at least one call of the given subroutine.

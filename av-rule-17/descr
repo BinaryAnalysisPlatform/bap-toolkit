@@ -1,1 +1,7 @@
-detects symbol errno
+The error indicator errno shall not be used
+
+Given that errno is an implementation-defined macro, it may no appear in binary's symbol table.
+And out check should also take in account different implentations too.
+
+On a current level, we take into account Linux systems, and we track a usage of the
+function _errno_location, that returns the address of errno variable.

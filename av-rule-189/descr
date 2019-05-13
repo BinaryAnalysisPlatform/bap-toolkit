@@ -1,1 +1,8 @@
-detects symbols with non-structural cfg
+The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn'y contain
+strongly connected components with two and more entries.

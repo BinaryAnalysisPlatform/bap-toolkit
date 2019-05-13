@@ -1,1 +1,17 @@
-detects null pointer dereference
+The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `null-ptr-deref.incidents' file.
+The file could be loaded in IDA Pro for further analysis.

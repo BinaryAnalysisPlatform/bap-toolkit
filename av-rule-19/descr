@@ -1,1 +1,9 @@
-detects symbol setlocale
+<locale.h> and the setlocale function shall not be used
+
+Checks the program for a usage of the functions defined in the file <locale.h>:
+  - setlocale
+  - localeconv
+
+The algorithm is pretty straightforward: we check the input edges for every subroutine
+in the program callgraph, and if there are some then the subroutine is considered as a used one,
+i.e. there is at least one call of the given subroutine.

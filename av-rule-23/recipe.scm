@@ -1,4 +1,4 @@
 (option find-symbol)
-(option find-symbol-name atof)
-(option find-symbol-name atoi)
-(option find-symbol-name atol)
+(option find-symbol-usage atof)
+(option find-symbol-usage atoi)
+(option find-symbol-usage atol)

@@ -15,6 +15,11 @@
 (option primus-limit-max-length $depth)
 (option primus-print-output null-ptr-deref.incidents)
 
+(option primus-lisp-channel-redirect
+  <stdin>:$prefix/stdin
+  <stdout>:$prefix/stdout
+  <stderr>:$prefix/stderr)
+
 (option primus-print-observations
         all
         -const

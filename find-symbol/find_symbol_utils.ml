@@ -38,6 +38,14 @@ let is_reducible cfg start =
   not @@ Seq.exists groups ~f:(fun g -> scc_entries cfg g >= 2)
 
 
+let find_nonstructural_component cfg start =
+  let cfg = connect_graph cfg start in
+  let xs = Graphlib.strong_components (module Cfg) cfg in
+  let groups = Partition.groups xs in
+  Option.(
+    Seq.find groups ~f:(fun g -> scc_entries cfg g >= 2) >>= fun g ->
+    Some (Block.addr (Group.top g)))
+
 let find_recursive prog =
   Graphlib.depth_first_search
     (module Callgraph)

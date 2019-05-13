@@ -1,1 +1,7 @@
-detects recursive functions
+There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.

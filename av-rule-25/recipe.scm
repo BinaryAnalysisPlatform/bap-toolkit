@@ -1,10 +1,11 @@
 (option find-symbol)
-(option find-symbol-name asctime)
-(option find-symbol-name clock)
-(option find-symbol-name ctime)
-(option find-symbol-name difftime)
-(option find-symbol-name gmtime)
-(option find-symbol-name localtime)
-(option find-symbol-name mktime)
-(option find-symbol-name strftime)
-(option find-symbol-name time)
+(option find-symbol-usage
+   asctime
+   clock
+   ctime
+   difftime
+   gmtime
+   localtime
+   mktime
+   strftime
+   time)

@@ -1,2 +1,3 @@
 (option find-symbol)
-(option find-symbol-name setlocale)
+(option find-symbol-usage setlocale)
+(option find-symbol-usage localeconv)

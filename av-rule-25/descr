@@ -1,1 +1,16 @@
-detects symbols from time.h
+The time handling functions of library <time.h> shall not be used
+
+Checks the program for a usage of the next functions defined in the file <time.h>:
+  - asctime
+  - clock
+  - ctime
+  - difftime
+  - gmtime
+  - localtime
+  - mktime
+  - strftime
+  - time
+
+The algorithm is pretty straightforward: we check the input edges for every subroutine
+in the program callgraph, and if there are some then the subroutine is considered as a used one,
+i.e. there is at least one call of the given subroutine.

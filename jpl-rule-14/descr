@@ -1,1 +1,14 @@
 detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `unused-result.incidents' file.
+The file could be loaded in IDA Pro for further analysis.

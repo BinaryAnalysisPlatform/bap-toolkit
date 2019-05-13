@@ -1,0 +1,10 @@
+All functions shall have a cyclomatic complexity number of 20 or less
+
+Cyclomatic complexity is a metric that is used to determine a
+number of linearly independent paths in a program.
+
+In our case, we compute cyclomatic complexity for each subroutine
+by applying the next formula to it's control flow graph:
+  C = E - N + P
+where E is a number of edges, N is a number of nodes and P is
+a number of a strongly connected components.

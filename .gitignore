@@ -9,6 +9,7 @@
 *.cmxa
 *.recipe
 *.plugin
+*.incidents
 
 # ocamlbuild working directory
 _build/
