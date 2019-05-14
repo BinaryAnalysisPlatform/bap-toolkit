@@ -53,62 +53,77 @@ the community. PRs are very welcomed and accepted with no questions asked.
 
 ## Installation
 
-Although the recipes from this repository are installed by default in
-binary and opam installations, it is useful to update them, as it is this
-repository could move faster than the BAP release cycle. To install all
-recipes to the default share folder just do
+The build and installation system is currently querying the opam tool for all the 
+necessary information, therefore make sure that opam 2.x is installed on your 
+system, and a switch is activated, with 
+
+        eval $(opam env)
+
+Next, to install all tools in the repository to the default share folder just do
 
 
-        ./install.sh
+        python makes build
+        python makes install
 
+To install a specific tool, run the same commands but pass the tool name to them, e.g., 
 
-The script will install to the currently activated OPAM switch, if such
-exits, otherwise it will install to the `/usr/local/share/bap` folder. To install
-to a specific folder just pass it to the script, e.g.,
-
-       ./install.sh <destination>
-
-To install a specific recipe pass its name (the folder name) after the destination,
-e.g.,
-
-       ./install.sh <destination> <recipe>
-
+        python makes build primus-checks
+        python makes install primus-checks
 
 # Usage
 
-To use the installed recipe just pass its name to the `--recipe` option, e.g.,
+Tool are packed as BAP recipes,  therefore to run a tool just pass its name to the `--recipe` option, e.g.,
 
-       bap ./exe --recipe=primus-checks
+       bap ./exe --recipe=av-rule-3
 
+To get a detailed description of a recipe, use the `--show-recipe` option, e.g.,
 
-To list available recipes, use
+       bap --show-recipe=av-rule-3
+
+You can also list all available using the `--list-recipes` option,
 
        bap --list-recipes
-
-To peek into the details of a recipe pass its name to the `--show-recipe` option, e.g.,
-
-       bap --show-recipe=primus-checks
-
-If a recipe has parameters then they could be specified as colon
-separated list of <key>=<value> pairs. See the --recipe parameter in
-`bap --help` for more information.
 
 
 # Developing
 
-## Making Recipes
+## Creating a new tool
 
-A recipe is either a single file or a directory (optionally zipped)
-that contains a parametrized specification of command line parameters
-and support files if necessary.
+To create a new tool clone this repository,
 
-The main (and the only necessary) part of a recipe is the recipe
-specification, that is a file that contains a list of recipe items in
-an arbitrary order. Each item is either a command line option, a
-parameter, or a reference to another recipe. All items share the same
-syntax - they are flat s-expressions, i.e., a whitespace separated list
-of strings enclosed in parentheses. The first string in the list
-denotes the type of the item, e.g.,
+      https://github.com/BinaryAnalysisPlatform/bap-toolkit.git
+        
+Then create a new folder inside the newly cloned `bap-toolkit` folder,
+
+      cd bap-toolkit
+      mkdir my-first-tool
+      cd my-first-tool
+
+All files in this folder will form the body of your tool. They may contain input
+files, scripts for pre and post processing, BAP plugins and libraries, etc. The only
+required file is the `recipe.scm` file which is the entry point of your tool. This
+file contains a list of options which are passed to `bap`, for example, to create a
+tool that just dumps a file in multiple formats, create a `recipe.scm` file with the 
+following contents
+
+      (option dump asm:out.asm)
+      (option dump bir:out.bir)
+      
+After the tool is [built and installed](#installation), you can run it with
+
+      bap ./test-file --recipe=my-first-tool
+      
+And this would essentially the same as running bap with the following command line arguments
+
+      bap ./test-file --dump=asm:out.asm --dump=bir:out.bir
+      
+Not a big deal so far, but typical bap invocation may contain lots of command line option. 
+You may also need to pass files, header files, BAP Lisp scripts, etc. This is where the recipe
+system shines. In general, the recipe specification contains a list of recipe items in
+an arbitrary order. Each item is either a command line option, a parameter, or a reference to 
+another recipe. All items share the same syntax - they are flat s-expressions, i.e., a whitespace 
+separated list of strings enclosed in parentheses. The first string in the list denotes the type 
+of the item, e.g.,
 
         (option run-entry-points malloc calloc free)
 
