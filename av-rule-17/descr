@@ -1,7 +1,28 @@
-The error indicator errno shall not be used
+The error indicator errno shall not be used.
 
-Given that errno is an implementation-defined macro, it may no appear in binary's symbol table.
-And out check should also take in account different implentations too.
+Motivation
+==========
 
-On a current level, we take into account Linux systems, and we track a usage of the
-function _errno_location, that returns the address of errno variable.
+Using errno as an indicator of an error condition is fragile and may lead to an undefined behavior. 
+
+Exceptions
+==========
+
+It is fine to use `errno` for diagnostic messages and in rare cases when it is the only 
+and well-documented way to detect whether an error has occured. We will not try to handle 
+the latter exception. 
+
+Implementation Details
+======================
+
+Given that `errno` is an implementation-defined macro, it may not appear in binary's symbol table,
+and could be implemented either as an externally defined symbol, e.g., `__libc_errno` or a function 
+returning a pointer to the `errno` location. Therefore while `errno` is a standard symbol in the
+source code, it is ABI specific, and we will gradually add support for different ABIs. Currently,
+we support the following ABI:
+
+  - Linux SysV ABI (which uses the `__errno_location` function)
+
+The current implementation only checks if this symbol is imported. If it is, then `errno` is potentially
+used. It could be a benign diagnostic message, though. Later, we will extend the analysis to check
+if the `errno` variable actually induces any control dependencies. 
