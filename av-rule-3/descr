@@ -1,10 +1,13 @@
-All functions shall have a cyclomatic complexity number of 20 or less
+All functions shall have a cyclomatic complexity number of 20 or less.
 
-Cyclomatic complexity is a metric that is used to determine a
-number of linearly independent paths in a program.
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
 
-In our case, we compute cyclomatic complexity for each subroutine
-by applying the next formula to it's control flow graph:
   C = E - N + P
-where E is a number of edges, N is a number of nodes and P is
-a number of a strongly connected components.
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.
