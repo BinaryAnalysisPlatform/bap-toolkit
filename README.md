@@ -17,23 +17,23 @@ the community. PRs are very welcomed and accepted with no questions asked.
 - [Contributing](#contributing) - how to contribute a new tool
 - Tools
   - [primus-checks](#primus-checks) - all-in-one analysis that uses Primus
-  - checks from [Joint Strike Fighter coding standards](http://stroustrup.com/JSF-AV-rules.pdf)
-    - [av-rule-3](#av-rule-3) - All functions shall have a cyclomatic complexity number of 20 or less
-    - [av-rule-17](#av-rule-17) - The error indicator `errno` shall not be used
-    - [av-rule-19](#av-rule-19) - `<locale.h>` and the `setlocale` function shall not be used.
-    - [av-rule-20](#av-rule-20) - The `setjmp` macro and the `longjmp` function shall not be used.
-    - [av-rule-21](#av-rule-21) - The signal handling facilities of `<signal.h>` shall not be used.
-    - [av-rule-22](#av-rule-22) - The input/output library `<stdio.h>` shall not be used.
-    - [av-rule-23](#av-rule-23) - The library functions `atof`, `atoi` and `atol` from library `<stdlib.h>` shall not be used.
-    - [av-rule-24](#av-rule-24) - The library functions `abort`, `exit`, `getenv` and `system` from library `<stdlib.h>` shall not be used
-    - [av-rule-25](#av-rule-25) - The time handling functions of library `<time.h>` shall not be used.
-    - [av-rule-174](#av-rule-174) - The null pointer shall not be de-referenced.
-    - [av-rule-189](#av-rule-189) - The goto statement shall not be used
-  - checks from [JPL Institutional Coding Standard](http://bsivko.pbworks.com/w/file/fetch/68132300/JPL_Coding_Standard_C.pdf)
-    - [jpl-rule-4](#jpl-rule-4) - There shall be no direct or indirect use of recursive function calls
-    - [jpl-rule-11](#jpl-rule-11) - The goto statement shall not be used
-    - [jpl-rule-14](#jpl-rule-14) - The return value of non-void functions shall be checked or used
-  - [defect-symbol](#defect-symbol) - run the next checks all at once: av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
+  - checks from the [Joint Strike Fighter coding standards](http://stroustrup.com/JSF-AV-rules.pdf)
+    - [av-rule-3](#av-rule-3) - all functions have a cyclomatic complexity less than 20
+    - [av-rule-17](#av-rule-17) - `errno` is not used as an error indicator
+    - [av-rule-19](#av-rule-19) - `setlocale` et all functions are not be used
+    - [av-rule-20](#av-rule-20) - `setjmp`/`longjmp` are not be used
+    - [av-rule-21](#av-rule-21) - signal handling facilities of `<signal.h>` are not be used
+    - [av-rule-22](#av-rule-22) - The input/output library `<stdio.h>` shall not be used
+    - [av-rule-23](#av-rule-23) - `atof`, `atoi`, and `atol` are not be used
+    - [av-rule-24](#av-rule-24) - `abort`, `exit`, `getenv` and `system` are not be used
+    - [av-rule-25](#av-rule-25) - the `<time.h>` interface is not used
+    - [av-rule-174](#av-rule-174) - potential null pointer dereferencings
+    - [av-rule-189](#av-rule-189) - `goto` statements are not used
+  - checks from the [JPL Institutional Coding Standard](http://bsivko.pbworks.com/w/file/fetch/68132300/JPL_Coding_Standard_C.pdf)
+    - [jpl-rule-4](#jpl-rule-4) - no recursive functions
+    - [jpl-rule-11](#jpl-rule-11) - `goto` statements are not used
+    - [jpl-rule-14](#jpl-rule-14) - return values of all non-void functions are used
+  - [defective-symbols](#defect-symbol) - detects all defective symbols from the av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
 
 
 
