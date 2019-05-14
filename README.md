@@ -16,7 +16,6 @@ the community. PRs are very welcomed and accepted with no questions asked.
 - [Developing](#developing) - how to develop a new tool
 - [Contributing](#contributing) - how to contribute a new tool
 - Tools
-  - [primus-checks](#primus-checks) - all-in-one analysis that uses Primus
   - checks from the [Joint Strike Fighter coding standards](http://stroustrup.com/JSF-AV-rules.pdf)
     - [av-rule-3](av-rule-3/descr) - all functions have a cyclomatic complexity less than 20
     - [av-rule-17](av-rule-17/descr) - `errno` is not used as an error indicator
@@ -34,6 +33,21 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - [jpl-rule-11](jpl-rule-11/descr) - `goto` statements are not used
     - [jpl-rule-14](jpl-rule-14/descr) - return values of all non-void functions are used
   - [defective-symbols](defect-symbol/descr) - detects all defective symbols from the av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
+  - [primus-checks](primus-checks/descr) - an all-in-one analysis that uses Primus to identify the following CWE:
+    - CWE-122 (Buffer Overwrite)
+    - CWE-125 (Buffer Overread)
+    - CWE-416 (Use after free)
+    - CWE-415 (Double free)
+    - CWE-798 (Use of Hard-coded Credentials)
+    - CWE-259 (Use of Hard-coded Password)
+    - CWE-822 (Untrusted Pointer Dereference)
+    - CWE-291 (Relience on IP Address for Authentication)
+    - CWE-170 (Improper Null Termination)
+    - CWE-138 (Improper Neutralization)
+    - CWE-74  (Command Injection)
+    - CWE-476 (NULL pointer dereference)
+    - CWE-690 (Unchecked Return Value to NULL Pointer Dereference)
+    - CWE-252 (Unchecked Return Value)
 
 
 
