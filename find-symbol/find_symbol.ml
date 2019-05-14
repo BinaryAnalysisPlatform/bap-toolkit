@@ -82,7 +82,7 @@ let report_symbol symtab addr reasons =
   let string_of_reason = function
     | Big_complexity i -> sprintf "Complexity %d" i
     | By_symbol_name -> sprintf "Name"
-    | By_symbol_usage -> sprintf "Usage"
+    | By_symbol_usage -> sprintf "Forbidden"
     | Recursive_call -> sprintf "Recursive-call"
     | Non_structured addr -> sprintf "Non-structured at %a" Addr.pps addr in
   match Symtab.find_by_start symtab addr with

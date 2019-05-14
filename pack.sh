@@ -6,6 +6,6 @@
 OLD=`pwd`
 NAME=`basename "$1"`
 cd $1
-zip $NAME.recipe *
+zip -r $NAME.recipe *
 mv $NAME.recipe $OLD
 cd $OLD

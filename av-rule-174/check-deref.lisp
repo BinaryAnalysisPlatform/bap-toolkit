@@ -12,12 +12,7 @@
           (is-bad (taint-get-direct 'dont-believe ptr)))
       (when (not is-bad)
         (when (and taint (not checked))
-          (notify-null-deref))
-        (when (and taint checked)
-          (let ((addr (dict-get 'checked taint))
-                (dependent (has-control-dependency addr)))
-            (when (not dependent)
-              (notify-null-deref))))))))
+          (notify-null-deref))))))
 
 (defmethod eval-cond (x)
   (let ((taint (taint-get-direct 'const-ptr x))
@@ -50,3 +45,8 @@
 
 (defmethod storing (ptr)
   (check-deref-null-ptr ptr))
+
+
+(defun errno_location ()
+  (declare (external "__errno_location"))
+  42)

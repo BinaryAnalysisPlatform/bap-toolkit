@@ -29,7 +29,7 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - [jpl-rule-4](jpl-rule-4/descr) - no recursive functions
     - [jpl-rule-11](jpl-rule-11/descr) - `goto` statements are not used
     - [jpl-rule-14](jpl-rule-14/descr) - return values of all non-void functions are used
-  - [defective-symbols](defect-symbol/descr) - detects all defective symbols from the av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
+  - [defective-symbols](defected-symbol/descr) - detects all defective symbols from the av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
   - [primus-checks](primus-checks/descr) - an all-in-one analysis that uses Primus to identify the following CWE:
     - CWE-122 (Buffer Overwrite)
     - CWE-125 (Buffer Overread)
@@ -50,9 +50,9 @@ the community. PRs are very welcomed and accepted with no questions asked.
 
 ## Installation
 
-The build and installation system is currently querying the opam tool for all the 
-necessary information, therefore make sure that opam 2.x is installed on your 
-system, and a switch is activated, with 
+The build and installation system is currently querying the opam tool for all the
+necessary information, therefore make sure that opam 2.x is installed on your
+system, and a switch is activated, with
 
         eval $(opam env)
 
@@ -62,7 +62,7 @@ Next, to install all tools in the repository to the default share folder just do
         python makes build
         python makes install
 
-To install a specific tool, run the same commands but pass the tool name to them, e.g., 
+To install a specific tool, run the same commands but pass the tool name to them, e.g.,
 
         python makes build primus-checks
         python makes install primus-checks
@@ -89,7 +89,7 @@ You can also list all available using the `--list-recipes` option,
 To create a new tool clone this repository,
 
       https://github.com/BinaryAnalysisPlatform/bap-toolkit.git
-        
+
 Then create a new folder inside the newly cloned `bap-toolkit` folder,
 
       cd bap-toolkit
@@ -100,26 +100,26 @@ All files in this folder will form the body of your tool. They may contain input
 files, scripts for pre and post processing, BAP plugins and libraries, etc. The only
 required file is the `recipe.scm` file which is the entry point of your tool. This
 file contains a list of options which are passed to `bap`, for example, to create a
-tool that just dumps a file in multiple formats, create a `recipe.scm` file with the 
+tool that just dumps a file in multiple formats, create a `recipe.scm` file with the
 following contents
 
       (option dump asm:out.asm)
       (option dump bir:out.bir)
-      
+
 After the tool is [built and installed](#installation), you can run it with
 
       bap ./test-file --recipe=my-first-tool
-      
+
 And this would essentially the same as running bap with the following command line arguments
 
       bap ./test-file --dump=asm:out.asm --dump=bir:out.bir
-      
-Not a big deal so far, but typical bap invocation may contain lots of command line option. 
+
+Not a big deal so far, but typical bap invocation may contain lots of command line option.
 You may also need to pass files, header files, BAP Lisp scripts, etc. This is where the recipe
 system shines. In general, the recipe specification contains a list of recipe items in
-an arbitrary order. Each item is either a command line option, a parameter, or a reference to 
-another recipe. All items share the same syntax - they are flat s-expressions, i.e., a whitespace 
-separated list of strings enclosed in parentheses. The first string in the list denotes the type 
+an arbitrary order. Each item is either a command line option, a parameter, or a reference to
+another recipe. All items share the same syntax - they are flat s-expressions, i.e., a whitespace
+separated list of strings enclosed in parentheses. The first string in the list denotes the type
 of the item, e.g.,
 
         (option run-entry-points malloc calloc free)
