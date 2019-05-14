@@ -1,6 +1,3 @@
-Note: this repository is currently being updated, expect lots of changes in the upcoming few days. This README
-is also WIP.
-
 # Introduction
 
 This repository provides a collection of ready to use binary analysis tools,
