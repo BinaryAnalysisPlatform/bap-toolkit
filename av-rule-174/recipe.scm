@@ -1,5 +1,6 @@
 (parameter depth 8192 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
+(parameter incidents incidents "a path to file with incidents")
 
 (option primus-lisp-load
         posix
@@ -15,7 +16,7 @@
 (option primus-promiscuous-mode)
 (option primus-greedy-scheduler)
 (option primus-limit-max-length $depth)
-(option primus-print-output null-ptr-deref.incidents)
+(option primus-print-output $incidents)
 
 (option primus-lisp-channel-redirect
   <stdin>:$prefix/stdin
