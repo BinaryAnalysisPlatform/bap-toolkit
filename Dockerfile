@@ -9,8 +9,8 @@ FROM bap-dev as base
 RUN sudo apt-get update \
   && sudo apt-get install -y zip
 
+COPY --chown=opam:opam . /bap-toolkit
 WORKDIR /bap-toolkit
-COPY --chown=opam:opam . .
 RUN opam exec -- python makes [build, install]
 
 FROM ubuntu
