@@ -1,9 +1,11 @@
-(parameter depth 4096 "a depth of analysis")
+(parameter depth 8192 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
 
 (option primus-lisp-load
         posix
         check-deref)
+
+(option api-path $prefix/api)
 
 (option run)
 (option run-entry-points ${entry-points})
@@ -21,7 +23,12 @@
   <stderr>:$prefix/stderr)
 
 (option primus-print-observations
-        all
-        -const
-        -enter-exp
-        -leave-exp)
+  pc-changed
+  jumping
+  call
+  call-return
+  machine-switch
+  machine-fork
+  lisp-message
+  incident
+  incident-location)
