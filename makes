@@ -300,25 +300,18 @@ def parse_target(target):
 def test(recipe_list):
     pass
 
-
-def pack__(target):
+def pack(target):
     cur = path.abspath(os.curdir)
     if not path.exists(path.join(target['path'], 'recipe.scm')):
         return
     os.chdir(target['path'])
     zipf = zipfile.ZipFile(target['name'] + '.recipe', 'w', zipfile.ZIP_DEFLATED)
-    for f in os.listdir(target['path']):
-        if f in ["descr", "stdin", "stdout", "stderr"] or is_lisp_file(f) or is_scm_file(f):
-            zipf.write(f)
-        zipf.close()
+    for dirname, dirs, files in os.walk(target['path']):
+        for f in files:
+            if not f in ["_build"]:
+                zipf.write(path.relpath(path.join(dirname, f)))
+    zipf.close()
     os.chdir(cur)
-
-def pack(target):
-    if not path.exists(path.join(target['path'], 'recipe.scm')):
-        return
-    run_cmd("sh pack.sh " + target['path'])
-    run_cmd("mv *.recipe " + target['path'])
-
 
 def find_recipde_deps(all_targets, ml_powered_host, target, deps=[], errs=[]):
     for e in target['exts']:

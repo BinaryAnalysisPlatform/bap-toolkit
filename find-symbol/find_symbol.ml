@@ -50,7 +50,8 @@ let find_usage names prog =
       Seq.fold ~init:(Map.empty (module Tid)) ~f:(fun xs s ->
           if Set.mem names (Sub.name s) then
             Map.set xs (Term.tid s) s
-          else xs) in
+          else
+            xs) in
   Map.fold tids ~init:[] ~f:(fun ~key:tid ~data:sub xs ->
       match Callg.Node.inputs tid g |> Seq.to_list with
       | []  -> xs
@@ -119,6 +120,9 @@ let main checks fail_on_found silent proj =
       let () = if not silent then report (Project.symbols proj) locs in
       if fail_on_found then exit 1
 
+let split s =
+  List.map s ~f:(String.split ~on:',') |> List.concat
+
 let () =
   let () = Config.manpage [
       `S "DESCRIPTION";
@@ -155,11 +159,11 @@ let () =
     Config.(flag "silent" ~doc) in
   Config.when_ready (fun {Config.get=(!)} ->
       let checks = [
-        not @@ List.is_empty !names, Symbols (find_names !names);
+        not @@ List.is_empty !names, Symbols (find_names (split !names));
         Option.is_some !complexity, Symbols (find_complex !complexity);
         !recursive, Program find_recursive;
         !non_structured, Symbols find_non_structured;
-        not @@ List.is_empty !used, Program (find_usage !used);
+        not @@ List.is_empty !used, Program (find_usage (split !used));
         ] |> List.filter_map
           ~f:(fun x -> if fst x then Some (snd x) else None) in
       Project.register_pass' (main checks !fail_on_found !silent) ~runonce:true)
