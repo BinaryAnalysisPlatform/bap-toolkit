@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 import sys
 import os
@@ -291,6 +292,7 @@ def parse_target(target):
     x['ml_target'] = is_ml_target(x)
     return x
 
+
 # usage should be like
 # $: python makes test
 # OR
@@ -300,18 +302,13 @@ def parse_target(target):
 def test(recipe_list):
     pass
 
+
 def pack(target):
-    cur = path.abspath(os.curdir)
     if not path.exists(path.join(target['path'], 'recipe.scm')):
         return
-    os.chdir(target['path'])
-    zipf = zipfile.ZipFile(target['name'] + '.recipe', 'w', zipfile.ZIP_DEFLATED)
-    for dirname, dirs, files in os.walk(target['path']):
-        for f in files:
-            if not f in ["_build"]:
-                zipf.write(path.relpath(path.join(dirname, f)))
-    zipf.close()
-    os.chdir(cur)
+    run_cmd("sh pack.sh " + target['path'])
+    run_cmd("mv *.recipe " + target['path'])
+
 
 def find_recipde_deps(all_targets, ml_powered_host, target, deps=[], errs=[]):
     for e in target['exts']:
@@ -359,12 +356,6 @@ def build(ml_powered_host, targets=[]):
         if ml_powered_host and t['ml_target']:
             build_ml_target(modules, t)
         pack(t)
-
-# def install_api(api_path):
-#     recipe_dest = run_cmd_with_output('opam config var prefix')
-#     recipe_dest = recipe_dest.strip() + '/share/bap'
-#     for f in os.listdir(api_path):
-
 
 # add description to a bundle(or on the pack stage)!
 # here we do need to know destination
