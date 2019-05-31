@@ -1,20 +1,18 @@
+# openssl 1.1.0
+# CVE-2016-7053 (CWE 476)
+# CVE-2017-3730 (CWE 476)
+
 FROM debian:stable-slim as builder
 
 WORKDIR /build
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential wget
 
-ADD https://github.com/openssl/openssl/archive/OpenSSL_1_1_0.tar.gz .
-RUN tar xzvf OpenSSL_1_1_0.tar.gz
-
-WORKDIR openssl-OpenSSL_1_1_0
-RUN ./config --prefix=/build && make && make install
-
-WORKDIR /build
+RUN wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_0.tar.gz && \
+    tar xzf OpenSSL_1_1_0.tar.gz && \
+    cd openssl-OpenSSL_1_1_0 && \
+    ./config --prefix=/build && make && make install
 
 FROM debian:stable-slim
 WORKDIR /artifacts
 COPY --from=builder /build/bin bin/
 COPY --from=builder /build/lib lib/
-
-# CVE-2016-7053 (CWE 476)
-# CVE-2017-3730 (CWE 476)
