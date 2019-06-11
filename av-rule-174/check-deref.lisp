@@ -10,8 +10,8 @@
 
 ;; Dealing with false positives
 ;; There are next consideration abour false positives.
-;; 1) Analysis is written with keeping in mind that if programmer
-;; checked a pointer somehow - no matter if it was right or not
+;; 1) Analysis is written with keeping in mind that if a programmer
+;; checked a pointer somehow - no matter if it was right or not -
 ;; then using of the pointer is considered as a safe one. For example,
 ;; we apply this approach in the next case: mem [RAX + RBX] := 42,
 ;; when both registers hold zero and only one of them was checked.
@@ -24,8 +24,6 @@
 ;; 4) If any subroutine wasn't visited in the current path because it
 ;; was visited in the other, we need to drop its result.
 ;;
-
-(require x86-correct-sp)
 
 (defun notify-null-deref (start)
   (when (not (is-reported (get-current-program-counter)))
