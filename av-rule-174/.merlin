@@ -2,6 +2,7 @@ PKG core_kernel
 PKG bap
 PKG bap-primus
 PKG bap-x86-cpu
+PKG bap-taint
 
 S .
 B _build/

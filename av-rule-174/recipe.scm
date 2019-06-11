@@ -1,4 +1,4 @@
-(parameter depth 8192 "a depth of analysis")
+(parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
 (parameter incidents incidents "a path to file with incidents")
 
@@ -24,6 +24,10 @@
   <stderr>:$prefix/stderr)
 
 (option primus-print-observations
+        ;; all
+        ;; -enter-exp
+        ;; -leave-exp
+        ;; -const)
   pc-changed
   jumping
   call
