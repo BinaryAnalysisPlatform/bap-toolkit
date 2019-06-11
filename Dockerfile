@@ -18,5 +18,4 @@ COPY --from=base /home/opam/.opam/4.07/share/primus /home/opam/.opam/4.07/share/
 
 
 ENTRYPOINT ["bap"]
-CMD ["/target", "--recipe=defected-symbol"]
-
+CMD ["/target", "--recipe=defective-symbol"]
