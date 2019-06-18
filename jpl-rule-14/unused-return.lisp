@@ -1,71 +1,54 @@
 
-(defun release (val kind)
-  (let ((taint (taint-get-direct kind val))
-        (sub (dict-get 'maybe-unused taint)))
-    (when taint
-      (taint-sanitize-direct kind val)
-      (when sub
-        (dict-del 'maybe-unused taint)))))
-
 (defmethod read (var val)
+  (let ((taint (taint-get-direct 'must-be-used val))
+        (addr (get-current-program-counter))
+        (first-time (not (dict-has 'was-read taint))))
+    (when (and taint first-time)
+      (dict-add 'was-read taint addr))))
+
+(defmethod stored (addr val)
+  (let ((taint (taint-get-direct 'must-be-used val))
+        (prev (dict-get 'was-read taint))
+        (addr (get-current-program-counter)))
+    (when taint
+      (when (= addr prev)
+        (dict-del 'was-read taint)))))
+
+(defmethod loaded (ptr val)
   (let ((taint (taint-get-direct 'must-be-used val)))
-    (when taint
-      (dict-add 'was-read taint val))))
-
-(defmethod stored (var val)
-  (let ((taint  (taint-get-direct 'must-be-used val))
-        (symbol (dict-get 'maybe-unused taint))
-        (callee (dict-get 'call-site taint)))
-    (when taint
-      (let ((taint' (taint-introduce-directly 'must-be-loaded val)))
-        (when symbol
-          (dict-add 'maybe-unused taint' symbol))
-        (when callee
-          (dict-add 'call-site taint' callee))))))
-
-(defmethod loaded (_ val)
-  (release val 'must-be-used)
-  (release val 'must-be-loaded))
+    (mark-used taint)
+    (taint-sanitize-indirect 'must-be-used ptr)
+    (taint-sanitize-direct   'must-be-used val)))
 
 (defmethod taint-finalize (taint _)
-  (let ((sub (dict-get 'maybe-unused taint))
-        (read (dict-has 'was-read taint))
-        (callee (dict-get 'call-site taint)))
-    (when (and sub read)
-      (notify-used-result sub callee)
-      (dict-del 'maybe-unused taint))
-    (when (and sub (not read))
-      (notify-unused sub callee)
-      (dict-del 'maybe-unused taint))))
+  (let ((read (dict-has 'was-read taint))
+        (unused (is-unused taint)))
+    (when read
+      (mark-used taint))
+    (when (and (not read) unused)
+      (mark-unused taint)
+      (notify-unused taint))
+    (mark-finalized taint)))
 
-(defun notify-unused (sub addr)
-  (notify-unused-result sub addr)
-  (incident-report 'value-was-not-used sub))
-
-(defun is-ignored (name)
-  (is-in name
-         '__primus_linker_unresolved_call))
+(defun notify-unused (taint)
+  (incident-report 'value-was-not-used (incident-location)))
 
 (defmethod written (var val)
-  (let ((name (dict-get 'call-return var))
-        (addr (dict-get 'call-site name))
-        (old-taint (taint-get-direct 'must-be-used val)))
-    (when old-taint
-      (dict-del 'maybe-unused old-taint)
-      (dict-del 'call-site old-taint)
-      (taint-sanitize-direct 'must-be-used val))
+  (let ((name (dict-get 'call-return var)))
     (when name
-      (let ((taint (taint-introduce-directly 'must-be-used val)))
-        (dict-add 'maybe-unused taint name)
-        (dict-add 'call-site taint addr)))))
+      (let ((addr (get-current-program-counter))
+            (old-taint (taint-get-direct 'must-be-used val)))
+        (when old-taint
+          (taint-sanitize-direct 'must-be-used val))
+        (dict-del 'call-return var)
+        (let ((taint (taint-introduce-directly 'must-be-used val)))
+          (check-if-used taint name addr))))))
 
-(defmethod jumping (_ _)
-  (stack-push 'callers (get-current-program-counter)))
+(defun is-ignored (name)
+  (is-in name '__primus_linker_unresolved_call))
 
-(defmethod call (name _ )
-  (let ((caller (stack-pop 'callers)))
-    (when (not (is-ignored name))
-      (let ((arg (return-arg name)))
-        (dict-add 'call-return arg name)
-        (when caller
-          (dict-add 'call-site name caller))))))
+(defmethod call-return (name _ )
+  (when (not (is-ignored name))
+    (let ((addr (get-current-program-counter))
+          (arg (return-arg name)))
+      (dict-add 'call-return arg name))))
