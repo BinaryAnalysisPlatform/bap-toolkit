@@ -15,11 +15,17 @@
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  12          0            0             12</pre>
+<br>
 <pre>
 __errno_location abort atoi atol exit fprintf freopen getenv printf putchar puts sscanf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  22          0            0             22</pre>
+<br>
 <pre>
 ap_abort_on_oom           parse_errorlog_item
 ap_add_module_commands    process_resource_config_fnmatch
@@ -35,6 +41,9 @@ count_directives_sub      sub_486162
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  16          0            0             16</pre>
+<br>
 <pre>
 ap_core_output_filter                  ap_select_protocol
 ap_directory_walk                      ap_set_byterange
@@ -52,6 +61,9 @@ not found
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  37          0            0             37</pre>
+<br>
 <pre>
 ap_add_module                   0x45AD1D    ap_send_interim_response  0x43F3C0
 ap_expr_yy_init_buffer          0x471B22    prep_walk_cache           0x44E371
@@ -76,6 +88,9 @@ ap_add_per_dir_conf             0x441E94
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  27          0            0             27</pre>
+<br>
 <pre>
 atoi    0x4734E2  memcpy  0x432C43
 atoi    0x48958D  memcpy  0x434632
@@ -103,17 +118,26 @@ memcpy  0x432BCB
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  8          0            0             8</pre>
+<br>
 <pre>
 __errno_location exit fprintf fwrite
 printf puts signal time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  2          0            0             2</pre>
+<br>
 <pre>
 recursive_delete sig_term
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 binary_smbd_main
 
@@ -124,12 +148,18 @@ not found
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  2          0            0             2</pre>
+<br>
 <pre>
-binary_smbd_main 0x4DD0:64u
-binary_smbd_main 0x4D6D:64u
+binary_smbd_main 0x4DD0
+binary_smbd_main 0x4D6D
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  7          0            0             7</pre>
+<br>
 <pre>
 fprintf 0x380D
 fprintf 0x4919
@@ -150,12 +180,18 @@ puts    0x450B
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  18          0            0             18</pre>
+<br>
 <pre>
 __errno_location exit fclose fflush fgets fprintf fputc fputs
 fwrite getenv perror printf putchar puts rename setbuf signal time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  18          0            0             18</pre>
+<br>
 <pre>
 app_malloc do_revoke dump_certs_pkeys_bag generate_cookie_callback
 print_ssl_summary sub_45bed sub_45f45 sub_473b0
@@ -164,6 +200,9 @@ sub_67160 sub_671a5
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  22          0            0             22</pre>
+<br>
 <pre>
 ca_main dgst_main do_body enc_main engine_main ocsp_main req_main s_server_main
 smime_main srp_main sub_38c7c sub_3fdef sub_4b5a8 sub_4e510 sub_51459 sub_58d90
@@ -171,6 +210,9 @@ sub_5d3b3 sub_671b2 sub_6968c sub_715b6 www_body x509_main
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 main
 
@@ -181,6 +223,9 @@ not found
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  129          0            0             129</pre>
+<br>
 <pre>
 
 alarm 0x69925  alarm 0x6C4DC  alarm   0x6E1F6  fputc    0x6F3E3   printf   0x680F6   printf   0x6C027
@@ -217,12 +262,18 @@ alarm 0x6BBEE  alarm 0x6E110  fputc   0x5217F  printf   0x680A7   printf   0x6BF
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  20          0            0             20</pre>
+<br>
 <pre>
 __errno_location ctime exit fclose feof ferror fflush fopen fprintf fputc fread fseek fwrite
 getenv localtime perror printf rename time vfprintf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  81          0            0             81</pre>
+<br>
 <pre>
 _rs_stir                                    sub_11b9d    sub_37ae8
 bounce_delivery                             sub_12a23    sub_3e6c0
@@ -257,17 +308,26 @@ stats_tree_RB_INSERT_COLOR                  sub_31dd3
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  9          0            0             9</pre>
+<br>
 <pre>
 envelope_ascii_dump envelope_load_buffer mta_connect sub_18014
 sub_1a9b6 sub_40eb2 sub_410c2 sub_49e34 yylex
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  6          0            0             6</pre>
+<br>
 <pre>
 queue_proc_call queue_proc_envelope_walk scheduler_proc_call sub_40eb2 sub_410c2 table_proc_call
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  8          0            0             8</pre>
+<br>
 <pre>
 nanosleep              0x494BF
 mailaddr_line          0x1D353
@@ -277,6 +337,56 @@ valid_localpart        0x3F60F
 strlcat                0x4B9B9
 text_to_relayhost      0x3D060
 queue_bounce           0x2C61F
+
+
+</pre>
+<b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  207          0            0             207</pre>
+<br>
+<pre>
+close    0x14498  fclose   0x2E7CE    memmove  0x1AFCC   memset   0x4AFB0   snprintf 0x2283F
+close    0x144A1  fclose   0x2E7D6    memmove  0x1C79B   memset   0x4B0A4   snprintf 0x22AE7
+close    0x1BBD5  fclose   0x39AC8    memmove  0x1D115   memset   0xE979    snprintf 0x22BF0
+close    0x1BC66  fclose   0x39B23    memmove  0x24F44   memset   0xF9FE    snprintf 0x22DB2
+close    0x1BCA1  fclose   0x3F3F0    memmove  0x377AF   open     0x2E8F7   snprintf 0x2C4AC
+close    0x1BE18  fclose   0x3F415    memmove  0x41E75   printf   0x151C4   snprintf 0x30FDF
+close    0x1BFE6  fclose   0x3FE11    memmove  0x43D46   printf   0x1521C   snprintf 0x320EB
+close    0x2E730  fclose   0x42676    memmove  0x44E36   printf   0x15263   snprintf 0x3889E
+close    0x2E804  fclose   0x42921    memmove  0xCA56    printf   0x152A5   snprintf 0x3999F
+close    0x2E8A9  fclose   0x42B5C    memmove  0xCAD6    printf   0x15777   snprintf 0x39B04
+close    0x38142  fclose   0x4488F    memmove  0xE861    printf   0x1580D   snprintf 0x3B57A
+close    0x38169  fclose   0x44AE0    memset   0x1065A   printf   0x15BF4   snprintf 0x3C704
+close    0x38232  fclose   0x4B538    memset   0x127C8   printf   0x15D1C   snprintf 0x3C733
+close    0x382B8  fclose   0x4B570    memset   0x127FE   printf   0x15D40   snprintf 0x3C764
+close    0x382C1  fclose   0x9A16     memset   0x1BD34   printf   0x16563   snprintf 0x3C79C
+close    0x3974A  fclose   0xA55F     memset   0x1D317   printf   0x165BC   snprintf 0x3F29F
+close    0x39785  fclose   0xA84A     memset   0x1D34E   printf   0x1661C   snprintf 0x4125B
+close    0x419BD  fprintf  0x37EC1    memset   0x283A8   rmdir    0x37E0D   snprintf 0x41338
+close    0x41A18  fprintf  0x3FF51    memset   0x31DFE   snprintf 0x12B75   snprintf 0x42C5B
+close    0x41A47  fprintf  0x40F7F    memset   0x331B0   snprintf 0x12BF0   snprintf 0x439EA
+close    0x448C5  fprintf  0x4A495    memset   0x33456   snprintf 0x12D42   snprintf 0x45A69
+close    0x44934  fputc    0x19975    memset   0x3350F   snprintf 0x134DB   snprintf 0x45AB0
+close    0x49313  ftruncate 0x40FFA   memset   0x33710   snprintf 0x134FC   snprintf 0x49D45
+close    0x49366  fwrite   0x3FE5B    memset   0x339A6   snprintf 0x13945   snprintf 0x49DF8
+close    0x4A5A3  fwrite   0x3FEDD    memset   0x33A5F   snprintf 0x1501B   snprintf 0x9AD8
+close    0x4A818  fwrite   0x3FF97    memset   0x33B45   snprintf 0x1542D   snprintf 0x9B43
+close    0x4AF0E  fwrite   0x419FE    memset   0x3C2C5   snprintf 0x154C9   snprintf 0x9BAA
+close    0x4B182  getpid   0x49036    memset   0x3CF47   snprintf 0x1A42D   snprintf 0x9C09
+close    0x9D90   getpid   0x49114    memset   0x3D8C4   snprintf 0x1A650   snprintf 0xC04A
+close    0xC6FD   lseek    0x2E7E2    memset   0x3DA66   snprintf 0x1A690   snprintf 0xF978
+dup2     0x382D1  lseek    0x4489A    memset   0x3DC26   snprintf 0x1A819   strtoull 0x3D454
+execl    0x382F4  memcpy   0x2F209    memset   0x3DC56   snprintf 0x1B07F   unlink   0x2E428
+execle   0x414C7  memcpy   0x3EA93    memset   0x3DC6E   snprintf 0x1B11B   unlink   0x2E539
+execle   0x4154E  memcpy   0x445DF    memset   0x3DF06   snprintf 0x1B18B   unlink   0x2E65A
+fclose   0x1AD29  memcpy   0x447A2    memset   0x3E013   snprintf 0x1D9D6   unlink   0x37A6C
+fclose   0x24DD9  memcpy   0x491D1    memset   0x40492   snprintf 0x1DD86   unlink   0x37DFC
+fclose   0x25A27  memcpy   0x4ADB9    memset   0x4194B   snprintf 0x1E121   unlink   0x412E3
+fclose   0x278FE  memcpy   0x4C315    memset   0x46212   snprintf 0x1E6DE   unlink   0x4B586
+fclose   0x279A1  memcpy   0xE120     memset   0x48F17   snprintf 0x1E70D   unlink   0xDB37
+fclose   0x2E51B  memcpy   0xE547     memset   0x49095   snprintf 0x2241A
+fclose   0x2E5E5  memmove  0x1492F    memset   0x491DE   snprintf 0x2268F
+fclose   0x2E752  memmove  0x14B12    memset   0x495B8   snprintf 0x22733
 </pre>
 </td>
 </tr>
@@ -289,6 +399,9 @@ queue_bounce           0x2C61F
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  21          0            0             21</pre>
+<br>
 <pre>
 __errno_location atoi exit fclose fflush fopen fprintf fread fseek ftell getenv gmtime
 localtime mktime perror printf putchar puts signal system vprintf
@@ -310,6 +423,9 @@ not found
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  5          0            0             5</pre>
+<br>
 <pre>
 wpa_ctrl_request          0x9730
 dl_list_del               0xCB7F
@@ -319,6 +435,9 @@ eloop_cancel_timeout_one  0xD5DA
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  140          0            0             140</pre>
+<br>
 <pre>
 alarm     0xD910    printf    0x7A71     puts  0x5822    puts      0x8493
 alarm     0xD9A8    printf    0x7AB6     puts  0x5A17    puts      0x84CB
@@ -370,6 +489,9 @@ printf    0x7A1A    puts      0x57D0     puts  0x837A
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  24          0            0             24</pre>
+<br>
 <pre>
 __errno_location clearerr ctime exit fclose feof ferror fflush
 fopen fprintf fputc fputs fread fseek ftell fwrite getenv perror printf putchar
@@ -377,6 +499,9 @@ puts rename sprintf time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  46          0            0             46</pre>
+<br>
 <pre>
 _trie_dump _trie_put add_parent args_callback_longoption
 as3__scan_bytes as3_ensure_buffer_stack callcode cut_last_push
@@ -391,16 +516,25 @@ yy_scan_bytes yyensure_buffer_stack
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  4          0            0             4</pre>
+<br>
 <pre>
 enumerateUsedIDs png_load png_write_palette_based2 writeABC
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 zlib_error
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  22          0            0             22</pre>
+<br>
 <pre>
 png_read_header           0xA97ED
 node_free                 0xA63C2
@@ -427,18 +561,67 @@ png_write_palette_based2  0xAC38E
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  276          0            0             276</pre>
+<br>
 <pre>
-calloc   0xA6BD4  fwrite   0xAED15
-close    0xAEBC0  fwrite   0xAEF77
-fclose   0xADA87  fwrite   0xAEF99
-fprintf  0x42A25  fwrite   0xAEFFC
-fprintf  0xAED67  fwrite   0xAF02E
-fprintf  0xAEDE6  fwrite   0xAF0D6
-fprintf  0xB05DC  memcpy   0xAEC4D
-fprintf  0xB0690  memcpy   0xAECE5
-fwrite   0x5F16C  printf   0xADA6B
-fwrite   0xADA57  printf   0xADAC7
-fwrite   0xADA7F
+calloc  0xA6BD4    fprintf 0x68D03  fputc   0x58C13  fwrite  0xA9F42  memset  0xAEA14
+close   0x66E58    fprintf 0x68D37  fputc   0x64BEB  fwrite  0xA9F84  memset  0xAF721
+close   0x6757B    fprintf 0x68E8B  fputc   0x68BA9  fwrite  0xA9FC6  printf  0x554F9
+close   0xAE80D    fprintf 0x6A697  fputc   0x68C78  fwrite  0xACA6D  printf  0x55C4A
+close   0xAEA84    fprintf 0x6A73F  fputc   0x68CA5  fwrite  0xACAB5  printf  0x55C9D
+close   0xAEBC0    fprintf 0x6AB55  fputc   0x7172B  fwrite  0xACB48  printf  0x55D28
+fclose  0xAA459    fprintf 0x6AD1F  fputs   0x68ACB  fwrite  0xACB86  printf  0x55D6D
+fclose  0xADA87    fprintf 0x6C5B2  fread   0xA970A  fwrite  0xACBC4  printf  0x58D44
+fprintf 0x42A25    fprintf 0x6D1A9  fwrite  0x57E71  fwrite  0xACC02  printf  0x58D59
+fprintf 0x5105F    fprintf 0x6D60A  fwrite  0x57F6D  fwrite  0xACCFF  printf  0x58D6E
+fprintf 0x51172    fprintf 0x6D64E  fwrite  0x5838F  fwrite  0xACD91  printf  0x58DE4
+fprintf 0x57268    fprintf 0x6D696  fwrite  0x59477  fwrite  0xAD914  printf  0x58E22
+fprintf 0x572E9    fprintf 0x6DFF5  fwrite  0x5A03A  fwrite  0xAD952  printf  0x58E85
+fprintf 0x5747C    fprintf 0x6E065  fwrite  0x5A7DF  fwrite  0xAD96B  printf  0x59455
+fprintf 0x57636    fprintf 0x6E158  fwrite  0x5AA46  fwrite  0xADA0A  printf  0x68848
+fprintf 0x57B36    fprintf 0x6E1F2  fwrite  0x5CC07  fwrite  0xADA23  printf  0x714C1
+fprintf 0x57B7D    fprintf 0x6E275  fwrite  0x5CF48  fwrite  0xADA57  printf  0x7251D
+fprintf 0x57BB4    fprintf 0x6E2F8  fwrite  0x5CF76  fwrite  0xADA7F  printf  0x72D6E
+fprintf 0x57C87    fprintf 0x701F0  fwrite  0x5CFA4  fwrite  0xAEC7A  printf  0x72DEB
+fprintf 0x57F9D    fprintf 0x7021B  fwrite  0x5F16C  fwrite  0xAED15  printf  0x72E03
+fprintf 0x58989    fprintf 0x70314  fwrite  0x5F7B5  fwrite  0xAEF77  printf  0x84A3F
+fprintf 0x589B4    fprintf 0x7045F  fwrite  0x608A8  fwrite  0xAEF99  printf  0x95B73
+fprintf 0x589DA    fprintf 0x7058E  fwrite  0x62055  fwrite  0xAEFFC  printf  0xA7848
+fprintf 0x589F8    fprintf 0x7067C  fwrite  0x63B3B  fwrite  0xAF02E  printf  0xADA6B
+fprintf 0x58A10    fprintf 0x706BF  fwrite  0x63C6E  fwrite  0xAF0D6  printf  0xADAC7
+fprintf 0x58A83    fprintf 0x706F5  fwrite  0x63DE9  fwrite  0xAF801  putchar 0x55BAC
+fprintf 0x58ACE    fprintf 0x7130A  fwrite  0x63FF5  fwrite  0xAF846  putchar 0x55C65
+fprintf 0x58AE8    fprintf 0x71386  fwrite  0x6524F  fwrite  0xAF8B4  putchar 0x72D7D
+fprintf 0x58B2A    fprintf 0x713B0  fwrite  0x6529C  fwrite  0xAF8D6  puts    0x55CAE
+fprintf 0x58B74    fprintf 0x71498  fwrite  0x657DD  lseek   0xAEA9B  puts    0x58D2F
+fprintf 0x58BEA    fprintf 0x7157D  fwrite  0x662B3  malloc  0xAC62E  puts    0x95B7D
+fprintf 0x59B2A    fprintf 0x716BB  fwrite  0x66311  malloc  0xACC71  puts    0xA6766
+fprintf 0x59B56    fprintf 0x7170A  fwrite  0x6668D  malloc  0xAD36D  realloc 0x95E22
+fprintf 0x5A36A    fprintf 0x71756  fwrite  0x666B7  memcpy  0x5600D  sprintf 0x68CC3
+fprintf 0x5A6A2    fprintf 0x71851  fwrite  0x666E1  memcpy  0x56036  sprintf 0x6D0BC
+fprintf 0x5BAF2    fprintf 0x87823  fwrite  0x6693E  memcpy  0x5C377  sprintf 0x6D0E5
+fprintf 0x5BD3D    fprintf 0x87841  fwrite  0x66A1C  memcpy  0x5C39E  sprintf 0x6D108
+fprintf 0x5D892    fprintf 0x87967  fwrite  0x66AED  memcpy  0x5C4B6  sprintf 0x82B48
+fprintf 0x5DA74    fprintf 0x88413  fwrite  0x6703D  memcpy  0x5C4DC  sprintf 0x96CB3
+fprintf 0x62312    fprintf 0x88796  fwrite  0x674C3  memcpy  0x5C956  strcat  0x51F54
+fprintf 0x626EB    fprintf 0x8A119  fwrite  0x68DC1  memcpy  0x5C982  strcat  0x52012
+fprintf 0x62B55    fprintf 0x8C05A  fwrite  0x68DE3  memcpy  0x6321A  strcat  0x6CA18
+fprintf 0x63D6F    fprintf 0x95A46  fwrite  0x68E05  memcpy  0x648B5  strcat  0x6CA4D
+fprintf 0x645FA    fprintf 0xA654B  fwrite  0x68E27  memcpy  0x96C9A  strcat  0x6CBD2
+fprintf 0x646E7    fprintf 0xA667D  fwrite  0x68E49  memcpy  0xA6181  strcat  0x88A74
+fprintf 0x64735    fprintf 0xA81C3  fwrite  0x68E6B  memcpy  0xA69AD  strcat  0xAE64C
+fprintf 0x647A6    fprintf 0xA8619  fwrite  0x7195B  memcpy  0xA6A79  strcpy  0x8A146
+fprintf 0x64822    fprintf 0xA9018  fwrite  0x71BCD  memcpy  0xA70C8  strtol  0xA5FA9
+fprintf 0x64B89    fprintf 0xA9062  fwrite  0xA78EB  memcpy  0xA70F3
+fprintf 0x64BCE    fprintf 0xA986A  fwrite  0xA9CC3  memcpy  0xA71B3
+fprintf 0x6749D    fprintf 0xAA43B  fwrite  0xA9D05  memcpy  0xA71EA
+fprintf 0x675B2    fprintf 0xAED67  fwrite  0xA9D67  memcpy  0xA7202
+fprintf 0x68866    fprintf 0xAEDE6  fwrite  0xA9DA9  memcpy  0xA9EB8
+fprintf 0x6899D    fprintf 0xB05DC  fwrite  0xA9DEB  memcpy  0xAEC4D
+fprintf 0x68AE5    fprintf 0xB0644  fwrite  0xA9E29  memcpy  0xAECE5
+fprintf 0x68B05    fprintf 0xB0690  fwrite  0xA9EDA  memset  0x63AF1
+fprintf 0x68C98    fputc   0x58C04  fwrite  0xA9F00  memset  0xAC6B4
 </pre>
 </td>
 </tr>
@@ -451,12 +634,18 @@ fwrite   0xADA7F
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  15          0            0             15</pre>
+<br>
 <pre>
 __errno_location exit fclose ferror fflush fopen fputc fputs
 fwrite getenv putchar puts rename setlocale ungetc
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  17          0            0             17</pre>
+<br>
 <pre>
 copy_filter_list flow_exit iostat_init phs_draw
 sub_101da sub_119b7 sub_11d83 sub_154b0 sub_2086e sub_20e3b sub_20ec9 sub_20edc
@@ -464,6 +653,9 @@ sub_20eea sub_27930 sub_28f00 sub_29bd0 tree_traverse_pre_order.constprop.0
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  4          0            0             4</pre>
+<br>
 <pre>
 iostat_draw main sub_101fd sub_2e750
 
@@ -475,11 +667,17 @@ not found
 </pre>
 <b>Null pointer dereference</b>
 <pre>
-register_tap_listener  0x2955B
+Total / Confirmed / False positive / Unclassified
+2        0            2                0
 
+register_tap_listener         0x2955B
+display_dissector_table_names 0x2FB0C
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  287          0            0             287</pre>
+<br>
 <pre>
 close  0x14E43     fwrite 0x18B8E     fwrite 0x191EB   putchar 0x27510   puts 0x28EBC
 close  0x1B96F     fwrite 0x18BA7     fwrite 0x19204   putchar 0x277E8   puts 0x29431
@@ -557,28 +755,43 @@ fwrite 0x18B75     fwrite 0x191D2     putchar 0x26F6F  puts 0x2766B
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  20          0            0             20</pre>
+<br>
 <pre>
 __errno_location ctime exit fclose fflush fopen fprintf fputc fread fseek ftell fwrite
 getenv perror printf putchar puts rename sprintf time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  13          0            0             13</pre>
+<br>
 <pre>
 args_callback_longoption enumerateUsedIDs input sub_11494 sub_13d39 sub_caa3 sub_db7e
 sub_dbee swf4_scan_bytes swf4restart swf5_scan_bytes swf5restart swf_WriteTag
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 enumerateUsedIDs
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 zlib_error
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  6          0            0             6</pre>
+<br>
 <pre>
 zlib_error             0x1AFD6
 swf_ReadABCfile        0x8963
@@ -589,6 +802,9 @@ swf4_load_buffer_state 0xD1BD
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  45          0            0             45</pre>
+<br>
 <pre>
 close    0x1ADA6   fwrite   0x1B15D
 close    0x8FED    fwrite   0x1B17F
@@ -625,6 +841,9 @@ fwrite   0x1AEFB
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  32          0            0             32</pre>
+<br>
 <pre>
 __errno_location abort ctime exit fclose ferror fflush fgetc fgets fopen fprintf fputc
 fputs fread freopen fwrite getenv gmtime localtime longjmp perror printf putchar puts
@@ -632,6 +851,9 @@ rename setbuf sprintf sscanf strftime system time vfprintf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  32          0            0             32</pre>
+<br>
 <pre>
 acts_receive              sub_1da6d
 arc_receive               sub_2499e
@@ -652,16 +874,25 @@ sub_1ae49
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  8          0            0             8</pre>
+<br>
 <pre>
 doquery opt_find_long sub_162a8 sub_17409 sub_1b799 sub_1cce3 sub_1d732 sub_226b8
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  5          0            0             5</pre>
+<br>
 <pre>
 optionRestore option_exits quit sub_13418 sub_17409
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  11          0            0             11</pre>
+<br>
 <pre>
 socktoa                      0x20A2E
 ntpdcmain                    0x9607
@@ -686,12 +917,18 @@ option_pathfind.constprop.66 0x14424
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  22          0            0             22</pre>
+<br>
 <pre>
 __errno_location ctime exit fclose feof fflush fopen fprintf fputc fputs fread fseek
 ftell fwrite getenv perror printf putchar puts rename sprintf time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  27          0            0             27</pre>
+<br>
 <pre>
 _trie_dump _trie_put args_callback_longoption callcode cut_last_push dump_asset
 dump_method enumerateUsedIDs free_lines input registry_find registry_use
@@ -700,16 +937,25 @@ swf4restart swf5_scan_bytes swf5restart swf_ShapeSetLine swf_WriteTag use_asset 
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  6          0            0             6</pre>
+<br>
 <pre>
 enumerateUsedIDs extractTag main png_load png_write_palette_based2 writeABC
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 zlib_error
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  16          0            0             16</pre>
+<br>
 <pre>
 zlib_error                   0x80F44
 dict_put                     0x7B7FB
@@ -730,6 +976,9 @@ code_free                    0x5B4E2
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  39          0            0             39</pre>
+<br>
 <pre>
 calloc   0x79E81    fwrite   0x4B1D1
 close    0x80D14    fwrite   0x4B1FB
@@ -763,29 +1012,44 @@ fwrite   0x4B1A7
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  17          0            0             17</pre>
+<br>
 <pre>
 __errno_location  abort exit     fprintf   fputc  fputs  fwrite getenv gmtime
 puts setlocale    signal strftime localtime mktime perror time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  10          0            0             10</pre>
+<br>
 <pre>
 array_init array_insert_uniq data_string_init proc_open_b
 sub_1163c sub_12091 sub_14d5 sub_1eee0 sub_1eee7 sub_bf08
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  6          0            0             6</pre>
+<br>
 <pre>
 connection_handle_read_state sub_12091 sub_121be sub_18774
 sub_74e9 sub_97a2
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 fdevent_poll_event_get_revent
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  12          0            0             12</pre>
+<br>
 <pre>
 splaytree_insert                0x1F220
 splaytree_insert                0x1F1CC
@@ -802,6 +1066,9 @@ network_write_chunkqueue_writev 0x1E991
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  7          0            0             7</pre>
+<br>
 <pre>
 calloc  0x159DA
 close   0x17633
@@ -822,12 +1089,18 @@ write   0x1517B
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  18          0            0             18</pre>
+<br>
 <pre>
 __errno_location abort ctime exit fclose ferror fflush fprintf fputc fputs fread fwrite
 getenv printf sprintf sscanf time vfprintf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  90          0            0             90</pre>
+<br>
 <pre>
 _bfd_archive_64_bit_slurp_armap          elf_gc_propagate_vtable_entries_used     sub_9f530
 _bfd_coff_final_link                     elf_i386_finish_dynamic_symbol           sub_ac1f8
@@ -866,6 +1139,9 @@ dlang_parse_qualified                    sub_9bd4b
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  79          0            0             79</pre>
+<br>
 <pre>
 _bfd_dwarf2_find_nearest_line              sub_42252      sub_a52c9
 _bfd_elf_discard_section_eh_frame          sub_5aa32      sub_a60d9
@@ -899,11 +1175,17 @@ scan_unit_for_symbols                      sub_9f530
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  3          0            0             3</pre>
+<br>
 <pre>
 _bfd_abort sub_bbcc1 sub_e2b51
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  12          0            0             12</pre>
+<br>
 <pre>
 string_need                              0xCD0E7
 nacl_modify_segment_map                  0x6546A
@@ -921,6 +1203,9 @@ _bfd_construct_extended_name_table       0x422CC
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  10          0            0             10</pre>
+<br>
 <pre>
 fprintf  0xC8CC8
 fprintf  0xC93B0
@@ -944,11 +1229,17 @@ sprintf  0xCD287
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  10          0            0             10</pre>
+<br>
 <pre>
 __errno_location abort exit getenv localtime mktime raise rename strftime time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  55          0            0             55</pre>
+<br>
 <pre>
 sub_4077f4 sub_409103 sub_409250 sub_4093A0 sub_409FA0 sub_40A7A0 sub_40A8D0 sub_40AEA0
 sub_40DAB0 sub_40DEC0 sub_411970 sub_412273 sub_418500 sub_41c0a4 sub_41c0ab sub_41c100
@@ -960,6 +1251,9 @@ sub_472b16 sub_47339a sub_473895 sub_479753 sub_47A870 sub_47ecd0 sub_48E510
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  41          0            0             41</pre>
+<br>
 <pre>
 sub_40FD90 sub_40c042 sub_416590 sub_418500 sub_41e7be sub_422BB0 sub_427A00 sub_430f6c
 sub_433710 sub_435da0 sub_43C5E0 sub_441D50 sub_443a40 sub_44A180 sub_44f36a sub_450E90
@@ -970,16 +1264,25 @@ sub_493797
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  7          0            0             7</pre>
+<br>
 <pre>
 sub_41B810 sub_425800 sub_426600 sub_426D00 sub_4273F0 sub_427A00 sub_47ecd0
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  3          0            0             3</pre>
+<br>
 <pre>
 0x49168F 0x4969CC 0x409FB0 0x48E539 0x48DFFB 0x48E0B0
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  1          0            0             1</pre>
+<br>
 <pre>
 write 0x409358
 </pre>
@@ -994,6 +1297,9 @@ write 0x409358
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  25          0            0             25</pre>
+<br>
 <pre>
 __errno_location atoi exit fclose fflush fgetc fgets fprintf
 fputc fputs fread fseek ftell fwrite getenv localtime
@@ -1001,6 +1307,9 @@ printf putchar puts raise rewind setvbuf signal system time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  180          0            0             180</pre>
+<br>
 <pre>
 SortByDimension                    setJoinExpr                       sub_5a631
 SortByDistance                     shell_out_of_memory               sub_5b423
@@ -1069,6 +1378,9 @@ rtreeInsertCell                    sub_5a17a
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  46          0            0             46</pre>
+<br>
 <pre>
 allocateBtreePage do_meta_command exprAnalyze fts3InitVtab
 fts3SnippetFunc fts5MultiIterNew fts5PorterCb openDatabase
@@ -1082,17 +1394,26 @@ whereLoopAddBtree wherePathSatisfiesOrderBy
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  7          0            0             7</pre>
+<br>
 <pre>
 sub_4de4e sub_62b49 sub_83d0a sub_852fe sub_8f005 sub_9192f sub_ae05c
 
 </pre>
 <b>Null pointer dereference</b>
 <pre>
-0x2B591
-0x3D25A
+Total / Confirmed / False positive / Unclassified
+2         0            2              0
+
+getIntArg            0x2B591
+sqlite3VdbeMemSetStr 0x3D25A
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  10          0            0             10</pre>
+<br>
 <pre>
 memmove  0x3D25A
 fsync    0x44205
@@ -1116,33 +1437,91 @@ fprintf  0x15A7F
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  20          0            0             20</pre>
+<br>
 <pre>
 __errno_location ctime exit fclose fflush fopen fprintf fputc fread fseek
 ftell fwrite getenv perror printf putchar puts rename sprintf time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  4          0            0             4</pre>
+<br>
 <pre>
 args_callback_longoption enumerateUsedIDs sub_2b7c swf_WriteTag
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  4          0            0             4</pre>
+<br>
 <pre>
 enumerateUsedIDs main normalcombine write_master
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  2          0            0             2</pre>
+<br>
 <pre>
 main zlib_error
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  5          0            0             5</pre>
+<br>
 <pre>
 zlib_error                 0xE596
 swf_SetLosslessBitsIndexed 0x5DDD
 swf_ReadABCfile            0xCD21
 swf_Optimize               0xA1EE
 swf_Relocate               0x9ABE
+
+
+
+</pre>
+<b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  166          0            0             166</pre>
+<br>
+<pre>
+close   0x5057   fprintf 0x6C21   fwrite  0x6903   fwrite  0xF07C   puts    0x290A
+close   0x563A   fprintf 0x6C97   fwrite  0x7524   fwrite  0xF134   puts    0x2916
+close   0x58FE   fprintf 0x7C0A   fwrite  0x78DA   fwrite  0xF159   puts    0x2922
+close   0xCC88   fprintf 0x8142   fwrite  0x7E85   fwrite  0xF17E   puts    0x292E
+close   0xD3AB   fprintf 0x851B   fwrite  0x996B   fwrite  0xF1A3   puts    0x293A
+close   0xDFB3   fprintf 0x8985   fwrite  0x9A9E   lseek   0xE241   puts    0x2946
+close   0xE22A   fprintf 0x9B9F   fwrite  0x9C19   memcpy  0x904A   puts    0x295E
+close   0xE366   fprintf 0xA42A   fwrite  0x9E25   memcpy  0xA69C   puts    0x297B
+fclose  0xE0AE   fprintf 0xA517   fwrite  0xAE9D   memcpy  0xA6E5   puts    0x6DDC
+fclose  0xE0B6   fprintf 0xA565   fwrite  0xB07F   memcpy  0xE3F3   puts    0xF9DA
+fclose  0xE14D   fprintf 0xA5D6   fwrite  0xB0CC   memcpy  0xE48B   puts    0xFD28
+fclose  0xF6B4   fprintf 0xA652   fwrite  0xB60D   memset  0x9921   sprintf 0x5202
+fclose  0xF73A   fprintf 0xA8A3   fwrite  0xC0E3   memset  0xE1BA   sprintf 0xD4B0
+fprintf 0x2568   fprintf 0xA9B9   fwrite  0xC141   memset  0xEEC7   sprintf 0xDEBD
+fprintf 0x25EF   fprintf 0xA9FE   fwrite  0xC4BD   printf  0x2540   sprintf 0xDF04
+fprintf 0x267C   fprintf 0xC3A6   fwrite  0xC4E7   printf  0x287C   sprintf 0xF922
+fprintf 0x5BFE   fprintf 0xD2CD   fwrite  0xC511   printf  0x2890   sprintf 0xFC68
+fprintf 0x5C7F   fprintf 0xD3E2   fwrite  0xC76E   printf  0x28A4   strcat  0xDDF2
+fprintf 0x5E12   fprintf 0xD62A   fwrite  0xC84C   printf  0x28B8   strcpy  0xDD49
+fprintf 0x5FCC   fprintf 0xDBD2   fwrite  0xC91D   printf  0x2F4F   strcpy  0xF80E
+fprintf 0x64CC   fprintf 0xDC4C   fwrite  0xC9E5   printf  0x6DF1   strcpy  0xFB53
+fprintf 0x6513   fprintf 0xE50D   fwrite  0xCE6D   printf  0x6E06   strtod  0x21FE
+fprintf 0x654A   fprintf 0xE58C   fwrite  0xD2F3   printf  0x6E1B   strtod  0x2238
+fprintf 0x661D   fprintf 0xF9AF   fwrite  0xE08D   printf  0x6E91   strtod  0x22CC
+fprintf 0x6933   fprintf 0xFCF5   fwrite  0xE420   printf  0x6ECF   strtol  0x2294
+fprintf 0x6A36   fprintf 0xFD82   fwrite  0xE4BB   printf  0x6F32   strtol  0x2398
+fprintf 0x6A61   fprintf 0xFDEA   fwrite  0xE71D   printf  0x7502   strtol  0x23D9
+fprintf 0x6A87   fprintf 0xFE36   fwrite  0xE73F   putchar 0x2868   strtol  0x2415
+fprintf 0x6AA5   fputc   0x6CB1   fwrite  0xE7A2   putchar 0x28C2   unlink  0xE0BE
+fprintf 0x6ABD   fputc   0x6CC0   fwrite  0xE7D4   puts    0x28CE   write   0xD4E5
+fprintf 0x6B30   fputc   0xAA1B   fwrite  0xE87C   puts    0x28DA
+fprintf 0x6B7B   fwrite  0x2322   fwrite  0xEFA7   puts    0x28E6
+fprintf 0x6B95   fwrite  0x2509   fwrite  0xEFEC   puts    0x28F2
+fprintf 0x6BD7   fwrite  0x6807   fwrite  0xF05A   puts    0x28FE
 </pre>
 </td>
 </tr>
@@ -1155,16 +1534,28 @@ swf_Relocate               0x9ABE
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  43          0            0             43</pre>
+<br>
 <pre>
-Total
+Total / False positive / False negative / Unclassified
+__errno_location  fprintf      mktime     strftime
+abort             fputc        perror     system
+ctime             fputs        printf     time
+exit              fread        putchar    vfprintf
+fclose            freopen      puts
+ferror            fscanf       rename
+fflush            fwrite       rewind
+fgetc             getenv       setvbuf
+fgets             gmtime       sprintf
+fopen             localtime    sscanf
 
-
-__errno_location abort ctime exit fclose ferror fflush fgetc fgets fopen fprintf fputc
-fputs fread freopen fscanf fwrite getenv gmtime localtime mktime perror printf putchar
-puts rename rewind setvbuf sprintf sscanf strftime system time vfprintf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  77          0            0             77</pre>
+<br>
 <pre>
 addArgListEntry               maintain_activefds           sub_1a9e5
 adj_systime                   modem_control                sub_1ae49
@@ -1197,6 +1588,9 @@ list_restrict6                sub_197d8
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  31          0            0             31</pre>
+<br>
 <pre>
 acts_receive                        sub_1246f      sub_622e8
 arc_receive                         sub_1376d      sub_6c098
@@ -1211,6 +1605,9 @@ read_network_packet                 sub_49b86      yylex
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  13          0            0             13</pre>
+<br>
 <pre>
 findexistingpeer        start_blo
 getCmdOpts              sub_11deb
@@ -1222,6 +1619,9 @@ cking_thread_internal
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  6          0            0             6</pre>
+<br>
 <pre>
 optionParseShell      0x6F4FB
 option_parse_duration 0x6C348
@@ -1232,6 +1632,9 @@ option_parse_duration 0x6C089
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  322          0            0             322</pre>
+<br>
 <pre>
 close    0x16E51  fprintf  0x5BC80  fprintf  0x72F10  fputc    0xFBED   fwrite   0xFB8B   printf   0x42546   printf   0x6F4ED   snprintf 0x590EE
 close    0x32055  fprintf  0x60C9D  fprintf  0x72F66  fputc    0xFC89   fwrite   0xFD82   printf   0x4259D   printf   0x6F5FC   snprintf 0x5964E
@@ -1286,12 +1689,18 @@ fprintf  0x5BC44  fprintf  0x72EEC  fputc    0xFAF3   fwrite   0xFAB9   printf  
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  25          0            0             25</pre>
+<br>
 <pre>
 __errno_location abort ctime exit fclose feof fflush fgetc fgets fopen fputc fputs fscanf
 fwrite getenv localtime perror putchar puts raise rename rewind sscanf strftime time
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  184          0            0             184</pre>
+<br>
 <pre>
 BSDgetopt                                        mm_terminate                         sub_407b1
 Blowfish_expand0state                            mm_xmalloc                           sub_408e5
@@ -1368,6 +1777,9 @@ mm_session_pty_cleanup2                          sub_3d268
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  12          0            0             12</pre>
+<br>
 <pre>
 auth_parse_options copy_set_server_options fill_default_server_options hostkeys_foreach
 monitor_child_postauth session_input_channel_req sftp_server_main ssh_krl_from_blob
@@ -1375,6 +1787,9 @@ sub_48db6 sub_60bcf sub_8e7f sub_a5bf
 
 </pre>
 <b>Functions with non-structured control flow graph</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  9          0            0             9</pre>
+<br>
 <pre>
 grace_alarm_handler log_init monitor_child_postauth server_input_channel_open
 session_input_channel_req sub_497ec sub_5f830 sub_5fd20 userauth_pubkey
@@ -1382,12 +1797,18 @@ session_input_channel_req sub_497ec sub_5f830 sub_5fd20 userauth_pubkey
 </pre>
 <b>Null pointer dereference</b>
 <pre>
+Total / Confirmed / False positive / Unclassified
+3         0            3              0
+
 sshbuf_put_u8              0x3524C
 sshkey_try_load_public     0x371D0
 mktemp_internal            0x6C41E
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  106          0            0             106</pre>
+<br>
 <pre>
 close  0x167FB    close    0x3C4B4    dup2     0xBD93      memcpy   0x3530E
 close  0x17525    close    0x4075F    execl    0x1BEBC     memcpy   0x3554A
@@ -1428,17 +1849,26 @@ close  0x3C062    dup      0xBA3E     memcpy   0x2E0AC
 
 </pre>
 <b>Forbidden functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  22          0            0             22</pre>
+<br>
 <pre>
 __errno_location abort atoi exit fclose fgets fopen fprintf fputc fread fseek ftell
 fwrite gmtime localtime mktime perror printf putchar puts signal vprintf
 
 </pre>
 <b>Recursive functions</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  4          0            0             4</pre>
+<br>
 <pre>
 eapol_sm_step sub_88c42 wpa_driver_nl80211_scan wpas_set_pkcs11_engine_and_module_path
 
 </pre>
 <b>Functions with cyclomatic complexity > 50</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  11          0            0             11</pre>
+<br>
 <pre>
 nl80211_connect_common print_bss_info wpa_config_get_cred_no_key wpa_config_set_cred
 wpa_config_write_global wpa_driver_nl80211_set_ap wpa_sm_rx_eapol
@@ -1452,6 +1882,9 @@ not found
 
 </pre>
 <b>Null pointer dereference</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  5          0            0             5</pre>
+<br>
 <pre>
 eloop_cancel_timeout   0x17C6D
 dl_list_del            0x17310
@@ -1461,6 +1894,9 @@ dl_list_add            0x21C36
 
 </pre>
 <b>Unused return value</b>
+<pre>Total / Confirmed / False positive / Unclassified</pre>
+<pre>  79          0            0             79</pre>
+<br>
 <pre>
 close   0x94379  fprintf 0x1B039   fputc   0x1AD4B
 fclose  0x1B974  fprintf 0x1B08B   fputc   0x1B48E
