@@ -1,31 +1,802 @@
 
 <!DOCTYPE html>
 <html>
+
+  <style>
+   table, th, td {
+     border: 1px solid black;
+     border-collapse: collapse;
+   }
+
+  </style>
+
   <body>
 
-    <table style="width:100%" frame=void rules=rows rules=columns >
+  <table id="top" style="width:50%"   >
       <tr>
-        <th>Artifacts</th>
-        <th>Checks</th>
-      </tr>
+        <th>artifact:test</th>
+        <th>Total</th>
+        <th>Confirmed</th>
+        <th>False positive</th>
+        <th>Unclassified</th>
+     </tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Recursive">:Recursive functions</a></h3></td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">16</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Null">:Null pointer dereference</a></h3></td>
+<td align="center">37</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">37</td>
+</tr>
+<tr>
+<td><h3><a href="#httpd-2.4.18">httpd-2.4.18</a><a href="#httpd-2.4.18+Unused">:Unused return value</a></h3></td>
+<td align="center">27</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">27</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Recursive">:Recursive functions</a></h3></td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Null">:Null pointer dereference</a></h3></td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td><h3><a href="#samba-4.7.6">samba-4.7.6</a><a href="#samba-4.7.6+Unused">:Unused return value</a></h3></td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Recursive">:Recursive functions</a></h3></td>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Null">:Null pointer dereference</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#openssl-1.1.0">openssl-1.1.0</a><a href="#openssl-1.1.0+Unused">:Unused return value</a></h3></td>
+<td align="center">129</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">129</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">20</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">81</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">81</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td><h3><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a><a href="#smtpd-5.7.3p2+Unused">:Unused return value</a></h3></td>
+<td align="center">207</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">207</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">21</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">21</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_cli-2.2">wpa_cli-2.2</a><a href="#wpa_cli-2.2+Unused">:Unused return value</a></h3></td>
+<td align="center">140</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">140</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">24</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">46</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">46</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td><h3><a href="#swfc-0.9.2">swfc-0.9.2</a><a href="#swfc-0.9.2+Unused">:Unused return value</a></h3></td>
+<td align="center">276</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">276</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">15</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Recursive">:Recursive functions</a></h3></td>
+<td align="center">17</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">17</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Null">:Null pointer dereference</a></h3></td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#tshark-2.6.0">tshark-2.6.0</a><a href="#tshark-2.6.0+Unused">:Unused return value</a></h3></td>
+<td align="center">287</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">287</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">20</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">13</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">13</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td><h3><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a><a href="#wav2swf-0.9.2+Unused">:Unused return value</a></h3></td>
+<td align="center">45</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">32</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Recursive">:Recursive functions</a></h3></td>
+<td align="center">32</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Null">:Null pointer dereference</a></h3></td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">27</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">27</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">16</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Unused">:Unused return value</a></h3></td>
+<td align="center">39</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">39</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">17</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">17</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Recursive">:Recursive functions</a></h3></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Null">:Null pointer dereference</a></h3></td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td><h3><a href="#lighttpd-1.4.15">lighttpd-1.4.15</a><a href="#lighttpd-1.4.15+Unused">:Unused return value</a></h3></td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">18</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Recursive">:Recursive functions</a></h3></td>
+<td align="center">90</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">79</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">79</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Null">:Null pointer dereference</a></h3></td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Unused">:Unused return value</a></h3></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Recursive">:Recursive functions</a></h3></td>
+<td align="center">55</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">55</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">41</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">41</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Null">:Null pointer dereference</a></h3></td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Unused">:Unused return value</a></h3></td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">25</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">25</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">180</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">180</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">46</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">46</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#sqlite3-2.27.2">sqlite3-2.27.2</a><a href="#sqlite3-2.27.2+Unused">:Unused return value</a></h3></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">20</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td><h3><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a><a href="#swfcombine-0.9.2+Unused">:Unused return value</a></h3></td>
+<td align="center">166</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">166</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">43</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">43</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Recursive">:Recursive functions</a></h3></td>
+<td align="center">77</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">77</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">31</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">31</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">13</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">13</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Null">:Null pointer dereference</a></h3></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td><h3><a href="#ntpd-4.2.8p5">ntpd-4.2.8p5</a><a href="#ntpd-4.2.8p5+Unused">:Unused return value</a></h3></td>
+<td align="center">322</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">322</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">25</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">25</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Recursive">:Recursive functions</a></h3></td>
+<td align="center">184</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">184</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">12</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Null">:Null pointer dereference</a></h3></td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#sshd-7.3.p1">sshd-7.3.p1</a><a href="#sshd-7.3.p1+Unused">:Unused return value</a></h3></td>
+<td align="center">106</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">106</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Forbidden">:Forbidden functions</a></h3></td>
+<td align="center">22</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">22</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Recursive">:Recursive functions</a></h3></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Complex">:Functions with cyclomatic complexity > 50</a></h3></td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Non_structured">:Functions with non-structured cfg</a></h3></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Null">:Null pointer dereference</a></h3></td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td><h3><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a><a href="#wpa_supplicant-2.2+Unused">:Unused return value</a></h3></td>
+<td align="center">79</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">79</td>
+</tr>
+</table>
+</br>
+
+     <table id="Results" style="width:100%" frame=void rules=rows >
+       <tr>
+         <th></th>
+         <th></th>
+       </tr>
 <tr>
 <td><h3>httpd-2.4.18</h3></td>
 <td>
+<p id="httpd-2.4.18"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  12          0            0             12</pre>
-<br>
+<b id="httpd-2.4.18+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
 <pre>
-__errno_location abort atoi atol exit fprintf freopen getenv printf putchar puts sscanf
-
+__errno_location  freopen
+abort             getenv
+atoi              printf
+atol              putchar
+exit              puts
+fprintf           sscanf
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  22          0            0             22</pre>
-<br>
+<b id="httpd-2.4.18+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
 <pre>
 ap_abort_on_oom           parse_errorlog_item
 ap_add_module_commands    process_resource_config_fnmatch
@@ -38,12 +809,9 @@ ap_strcmp_match           sub_478d3d
 child_main                sub_48384a
 clean_child_exit          sub_483ce2
 count_directives_sub      sub_486162
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  16          0            0             16</pre>
-<br>
+<b id="httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 16/0/0/16</pre>
 <pre>
 ap_core_output_filter                  ap_select_protocol
 ap_directory_walk                      ap_set_byterange
@@ -53,17 +821,14 @@ ap_process_async_request               default_handler event_check_config
 ap_process_request_internal            log_error_core
 ap_read_request                        sub_483ce2
 ap_scan_script_header_err_core_ex
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
+<b id="httpd-2.4.18+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  37          0            0             37</pre>
-<br>
+<b id="httpd-2.4.18+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 37/0/0/37</pre>
 <pre>
 ap_add_module                   0x45AD1D    ap_send_interim_response  0x43F3C0
 ap_expr_yy_init_buffer          0x471B22    prep_walk_cache           0x44E371
@@ -84,13 +849,9 @@ ap_reopen_scoreboard            0x43954A    dummy_connection          0x46BC5C
 ap_get_server_protocol          0x4468DF    ap_make_method_list       0x4766D6
 find_accf_name                  0x468A05    form_header_field         0x47B994
 ap_add_per_dir_conf             0x441E94
-
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  27          0            0             27</pre>
-<br>
+<b id="httpd-2.4.18+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 27/0/0/27</pre>
 <pre>
 atoi    0x4734E2  memcpy  0x432C43
 atoi    0x48958D  memcpy  0x434632
@@ -114,52 +875,43 @@ memcpy  0x432BCB
 <tr>
 <td><h3>samba-4.7.6</h3></td>
 <td>
+<p id="samba-4.7.6"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  8          0            0             8</pre>
-<br>
+<b id="samba-4.7.6+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 8/0/0/8</pre>
 <pre>
-__errno_location exit fprintf fwrite
-printf puts signal time
-
+__errno_location   printf
+exit               puts
+fprintf            signal
+fwrite             time
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  2          0            0             2</pre>
-<br>
+<b id="samba-4.7.6+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
 <pre>
-recursive_delete sig_term
-
+recursive_delete
+sig_term
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="samba-4.7.6+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 binary_smbd_main
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
+<b id="samba-4.7.6+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  2          0            0             2</pre>
-<br>
+<b id="samba-4.7.6+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
 <pre>
 binary_smbd_main 0x4DD0
 binary_smbd_main 0x4D6D
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  7          0            0             7</pre>
-<br>
+<b id="samba-4.7.6+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
 <pre>
 fprintf 0x380D
 fprintf 0x4919
@@ -176,58 +928,57 @@ puts    0x450B
 <tr>
 <td><h3>openssl-1.1.0</h3></td>
 <td>
+<p id="openssl-1.1.0"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  18          0            0             18</pre>
-<br>
+<b id="openssl-1.1.0+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 18/0/0/18</pre>
 <pre>
-__errno_location exit fclose fflush fgets fprintf fputc fputs
-fwrite getenv perror printf putchar puts rename setbuf signal time
-
+__errno_location  fprintf    perror    setbuf
+exit              fputc      printf    signal
+fclose            fputs      putchar   time
+fflush            fwrite     puts
+fgets             getenv     rename
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  18          0            0             18</pre>
-<br>
+<b id="openssl-1.1.0+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 18/0/0/18</pre>
 <pre>
-app_malloc do_revoke dump_certs_pkeys_bag generate_cookie_callback
-print_ssl_summary sub_45bed sub_45f45 sub_473b0
-sub_4ffb6 sub_4ffd0 sub_50078 sub_5636d sub_58d90 sub_5d3b3 sub_5d818 sub_5f053
-sub_67160 sub_671a5
-
+app_malloc                   sub_4ffd0
+do_revoke                    sub_50078
+dump_certs_pkeys_bag         sub_5636d
+generate_cookie_callback     sub_58d90
+print_ssl_summary            sub_5d3b3
+sub_45bed                    sub_5d818
+sub_45f45                    sub_5f053
+sub_473b0                    sub_67160
+sub_4ffb6                    sub_671a5
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  22          0            0             22</pre>
-<br>
+<b id="openssl-1.1.0+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
 <pre>
-ca_main dgst_main do_body enc_main engine_main ocsp_main req_main s_server_main
-smime_main srp_main sub_38c7c sub_3fdef sub_4b5a8 sub_4e510 sub_51459 sub_58d90
-sub_5d3b3 sub_671b2 sub_6968c sub_715b6 www_body x509_main
-
+ca_main             smime_main    sub_58d90
+dgst_main           srp_main      sub_5d3b3
+do_body enc_main    sub_38c7c     sub_671b2
+engine_main         sub_3fdef     sub_6968c
+ocsp_main           sub_4b5a8     sub_715b6
+req_main            sub_4e510     www_body
+s_server_main       sub_51459     x509_main
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="openssl-1.1.0+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 main
-
 </pre>
-<b>Null pointer dereference</b>
+<b id="openssl-1.1.0+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  129          0            0             129</pre>
-<br>
+<b id="openssl-1.1.0+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 129/0/0/129</pre>
 <pre>
-
 alarm 0x69925  alarm 0x6C4DC  alarm   0x6E1F6  fputc    0x6F3E3   printf   0x680F6   printf   0x6C027
 alarm 0x69E1A  alarm 0x6C7F7  alarm   0x6E23A  fputc    0x6F439   printf   0x681AF   printf   0x6C085
 alarm 0x69E8E  alarm 0x6CA95  alarm   0x6E69E  fputc    0x6F522   printf   0x681FC   printf   0x6C0E5
@@ -258,22 +1009,24 @@ alarm 0x6BBEE  alarm 0x6E110  fputc   0x5217F  printf   0x680A7   printf   0x6BF
 <tr>
 <td><h3>smtpd-5.7.3p2</h3></td>
 <td>
+<p id="smtpd-5.7.3p2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  20          0            0             20</pre>
-<br>
+<b id="smtpd-5.7.3p2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 20/0/0/20</pre>
 <pre>
-__errno_location ctime exit fclose feof ferror fflush fopen fprintf fputc fread fseek fwrite
-getenv localtime perror printf rename time vfprintf
-
+__errno_location   fprintf      perror
+ctime exit         fputc        printf
+fclose             fread        rename
+feof               fseek        time
+ferror             fwrite       vfprintf
+fflush             getenv
+fopen              localtime
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  81          0            0             81</pre>
-<br>
+<b id="smtpd-5.7.3p2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 81/0/0/81</pre>
 <pre>
 _rs_stir                                    sub_11b9d    sub_37ae8
 bounce_delivery                             sub_12a23    sub_3e6c0
@@ -305,29 +1058,25 @@ set_local                                   sub_2fc28
 smtp_reply                                  sub_30968
 ssl_setup                                   sub_31cbf
 stats_tree_RB_INSERT_COLOR                  sub_31dd3
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  9          0            0             9</pre>
-<br>
+<b id="smtpd-5.7.3p2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 9/0/0/9</pre>
 <pre>
-envelope_ascii_dump envelope_load_buffer mta_connect sub_18014
-sub_1a9b6 sub_40eb2 sub_410c2 sub_49e34 yylex
-
+envelope_ascii_dump     sub_40eb2
+envelope_load_buffer    sub_410c2
+mta_connect             sub_49e34
+sub_18014               yylex
+sub_1a9b6
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  6          0            0             6</pre>
-<br>
+<b id="smtpd-5.7.3p2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
 <pre>
-queue_proc_call queue_proc_envelope_walk scheduler_proc_call sub_40eb2 sub_410c2 table_proc_call
-
+queue_proc_call             sub_40eb2
+queue_proc_envelope_walk    sub_410c2
+scheduler_proc_call         table_proc_call
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  8          0            0             8</pre>
-<br>
+<b id="smtpd-5.7.3p2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 8/0/0/8</pre>
 <pre>
 nanosleep              0x494BF
 mailaddr_line          0x1D353
@@ -337,13 +1086,9 @@ valid_localpart        0x3F60F
 strlcat                0x4B9B9
 text_to_relayhost      0x3D060
 queue_bounce           0x2C61F
-
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  207          0            0             207</pre>
-<br>
+<b id="smtpd-5.7.3p2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 207/0/0/207</pre>
 <pre>
 close    0x14498  fclose   0x2E7CE    memmove  0x1AFCC   memset   0x4AFB0   snprintf 0x2283F
 close    0x144A1  fclose   0x2E7D6    memmove  0x1C79B   memset   0x4B0A4   snprintf 0x22AE7
@@ -395,49 +1140,52 @@ fclose   0x2E752  memmove  0x14B12    memset   0x495B8   snprintf 0x22733
 <tr>
 <td><h3>wpa_cli-2.2</h3></td>
 <td>
+<p id="wpa_cli-2.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  21          0            0             21</pre>
-<br>
+<b id="wpa_cli-2.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 21/0/0/21</pre>
 <pre>
-__errno_location atoi exit fclose fflush fopen fprintf fread fseek ftell getenv gmtime
-localtime mktime perror printf putchar puts signal system vprintf
-
+__errno_location   gmtime
+atoi               localtime
+exit               mktime
+fclose             perror
+fflush             printf
+fopen              putchar
+fprintf            puts
+fread              signal
+fseek              system
+ftell              vprintf
+getenv
 </pre>
-<b>Recursive functions</b>
+<b id="wpa_cli-2.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
+<b id="wpa_cli-2.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
+<b id="wpa_cli-2.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  5          0            0             5</pre>
-<br>
+<b id="wpa_cli-2.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
 <pre>
 wpa_ctrl_request          0x9730
 dl_list_del               0xCB7F
 eloop_cancel_timeout      0xD4DC
 eloop_destroy             0xDF9C
 eloop_cancel_timeout_one  0xD5DA
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  140          0            0             140</pre>
-<br>
+<b id="wpa_cli-2.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 140/0/0/140</pre>
 <pre>
 alarm     0xD910    printf    0x7A71     puts  0x5822    puts      0x8493
 alarm     0xD9A8    printf    0x7AB6     puts  0x5A17    puts      0x84CB
@@ -485,56 +1233,55 @@ printf    0x7A1A    puts      0x57D0     puts  0x837A
 <tr>
 <td><h3>swfc-0.9.2</h3></td>
 <td>
+<p id="swfc-0.9.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  24          0            0             24</pre>
-<br>
+<b id="swfc-0.9.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 24/0/0/24</pre>
 <pre>
-__errno_location clearerr ctime exit fclose feof ferror fflush
-fopen fprintf fputc fputs fread fseek ftell fwrite getenv perror printf putchar
-puts rename sprintf time
-
+__errno_location  fopen     getenv
+clearerr          fprintf   perror
+ctime             fputc     printf
+exit              fputs     putchar
+fclose            fread     puts
+feof              fseek     rename
+ferror            ftell     sprintf
+fflush            fwrite    time
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  46          0            0             46</pre>
-<br>
+<b id="swfc-0.9.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 46/0/0/46</pre>
 <pre>
-_trie_dump _trie_put add_parent args_callback_longoption
-as3__scan_bytes as3_ensure_buffer_stack callcode cut_last_push
-dump_asset dump_method enter_file enumerateUsedIDs
-filterState_free free_lines input insert_unresolved
-node_dump2 node_free registry_find registry_use
-state_free sub_42928 sub_4b335 sub_5134b sub_5e73a sub_61a7a sub_67b07 sub_67dfe
-sub_6ac1c sub_6ac48 sub_8589b sub_898cd sub_8a9a8 sub_8e2be sub_90b63 sub_9c24a
-swf4_scan_bytes swf4restart swf5_scan_bytes swf5restart
-swf_ShapeSetLine swf_WriteTag use_asset write_asset
-yy_scan_bytes yyensure_buffer_stack
-
+_trie_dump                   free_lines             sub_67b07             swf5restart
+_trie_put                    input                  sub_67dfe             swf_ShapeSetLine
+add_parent                   insert_unresolved      sub_6ac1c             swf_WriteTag
+args_callback_longoption     node_dump2             sub_6ac48             use_asset
+as3__scan_bytes              node_free              sub_8589b             write_asset
+as3_ensure_buffer_stack      registry_find          sub_898cd             yy_scan_bytes
+callcode                     registry_use           sub_8a9a8             yyensure_buffer_stack
+cut_last_push                state_free             sub_8e2be
+dump_asset                   sub_42928              sub_90b63
+dump_method                  sub_4b335              sub_9c24a
+enter_file                   sub_5134b              swf4_scan_bytes
+enumerateUsedIDs             sub_5e73a              swf4restart
+filterState_free             sub_61a7a              swf5_scan_bytes
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  4          0            0             4</pre>
-<br>
+<b id="swfc-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
 <pre>
-enumerateUsedIDs png_load png_write_palette_based2 writeABC
-
+enumerateUsedIDs
+png_load
+png_write_palette_based2
+writeABC
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="swfc-0.9.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 zlib_error
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  22          0            0             22</pre>
-<br>
+<b id="swfc-0.9.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
 <pre>
 png_read_header           0xA97ED
 node_free                 0xA63C2
@@ -558,12 +1305,9 @@ png_write_palette_based2  0xAC856
 png_write_palette_based2  0xAC810
 png_write_palette_based2  0xAC7D0
 png_write_palette_based2  0xAC38E
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  276          0            0             276</pre>
-<br>
+<b id="swfc-0.9.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 276/0/0/276</pre>
 <pre>
 calloc  0xA6BD4    fprintf 0x68D03  fputc   0x58C13  fwrite  0xA9F42  memset  0xAEA14
 close   0x66E58    fprintf 0x68D37  fputc   0x64BEB  fwrite  0xA9F84  memset  0xAF721
@@ -630,54 +1374,51 @@ fprintf 0x68C98    fputc   0x58C04  fwrite  0xA9F00  memset  0xAC6B4
 <tr>
 <td><h3>tshark-2.6.0</h3></td>
 <td>
+<p id="tshark-2.6.0"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  15          0            0             15</pre>
-<br>
+<b id="tshark-2.6.0+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 15/0/0/15</pre>
 <pre>
-__errno_location exit fclose ferror fflush fopen fputc fputs
-fwrite getenv putchar puts rename setlocale ungetc
-
+__errno_location   fopen      putchar
+exit               fputc      puts
+fclose             fputs      rename
+ferror             fwrite     setlocale
+fflush             getenv     ungetc
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  17          0            0             17</pre>
-<br>
+<b id="tshark-2.6.0+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 17/0/0/17</pre>
 <pre>
-copy_filter_list flow_exit iostat_init phs_draw
-sub_101da sub_119b7 sub_11d83 sub_154b0 sub_2086e sub_20e3b sub_20ec9 sub_20edc
-sub_20eea sub_27930 sub_28f00 sub_29bd0 tree_traverse_pre_order.constprop.0
-
+copy_filter_list  sub_11d83    sub_20eea
+flow_exit         sub_154b0    sub_27930
+iostat_init       sub_2086e    sub_28f00
+phs_draw          sub_20e3b    sub_29bd0
+sub_101da         sub_20ec9    tree_traverse_pre_order.constprop.0
+sub_119b7         sub_20edc
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  4          0            0             4</pre>
-<br>
+<b id="tshark-2.6.0+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
 <pre>
-iostat_draw main sub_101fd sub_2e750
-
+iostat_draw
+main
+sub_101fd
+sub_2e750
 </pre>
-<b>Functions with non-structured control flow graph</b>
+<b id="tshark-2.6.0+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Null pointer dereference</b>
+<b id="tshark-2.6.0+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 2/0/2/0</pre>
 <pre>
-Total / Confirmed / False positive / Unclassified
-2        0            2                0
-
-register_tap_listener         0x2955B
-display_dissector_table_names 0x2FB0C
-
+register_tap_listener          0x2955B
+display_dissector_table_names  0x2FB0C
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  287          0            0             287</pre>
-<br>
+<b id="tshark-2.6.0+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 287/0/0/287</pre>
 <pre>
 close  0x14E43     fwrite 0x18B8E     fwrite 0x191EB   putchar 0x27510   puts 0x28EBC
 close  0x1B96F     fwrite 0x18BA7     fwrite 0x19204   putchar 0x277E8   puts 0x29431
@@ -751,47 +1492,46 @@ fwrite 0x18B75     fwrite 0x191D2     putchar 0x26F6F  puts 0x2766B
 <tr>
 <td><h3>wav2swf-0.9.2</h3></td>
 <td>
+<p id="wav2swf-0.9.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  20          0            0             20</pre>
-<br>
+<b id="wav2swf-0.9.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 20/0/0/20</pre>
 <pre>
-__errno_location ctime exit fclose fflush fopen fprintf fputc fread fseek ftell fwrite
-getenv perror printf putchar puts rename sprintf time
-
+__errno_location   fread     puts
+ctime              fseek     rename
+exit               ftell     sprintf
+fclose             fwrite    time
+fflush             getenv
+fopen              perror
+fprintf            printf
+fputc              putchar
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  13          0            0             13</pre>
-<br>
+<b id="wav2swf-0.9.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 13/0/0/13</pre>
 <pre>
-args_callback_longoption enumerateUsedIDs input sub_11494 sub_13d39 sub_caa3 sub_db7e
-sub_dbee swf4_scan_bytes swf4restart swf5_scan_bytes swf5restart swf_WriteTag
-
+args_callback_longoption    sub_dbee
+enumerateUsedIDs            swf4_scan_bytes
+input                       swf4restart
+sub_11494                   swf5_scan_bytes
+sub_13d39                   swf5restart
+sub_caa3                    swf_WriteTag
+sub_db7e
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="wav2swf-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 enumerateUsedIDs
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="wav2swf-0.9.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 zlib_error
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  6          0            0             6</pre>
-<br>
+<b id="wav2swf-0.9.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
 <pre>
 zlib_error             0x1AFD6
 swf_ReadABCfile        0x8963
@@ -799,12 +1539,9 @@ swf_Optimize           0xB919
 swf_Relocate           0xB1E9
 swf5_load_buffer_state 0xF081
 swf4_load_buffer_state 0xD1BD
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  45          0            0             45</pre>
-<br>
+<b id="wav2swf-0.9.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 45/0/0/45</pre>
 <pre>
 close    0x1ADA6   fwrite   0x1B15D
 close    0x8FED    fwrite   0x1B17F
@@ -837,23 +1574,25 @@ fwrite   0x1AEFB
 <tr>
 <td><h3>ntpdc-4.2.8p5</h3></td>
 <td>
+<p id="ntpdc-4.2.8p5"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  32          0            0             32</pre>
-<br>
+<b id="ntpdc-4.2.8p5+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 32/0/0/32</pre>
 <pre>
-__errno_location abort ctime exit fclose ferror fflush fgetc fgets fopen fprintf fputc
-fputs fread freopen fwrite getenv gmtime localtime longjmp perror printf putchar puts
-rename setbuf sprintf sscanf strftime system time vfprintf
-
+__errno_location   fgets      getenv      rename
+abort              fopen      gmtime      setbuf
+ctime              fprintf    localtime   sprintf
+exit               fputc      longjmp     sscanf
+fclose             fputs      perror      strftime
+ferror             fread      printf      system
+fflush             freopen    putchar     time
+fgetc              fwrite     puts        vfprintf
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  32          0            0             32</pre>
-<br>
+<b id="ntpdc-4.2.8p5+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 32/0/0/32</pre>
 <pre>
 acts_receive              sub_1da6d
 arc_receive               sub_2499e
@@ -871,28 +1610,26 @@ sub_1376d                 timer
 sub_15056                 update_interfaces
 sub_199e8                 yylex
 sub_1ae49
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  8          0            0             8</pre>
-<br>
+<b id="ntpdc-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 8/0/0/8</pre>
 <pre>
-doquery opt_find_long sub_162a8 sub_17409 sub_1b799 sub_1cce3 sub_1d732 sub_226b8
-
+doquery         sub_1b799
+opt_find_long   sub_1cce3
+sub_162a8       sub_1d732
+sub_17409       sub_226b8
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  5          0            0             5</pre>
-<br>
+<b id="ntpdc-4.2.8p5+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
 <pre>
-optionRestore option_exits quit sub_13418 sub_17409
-
+optionRestore
+option_exits
+quit
+sub_13418
+sub_17409
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  11          0            0             11</pre>
-<br>
+<b id="ntpdc-4.2.8p5+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 11/0/0/11</pre>
 <pre>
 socktoa                      0x20A2E
 ntpdcmain                    0x9607
@@ -913,49 +1650,50 @@ option_pathfind.constprop.66 0x14424
 <tr>
 <td><h3>swfextract-0.9.2</h3></td>
 <td>
+<p id="swfextract-0.9.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  22          0            0             22</pre>
-<br>
+<b id="swfextract-0.9.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
 <pre>
-__errno_location ctime exit fclose feof fflush fopen fprintf fputc fputs fread fseek
-ftell fwrite getenv perror printf putchar puts rename sprintf time
-
+__errno_location   fopen       ftell     puts
+ctime              fprintf     fwrite    rename
+exit               fputc       getenv    sprintf
+fclose             fputs       perror    time
+feof               fread       printf
+fflush             fseek       putchar
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  27          0            0             27</pre>
-<br>
+<b id="swfextract-0.9.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 27/0/0/27</pre>
 <pre>
-_trie_dump _trie_put args_callback_longoption callcode cut_last_push dump_asset
-dump_method enumerateUsedIDs free_lines input registry_find registry_use
-sub_43254 sub_46594 sub_55177 sub_551a3 sub_6e5a4 sub_72f95 sub_7583a swf4_scan_bytes
-swf4restart swf5_scan_bytes swf5restart swf_ShapeSetLine swf_WriteTag use_asset write_asset
-
+_trie_dump                  free_lines       sub_6e5a4          swf_WriteTag
+_trie_put                   input            sub_72f95          use_asset
+args_callback_longoption    registry_find    sub_7583a          write_asset
+callcode                    registry_use     swf4_scan_bytes
+cut_last_push               sub_43254        swf4restart
+dump_asset                  sub_46594        swf5_scan_bytes
+dump_method                 sub_55177        swf5restart
+enumerateUsedIDs            sub_551a3        swf_ShapeSetLine
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  6          0            0             6</pre>
-<br>
+<b id="swfextract-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
 <pre>
-enumerateUsedIDs extractTag main png_load png_write_palette_based2 writeABC
-
+enumerateUsedIDs
+extractTag
+main
+png_load
+png_write_palette_based2
+writeABC
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="swfextract-0.9.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 zlib_error
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  16          0            0             16</pre>
-<br>
+<b id="swfextract-0.9.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 16/0/0/16</pre>
 <pre>
 zlib_error                   0x80F44
 dict_put                     0x7B7FB
@@ -973,12 +1711,9 @@ png_write_palette_based2     0x7F48A
 png_load                     0x7E373
 png_read_header              0x7C8E9
 code_free                    0x5B4E2
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  39          0            0             39</pre>
-<br>
+<b id="swfextract-0.9.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 39/0/0/39</pre>
 <pre>
 calloc   0x79E81    fwrite   0x4B1D1
 close    0x80D14    fwrite   0x4B1FB
@@ -1008,48 +1743,47 @@ fwrite   0x4B1A7
 <tr>
 <td><h3>lighttpd-1.4.15</h3></td>
 <td>
+<p id="lighttpd-1.4.15"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  17          0            0             17</pre>
-<br>
+<b id="lighttpd-1.4.15+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 17/0/0/17</pre>
 <pre>
-__errno_location  abort exit     fprintf   fputc  fputs  fwrite getenv gmtime
-puts setlocale    signal strftime localtime mktime perror time
-
+__errno_location    fwrite       strftime
+abort               getenv       localtime
+exit                gmtime       mktime
+fprintf             puts         perror
+fputc               setlocale    time
+fputs               signal
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  10          0            0             10</pre>
-<br>
+<b id="lighttpd-1.4.15+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
 <pre>
-array_init array_insert_uniq data_string_init proc_open_b
-sub_1163c sub_12091 sub_14d5 sub_1eee0 sub_1eee7 sub_bf08
-
+array_init           sub_12091
+array_insert_uniq    sub_14d5
+data_string_init     sub_1eee0
+proc_open_b          sub_1eee7
+sub_1163c            sub_bf08
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  6          0            0             6</pre>
-<br>
+<b id="lighttpd-1.4.15+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
 <pre>
-connection_handle_read_state sub_12091 sub_121be sub_18774
-sub_74e9 sub_97a2
-
+connection_handle_read_state
+sub_12091
+sub_121be
+sub_18774
+sub_74e9
+sub_97a2
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="lighttpd-1.4.15+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 fdevent_poll_event_get_revent
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  12          0            0             12</pre>
-<br>
+<b id="lighttpd-1.4.15+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
 <pre>
 splaytree_insert                0x1F220
 splaytree_insert                0x1F1CC
@@ -1063,12 +1797,9 @@ stat_cache_get_entry            0x17306
 config_parse.constprop.5        0xE999
 network_write_chunkqueue_writev 0x1E95B
 network_write_chunkqueue_writev 0x1E991
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  7          0            0             7</pre>
-<br>
+<b id="lighttpd-1.4.15+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
 <pre>
 calloc  0x159DA
 close   0x17633
@@ -1085,22 +1816,23 @@ write   0x1517B
 <tr>
 <td><h3>libbfd-2.31.1</h3></td>
 <td>
+<p id="libbfd-2.31.1"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  18          0            0             18</pre>
-<br>
+<b id="libbfd-2.31.1+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 18/0/0/18</pre>
 <pre>
-__errno_location abort ctime exit fclose ferror fflush fprintf fputc fputs fread fwrite
-getenv printf sprintf sscanf time vfprintf
-
+__errno_location  fflush       getenv
+abort             fprintf      printf
+ctime             fputc        sprintf
+exit              fputs        sscanf
+fclose            fread        time
+ferror            fwrite       vfprintf
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  90          0            0             90</pre>
-<br>
+<b id="libbfd-2.31.1+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 90/0/0/90</pre>
 <pre>
 _bfd_archive_64_bit_slurp_armap          elf_gc_propagate_vtable_entries_used     sub_9f530
 _bfd_coff_final_link                     elf_i386_finish_dynamic_symbol           sub_ac1f8
@@ -1136,12 +1868,9 @@ demangle_template_value_parm             sub_97009
 dlang_identifier                         sub_970a0
 dlang_parse_mangle                       sub_970e9
 dlang_parse_qualified                    sub_9bd4b
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  79          0            0             79</pre>
-<br>
+<b id="libbfd-2.31.1+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 79/0/0/79</pre>
 <pre>
 _bfd_dwarf2_find_nearest_line              sub_42252      sub_a52c9
 _bfd_elf_discard_section_eh_frame          sub_5aa32      sub_a60d9
@@ -1172,20 +1901,16 @@ internal_cplus_demangle                    sub_9a8fa
 pex64_bfd_print_pdata_section              sub_9bd4b
 read_attribute_value                       sub_9d5d2
 scan_unit_for_symbols                      sub_9f530
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  3          0            0             3</pre>
-<br>
+<b id="libbfd-2.31.1+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 3/0/0/3</pre>
 <pre>
-_bfd_abort sub_bbcc1 sub_e2b51
-
+_bfd_abort
+sub_bbcc1
+sub_e2b51
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  12          0            0             12</pre>
-<br>
+<b id="libbfd-2.31.1+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
 <pre>
 string_need                              0xCD0E7
 nacl_modify_segment_map                  0x6546A
@@ -1199,13 +1924,9 @@ dlang_parse_qualified                    0xDF4B4
 sec_merge_hash_lookup                    0x4DFA2
 elf_merge_gnu_properties                 0x90B40
 _bfd_construct_extended_name_table       0x422CC
-
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  10          0            0             10</pre>
-<br>
+<b id="libbfd-2.31.1+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
 <pre>
 fprintf  0xC8CC8
 fprintf  0xC93B0
@@ -1225,21 +1946,18 @@ sprintf  0xCD287
 <tr>
 <td><h3>nginx-1.7</h3></td>
 <td>
+<p id="nginx-1.7"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  10          0            0             10</pre>
-<br>
+<b id="nginx-1.7+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
 <pre>
 __errno_location abort exit getenv localtime mktime raise rename strftime time
-
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  55          0            0             55</pre>
-<br>
+<b id="nginx-1.7+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 55/0/0/55</pre>
 <pre>
 sub_4077f4 sub_409103 sub_409250 sub_4093A0 sub_409FA0 sub_40A7A0 sub_40A8D0 sub_40AEA0
 sub_40DAB0 sub_40DEC0 sub_411970 sub_412273 sub_418500 sub_41c0a4 sub_41c0ab sub_41c100
@@ -1248,12 +1966,9 @@ sub_434890 sub_434B20 sub_435890 sub_436e1d sub_437d02 sub_43C5E0 sub_43CE70 sub
 sub_442be3 sub_4456f9 sub_44F360 sub_451940 sub_4532C0 sub_454f11 sub_458F80 sub_45c76c
 sub_45f060 sub_460da8 sub_460f83 sub_460fd8 sub_4621a1 sub_469a11 sub_46eecc sub_471B10
 sub_472b16 sub_47339a sub_473895 sub_479753 sub_47A870 sub_47ecd0 sub_48E510
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  41          0            0             41</pre>
-<br>
+<b id="nginx-1.7+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 41/0/0/41</pre>
 <pre>
 sub_40FD90 sub_40c042 sub_416590 sub_418500 sub_41e7be sub_422BB0 sub_427A00 sub_430f6c
 sub_433710 sub_435da0 sub_43C5E0 sub_441D50 sub_443a40 sub_44A180 sub_44f36a sub_450E90
@@ -1261,28 +1976,24 @@ sub_455df8 sub_45D180 sub_45a6a4 sub_46249d sub_463428 sub_46784a sub_469E70 sub
 sub_46cda9 sub_472990 sub_475F70 sub_477310 sub_479DF0 sub_47C540 sub_480440 sub_4812B0
 sub_482960 sub_483C60 sub_4856B0 sub_486860 sub_48bc90 sub_48f567 sub_490470 sub_491F80
 sub_493797
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  7          0            0             7</pre>
-<br>
+<b id="nginx-1.7+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
 <pre>
-sub_41B810 sub_425800 sub_426600 sub_426D00 sub_4273F0 sub_427A00 sub_47ecd0
-
+sub_41B810    sub_4273F0
+sub_425800    sub_427A00
+sub_426600    sub_47ecd0
+sub_426D00
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  3          0            0             3</pre>
-<br>
+<b id="nginx-1.7+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 3/0/0/3</pre>
 <pre>
-0x49168F 0x4969CC 0x409FB0 0x48E539 0x48DFFB 0x48E0B0
-
+0x49168F    0x48E539
+0x4969CC    0x48DFFB
+0x409FB0    0x48E0B0
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  1          0            0             1</pre>
-<br>
+<b id="nginx-1.7+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
 <pre>
 write 0x409358
 </pre>
@@ -1293,23 +2004,24 @@ write 0x409358
 <tr>
 <td><h3>sqlite3-2.27.2</h3></td>
 <td>
+<p id="sqlite3-2.27.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  25          0            0             25</pre>
-<br>
+<b id="sqlite3-2.27.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 25/0/0/25</pre>
 <pre>
-__errno_location atoi exit fclose fflush fgetc fgets fprintf
-fputc fputs fread fseek ftell fwrite getenv localtime
-printf putchar puts raise rewind setvbuf signal system time
-
+__errno_location  fprintf   getenv       setvbuf
+atoi              fputc     localtime    signal
+exit              fputs     printf       system
+fclose            fread     putchar      time
+fflush            fseek     puts
+fgetc             ftell     raise
+fgets             fwrite    rewind
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  180          0            0             180</pre>
-<br>
+<b id="sqlite3-2.27.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 180/0/0/180</pre>
 <pre>
 SortByDimension                    setJoinExpr                       sub_5a631
 SortByDistance                     shell_out_of_memory               sub_5b423
@@ -1374,46 +2086,43 @@ rowSetNDeepTree                    sub_504b0
 rowSetTreeToList                   sub_5480f
 rtreeCheckNode                     sub_548c8
 rtreeInsertCell                    sub_5a17a
-
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  46          0            0             46</pre>
-<br>
+<b id="sqlite3-2.27.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 46/0/0/46</pre>
 <pre>
-allocateBtreePage do_meta_command exprAnalyze fts3InitVtab
-fts3SnippetFunc fts5MultiIterNew fts5PorterCb openDatabase
-pagerWalFrames porterNext process_input selectExpander
-sqlite3BtreeOpen sqlite3CreateIndex sqlite3ExprCodeTarget sqlite3Fts5UnicodeCatParse
-sqlite3Insert sqlite3ParseUri sqlite3WhereBegin sqlite3WhereCodeOneLoopStart
-sqlite3_step sub_108f3 sub_1a0f5 sub_4174a sub_4c02e sub_4ccd8 sub_58179 sub_5a17a
-sub_5eed8 sub_5fccb sub_61c44 sub_68590 sub_6b05b sub_6bf45 sub_6cfd9 sub_6e922
-sub_82bf7 sub_a160d sub_a417c sub_a538a sub_a6f32 sub_a993b sub_aafb1 unixOpen
-whereLoopAddBtree wherePathSatisfiesOrderBy
-
+allocateBtreePage    sqlite3CreateIndex                sub_58179     sub_a538a
+do_meta_command      sqlite3ExprCodeTarget             sub_5a17a     sub_a6f32
+exprAnalyze          sqlite3Fts5UnicodeCatParse        sub_5eed8     sub_a993b
+fts3InitVtab         sqlite3Insert                     sub_5fccb     sub_aafb1
+fts3SnippetFunc      sqlite3ParseUri                   sub_61c44     unixOpen
+fts5MultiIterNew     sqlite3WhereBegin                 sub_68590     whereLoopAddBtree
+fts5PorterCb         sqlite3WhereCodeOneLoopStart      sub_6b05b     wherePathSatisfiesOrderBy
+openDatabase         sqlite3_step                      sub_6bf45
+pagerWalFrames       sub_108f3                         sub_6cfd9
+porterNext           sub_1a0f5                         sub_6e922
+process_input        sub_4174a                         sub_82bf7
+selectExpander       sub_4c02e                         sub_a160d
+sqlite3BtreeOpen     sub_4ccd8                         sub_a417c
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  7          0            0             7</pre>
-<br>
+<b id="sqlite3-2.27.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
 <pre>
-sub_4de4e sub_62b49 sub_83d0a sub_852fe sub_8f005 sub_9192f sub_ae05c
-
+sub_4de4e
+sub_62b49
+sub_83d0a
+sub_852fe
+sub_8f005
+sub_9192f
+sub_ae05c
 </pre>
-<b>Null pointer dereference</b>
+<b id="sqlite3-2.27.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 2/0/2/0</pre>
 <pre>
-Total / Confirmed / False positive / Unclassified
-2         0            2              0
-
 getIntArg            0x2B591
 sqlite3VdbeMemSetStr 0x3D25A
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  10          0            0             10</pre>
-<br>
+<b id="sqlite3-2.27.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
 <pre>
 memmove  0x3D25A
 fsync    0x44205
@@ -1433,60 +2142,43 @@ fprintf  0x15A7F
 <tr>
 <td><h3>swfcombine-0.9.2</h3></td>
 <td>
+<p id="swfcombine-0.9.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  20          0            0             20</pre>
-<br>
+<b id="swfcombine-0.9.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 20/0/0/20</pre>
 <pre>
 __errno_location ctime exit fclose fflush fopen fprintf fputc fread fseek
 ftell fwrite getenv perror printf putchar puts rename sprintf time
-
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  4          0            0             4</pre>
-<br>
+<b id="swfcombine-0.9.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
 <pre>
 args_callback_longoption enumerateUsedIDs sub_2b7c swf_WriteTag
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  4          0            0             4</pre>
-<br>
+<b id="swfcombine-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
 <pre>
 enumerateUsedIDs main normalcombine write_master
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  2          0            0             2</pre>
-<br>
+<b id="swfcombine-0.9.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
 <pre>
 main zlib_error
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  5          0            0             5</pre>
-<br>
+<b id="swfcombine-0.9.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
 <pre>
 zlib_error                 0xE596
 swf_SetLosslessBitsIndexed 0x5DDD
 swf_ReadABCfile            0xCD21
 swf_Optimize               0xA1EE
 swf_Relocate               0x9ABE
-
-
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  166          0            0             166</pre>
-<br>
+<b id="swfcombine-0.9.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 166/0/0/166</pre>
 <pre>
 close   0x5057   fprintf 0x6C21   fwrite  0x6903   fwrite  0xF07C   puts    0x290A
 close   0x563A   fprintf 0x6C97   fwrite  0x7524   fwrite  0xF134   puts    0x2916
@@ -1530,13 +2222,13 @@ fprintf 0x6BD7   fwrite  0x6807   fwrite  0xF05A   puts    0x28FE
 <tr>
 <td><h3>ntpd-4.2.8p5</h3></td>
 <td>
+<p id="ntpd-4.2.8p5"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  43          0            0             43</pre>
-<br>
+<b id="ntpd-4.2.8p5+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 43/0/0/43</pre>
 <pre>
 Total / False positive / False negative / Unclassified
 __errno_location  fprintf      mktime     strftime
@@ -1549,13 +2241,9 @@ fflush            fwrite       rewind
 fgetc             getenv       setvbuf
 fgets             gmtime       sprintf
 fopen             localtime    sscanf
-
-
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  77          0            0             77</pre>
-<br>
+<b id="ntpd-4.2.8p5+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 77/0/0/77</pre>
 <pre>
 addArgListEntry               maintain_activefds           sub_1a9e5
 adj_systime                   modem_control                sub_1ae49
@@ -1585,12 +2273,9 @@ isc_sha1_update               sub_133a2
 json_token_skip.part.2        sub_1350f
 list_restrict4                sub_136c5
 list_restrict6                sub_197d8
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  31          0            0             31</pre>
-<br>
+<b id="ntpd-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 31/0/0/31</pre>
 <pre>
 acts_receive                        sub_1246f      sub_622e8
 arc_receive                         sub_1376d      sub_6c098
@@ -1602,12 +2287,9 @@ hack_restrict                       sub_2499e      sub_f7a6
 jsmn_parse                          sub_3e072      timer
 opt_find_long optionSetMembers      sub_436e8      update_interfaces
 read_network_packet                 sub_49b86      yylex
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  13          0            0             13</pre>
-<br>
+<b id="ntpd-4.2.8p5+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 13/0/0/13</pre>
 <pre>
 findexistingpeer        start_blo
 getCmdOpts              sub_11deb
@@ -1616,12 +2298,9 @@ normal_dtoa             sub_55f6f
 optionRestore           sub_69208
 option_exits            sub_6d1f9
 cking_thread_internal
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  6          0            0             6</pre>
-<br>
+<b id="ntpd-4.2.8p5+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
 <pre>
 optionParseShell      0x6F4FB
 option_parse_duration 0x6C348
@@ -1629,12 +2308,9 @@ sockporttoa           0x5F888
 socktoa               0x5F6EE
 decode_bitflags       0x5F9D2
 option_parse_duration 0x6C089
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  322          0            0             322</pre>
-<br>
+<b id="ntpd-4.2.8p5+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 322/0/0/322</pre>
 <pre>
 close    0x16E51  fprintf  0x5BC80  fprintf  0x72F10  fputc    0xFBED   fwrite   0xFB8B   printf   0x42546   printf   0x6F4ED   snprintf 0x590EE
 close    0x32055  fprintf  0x60C9D  fprintf  0x72F66  fputc    0xFC89   fwrite   0xFD82   printf   0x4259D   printf   0x6F5FC   snprintf 0x5964E
@@ -1685,22 +2361,19 @@ fprintf  0x5BC44  fprintf  0x72EEC  fputc    0xFAF3   fwrite   0xFAB9   printf  
 <tr>
 <td><h3>sshd-7.3.p1</h3></td>
 <td>
+<p id="sshd-7.3.p1"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  25          0            0             25</pre>
-<br>
+<b id="sshd-7.3.p1+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 25/0/0/25</pre>
 <pre>
 __errno_location abort ctime exit fclose feof fflush fgetc fgets fopen fputc fputs fscanf
 fwrite getenv localtime perror putchar puts raise rename rewind sscanf strftime time
-
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  184          0            0             184</pre>
-<br>
+<b id="sshd-7.3.p1+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 184/0/0/184</pre>
 <pre>
 BSDgetopt                                        mm_terminate                         sub_407b1
 Blowfish_expand0state                            mm_xmalloc                           sub_408e5
@@ -1773,42 +2446,29 @@ mm_make_entry                                    sub_31b69
 mm_memvalid                                      sub_32504
 mm_request_receive_expect                        sub_32520
 mm_session_pty_cleanup2                          sub_3d268
-
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  12          0            0             12</pre>
-<br>
+<b id="sshd-7.3.p1+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
 <pre>
 auth_parse_options copy_set_server_options fill_default_server_options hostkeys_foreach
 monitor_child_postauth session_input_channel_req sftp_server_main ssh_krl_from_blob
 sub_48db6 sub_60bcf sub_8e7f sub_a5bf
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  9          0            0             9</pre>
-<br>
+<b id="sshd-7.3.p1+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 9/0/0/9</pre>
 <pre>
 grace_alarm_handler log_init monitor_child_postauth server_input_channel_open
 session_input_channel_req sub_497ec sub_5f830 sub_5fd20 userauth_pubkey
-
 </pre>
-<b>Null pointer dereference</b>
+<b id="sshd-7.3.p1+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 3/0/3/0</pre>
 <pre>
-Total / Confirmed / False positive / Unclassified
-3         0            3              0
-
 sshbuf_put_u8              0x3524C
 sshkey_try_load_public     0x371D0
 mktemp_internal            0x6C41E
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  106          0            0             106</pre>
-<br>
+<b id="sshd-7.3.p1+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 106/0/0/106</pre>
 <pre>
 close  0x167FB    close    0x3C4B4    dup2     0xBD93      memcpy   0x3530E
 close  0x17525    close    0x4075F    execl    0x1BEBC     memcpy   0x3554A
@@ -1845,58 +2505,46 @@ close  0x3C062    dup      0xBA3E     memcpy   0x2E0AC
 <tr>
 <td><h3>wpa_supplicant-2.2</h3></td>
 <td>
+<p id="wpa_supplicant-2.2"> </p>
+<p><a href="#top">Top</a></p>
 <pre>
 
 </pre>
-<b>Forbidden functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  22          0            0             22</pre>
-<br>
+<b id="wpa_supplicant-2.2+Forbidden">Forbidden functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
 <pre>
 __errno_location abort atoi exit fclose fgets fopen fprintf fputc fread fseek ftell
 fwrite gmtime localtime mktime perror printf putchar puts signal vprintf
-
 </pre>
-<b>Recursive functions</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  4          0            0             4</pre>
-<br>
+<b id="wpa_supplicant-2.2+Recursive">Recursive functions</b>
+<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
 <pre>
 eapol_sm_step sub_88c42 wpa_driver_nl80211_scan wpas_set_pkcs11_engine_and_module_path
-
 </pre>
-<b>Functions with cyclomatic complexity > 50</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  11          0            0             11</pre>
-<br>
+<b id="wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</b>
+<pre>Total/Confirmed/False positive/Unclassified: 11/0/0/11</pre>
 <pre>
 nl80211_connect_common print_bss_info wpa_config_get_cred_no_key wpa_config_set_cred
 wpa_config_write_global wpa_driver_nl80211_set_ap wpa_sm_rx_eapol
 wpa_supplicant_ctrl_iface_process wpa_supplicant_req_sched_scan wpa_supplicant_scan
 wpas_start_assoc_cb
-
 </pre>
-<b>Functions with non-structured control flow graph</b>
+<b id="wpa_supplicant-2.2+Non_structured">Functions with non-structured cfg</b>
+<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
 <pre>
 not found
-
 </pre>
-<b>Null pointer dereference</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  5          0            0             5</pre>
-<br>
+<b id="wpa_supplicant-2.2+Null">Null pointer dereference</b>
+<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
 <pre>
 eloop_cancel_timeout   0x17C6D
 dl_list_del            0x17310
 dl_list_add            0x17289
 wpa_config_get_line    0x18B5C
 dl_list_add            0x21C36
-
 </pre>
-<b>Unused return value</b>
-<pre>Total / Confirmed / False positive / Unclassified</pre>
-<pre>  79          0            0             79</pre>
-<br>
+<b id="wpa_supplicant-2.2+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 79/0/0/79</pre>
 <pre>
 close   0x94379  fprintf 0x1B039   fputc   0x1AD4B
 fclose  0x1B974  fprintf 0x1B08B   fputc   0x1B48E
@@ -1928,7 +2576,6 @@ fprintf 0x1B009  fprintf 0x1B72B
 </pre>
 </td>
 </tr>
-
-    </table>
+</table>
   </body>
 </html>
