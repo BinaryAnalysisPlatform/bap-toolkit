@@ -81,6 +81,10 @@ You can also list all available using the `--list-recipes` option,
 
        bap --list-recipes
 
+# Results
+The results of the checks from this repository applied to [bap-artifacts](https://github.com/BinaryAnalysisPlatform/bap-artifacts) can
+be seen [here](http://htmlpreview.github.io/?https://github.com/BinaryAnalysisPlatform/bap-toolkit/blob/master/results.html)
+
 
 # Developing
 
