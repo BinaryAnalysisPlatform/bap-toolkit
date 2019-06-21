@@ -392,6 +392,13 @@
 <td align="center">11</td>
 </tr>
 <tr>
+<td><h3><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a><a href="#ntpdc-4.2.8p5+Unused">:Unused return value</a></h3></td>
+<td align="center">458</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">458</td>
+</tr>
+<tr>
 <td><h3><a href="#swfextract-0.9.2">swfextract-0.9.2</a><a href="#swfextract-0.9.2+Forbidden">:Forbidden functions</a></h3></td>
 <td align="center">22</td>
 <td align="center">0</td>
@@ -512,10 +519,10 @@
 </tr>
 <tr>
 <td><h3><a href="#libbfd-2.31.1">libbfd-2.31.1</a><a href="#libbfd-2.31.1+Unused">:Unused return value</a></h3></td>
-<td align="center">10</td>
+<td align="center">76</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">10</td>
+<td align="center">76</td>
 </tr>
 <tr>
 <td><h3><a href="#nginx-1.7">nginx-1.7</a><a href="#nginx-1.7+Forbidden">:Forbidden functions</a></h3></td>
@@ -1643,6 +1650,70 @@ decodenetnum                 0x1F4FB
 decodenetnum                 0x1F5B5
 option_pathfind.constprop.66 0x14424
 </pre>
+<b id="ntpdc-4.2.8p5+Unused">Unused return value</b>
+<pre>Total/Confirmed/False positive/Unclassified: 458/0/0/458</pre>
+<pre>
+close    0x15036   fprintf  0x14F50   fprintf  0xADB2  fprintf  0xE4AD   fputc   0x14E97  fwrite   0x12038  fwrite   0xD694   snprintf 0x15CCD
+close    0x15110   fprintf  0x1583F   fprintf  0xADD3  fprintf  0xE4CA   fputc   0x14F15  fwrite   0x12099  fwrite   0xDCE8   snprintf 0x15DA0
+close    0x1B5D4   fprintf  0x158D7   fprintf  0xADF4  fprintf  0xE4E7   fputc   0x150BC  fwrite   0x120D8  fwrite   0xE377   snprintf 0x160BA
+close    0x1B651   fprintf  0x15907   fprintf  0xAE15  fprintf  0xE504   fputc   0x150D1  fwrite   0x12408  fwrite   0xF4BA   snprintf 0x1FD5A
+close    0x1B771   fprintf  0x15A7A   fprintf  0xAE36  fprintf  0xE521   fputc   0x151BC  fwrite   0x12477  fwrite   0xF524   snprintf 0x206E0
+close    0x21A2E   fprintf  0x15B10   fprintf  0xAE57  fprintf  0xE53E   fputc   0x161AC  fwrite   0x12E64  fwrite   0xF678   snprintf 0x209DC
+close    0x7D7B    fprintf  0x15DBC   fprintf  0xAE7B  fprintf  0xE55B   fputc   0x19542  fwrite   0x13113  fwrite   0xFD7A   snprintf 0x20AAE
+close    0x816D    fprintf  0x15EF9   fprintf  0xB021  fprintf  0xE578   fputc   0x1A168  fwrite   0x131D5  fwrite   0xFE44   snprintf 0x20EC4
+dup2     0x134D9   fprintf  0x15FB6   fprintf  0xB291  fprintf  0xE595   fputc   0x1A734  fwrite   0x13528  fwrite   0xFF75   snprintf 0x2458D
+dup2     0x150F9   fprintf  0x1602F   fprintf  0xB2DC  fprintf  0xE5B2   fputc   0x1A828  fwrite   0x14800  memcpy   0x12AF9  snprintf 0x245C4
+dup2     0x15107   fprintf  0x161E6   fprintf  0xB63C  fprintf  0xE5CF   fputc   0x1D805  fwrite   0x15180  memcpy   0x143B5  snprintf 0x134A6
+fclose   0x134CA   fprintf  0x19181   fprintf  0xB8BC  fprintf  0xE5EC   fputc   0x1DCDB  fwrite   0x151DC  memcpy   0x173B9  snprintf 0x135C7
+fclose   0x13534   fprintf  0x19500   fprintf  0xB8F7  fprintf  0xE609   fputc   0x205A1  fwrite   0x18A2F  memcpy   0x17E4C  snprintf 0x139E1
+fclose   0x15163   fprintf  0x1A100   fprintf  0xBBC2  fprintf  0xE626   fputc   0x21F94  fwrite   0x19911  memcpy   0x1923E  snprintf 0x197F7
+fclose   0x19BE9   fprintf  0x1A153   fprintf  0xBBF8  fprintf  0xE700   fputc   0x2201F  fwrite   0x1992E  memcpy   0x1AC2A  snprintf 0x19AF5
+fclose   0x1AFC0   fprintf  0x1A214   fprintf  0xBDC1  fprintf  0xE71D   fputc   0x8D88   fwrite   0x19C88  memcpy   0x1AD8A  snprintf 0x20895
+fclose   0x89F8    fprintf  0x1AADC   fprintf  0xBF67  fprintf  0xE73A   fputc   0xE1D1   fwrite   0x19CA5  memcpy   0x1AE3F  snprintf 0x2104B
+fprintf  0x218D7   fprintf  0x1AB35   fprintf  0xBFCA  fprintf  0xE757   fputc   0xF539   fwrite   0x19CC2  memcpy   0x1C3CB  snprintf 0x21337
+fprintf  0x22A49   fprintf  0x1AB81   fprintf  0xC17E  fprintf  0xE774   fputs   0x10D5E  fwrite   0x19D68  memcpy   0x1CBFC  snprintf 0x2148F
+fprintf  0x10000   fprintf  0x1AE72   fprintf  0xC1A5  fprintf  0xE791   fputs   0x10E12  fwrite   0x19D85  memcpy   0x1CCB0  snprintf 0x21D45
+fprintf  0x10142   fprintf  0x1AF69   fprintf  0xC200  fprintf  0xE7AE   fputs   0x1108B  fwrite   0x19DA2  memcpy   0x1D348  snprintf 0x21F38
+fprintf  0x101AE   fprintf  0x1B2C7   fprintf  0xC228  fprintf  0xE7CB   fputs   0x11187  fwrite   0x19E13  memcpy   0x1D364  sprintf  0x10FCB
+fprintf  0x1028D   fprintf  0x1D06C   fprintf  0xCD11  fprintf  0xE7E8   fputs   0x12133  fwrite   0x1A715  memcpy   0x9EEE   sprintf  0x13932
+fprintf  0x108FE   fprintf  0x1D0D2   fprintf  0xCF16  fprintf  0xE8B8   fputs   0x147E3  fwrite   0x1A768  memset   0x1EB1B  sprintf  0x19344
+fprintf  0x10BD1   fprintf  0x1D0FC   fprintf  0xD940  fprintf  0xE8D5   fputs   0x1482B  fwrite   0x1AF0F  memset   0x1F194  sprintf  0x1A42E
+fprintf  0x10EB2   fprintf  0x1D120   fprintf  0xDE62  fprintf  0xE8F2   fputs   0x14E78  fwrite   0x1AF41  memset   0x1FB3B  sprintf  0x1B9F4
+fprintf  0x10F3A   fprintf  0x1D176   fprintf  0xDF1E  fprintf  0xE90F   fputs   0x14EA6  fwrite   0x85F2   printf   0x1134E  sprintf  0x1D7F4
+fprintf  0x10F85   fprintf  0x1D1AF   fprintf  0xDF4E  fprintf  0xEAE4   fputs   0x157FF  fwrite   0x89B1   printf   0x12C7D  sprintf  0x1DB26
+fprintf  0x11014   fprintf  0x1D7B0   fprintf  0xDF6C  fprintf  0xEB01   fputs   0x15870  fwrite   0x8D17   printf   0x12C93  sprintf  0x1DC98
+fprintf  0x110CF   fprintf  0x1DAED   fprintf  0xE1B4  fprintf  0xEB2A   fputs   0x1589B  fwrite   0x8E80   printf   0x12CB7  strcpy   0x143E6
+fprintf  0x1110F   fprintf  0x1DB8C   fprintf  0xE3C3  fprintf  0xEBF0   fputs   0x15A3F  fwrite   0x90FB   printf   0x12CF1  strcpy   0x144C7
+fprintf  0x11154   fprintf  0x1DC6C   fprintf  0xE490  fprintf  0xEC11   fputs   0x15B8C  fwrite   0xA156   printf   0x12D21  strcpy   0x14565
+fprintf  0x11174   fprintf  0x1DE9D   fprintf  0xAE36  fprintf  0xEC32   fputs   0x16B79  fwrite   0xA38C   printf   0x12DE0  strcpy   0x193F7
+fprintf  0x11377   fprintf  0x1FE90   fprintf  0xAE57  fprintf  0xEC53   fputs   0x1865D  fwrite   0xA8FA   printf   0x12E0E  strncpy  0x1DD65
+fprintf  0x113D3   fprintf  0x1FED1   fprintf  0xAE7B  fprintf  0xEC74   fputs   0x189EA  fwrite   0xA928   printf   0x12EBB  strtol   0x10B4F
+fprintf  0x11DF6   fprintf  0x1FF8B   fprintf  0xB021  fprintf  0xEC91   fputs   0x18EEF  fwrite   0xAA6A   printf   0x12FFE  strtoul  0x12B68
+fprintf  0x11E1F   fprintf  0x1FFB4   fprintf  0xB291  fprintf  0xECAE   fputs   0x18FC4  fwrite   0xAA98   printf   0x1307C  system   0x134E5
+fprintf  0x11FDB   fprintf  0x1FFF0   fprintf  0xB2DC  fprintf  0xECCB   fputs   0x19478  fwrite   0xAC58   printf   0x131B8  unlink   0x137A6
+fprintf  0x12212   fprintf  0x215ED   fprintf  0xB63C  fprintf  0xECE8   fputs   0x19551  fwrite   0xAC88   printf   0x18639
+fprintf  0x1228A   fprintf  0x21645   fprintf  0xB8BC  fprintf  0xED05   fputs   0x1967E  fwrite   0xACAE   printf   0x196EB
+fprintf  0x122E9   fprintf  0x21685   fprintf  0xB8F7  fprintf  0xED22   fputs   0x1A11E  fwrite   0xAD74   printf   0x196FD
+fprintf  0x124EB   fprintf  0x216D1   fprintf  0xBBC2  fprintf  0xED3F   fputs   0x1D85E  fwrite   0xAFF8   printf   0x1980C
+fprintf  0x12608   fprintf  0x21706   fprintf  0xBBF8  fprintf  0xEE56   fputs   0x1D8B7  fwrite   0xB046   printf   0x19E6E
+fprintf  0x1264B   fprintf  0x21F71   fprintf  0xBDC1  fprintf  0xF408   fputs   0x1DA0C  fwrite   0xB409   printf   0x1A4E7
+fprintf  0x12970   fprintf  0x21FFC   fprintf  0xBF67  fprintf  0xF429   fputs   0x1DBCA  fwrite   0xB435   printf   0x1A58C
+fprintf  0x13400   fprintf  0x7BBC    fprintf  0xBFCA  fprintf  0xF44A   fputs   0x1DBE2  fwrite   0xB611   printf   0x1A5E8
+fprintf  0x137DF   fprintf  0x7DB8    fprintf  0xC17E  fprintf  0xF467   fputs   0x1DBFD  fwrite   0xBC7F   printf   0x1A61B
+fprintf  0x13954   fprintf  0x804A    fprintf  0xC1A5  fprintf  0xF484   fputs   0x1DC18  fwrite   0xBCA1   printf   0x1A644
+fprintf  0x13A3E   fprintf  0x83F7    fprintf  0xC200  fprintf  0xF4A1   fputs   0x1DCBA  fwrite   0xBCC1   printf   0x1A69A
+fprintf  0x13A64   fprintf  0x8451    fprintf  0xC228  fprintf  0xF4D4   fputs   0x20563  fwrite   0xBF0A   printf   0x1A6F3
+fprintf  0x13A97   fprintf  0x8564    fprintf  0xCD11  fprintf  0xF4F9   fwrite  0x1001D  fwrite   0xBFF8   printf   0x1A7CD
+fprintf  0x13AB1   fprintf  0x8D71    fprintf  0xCF16  fprintf  0xFF58   fwrite  0x10334  fwrite   0xC1D8   printf   0x1A882
+fprintf  0x13C7E   fprintf  0x8DE0    fprintf  0xD940  fputc    0x10D9B  fwrite  0x104E0  fwrite   0xCBB3   printf   0x1A8D8
+fprintf  0x13E1D   fprintf  0x8DFC    fprintf  0xDE62  fputc    0x1105C  fwrite  0x10611  fwrite   0xCBCC   printf   0x1A940
+fprintf  0x13E3F   fprintf  0x8E21    fprintf  0xDF1E  fputc    0x1107B  fwrite  0x1062A  fwrite   0xCD42   printf   0x1A95F
+fprintf  0x13ED2   fprintf  0x8F85    fprintf  0xDF4E  fputc    0x110A0  fwrite  0x10CD4  fwrite   0xCD5B   printf   0x1A987
+fprintf  0x13F99   fprintf  0x9118    fprintf  0xDF6C  fputc    0x12060  fwrite  0x10D84  fwrite   0xCF99   printf   0x1A9A4
+fprintf  0x14144   fprintf  0x9181    fprintf  0xE1B4  fputc    0x120AA  fwrite  0x10DDD  fwrite   0xCFB2   printf   0x8162
+fprintf  0x147C8   fprintf  0x9201    fprintf  0xE3C3  fputc    0x120F8  fwrite  0x10DF2  fwrite   0xD210   puts     0x2047B
+fprintf  0x14F2D   fprintf  0xAD91    fprintf  0xE490  fputc    0x12351  fwrite  0x10FF5  fwrite   0xD67B   recv     0x9AA8
+</pre>
 </td>
 </tr>
 </td>
@@ -1926,18 +1997,30 @@ elf_merge_gnu_properties                 0x90B40
 _bfd_construct_extended_name_table       0x422CC
 </pre>
 <b id="libbfd-2.31.1+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
+<pre>Total/Confirmed/False positive/Unclassified: 76/0/0/76</pre>
 <pre>
-fprintf  0xC8CC8
-fprintf  0xC93B0
-fprintf  0xC93D5
-fwrite   0xC8CE1
-memcpy   0xABFB2
-memcpy   0xC43D2
-memcpy   0xCD25C
-snprintf 0x40FF8
-snprintf 0x410B2
-sprintf  0xCD287
+memcpy   0xCD25C   memmove  0x65767  strncpy  0x784B2  memcpy   0xE640D
+sprintf  0xCD287   printf   0xCBB9B  strncpy  0x7849F  sprintf  0xD8E68
+fprintf  0xC93D5   memset   0x469BB  sprintf  0x6988F  memcpy   0xD3D9E
+fprintf  0xC93B0   memcpy   0x46A2F  sprintf  0x76AD9  sprintf  0xD3E63
+fwrite   0xC8CE1   memcpy   0xE659C  sprintf  0x77EFE  strncat  0xD0CD3
+fprintf  0xC8CC8   memcpy   0xE6645  sprintf  0x77FC4  strcpy   0xD0EC7
+memcpy   0xC43D2   memcpy   0xE65FE  strtol   0x76E28  strncpy  0xB8D16
+memcpy   0xABFB2   memcpy   0xE86BD  strncpy  0x5A2E0  strncpy  0xB8E59
+snprintf 0x40FF8   memcpy   0x56D95  strncpy  0x5A2CF  strncpy  0xB8EE1
+snprintf 0x410B2   sprintf  0x564A3  strncpy  0x5A486  fprintf  0xBBCE3
+memcpy   0xDE442   memset   0xE0D9D  strncpy  0x5A475
+memcpy   0x576FF   fprintf  0xE07D6  memcpy   0x781A6
+sprintf  0x57EB1   strncpy  0x7828C  memcpy   0x5AB95
+fclose   0x5050E   strncpy  0x7827A  memcpy   0x9D732
+fclose   0x4F222   strncpy  0x782F5  memcpy   0xDE0EC
+fprintf  0xBF8DE   strncpy  0x782E3  memcpy   0xDE47E
+fprintf  0xBF8B9   strncpy  0x785AF  memcpy   0xE33D0
+fprintf  0xBF9C2   strncpy  0x7859C  memset   0xE3499
+fprintf  0xBFA0E   strncpy  0x78672  memcpy   0xE4721
+fprintf  0xBF96C   strncpy  0x7865F  memcpy   0xE6449
+sprintf  0xBE351   strncpy  0x783EC  memcpy   0xE6438
+sprintf  0xA7941   strncpy  0x783D9  memcpy   0xE6421
 </pre>
 </td>
 </tr>
