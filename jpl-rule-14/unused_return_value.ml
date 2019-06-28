@@ -12,28 +12,30 @@ module Machine_id = Monads.Std.Monad.State.Multi.Id
 module Machines = Machine_id.Map
 module Values = Primus.Value.Set
 module Vids = Primus.Value.Id.Set
+module Vid = Primus.Value.Id
 
-type candidate = string * addr
+type func = string * addr
 
 type proof = Used | Unused
 
 type state = {
-    names      : candidate Primus.Value.Id.Map.t;
+    functions  : func Primus.Value.Id.Map.t;
     candidates : machine list Primus.Value.Id.Map.t;
     machines   : Vids.t Machines.t;
-    proved     : proof Addr.Map.t
+    proved     : proof Addr.Map.t;
+    taints     : value Primus.Value.Id.Map.t;
   }
 
 let state = Primus.Machine.State.declare
     ~name:"unused-results"
     ~uuid:"af66d451-fb62-44c3-9c2a-8969e111ad91"
     (fun _ -> {
-         names = Map.empty (module Primus.Value.Id);
-         machines = Map.empty (module Machine_id);
-         candidates  = Map.empty (module Primus.Value.Id);
-         proved = Map.empty (module Addr)
+         functions  = Map.empty (module Primus.Value.Id);
+         candidates = Map.empty (module Primus.Value.Id);
+         machines   = Map.empty (module Machine_id);
+         proved     = Map.empty (module Addr);
+         taints     = Map.empty (module Primus.Value.Id);
     })
-
 
 let same_machine x y = Machine_id.(x = y)
 
@@ -55,7 +57,7 @@ module Results(Machine : Primus.Machine.S) = struct
     Machine.current () >>= fun cur ->
     Machine.Global.update state ~f:(fun s ->
         { s with
-          names = Map.set s.names vid (name,addr);
+          functions = Map.set s.functions vid (name,addr);
 
           machines = Map.update s.machines cur ~f:(function
                            | None -> Vids.singleton vid
@@ -63,11 +65,20 @@ module Results(Machine : Primus.Machine.S) = struct
 
           candidates = Map.update s.candidates vid ~f:(function
                          | None -> [cur]
-                         | Some ms -> cur :: ms)}) >>= fun () ->
+                         | Some ms -> cur :: ms);
+
+          taints = Map.set s.taints vid taint}) >>= fun () ->
     Value.b1
 
+  let par id =
+    Machine.current () >>= fun cur ->
+    Machine.switch id >>= fun () ->
+    Machine.parent () >>= fun par ->
+    Machine.switch cur >>= fun () ->
+    !! par
 
-  let on_new_machine par id =
+  let on_new_machine _par id =
+    par id >>= fun par ->
     Machine.Global.get state >>= fun s ->
     match Map.find s.machines par with
     | None -> !! ()
@@ -77,30 +88,31 @@ module Results(Machine : Primus.Machine.S) = struct
                    Set.fold vs ~init:s.candidates ~f:(fun ms v ->
                        Map.update ms v ~f:(function
                            | None -> [id]
-                           | Some ms -> id :: ms)) }
+                           | Some ms -> id :: ms));
+                 machines = Map.set s.machines id vs}
 
   let mark_used taint =
     let vid = Value.id taint in
     Machine.Global.get state >>= fun s ->
     let s =
-      match Map.find s.names vid with
+      match Map.find s.functions vid with
       | None -> s
       | Some (_,a) ->
          { s with proved = Map.set s.proved a Used; } in
     Machine.Global.put state
       { s with
-        names = Map.remove s.names vid;
+        functions = Map.remove s.functions vid;
         candidates = Map.remove s.candidates vid;} >>= fun () ->
     Value.b1
 
-  let on_machine_finished () =
-    Machine.current () >>= fun cur ->
-    Machine.Global.update state ~f:(fun s ->
-    {s with machines = Map.remove s.machines cur})
+  (* let on_machine_finished () =
+   *   Machine.current () >>= fun cur ->
+   *   Machine.Global.update state ~f:(fun s ->
+   *   {s with machines = Map.remove s.machines cur}) *)
 
   let get_addr v =
     Machine.Global.get state >>= fun s ->
-    match Map.find s.names v with
+    match Map.find s.functions v with
     | None -> !! None
     | Some (_,a) -> !! (Some a)
 
@@ -113,25 +125,24 @@ module Results(Machine : Primus.Machine.S) = struct
 
   let is_proved_used v =
     Machine.Global.get state >>= fun s ->
-    match Map.find s.names v with
+    match Map.find s.functions v with
     | None -> !! false
     | Some (_,a) -> !! (is_proved Used s a)
 
-  let is_new_incident addr v =
+  let is_new_incident addr vid =
     Machine.current () >>= fun cur ->
     Machine.Global.get state >>= fun s ->
-    match Map.find s.names v with
+    match Map.find s.functions vid with
     | None -> !! false
     | Some (_,addr) ->
-       match Map.find s.candidates v with
-       | Some [id] ->
-          !! (same_machine id cur && is_not_proved s addr)
-       | _  -> !!false
+       match Map.find s.candidates vid with
+       | Some [id] -> !! (same_machine id cur && is_not_proved s addr)
+       | _ -> !!false
 
   let is_unused taint =
     let vid = Value.id taint in
     Machine.Global.get state >>= fun s ->
-    match Map.find s.names vid with
+    match Map.find s.functions vid with
     | None -> Value.b0
     | Some (name,addr) ->
        is_new_incident addr vid >>= Value.of_bool
@@ -139,7 +150,7 @@ module Results(Machine : Primus.Machine.S) = struct
   let mark_unused taint =
     let vid = Value.id taint in
     Machine.Global.get state >>= fun s ->
-    match Map.find s.names vid with
+    match Map.find s.functions vid with
     | None -> Value.b0
     | Some (name,addr) ->
        Machine.Observation.make unused name  >>= fun () ->
@@ -156,7 +167,7 @@ module Results(Machine : Primus.Machine.S) = struct
         | None -> s
         | Some [id] when same_machine id cur ->
            { s with
-             names = Map.remove s.names vid;
+             functions = Map.remove s.functions vid;
              candidates = Map.remove s.candidates vid;}
         | Some ids ->
            let ids = List.filter ids
@@ -219,24 +230,29 @@ module ForkDetector(Machine : Primus.Machine.S) = struct
     Machine.current () >>= fun id ->
     Machine.Global.put forks (Some id, of_seq fs)
 
-  let check_forks _ =
+  let detect_forks _ =
     Machine.forks () >>= fun fs ->
     Machine.Global.get forks >>= fun (par, fs') ->
     Machine.current () >>= fun cur ->
-    of_seq fs |> fun fs ->
-    Set.diff fs fs' |> Set.to_list |> fun diff ->
-    match par with
-    | None -> Machine.Global.put forks (Some cur, fs)
-    | Some _ when diff = [] -> !! ()
-    | Some par ->
-      Machine.List.iter diff ~f:(Results.on_new_machine par) >>= fun () ->
-      Machine.Global.put forks (Some cur, fs)
+    if Seq.length fs = Set.length fs' then !! ()
+    else
+      of_seq fs |> fun fs ->
+      Set.diff fs fs' |> Set.to_list |> fun diff ->
+      match par with
+      | None -> Machine.Global.put forks (Some cur, fs)
+      | Some _ when diff = [] -> !! ()
+      | Some par ->
+        Machine.List.iter diff ~f:(Results.on_new_machine par) >>= fun () ->
+        Machine.Global.put forks (Some cur, fs)
 
-  let init () = Machine.sequence Primus.Interpreter.[
-      leave_pos >>> on_leave_pos;
-      read >>> check_forks;
-      enter_pos >>> check_forks;
-      leave_blk >>> check_forks;
+  let init () = Machine.sequence [
+        Primus.Interpreter.jumping   >>> detect_forks;
+        Primus.Linker.Trace.call     >>> detect_forks;
+
+        (* Primus.Interpreter.read      >>> detect_forks;
+         * Primus.Interpreter.enter_pos >>> detect_forks;
+         * Primus.Interpreter.leave_pos >>> detect_forks;
+         * Primus.Interpreter.leave_blk >>> detect_forks; *)
     ]
 
 end
@@ -286,6 +302,80 @@ module Return_arg(Machine : Primus.Machine.S) = struct
     | Some a -> Value.Symbol.to_value (Var.name (Arg.lhs a))
 end
 
+(* ?? *)
+module GetId(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+
+  [@@@warning "-P"]
+  let run [value] =
+    let id = Value.id value |> Primus.Value.Id.to_string in
+    Value.of_int ~width:64 (int_of_string id)
+end
+
+(* ?? *)
+module NumTaints(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  let run _ =
+    Machine.Global.get state >>= fun {machines; taints} ->
+    Machine.current () >>= fun id ->
+    match Map.find machines id with
+    | None -> Value.b0
+    | Some vs -> Value.of_int ~width:64 (Set.length vs)
+
+end
+
+(* ?? *)
+module GetTaint(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  [@@@warning "-P"]
+  let run [i] =
+    Machine.Global.get state >>= fun {machines; taints} ->
+    Machine.current () >>= fun id ->
+    match Map.find machines id with
+    | None -> Value.b0
+    | Some vs ->
+       match Word.to_int @@ Value.to_word i with
+       | Error _ -> Value.b0
+       | Ok i ->
+          match List.nth (Set.to_list vs) i with
+          | None -> Value.b0
+          | Some id ->
+             match Map.find taints id with
+             | None -> Value.b0
+             | Some v -> !! v
+end
+
+let taint_finish, taint_reached_finish =
+  Primus.Observation.provide ~inspect:Primus.sexp_of_value "taint-reached-finish"
+
+module TaintReachedTheEnd(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  let finish taints id =
+    match Map.find taints id with
+    | None -> !! ()
+    | Some v ->
+       Machine.Observation.make taint_reached_finish v
+
+  let init () =
+    Primus.Machine.finished >>> fun _ ->
+    Machine.current () >>= fun cur ->
+    Machine.Global.get state >>= fun {machines; taints} ->
+    match Map.find machines cur with
+    | None ->
+       !! ()
+    | Some xs ->
+       Set.to_list xs |> Machine.List.iter ~f:(finish taints)
+end
+
+
+
+
 module Interface(Machine : Primus.Machine.S) = struct
   module Lisp = Primus.Lisp.Make(Machine)
   open Primus.Lisp.Type.Spec
@@ -315,6 +405,18 @@ module Interface(Machine : Primus.Machine.S) = struct
           ~types:(tuple [a] @-> b)
           ~docs:"";
 
+        Lisp.define "get-machine-taint" (module GetTaint)
+          ~types:(tuple [a] @-> b)
+          ~docs:"";
+
+        Lisp.define "machine-taints" (module NumTaints)
+          ~types:(unit @-> b)
+          ~docs:"";
+
+        Lisp.define "get-value-id" (module GetId)
+          ~types:(tuple [a] @-> b)
+          ~docs:"";
+
         Lisp.define "return-arg" (module Return_arg)
           ~types:(tuple [a] @-> b)
           ~docs:
@@ -322,12 +424,13 @@ module Interface(Machine : Primus.Machine.S) = struct
             subroutine SUB. Returns NIL if the subroutine SUB doesn't
             return anything or subroutine's api is unknown|});
 
+        Lisp.signal ~doc:"" taint_finish (fun t -> Machine.return [t]);
       ]
 end
 
 open Config
 
-let enabled = flag "enable" ~doc:"Enable the analysis."
+let enabled = flag "enable" ~doc:"Enables the analysis"
 
 let () = when_ready (fun {get=(!!)} ->
              if !!enabled then
@@ -335,4 +438,5 @@ let () = when_ready (fun {get=(!!)} ->
                    Primus.Machine.add_component (module Interface);
                    Primus.Machine.add_component (module ForkDetector);
                    Primus.Machine.add_component (module HandleUnresolved);
+                   Primus.Machine.add_component (module TaintReachedTheEnd);
            ])
