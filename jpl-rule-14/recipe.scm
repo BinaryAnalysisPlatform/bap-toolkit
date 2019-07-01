@@ -24,10 +24,6 @@
   <stderr>:$prefix/stderr)
 
 (option primus-print-observations
-        ;; all
-        ;; -enter-exp
-        ;; -leave-exp
-        ;; -const)
         pc-changed
         jumping
         call

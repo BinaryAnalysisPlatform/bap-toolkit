@@ -4,7 +4,6 @@
         (addr (get-current-program-counter))
         (first-time (not (dict-has 'was-read taint))))
     (when (and taint first-time)
-;;      (msg "mark-read $0 $1" taint (get-value-id taint))
       (dict-add 'was-read taint addr))))
 
 (defmethod stored (addr val)
@@ -13,7 +12,6 @@
         (addr (get-current-program-counter)))
     (when taint
       (when (= addr prev)
-;;        (msg "unmark-read $0 $1" taint (get-value-id taint))
         (dict-del 'was-read taint)))))
 
 (defmethod loaded (ptr val)
@@ -22,48 +20,14 @@
     (taint-sanitize-indirect 'must-be-used ptr)
     (taint-sanitize-direct   'must-be-used val)))
 
-;; (defmethod taint-finalize (taint _)
-;;   (let ((read (dict-has 'was-read taint))
-;;         (unused (is-unused taint)))
-;;     (when read
-;;       (mark-used taint))
-;;     (when (and (not read) unused)
-;;       (mark-unused taint)
-;;       (notify-unused taint))
-;;     (mark-finalized taint)))
-
 (defmethod taint-reached-finish (taint)
-  (msg "we are here!!")
   (let ((read (dict-has 'was-read taint))
-        (unused (is-unused taint)))
+        (is-new (not (is-known-usage taint))))
     (when read
       (mark-used taint))
-    (when (and (not read) unused)
+    (when (and (not read) is-new)
       (mark-unused taint)
-      (notify-unused taint))
-    (mark-finalized taint)))
-
-;; (defun on-taint-finish(taint)
-;; ;;  (msg "finishing $0 $1" taint (get-value-id taint))
-;;   (let ((read (dict-has 'was-read taint))
-;;         (unused (is-unused taint)))
-;;     (when read
-;; ;;      (msg "marking used $0" taint)
-;;       (mark-used taint))
-;;     (when (and (not read) unused)
-;;       (mark-unused taint)
-;;       (notify-unused taint))
-;;     (mark-finalized taint)))
-
-;; (defmethod fini ()
-  ;; (let ((stop 0)
-  ;;       (num 2)
-  ;;       (i 0))
-  ;;   (while num
-  ;;     (let ((taint (get-machine-taint i)))
-  ;;       (on-taint-finish taint)
-  ;;       (decr num)
-  ;;       (incr i)))))
+      (notify-unused taint))))
 
 (defun notify-unused (taint)
   (incident-report 'value-was-not-used (incident-location)))
