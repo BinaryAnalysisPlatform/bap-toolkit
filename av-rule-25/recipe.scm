@@ -9,3 +9,4 @@
    mktime
    strftime
    time)
+(option no-optimization)
