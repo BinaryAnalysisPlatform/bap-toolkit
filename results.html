@@ -3,6 +3,7 @@
 <html>
   <head>
   <style>
+
    table, th, td {
      border: 1px solid black;
      border-collapse: collapse;
@@ -23,8 +24,37 @@
                <th>Total</th>
                <th>Confirmed</th>
                <th>False positive</th>
+               <th>False negative</th>
                <th>Unclassified</th><th><pre>Time
 hh:mm:ss</pre></th></tr>
+<tr>
+<td bgcolor="white" rowspan="1" >
+                         <pre><a href="#juliet-cwe-252">juliet-cwe-252</a>
+size:  249K</pre>
+                     </td>
+
+<td><a href="#juliet-cwe-252+Test">Testcase</a></td>
+<td align="center">216</td>
+<td align="center">216</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">00:06:02</td>
+</tr>
+<tr>
+<td bgcolor="white" rowspan="1" >
+                         <pre><a href="#juliet-cwe-476">juliet-cwe-476</a>
+size:  280K</pre>
+                     </td>
+
+<td><a href="#juliet-cwe-476+Test">Testcase</a></td>
+<td align="center">216</td>
+<td align="center">193</td>
+<td align="center">0</td>
+<td align="center">23</td>
+<td align="center">0</td>
+<td align="center">00:07:20</td>
+</tr>
 <tr>
 <td bgcolor="white" rowspan="7" >
                          <pre><a href="#httpd-2.4.18">httpd-2.4.18</a>
@@ -36,11 +66,13 @@ size:  873K</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
 <td><a href="#httpd-2.4.18+Recursive">Recursive functions</a></td>
 <td align="center">22</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">22</td>
@@ -49,6 +81,7 @@ size:  873K</pre>
 <tr>
 <td><a href="#httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">16</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">16</td>
@@ -60,11 +93,13 @@ size:  873K</pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
 <td><a href="#httpd-2.4.18+Null">Null pointer dereference</a></td>
 <td align="center">45</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">45</td>
@@ -75,12 +110,14 @@ size:  873K</pre>
 <td align="center">141</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">141</td>
 <td align="center">00:54:43</td>
 </tr>
 <tr>
 <td><a href="#httpd-2.4.18+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">67</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">67</td>
@@ -97,11 +134,13 @@ size:  46K</pre>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:03</td>
 </tr>
 <tr>
 <td><a href="#samba-4.7.6+Recursive">Recursive functions</a></td>
 <td align="center">2</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -112,11 +151,13 @@ size:  46K</pre>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">1</td>
 <td align="center">00:00:04</td>
 </tr>
 <tr>
 <td><a href="#samba-4.7.6+Non_structural">Functions with non-structural cfg</a></td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -129,12 +170,14 @@ size:  46K</pre>
 <td align="center">0</td>
 <td align="center">2</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
 <td><a href="#samba-4.7.6+Unused">Unused return value</a></td>
 <td align="center">9</td>
 <td align="center">9</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">00:00:40</td>
@@ -145,10 +188,12 @@ size:  46K</pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
 <td><a href="#samba-4.7.6+Value_was_used_before_check">Value was used before check</a></td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -166,11 +211,13 @@ size:  745K</pre>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:19</td>
 </tr>
 <tr>
 <td><a href="#openssl-1.1.0+Recursive">Recursive functions</a></td>
 <td align="center">18</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">18</td>
@@ -181,12 +228,14 @@ size:  745K</pre>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">22</td>
 <td align="center">00:00:29</td>
 </tr>
 <tr>
 <td><a href="#openssl-1.1.0+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -198,11 +247,13 @@ size:  745K</pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:46:44</td>
 </tr>
 <tr>
 <td><a href="#openssl-1.1.0+Unused">Unused return value</a></td>
 <td align="center">202</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">202</td>
@@ -211,6 +262,7 @@ size:  745K</pre>
 <tr>
 <td><a href="#openssl-1.1.0+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">10</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">10</td>
@@ -227,11 +279,13 @@ size:  2.2M</pre>
 <td align="center">20</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:22</td>
 </tr>
 <tr>
 <td><a href="#smtpd-5.7.3p2+Recursive">Recursive functions</a></td>
 <td align="center">81</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">81</td>
@@ -242,12 +296,14 @@ size:  2.2M</pre>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">9</td>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
 <td><a href="#smtpd-5.7.3p2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">6</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">6</td>
@@ -258,12 +314,14 @@ size:  2.2M</pre>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">8</td>
 <td align="center">01:08:20</td>
 </tr>
 <tr>
 <td><a href="#smtpd-5.7.3p2+Unused">Unused return value</a></td>
 <td align="center">306</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">306</td>
@@ -274,6 +332,7 @@ size:  2.2M</pre>
 <td align="center">79</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">79</td>
 <td align="center">04:26:32</td>
 </tr>
@@ -282,12 +341,14 @@ size:  2.2M</pre>
 <td align="center">8219</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">8219</td>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
 <td><a href="#smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">425</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">425</td>
@@ -304,10 +365,12 @@ size:  114K</pre>
 <td align="center">21</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:05</td>
 </tr>
 <tr>
 <td><a href="#wpa_cli-2.2+Recursive">Recursive functions</a></td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -320,10 +383,12 @@ size:  114K</pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
 <td><a href="#wpa_cli-2.2+Non_structural">Functions with non-structural cfg</a></td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -335,12 +400,14 @@ size:  114K</pre>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">5</td>
 <td align="center">00:12:49</td>
 </tr>
 <tr>
 <td><a href="#wpa_cli-2.2+Unused">Unused return value</a></td>
 <td align="center">144</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">144</td>
@@ -351,12 +418,14 @@ size:  114K</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">12</td>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
 <td><a href="#wpa_cli-2.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">324</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">324</td>
@@ -373,11 +442,13 @@ size:  1.4M</pre>
 <td align="center">24</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:47</td>
 </tr>
 <tr>
 <td><a href="#swfc-0.9.2+Recursive">Recursive functions</a></td>
 <td align="center">46</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">46</td>
@@ -388,12 +459,14 @@ size:  1.4M</pre>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">4</td>
 <td align="center">00:01:09</td>
 </tr>
 <tr>
 <td><a href="#swfc-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -404,12 +477,14 @@ size:  1.4M</pre>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">22</td>
 <td align="center">02:30:08</td>
 </tr>
 <tr>
 <td><a href="#swfc-0.9.2+Unused">Unused return value</a></td>
 <td align="center">518</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">518</td>
@@ -420,6 +495,7 @@ size:  1.4M</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">12</td>
 <td align="center">01:04:34</td>
 </tr>
@@ -428,12 +504,14 @@ size:  1.4M</pre>
 <td align="center">605</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">605</td>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
 <td><a href="#swfc-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">2771</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">2771</td>
@@ -450,11 +528,13 @@ size:  1.6M</pre>
 <td align="center">15</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
 <td><a href="#tshark-2.6.0+Recursive">Recursive functions</a></td>
 <td align="center">17</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">17</td>
@@ -465,11 +545,13 @@ size:  1.6M</pre>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">4</td>
 <td align="center">00:00:16</td>
 </tr>
 <tr>
 <td><a href="#tshark-2.6.0+Non_structural">Functions with non-structural cfg</a></td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -482,11 +564,13 @@ size:  1.6M</pre>
 <td align="center">0</td>
 <td align="center">2</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:32:20</td>
 </tr>
 <tr>
 <td><a href="#tshark-2.6.0+Unused">Unused return value</a></td>
 <td align="center">346</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">346</td>
@@ -495,6 +579,7 @@ size:  1.6M</pre>
 <tr>
 <td><a href="#tshark-2.6.0+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">27</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">27</td>
@@ -511,11 +596,13 @@ size:  241K</pre>
 <td align="center">20</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
 <td><a href="#wav2swf-0.9.2+Recursive">Recursive functions</a></td>
 <td align="center">13</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">13</td>
@@ -526,12 +613,14 @@ size:  241K</pre>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">1</td>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
 <td><a href="#wav2swf-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -542,12 +631,14 @@ size:  241K</pre>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">6</td>
 <td align="center">00:20:07</td>
 </tr>
 <tr>
 <td><a href="#wav2swf-0.9.2+Unused">Unused return value</a></td>
 <td align="center">219</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">219</td>
@@ -558,12 +649,14 @@ size:  241K</pre>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">6</td>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
 <td><a href="#wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">574</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">574</td>
@@ -580,11 +673,13 @@ size:  1.1M</pre>
 <td align="center">32</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:10</td>
 </tr>
 <tr>
 <td><a href="#ntpdc-4.2.8p5+Recursive">Recursive functions</a></td>
 <td align="center">32</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">32</td>
@@ -595,12 +690,14 @@ size:  1.1M</pre>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">8</td>
 <td align="center">00:00:14</td>
 </tr>
 <tr>
 <td><a href="#ntpdc-4.2.8p5+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">5</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">5</td>
@@ -611,12 +708,14 @@ size:  1.1M</pre>
 <td align="center">11</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">11</td>
 <td align="center">00:25:22</td>
 </tr>
 <tr>
 <td><a href="#ntpdc-4.2.8p5+Unused">Unused return value</a></td>
 <td align="center">572</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">572</td>
@@ -627,12 +726,14 @@ size:  1.1M</pre>
 <td align="center">96</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">96</td>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
 <td><a href="#ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">314</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">314</td>
@@ -649,11 +750,13 @@ size:  1.1M</pre>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
 <td><a href="#swfextract-0.9.2+Recursive">Recursive functions</a></td>
 <td align="center">27</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">27</td>
@@ -664,12 +767,14 @@ size:  1.1M</pre>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">6</td>
 <td align="center">00:00:44</td>
 </tr>
 <tr>
 <td><a href="#swfextract-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -680,12 +785,14 @@ size:  1.1M</pre>
 <td align="center">16</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">16</td>
 <td align="center">01:30:19</td>
 </tr>
 <tr>
 <td><a href="#swfextract-0.9.2+Unused">Unused return value</a></td>
 <td align="center">471</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">471</td>
@@ -696,12 +803,14 @@ size:  1.1M</pre>
 <td align="center">178</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">178</td>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
 <td><a href="#swfextract-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">1925</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1925</td>
@@ -718,11 +827,13 @@ size:  770K</pre>
 <td align="center">17</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
 <td><a href="#lighttpd-1.4.15+Recursive">Recursive functions</a></td>
 <td align="center">10</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">10</td>
@@ -733,12 +844,14 @@ size:  770K</pre>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">6</td>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
 <td><a href="#lighttpd-1.4.15+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -749,12 +862,14 @@ size:  770K</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">12</td>
 <td align="center">00:15:12</td>
 </tr>
 <tr>
 <td><a href="#lighttpd-1.4.15+Unused">Unused return value</a></td>
 <td align="center">153</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">153</td>
@@ -765,6 +880,7 @@ size:  770K</pre>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">2</td>
 <td align="center">03:03:45</td>
 </tr>
@@ -773,12 +889,14 @@ size:  770K</pre>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">2</td>
 <td align="center">03:03:45</td>
 </tr>
 <tr>
 <td><a href="#lighttpd-1.4.15+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">2</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -795,11 +913,13 @@ size:  6.0M</pre>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:55</td>
 </tr>
 <tr>
 <td><a href="#libbfd-2.31.1+Recursive">Recursive functions</a></td>
 <td align="center">90</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">90</td>
@@ -810,12 +930,14 @@ size:  6.0M</pre>
 <td align="center">79</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">79</td>
 <td align="center">00:01:24</td>
 </tr>
 <tr>
 <td><a href="#libbfd-2.31.1+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">3</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">3</td>
@@ -826,12 +948,14 @@ size:  6.0M</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">12</td>
 <td align="center">3:02:02</td>
 </tr>
 <tr>
 <td><a href="#libbfd-2.31.1+Unused">Unused return value</a></td>
 <td align="center">545</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">545</td>
@@ -848,11 +972,13 @@ size:  859K</pre>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
 <td><a href="#nginx-1.7+Recursive">Recursive functions</a></td>
 <td align="center">55</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">55</td>
@@ -863,12 +989,14 @@ size:  859K</pre>
 <td align="center">41</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">41</td>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
 <td><a href="#nginx-1.7+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">7</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">7</td>
@@ -879,12 +1007,14 @@ size:  859K</pre>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">3</td>
 <td align="center">04:47:01</td>
 </tr>
 <tr>
 <td><a href="#nginx-1.7+Unused">Unused return value</a></td>
 <td align="center">81</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">81</td>
@@ -895,12 +1025,14 @@ size:  859K</pre>
 <td align="center">392</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">392</td>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
 <td><a href="#nginx-1.7+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">346</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">346</td>
@@ -917,11 +1049,13 @@ size:  1.1M</pre>
 <td align="center">25</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:56</td>
 </tr>
 <tr>
 <td><a href="#sqlite3-2.27.2+Recursive">Recursive functions</a></td>
 <td align="center">180</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">180</td>
@@ -932,12 +1066,14 @@ size:  1.1M</pre>
 <td align="center">46</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">46</td>
 <td align="center">00:01:20</td>
 </tr>
 <tr>
 <td><a href="#sqlite3-2.27.2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">7</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">7</td>
@@ -948,12 +1084,14 @@ size:  1.1M</pre>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">2</td>
+<td align="center">0</td>
 <td align="center">16</td>
 <td align="center">5:55:46</td>
 </tr>
 <tr>
 <td><a href="#sqlite3-2.27.2+Unused">Unused return value</a></td>
 <td align="center">149</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">149</td>
@@ -970,11 +1108,13 @@ size:  113K</pre>
 <td align="center">20</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
 <td><a href="#swfcombine-0.9.2+Recursive">Recursive functions</a></td>
 <td align="center">4</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">4</td>
@@ -985,12 +1125,14 @@ size:  113K</pre>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">4</td>
 <td align="center">00:00:09</td>
 </tr>
 <tr>
 <td><a href="#swfcombine-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">2</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -1001,12 +1143,14 @@ size:  113K</pre>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">5</td>
 <td align="center">00:18:13</td>
 </tr>
 <tr>
 <td><a href="#swfcombine-0.9.2+Unused">Unused return value</a></td>
 <td align="center">185</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">185</td>
@@ -1017,12 +1161,14 @@ size:  113K</pre>
 <td align="center">792</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">792</td>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
 <td><a href="#swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">309</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">309</td>
@@ -1039,11 +1185,13 @@ size:  3.1M</pre>
 <td align="center">43</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:29</td>
 </tr>
 <tr>
 <td><a href="#ntpd-4.2.8p5+Recursive">Recursive functions</a></td>
 <td align="center">77</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">77</td>
@@ -1054,12 +1202,14 @@ size:  3.1M</pre>
 <td align="center">31</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">31</td>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
 <td><a href="#ntpd-4.2.8p5+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">13</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">13</td>
@@ -1070,12 +1220,14 @@ size:  3.1M</pre>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">6</td>
 <td align="center">01:35:31</td>
 </tr>
 <tr>
 <td><a href="#ntpd-4.2.8p5+Unused">Unused return value</a></td>
 <td align="center">909</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">909</td>
@@ -1086,6 +1238,7 @@ size:  3.1M</pre>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">3</td>
 <td align="center">01:08:15</td>
 </tr>
@@ -1094,12 +1247,14 @@ size:  3.1M</pre>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">9</td>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
 <td><a href="#ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">254</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">254</td>
@@ -1116,11 +1271,13 @@ size:  3.0M</pre>
 <td align="center">25</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
 <td><a href="#sshd-7.3.p1+Recursive">Recursive functions</a></td>
 <td align="center">184</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">184</td>
@@ -1131,12 +1288,14 @@ size:  3.0M</pre>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">12</td>
 <td align="center">00:00:48</td>
 </tr>
 <tr>
 <td><a href="#sshd-7.3.p1+Non_structural">Functions with non-structural cfg</a></td>
 <td align="center">9</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">9</td>
@@ -1148,11 +1307,13 @@ size:  3.0M</pre>
 <td align="center">0</td>
 <td align="center">3</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">01:53:16</td>
 </tr>
 <tr>
 <td><a href="#sshd-7.3.p1+Unused">Unused return value</a></td>
 <td align="center">229</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">229</td>
@@ -1163,12 +1324,14 @@ size:  3.0M</pre>
 <td align="center">24</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">24</td>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
 <td><a href="#sshd-7.3.p1+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">1074</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1074</td>
@@ -1185,11 +1348,13 @@ size:  934K</pre>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
 <td><a href="#wpa_supplicant-2.2+Recursive">Recursive functions</a></td>
 <td align="center">4</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">4</td>
@@ -1198,6 +1363,7 @@ size:  934K</pre>
 <tr>
 <td><a href="#wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">11</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">11</td>
@@ -1209,11 +1375,13 @@ size:  934K</pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">00:00:53</td>
 </tr>
 <tr>
 <td><a href="#wpa_supplicant-2.2+Null">Null pointer dereference</a></td>
 <td align="center">20</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">20</td>
@@ -1224,12 +1392,14 @@ size:  934K</pre>
 <td align="center">562</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">562</td>
 <td align="center">01:27:04</td>
 </tr>
 <tr>
 <td><a href="#wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</a></td>
 <td align="center">7</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">7</td>
@@ -1240,12 +1410,14 @@ size:  934K</pre>
 <td align="center">569</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 <td align="center">569</td>
 <td align="center">00:01:28</td>
 </tr>
 <tr>
 <td><a href="#wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</a></td>
 <td align="center">495</td>
+<td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">495</td>
@@ -1260,12 +1432,48 @@ size:  934K</pre>
          <th></th>
        </tr>
 <tr>
+<td><pre><h3>juliet-cwe-252</h3>size:  249K</pre></td>
+<td>
+<p id="juliet-cwe-252"> </p>
+<p><a href="#top">Top</a></p>
+<b id="juliet-cwe-252+Test">Testcase</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 216/216/0/0/0</pre>
+<pre>Time: 00:06:02</pre>
+
+    <table>
+      <td bgcolor=#00B32C>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td bgcolor="#f2f2f2"> confirmed </td>
+      <tr> </tr>
+      <td bgcolor=#FF3C38></td>
+      <td bgcolor="#f2f2f2"> false negative </td>
+    </table></br><table><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fgets_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fprintf_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputc_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fputs_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fread_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fscanf_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_fwrite_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_putchar_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_puts_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_scanf_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_snprintf_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_01_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_02_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_04_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_05_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_07_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_08_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_10_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_11_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_13_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_14_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_16_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_17_bad</td><td bgcolor="#00B32C">CWE252_Unchecked_Return_Value__char_sscanf_18_bad</td><tr></tr></table>
+</tr>
+</td>
+<tr>
+<td><pre><h3>juliet-cwe-476</h3>size:  280K</pre></td>
+<td>
+<p id="juliet-cwe-476"> </p>
+<p><a href="#top">Top</a></p>
+<b id="juliet-cwe-476+Test">Testcase</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 216/193/0/23/0</pre>
+<pre>Time: 00:07:20</pre>
+
+    <table>
+      <td bgcolor=#00B32C>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      <td bgcolor="#f2f2f2"> confirmed </td>
+      <tr> </tr>
+      <td bgcolor=#FF3C38></td>
+      <td bgcolor="#f2f2f2"> false negative </td>
+    </table></br><table><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_11_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__binary_if_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__char_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_21_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_22_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_31_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_32_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_34_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_41_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_44_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_45_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_51_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_52_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_53_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_54_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_63_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_64_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_65_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_66_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_67_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__char_68_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_01_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_02_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_03_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_04_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_05_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_06_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_07_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_08_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_09_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_10_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_12_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_13_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_14_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_15_bad</td><tr></tr><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_16_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_17_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__deref_after_check_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__int64_t_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_21_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_22_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_31_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_32_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_34_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_41_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_44_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_45_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_51_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_52_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_53_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_54_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_63_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_64_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_65_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_66_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_67_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int64_t_68_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__int_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_21_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_22_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_31_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_32_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_34_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_41_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_44_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_45_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_51_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_52_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_53_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_54_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_63_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_64_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_65_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_66_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_67_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__int_68_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__long_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_21_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_22_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_31_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_32_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_34_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_41_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_44_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_45_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_51_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_52_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_53_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_54_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_63_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_64_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_65_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_66_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_67_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__long_68_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_01_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_02_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_03_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_04_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_05_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_06_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_07_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_08_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_09_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_10_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_11_bad</td><td bgcolor="#FF3C38">CWE476_NULL_Pointer_Dereference__struct_12_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_13_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_14_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_15_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_16_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_17_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_18_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_21_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_22_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_31_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_32_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_34_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_41_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_44_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_45_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_51_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_52_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_53_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_54_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_63_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_64_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_65_bad</td><tr></tr><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_66_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_67_bad</td><td bgcolor="#00B32C">CWE476_NULL_Pointer_Dereference__struct_68_bad</td><tr></tr></table>
+</tr>
+</td>
+<tr>
 <td><pre><h3>httpd-2.4.18</h3>size:  873K</pre></td>
 <td>
 <p id="httpd-2.4.18"> </p>
 <p><a href="#top">Top</a></p>
 <b id="httpd-2.4.18+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/12/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/12/0/0/0</pre>
 <pre>Time: 00:00:30</pre>
 <pre>
 __errno_location  freopen
@@ -1276,7 +1484,7 @@ exit              puts
 fprintf           sscanf
 </pre>
 <b id="httpd-2.4.18+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 22/0/0/0/22</pre>
 <pre>Time: 00:00:33</pre>
 <pre>
 ap_abort_on_oom           parse_errorlog_item
@@ -1292,7 +1500,7 @@ clean_child_exit          sub_483ce2
 count_directives_sub      sub_486162
 </pre>
 <b id="httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 16/0/0/16</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 16/0/0/0/16</pre>
 <pre>Time: 00:00:49</pre>
 <pre>
 ap_core_output_filter                  ap_select_protocol
@@ -1311,7 +1519,7 @@ ap_scan_script_header_err_core_ex
 no incidents found
 </pre>
 <b id="httpd-2.4.18+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 45/0/0/45</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 45/0/0/0/45</pre>
 <pre>Time: 01:36:00</pre>
 <pre>
 alloc_listener               0x468D30   ap_get_sload             0x434D51   ap_varbuf_cfg_getline 0x431192
@@ -1331,7 +1539,7 @@ ap_expr_yy_load_buffer_state 0x471983   ap_send_http_trace       0x47D39B   regs
 ap_get_server_protocol       0x4468DF   ap_send_interim_response 0x43F3C0   regsub_core           0x42FCD4
 </pre>
 <b id="httpd-2.4.18+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 141/0/0/141</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 141/0/0/0/141</pre>
 <pre>Time: 00:54:43</pre>
 <pre>
 atoi    0x4360B9  memcpy  0x4348FB  memset  0x4491C6  printf  0x45F2DD  puts    0x42BD3A
@@ -1365,7 +1573,7 @@ memcpy  0x434632  memset  0x439677  printf  0x45F2A4  puts    0x42BD26
 memcpy  0x434868  memset  0x4396F6  printf  0x45F2CE  puts    0x42BD30
 </pre>
 <b id="httpd-2.4.18+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 67/0/0/67</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 67/0/0/0/67</pre>
 <pre>Time: 01:04:41</pre>
 </tr>
 </td>
@@ -1375,7 +1583,7 @@ memcpy  0x434868  memset  0x4396F6  printf  0x45F2CE  puts    0x42BD30
 <p id="samba-4.7.6"> </p>
 <p><a href="#top">Top</a></p>
 <b id="samba-4.7.6+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 8/8/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 8/8/0/0/0</pre>
 <pre>Time: 00:00:03</pre>
 <pre>
 __errno_location   printf
@@ -1384,14 +1592,14 @@ fprintf            signal
 fwrite             time
 </pre>
 <b id="samba-4.7.6+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <pre>Time: 00:00:03</pre>
 <pre>
 recursive_delete
 sig_term
 </pre>
 <b id="samba-4.7.6+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:04</pre>
 <pre>
 binary_smbd_main
@@ -1403,14 +1611,14 @@ binary_smbd_main
 no incidents found
 </pre>
 <b id="samba-4.7.6+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/2/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/2/0/0</pre>
 <pre>Time: 00:00:40</pre>
 <pre>
 binary_smbd_main 0x4DD0
 binary_smbd_main 0x4D6D
 </pre>
 <b id="samba-4.7.6+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 9/9/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 9/9/0/0/0</pre>
 <pre>Time: 00:00:40</pre>
 <pre>
 fprintf 0x380D
@@ -1424,7 +1632,7 @@ puts    0x44E7
 puts    0x450B
 </pre>
 <b id="samba-4.7.6+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 0/0/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 0/0/0/0/0</pre>
 <pre>Time: 00:00:40</pre>
 <pre>
 not found
@@ -1448,7 +1656,7 @@ no incidents found
 <p id="openssl-1.1.0"> </p>
 <p><a href="#top">Top</a></p>
 <b id="openssl-1.1.0+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 18/18/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 18/18/0/0/0</pre>
 <pre>Time: 00:00:19</pre>
 <pre>
 __errno_location  fprintf    perror    setbuf
@@ -1458,7 +1666,7 @@ fflush            fwrite     puts
 fgets             getenv     rename
 </pre>
 <b id="openssl-1.1.0+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 18/0/0/18</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 18/0/0/0/18</pre>
 <pre>Time: 00:00:20</pre>
 <pre>
 app_malloc                   sub_4ffd0
@@ -1472,7 +1680,7 @@ sub_473b0                    sub_67160
 sub_4ffb6                    sub_671a5
 </pre>
 <b id="openssl-1.1.0+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 22/0/0/0/22</pre>
 <pre>Time: 00:00:29</pre>
 <pre>
 ca_main             smime_main    sub_58d90
@@ -1484,7 +1692,7 @@ req_main            sub_4e510     www_body
 s_server_main       sub_51459     x509_main
 </pre>
 <b id="openssl-1.1.0+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:25</pre>
 <pre>
 main
@@ -1496,7 +1704,7 @@ main
 no incidents found
 </pre>
 <b id="openssl-1.1.0+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 202/0/0/202</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 202/0/0/0/202</pre>
 <pre>Time: 00:32:27</pre>
 <pre>
 alarm    0x69925  alarm    0x6D41A  fprintf  0x6F579  printf   0x639DC  printf   0x6C109  sleep    0x5E61D
@@ -1535,7 +1743,7 @@ alarm    0x6D218  fprintf  0x6F4FE  printf   0x63825  printf   0x6C085  puts    
 alarm    0x6D2BF  fprintf  0x6F53C  printf   0x639A3  printf   0x6C0E5  puts     0x73751
 </pre>
 <b id="openssl-1.1.0+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 10/0/0/0/10</pre>
 <pre>Time: 00:27:22</pre>
 </tr>
 </td>
@@ -1545,7 +1753,7 @@ alarm    0x6D2BF  fprintf  0x6F53C  printf   0x639A3  printf   0x6C0E5  puts    
 <p id="smtpd-5.7.3p2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="smtpd-5.7.3p2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 20/20/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 20/20/0/0/0</pre>
 <pre>Time: 00:00:22</pre>
 <pre>
 __errno_location   fprintf      perror
@@ -1557,7 +1765,7 @@ fflush             getenv
 fopen              localtime
 </pre>
 <b id="smtpd-5.7.3p2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 81/0/0/81</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 81/0/0/0/81</pre>
 <pre>Time: 00:00:22</pre>
 <pre>
 _rs_stir                                    sub_11b9d    sub_37ae8
@@ -1592,7 +1800,7 @@ ssl_setup                                   sub_31cbf
 stats_tree_RB_INSERT_COLOR                  sub_31dd3
 </pre>
 <b id="smtpd-5.7.3p2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 9/0/0/9</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 9/0/0/0/9</pre>
 <pre>Time: 00:00:30</pre>
 <pre>
 envelope_ascii_dump     sub_40eb2
@@ -1602,7 +1810,7 @@ sub_18014               yylex
 sub_1a9b6
 </pre>
 <b id="smtpd-5.7.3p2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 00:00:28</pre>
 <pre>
 queue_proc_call             sub_40eb2
@@ -1610,7 +1818,7 @@ queue_proc_envelope_walk    sub_410c2
 scheduler_proc_call         table_proc_call
 </pre>
 <b id="smtpd-5.7.3p2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 8/0/0/8</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 8/0/0/0/8</pre>
 <pre>Time: 01:08:20</pre>
 <pre>
 nanosleep              0x494BF
@@ -1623,7 +1831,7 @@ text_to_relayhost      0x3D060
 queue_bounce           0x2C61F
 </pre>
 <b id="smtpd-5.7.3p2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 306/0/0/306</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 306/0/0/0/306</pre>
 <pre>Time: 00:46:10</pre>
 <pre>
 alarm   0x3936B  execl     0x382F4  fwrite      0x8211   memset   0x3350F   snprintf  0x12BF0  snprintf    0x3C764
@@ -1680,17 +1888,17 @@ dup2    0x1BF98  fwrite    0x4058E  memset      0x331B0  rmdir    0x37E0D   snpr
 dup2    0x382D1  fwrite    0x419FE  memset      0x33456  snprintf 0x12B75   snprintf  0x3C733
 </pre>
 <b id="smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/Unclassified: 79/0/0/79</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 79/0/0/0/79</pre>
 <pre>Time: 04:26:32</pre>
 <b id="smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 8219/0/0/8219</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 8219/0/0/0/8219</pre>
 <pre>Time: 04:26:32</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 04:26:32</pre>
 <b id="smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 425/0/0/425</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 425/0/0/0/425</pre>
 <pre>Time: 04:26:32</pre>
 </tr>
 </td>
@@ -1700,7 +1908,7 @@ memcheck-use-after-release:
 <p id="wpa_cli-2.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="wpa_cli-2.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 21/21/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 21/21/0/0/0</pre>
 <pre>Time: 00:00:05</pre>
 <pre>
 __errno_location   gmtime
@@ -1734,7 +1942,7 @@ no incidents found
 no incidents found
 </pre>
 <b id="wpa_cli-2.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 5/0/0/0/5</pre>
 <pre>Time: 00:12:49</pre>
 <pre>
 wpa_ctrl_request          0x9730
@@ -1744,7 +1952,7 @@ eloop_destroy             0xDF9C
 eloop_cancel_timeout_one  0xD5DA
 </pre>
 <b id="wpa_cli-2.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 144/0/0/144</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 144/0/0/0/144</pre>
 <pre>Time: 00:03:55</pre>
 <pre>
 alarm    0xD910  memset  0x9412  printf   0x9EEB  puts 0x5635  puts 0x643E  puts     0x924B
@@ -1774,14 +1982,14 @@ memcpy   0xC6B0  printf  0x9DE4  puts     0x52A5  puts 0x6312  puts 0x8D89
 memcpy   0xC6E1  printf  0x9EC3  puts     0x5397  puts 0x63AC  puts 0x917B
 </pre>
 <b id="wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
 <pre>Time: 00:20:33</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:20:33</pre>
 <b id="wpa_cli-2.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 324/0/0/324</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 324/0/0/0/324</pre>
 <pre>Time: 00:20:33</pre>
 </tr>
 </td>
@@ -1791,7 +1999,7 @@ memcheck-use-after-release:
 <p id="swfc-0.9.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="swfc-0.9.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 24/24/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 24/24/0/0/0</pre>
 <pre>Time: 00:00:47</pre>
 <pre>
 __errno_location  fopen     getenv
@@ -1804,7 +2012,7 @@ ferror            ftell     sprintf
 fflush            fwrite    time
 </pre>
 <b id="swfc-0.9.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 46/0/0/46</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 46/0/0/0/46</pre>
 <pre>Time: 00:00:46</pre>
 <pre>
 _trie_dump                   free_lines             sub_67b07             swf5restart
@@ -1822,7 +2030,7 @@ enumerateUsedIDs             sub_5e73a              swf4restart
 filterState_free             sub_61a7a              swf5_scan_bytes
 </pre>
 <b id="swfc-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <pre>Time: 00:01:09</pre>
 <pre>
 enumerateUsedIDs
@@ -1831,13 +2039,13 @@ png_write_palette_based2
 writeABC
 </pre>
 <b id="swfc-0.9.2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:58</pre>
 <pre>
 zlib_error
 </pre>
 <b id="swfc-0.9.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 22/0/0/22</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 22/0/0/0/22</pre>
 <pre>Time: 02:30:08</pre>
 <pre>
 png_read_header           0xA97ED
@@ -1864,7 +2072,7 @@ png_write_palette_based2  0xAC7D0
 png_write_palette_based2  0xAC38E
 </pre>
 <b id="swfc-0.9.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 518/0/0/518</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 518/0/0/0/518</pre>
 <pre>Time: 01:09:32</pre>
 <pre>
 calloc  0xA6BD4  fprintf 0x645FA  fprintf 0x87841  fwrite  0x65E3A  malloc  0xA9087  printf  0x72DEB
@@ -1956,17 +2164,17 @@ fprintf 0x62B55  fprintf 0x724E0  fwrite  0x657DD  malloc  0x46448  printf  0x72
 fprintf 0x63D6F  fprintf 0x87823  fwrite  0x65DF8  malloc  0x46471  printf  0x72D6E
 </pre>
 <b id="swfc-0.9.2+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
 <pre>Time: 01:04:34</pre>
 <b id="swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 605/0/0/605</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 605/0/0/0/605</pre>
 <pre>Time: 01:04:34</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 01:04:34</pre>
 <b id="swfc-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2771/0/0/2771</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2771/0/0/0/2771</pre>
 <pre>Time: 01:04:34</pre>
 </tr>
 </td>
@@ -1976,7 +2184,7 @@ memcheck-use-after-release:
 <p id="tshark-2.6.0"> </p>
 <p><a href="#top">Top</a></p>
 <b id="tshark-2.6.0+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 15/15/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 15/15/0/0/0</pre>
 <pre>Time: 00:00:12</pre>
 <pre>
 __errno_location   fopen      putchar
@@ -1986,7 +2194,7 @@ ferror             fwrite     setlocale
 fflush             getenv     ungetc
 </pre>
 <b id="tshark-2.6.0+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 17/0/0/17</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 17/0/0/0/17</pre>
 <pre>Time: 00:00:12</pre>
 <pre>
 copy_filter_list  sub_11d83    sub_20eea
@@ -1997,7 +2205,7 @@ sub_101da         sub_20ec9    tree_traverse_pre_order.constprop.0
 sub_119b7         sub_20edc
 </pre>
 <b id="tshark-2.6.0+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <pre>Time: 00:00:16</pre>
 <pre>
 iostat_draw
@@ -2012,14 +2220,14 @@ sub_2e750
 no incidents found
 </pre>
 <b id="tshark-2.6.0+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/2/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/2/0/0</pre>
 <pre>Time: 00:32:20</pre>
 <pre>
 register_tap_listener          0x2955B
 display_dissector_table_names  0x2FB0C
 </pre>
 <b id="tshark-2.6.0+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 346/0/0/346</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 346/0/0/0/346</pre>
 <pre>Time: 00:12:48</pre>
 <pre>
 close   0x14E43  fputs   0xEC39   fwrite  0x18DEA  fwrite  0x1A53E  putchar 0x29BB1  puts    0x24C1C
@@ -2082,7 +2290,7 @@ fputs   0xEC1B   fwrite  0x18DB8  fwrite  0x19424  putchar 0x28EF1  puts    0x24
 fputs   0xEC2A   fwrite  0x18DD1  fwrite  0x194B1  putchar 0x29419  puts    0x248D7
 </pre>
 <b id="tshark-2.6.0+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 27/0/0/27</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 27/0/0/0/27</pre>
 <pre>Time: 00:17:10</pre>
 </tr>
 </td>
@@ -2092,7 +2300,7 @@ fputs   0xEC2A   fwrite  0x18DD1  fwrite  0x194B1  putchar 0x29419  puts    0x24
 <p id="wav2swf-0.9.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="wav2swf-0.9.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 20/20/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 20/20/0/0/0</pre>
 <pre>Time: 00:00:08</pre>
 <pre>
 __errno_location   fread     puts
@@ -2105,7 +2313,7 @@ fprintf            printf
 fputc              putchar
 </pre>
 <b id="wav2swf-0.9.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 13/0/0/13</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 13/0/0/0/13</pre>
 <pre>Time: 00:00:08</pre>
 <pre>
 args_callback_longoption    sub_dbee
@@ -2117,19 +2325,19 @@ sub_caa3                    swf_WriteTag
 sub_db7e
 </pre>
 <b id="wav2swf-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:11</pre>
 <pre>
 enumerateUsedIDs
 </pre>
 <b id="wav2swf-0.9.2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:10</pre>
 <pre>
 zlib_error
 </pre>
 <b id="wav2swf-0.9.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 00:20:07</pre>
 <pre>
 zlib_error             0x1AFD6
@@ -2140,7 +2348,7 @@ swf5_load_buffer_state 0xF081
 swf4_load_buffer_state 0xD1BD
 </pre>
 <b id="wav2swf-0.9.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 219/0/0/219</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 219/0/0/0/219</pre>
 <pre>Time: 00:09:24</pre>
 <pre>
 close   0x1A9F3  fprintf 0x19FFE  fwrite  0x19494  fwrite  0x6D0E   printf  0x18250  puts    0x1830C
@@ -2182,14 +2390,14 @@ fprintf 0x19D8B  fwrite  0x18A0B  fwrite  0x6ADF   printf  0x18227  putchar 0xF2
 fprintf 0x19FA4  fwrite  0x18A54  fwrite  0x6CC1   printf  0x1823C  puts    0x182E7
 </pre>
 <b id="wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 00:11:03</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:11:03</pre>
 <b id="wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 574/0/0/574</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 574/0/0/0/574</pre>
 <pre>Time: 00:11:03</pre>
 </tr>
 </td>
@@ -2199,7 +2407,7 @@ memcheck-use-after-release:
 <p id="ntpdc-4.2.8p5"> </p>
 <p><a href="#top">Top</a></p>
 <b id="ntpdc-4.2.8p5+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 32/32/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 32/32/0/0/0</pre>
 <pre>Time: 00:00:10</pre>
 <pre>
 __errno_location   fgets      getenv      rename
@@ -2212,7 +2420,7 @@ fflush             freopen    putchar     time
 fgetc              fwrite     puts        vfprintf
 </pre>
 <b id="ntpdc-4.2.8p5+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 32/0/0/32</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 32/0/0/0/32</pre>
 <pre>Time: 00:00:11</pre>
 <pre>
 acts_receive              sub_1da6d
@@ -2233,7 +2441,7 @@ sub_199e8                 yylex
 sub_1ae49
 </pre>
 <b id="ntpdc-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 8/0/0/8</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 8/0/0/0/8</pre>
 <pre>Time: 00:00:14</pre>
 <pre>
 doquery         sub_1b799
@@ -2242,7 +2450,7 @@ sub_162a8       sub_1d732
 sub_17409       sub_226b8
 </pre>
 <b id="ntpdc-4.2.8p5+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 5/0/0/0/5</pre>
 <pre>Time: 00:00:14</pre>
 <pre>
 optionRestore
@@ -2252,7 +2460,7 @@ sub_13418
 sub_17409
 </pre>
 <b id="ntpdc-4.2.8p5+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 11/0/0/11</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 11/0/0/0/11</pre>
 <pre>Time: 00:25:22</pre>
 <pre>
 socktoa                      0x20A2E
@@ -2268,7 +2476,7 @@ decodenetnum                 0x1F5B5
 option_pathfind.constprop.66 0x14424
 </pre>
 <b id="ntpdc-4.2.8p5+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 572/0/0/572</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 572/0/0/0/572</pre>
 <pre>Time: 00:14:30</pre>
 <pre>
 atexit   0x1362E  fprintf  0x1FFB4  fprintf  0xE1B4   fputc    0x1107B  fwrite   0x199F8  memcpy   0x1CBFC
@@ -2369,14 +2577,14 @@ fprintf  0x1FED1  fprintf  0xDF1E   fputc    0x10D9B  fwrite   0x19911  memcpy  
 fprintf  0x1FF8B  fprintf  0xDF4E   fputc    0x1105C  fwrite   0x1992E  memcpy   0x1C3CB
 </pre>
 <b id="ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/Unclassified: 96/0/0/96</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 96/0/0/0/96</pre>
 <pre>Time: 00:18:00</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:18:00</pre>
 <b id="ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 314/0/0/314</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 314/0/0/0/314</pre>
 <pre>Time: 00:18:00</pre>
 </tr>
 </td>
@@ -2386,7 +2594,7 @@ memcheck-use-after-release:
 <p id="swfextract-0.9.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="swfextract-0.9.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 22/22/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 22/22/0/0/0</pre>
 <pre>Time: 00:00:30</pre>
 <pre>
 __errno_location   fopen       ftell     puts
@@ -2397,7 +2605,7 @@ feof               fread       printf
 fflush             fseek       putchar
 </pre>
 <b id="swfextract-0.9.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 27/0/0/27</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 27/0/0/0/27</pre>
 <pre>Time: 00:00:28</pre>
 <pre>
 _trie_dump                  free_lines       sub_6e5a4          swf_WriteTag
@@ -2410,7 +2618,7 @@ dump_method                 sub_55177        swf5restart
 enumerateUsedIDs            sub_551a3        swf_ShapeSetLine
 </pre>
 <b id="swfextract-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 00:00:44</pre>
 <pre>
 enumerateUsedIDs
@@ -2421,13 +2629,13 @@ png_write_palette_based2
 writeABC
 </pre>
 <b id="swfextract-0.9.2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:34</pre>
 <pre>
 zlib_error
 </pre>
 <b id="swfextract-0.9.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 16/0/0/16</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 16/0/0/0/16</pre>
 <pre>Time: 01:30:19</pre>
 <pre>
 zlib_error                   0x80F44
@@ -2448,7 +2656,7 @@ png_read_header              0x7C8E9
 code_free                    0x5B4E2
 </pre>
 <b id="swfextract-0.9.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 471/0/0/471</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 471/0/0/0/471</pre>
 <pre>Time: 00:33:24</pre>
 <pre>
 calloc   0x79E81  fprintf  0x54BF2  fprintf  0x7DD83  fwrite   0x4BFDD  memcpy   0x52241  printf   0x70D7D
@@ -2532,14 +2740,14 @@ fprintf  0x52DC1  fprintf  0x7C966  fwrite   0x4B6CF  memcpy   0x52102  printf  
 fprintf  0x52EF8  fprintf  0x7D537  fwrite   0x4BB57  memcpy   0x52129  printf   0x6EEDE
 </pre>
 <b id="swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 178/0/0/178</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 178/0/0/0/178</pre>
 <pre>Time: 00:33:14</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:33:14</pre>
 <b id="swfextract-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1925/0/0/1925</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1925/0/0/0/1925</pre>
 <pre>Time: 00:33:14</pre>
 </tr>
 </td>
@@ -2549,7 +2757,7 @@ memcheck-use-after-release:
 <p id="lighttpd-1.4.15"> </p>
 <p><a href="#top">Top</a></p>
 <b id="lighttpd-1.4.15+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 17/17/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 17/17/0/0/0</pre>
 <pre>Time: 00:00:08</pre>
 <pre>
 __errno_location    fwrite       strftime
@@ -2560,7 +2768,7 @@ fputc               setlocale    time
 fputs               signal
 </pre>
 <b id="lighttpd-1.4.15+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 10/0/0/10</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 10/0/0/0/10</pre>
 <pre>Time: 00:00:09</pre>
 <pre>
 array_init           sub_12091
@@ -2570,7 +2778,7 @@ proc_open_b          sub_1eee7
 sub_1163c            sub_bf08
 </pre>
 <b id="lighttpd-1.4.15+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 00:00:12</pre>
 <pre>
 connection_handle_read_state
@@ -2581,13 +2789,13 @@ sub_74e9
 sub_97a2
 </pre>
 <b id="lighttpd-1.4.15+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1/0/0/1</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <pre>Time: 00:00:11</pre>
 <pre>
 fdevent_poll_event_get_revent
 </pre>
 <b id="lighttpd-1.4.15+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
 <pre>Time: 00:15:12</pre>
 <pre>
 splaytree_insert                0x1F220
@@ -2604,7 +2812,7 @@ network_write_chunkqueue_writev 0x1E95B
 network_write_chunkqueue_writev 0x1E991
 </pre>
 <b id="lighttpd-1.4.15+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 153/0/0/153</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 153/0/0/0/153</pre>
 <pre>Time: 00:09:33</pre>
 <pre>
 calloc  0x157BB   close    0x1BEEA   fprintf 0x116E4   fprintf 0x1C021   fwrite     0x19AF2
@@ -2640,19 +2848,19 @@ close   0x16AA8   fprintf  0x10B86   fprintf 0x1BF85   fwrite  0x199D5
 close   0x17633   fprintf  0x1168B   fprintf 0x1BFA6   fwrite  0x19AC6
 </pre>
 <b id="lighttpd-1.4.15+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <pre>Time: 03:03:45</pre>
 <pre>
 Total 4
 </pre>
 <b id="lighttpd-1.4.15+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <pre>Time: 03:03:45</pre>
 <pre>
 Total 3
 </pre>
 <b id="lighttpd-1.4.15+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <pre>Time: 03:03:45</pre>
 <pre>
 Total 629
@@ -2665,7 +2873,7 @@ Total 629
 <p id="libbfd-2.31.1"> </p>
 <p><a href="#top">Top</a></p>
 <b id="libbfd-2.31.1+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 18/18/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 18/18/0/0/0</pre>
 <pre>Time: 00:00:55</pre>
 <pre>
 __errno_location  fflush       getenv
@@ -2676,7 +2884,7 @@ fclose            fread        time
 ferror            fwrite       vfprintf
 </pre>
 <b id="libbfd-2.31.1+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 90/0/0/90</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 90/0/0/0/90</pre>
 <pre>Time: 00:00:56</pre>
 <pre>
 _bfd_archive_64_bit_slurp_armap          elf_gc_propagate_vtable_entries_used     sub_9f530
@@ -2715,7 +2923,7 @@ dlang_parse_mangle                       sub_970e9
 dlang_parse_qualified                    sub_9bd4b
 </pre>
 <b id="libbfd-2.31.1+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 79/0/0/79</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 79/0/0/0/79</pre>
 <pre>Time: 00:01:24</pre>
 <pre>
 _bfd_dwarf2_find_nearest_line              sub_42252      sub_a52c9
@@ -2749,7 +2957,7 @@ read_attribute_value                       sub_9d5d2
 scan_unit_for_symbols                      sub_9f530
 </pre>
 <b id="libbfd-2.31.1+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 3/0/0/3</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
 <pre>Time: 00:01:17</pre>
 <pre>
 _bfd_abort
@@ -2757,7 +2965,7 @@ sub_bbcc1
 sub_e2b51
 </pre>
 <b id="libbfd-2.31.1+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
 <pre>Time: 3:02:02</pre>
 <pre>
 string_need                              0xCD0E7
@@ -2774,7 +2982,7 @@ elf_merge_gnu_properties                 0x90B40
 _bfd_construct_extended_name_table       0x422CC
 </pre>
 <b id="libbfd-2.31.1+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 545/0/0/545</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 545/0/0/0/545</pre>
 <pre>Time: 03:51:55</pre>
 <pre>
 close    0x4F8A7  fprintf  0xB1B87  fprintf  0xC945C  fwrite   0xC0CBA  memset   0x4906E
@@ -2896,13 +3104,13 @@ fprintf  0xB1A5E  fprintf  0xC941A  fwrite   0xC0410  memset   0x469BB
 <p id="nginx-1.7"> </p>
 <p><a href="#top">Top</a></p>
 <b id="nginx-1.7+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 10/10/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 10/10/0/0/0</pre>
 <pre>Time: 00:00:34</pre>
 <pre>
 __errno_location abort exit getenv localtime mktime raise rename strftime time
 </pre>
 <b id="nginx-1.7+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 55/0/0/55</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 55/0/0/0/55</pre>
 <pre>Time: 00:00:34</pre>
 <pre>
 sub_4077f4 sub_409103 sub_409250 sub_4093A0 sub_409FA0 sub_40A7A0 sub_40A8D0 sub_40AEA0
@@ -2914,7 +3122,7 @@ sub_45f060 sub_460da8 sub_460f83 sub_460fd8 sub_4621a1 sub_469a11 sub_46eecc sub
 sub_472b16 sub_47339a sub_473895 sub_479753 sub_47A870 sub_47ecd0 sub_48E510
 </pre>
 <b id="nginx-1.7+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 41/0/0/41</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 41/0/0/0/41</pre>
 <pre>Time: 00:00:51</pre>
 <pre>
 sub_40FD90 sub_40c042 sub_416590 sub_418500 sub_41e7be sub_422BB0 sub_427A00 sub_430f6c
@@ -2925,7 +3133,7 @@ sub_482960 sub_483C60 sub_4856B0 sub_486860 sub_48bc90 sub_48f567 sub_490470 sub
 sub_493797
 </pre>
 <b id="nginx-1.7+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 7/0/0/0/7</pre>
 <pre>Time: 00:00:46</pre>
 <pre>
 sub_41B810    sub_4273F0
@@ -2934,7 +3142,7 @@ sub_426600    sub_47ecd0
 sub_426D00
 </pre>
 <b id="nginx-1.7+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 3/0/0/3</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
 <pre>Time: 04:47:01</pre>
 <pre>
 0x49168F    0x48E539
@@ -2942,7 +3150,7 @@ sub_426D00
 0x409FB0    0x48E0B0
 </pre>
 <b id="nginx-1.7+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 81/0/0/81</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 81/0/0/0/81</pre>
 <pre>Time: 3:40:16</pre>
 <pre>
 close   0x4205DD  memcpy  0x4398E3  memcpy  0x462DB0  memcpy  0x48233F  memset  0x429DE9
@@ -2964,14 +3172,14 @@ memcpy  0x42ED33  memcpy  0x462B9A  memcpy  0x4822A5  memset  0x4130EB
 memcpy  0x430A4B  memcpy  0x462BE2  memcpy  0x4822C5  memset  0x41A86D
 </pre>
 <b id="nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 392/0/0/392</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 392/0/0/0/392</pre>
 <pre>Time: 03:27:01</pre>
 <pre>
 Memcheck-use-after-release:
 </pre>
 <pre>Time: 03:27:01</pre>
 <b id="nginx-1.7+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 346/0/0/346</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 346/0/0/0/346</pre>
 <pre>Time: 03:27:01</pre>
 </tr>
 </td>
@@ -2981,7 +3189,7 @@ Memcheck-use-after-release:
 <p id="sqlite3-2.27.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="sqlite3-2.27.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 25/25/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 25/25/0/0/0</pre>
 <pre>Time: 00:00:56</pre>
 <pre>
 __errno_location  fprintf   getenv       setvbuf
@@ -2993,7 +3201,7 @@ fgetc             ftell     raise
 fgets             fwrite    rewind
 </pre>
 <b id="sqlite3-2.27.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 180/0/0/180</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 180/0/0/0/180</pre>
 <pre>Time: 00:00:54</pre>
 <pre>
 SortByDimension                    setJoinExpr                       sub_5a631
@@ -3061,7 +3269,7 @@ rtreeCheckNode                     sub_548c8
 rtreeInsertCell                    sub_5a17a
 </pre>
 <b id="sqlite3-2.27.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 46/0/0/46</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 46/0/0/0/46</pre>
 <pre>Time: 00:01:20</pre>
 <pre>
 allocateBtreePage    sqlite3CreateIndex                sub_58179     sub_a538a
@@ -3079,7 +3287,7 @@ selectExpander       sub_4c02e                         sub_a160d
 sqlite3BtreeOpen     sub_4ccd8                         sub_a417c
 </pre>
 <b id="sqlite3-2.27.2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 7/0/0/0/7</pre>
 <pre>Time: 00:01:10</pre>
 <pre>
 sub_4de4e
@@ -3091,7 +3299,7 @@ sub_9192f
 sub_ae05c
 </pre>
 <b id="sqlite3-2.27.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 18/0/2/16</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 18/0/2/0/16</pre>
 <pre>Time: 5:55:46</pre>
 <pre>
 getIntArg                       0x2B591
@@ -3114,7 +3322,7 @@ sqlite3Fts3OpenTokenizer        0x26334
 setDateTimeToCurrent            0x2A2D5
 </pre>
 <b id="sqlite3-2.27.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 149/0/0/149</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 149/0/0/0/149</pre>
 <pre>Time: 04:41:07</pre>
 <pre>
 access  0x10EE8  fprintf 0x15579  fprintf 0x1B426  fprintf 0xCBE1   fputs   0x18AD6  memmove 0x53EE2
@@ -3151,32 +3359,32 @@ fprintf 0x15168  fprintf 0x1B3FC  fprintf 0xCA4A   fputs   0x1630A  memmove 0x46
 <p id="swfcombine-0.9.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="swfcombine-0.9.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 20/20/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 20/20/0/0/0</pre>
 <pre>Time: 00:00:07</pre>
 <pre>
 __errno_location ctime exit fclose fflush fopen fprintf fputc fread fseek
 ftell fwrite getenv perror printf putchar puts rename sprintf time
 </pre>
 <b id="swfcombine-0.9.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <pre>Time: 00:00:06</pre>
 <pre>
 args_callback_longoption enumerateUsedIDs sub_2b7c swf_WriteTag
 </pre>
 <b id="swfcombine-0.9.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <pre>Time: 00:00:09</pre>
 <pre>
 enumerateUsedIDs main normalcombine write_master
 </pre>
 <b id="swfcombine-0.9.2+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 2/0/0/2</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <pre>Time: 00:00:07</pre>
 <pre>
 main zlib_error
 </pre>
 <b id="swfcombine-0.9.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 5/0/0/5</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 5/0/0/0/5</pre>
 <pre>Time: 00:18:13</pre>
 <pre>
 zlib_error                 0xE596
@@ -3186,7 +3394,7 @@ swf_Optimize               0xA1EE
 swf_Relocate               0x9ABE
 </pre>
 <b id="swfcombine-0.9.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 185/0/0/185</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 185/0/0/0/185</pre>
 <pre>Time: 00:06:55</pre>
 <pre>
 close   0x4D17  fprintf 0x6B7B  fputc   0x6CB1  fwrite  0xC91D  printf  0x287C  puts    0x2916
@@ -3222,14 +3430,14 @@ fprintf 0x6ABD  fprintf 0xFDEA  fwrite  0xC76E  memset  0xEEC7  puts    0x28FE  
 fprintf 0x6B30  fprintf 0xFE36  fwrite  0xC84C  printf  0x2540  puts    0x290A
 </pre>
 <b id="swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 792/0/0/792</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 792/0/0/0/792</pre>
 <pre>Time: 00:08:21</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:08:21</pre>
 <b id="swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 309/0/0/309</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 309/0/0/0/309</pre>
 <pre>Time: 00:08:21</pre>
 </tr>
 </td>
@@ -3239,7 +3447,7 @@ memcheck-use-after-release:
 <p id="ntpd-4.2.8p5"> </p>
 <p><a href="#top">Top</a></p>
 <b id="ntpd-4.2.8p5+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 43/43/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 43/43/0/0/0</pre>
 <pre>Time: 00:00:29</pre>
 <pre>
 Total / False positive / False negative / Unclassified
@@ -3255,7 +3463,7 @@ fgets             gmtime       sprintf
 fopen             localtime    sscanf
 </pre>
 <b id="ntpd-4.2.8p5+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 77/0/0/77</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 77/0/0/0/77</pre>
 <pre>Time: 00:00:31</pre>
 <pre>
 addArgListEntry               maintain_activefds           sub_1a9e5
@@ -3288,7 +3496,7 @@ list_restrict4                sub_136c5
 list_restrict6                sub_197d8
 </pre>
 <b id="ntpd-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 31/0/0/31</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 31/0/0/0/31</pre>
 <pre>Time: 00:00:45</pre>
 <pre>
 acts_receive                        sub_1246f      sub_622e8
@@ -3303,7 +3511,7 @@ opt_find_long optionSetMembers      sub_436e8      update_interfaces
 read_network_packet                 sub_49b86      yylex
 </pre>
 <b id="ntpd-4.2.8p5+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 13/0/0/13</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 13/0/0/0/13</pre>
 <pre>Time: 00:00:45</pre>
 <pre>
 findexistingpeer        start_blo
@@ -3315,7 +3523,7 @@ option_exits            sub_6d1f9
 cking_thread_internal
 </pre>
 <b id="ntpd-4.2.8p5+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 6/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
 <pre>Time: 01:35:31</pre>
 <pre>
 optionParseShell      0x6F4FB
@@ -3326,7 +3534,7 @@ decode_bitflags       0x5F9D2
 option_parse_duration 0x6C089
 </pre>
 <b id="ntpd-4.2.8p5+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 909/0/0/909</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 909/0/0/0/909</pre>
 <pre>Time: 01:14:59</pre>
 <pre>
 atexit   0x14837  fprintf  0x66CA2  fputs    0x6C969  printf   0x40393  printf   0x68B11  snprintf 0x3AD3D
@@ -3483,13 +3691,13 @@ fprintf  0x62679  fputs    0x6B82F  printf   0x3FFFA  printf   0x68AA7  snprintf
 fprintf  0x669C1  fputs    0x6B97C  printf   0x400B2  printf   0x68AE1  snprintf 0x3A280
 </pre>
 <b id="ntpd-4.2.8p5+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 3/0/0/3</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
 <pre>Time: 01:08:15</pre>
 <b id="ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 9/0/0/9</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 9/0/0/0/9</pre>
 <pre>Time: 01:08:15</pre>
 <b id="ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 254/0/0/254</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 254/0/0/0/254</pre>
 <pre>Time: 01:08:15</pre>
 </tr>
 </td>
@@ -3499,14 +3707,14 @@ fprintf  0x669C1  fputs    0x6B97C  printf   0x400B2  printf   0x68AE1  snprintf
 <p id="sshd-7.3.p1"> </p>
 <p><a href="#top">Top</a></p>
 <b id="sshd-7.3.p1+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 25/25/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 25/25/0/0/0</pre>
 <pre>Time: 00:00:33</pre>
 <pre>
 __errno_location abort ctime exit fclose feof fflush fgetc fgets fopen fputc fputs fscanf
 fwrite getenv localtime perror putchar puts raise rename rewind sscanf strftime time
 </pre>
 <b id="sshd-7.3.p1+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 184/0/0/184</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 184/0/0/0/184</pre>
 <pre>Time: 00:00:33</pre>
 <pre>
 BSDgetopt                                        mm_terminate                         sub_407b1
@@ -3582,7 +3790,7 @@ mm_request_receive_expect                        sub_32520
 mm_session_pty_cleanup2                          sub_3d268
 </pre>
 <b id="sshd-7.3.p1+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 12/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
 <pre>Time: 00:00:48</pre>
 <pre>
 auth_parse_options copy_set_server_options fill_default_server_options hostkeys_foreach
@@ -3590,14 +3798,14 @@ monitor_child_postauth session_input_channel_req sftp_server_main ssh_krl_from_b
 sub_48db6 sub_60bcf sub_8e7f sub_a5bf
 </pre>
 <b id="sshd-7.3.p1+Non_structural">Functions with non-structural cfg</b>
-<pre>Total/Confirmed/False positive/Unclassified: 9/0/0/9</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 9/0/0/0/9</pre>
 <pre>Time: 00:00:42</pre>
 <pre>
 grace_alarm_handler log_init monitor_child_postauth server_input_channel_open
 session_input_channel_req sub_497ec sub_5f830 sub_5fd20 userauth_pubkey
 </pre>
 <b id="sshd-7.3.p1+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 3/0/3/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/3/0/0</pre>
 <pre>Time: 01:53:16</pre>
 <pre>
 sshbuf_put_u8              0x3524C
@@ -3605,7 +3813,7 @@ sshkey_try_load_public     0x371D0
 mktemp_internal            0x6C41E
 </pre>
 <b id="sshd-7.3.p1+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 229/0/0/229</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 229/0/0/0/229</pre>
 <pre>Time: 01:23:37</pre>
 <pre>
 alarm  0x9E2D   close  0x1CB07  close  0x40CD9  fclose     0x19EC7  getpid   0x27E5C  setsockopt 0x50202
@@ -3649,14 +3857,14 @@ close  0x1CA54  close  0x4080E  fchown 0x29A84  geteuid    0x8F6C   rmdir    0x2
 close  0x1CA87  close  0x40CC8  fclose 0x11AE4  getgid     0x4FD6E  seteuid  0x4FC9B
 </pre>
 <b id="sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 24/0/0/24</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 24/0/0/0/24</pre>
 <pre>Time: 01:16:19</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 01:16:19</pre>
 <b id="sshd-7.3.p1+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 1074/0/0/1074</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1074/0/0/0/1074</pre>
 <pre>Time: 01:16:19</pre>
 </tr>
 </td>
@@ -3666,20 +3874,20 @@ memcheck-use-after-release:
 <p id="wpa_supplicant-2.2"> </p>
 <p><a href="#top">Top</a></p>
 <b id="wpa_supplicant-2.2+Forbidden">Forbidden functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 22/22/0/0</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 22/22/0/0/0</pre>
 <pre>Time: 00:00:45</pre>
 <pre>
 __errno_location abort atoi exit fclose fgets fopen fprintf fputc fread fseek ftell
 fwrite gmtime localtime mktime perror printf putchar puts signal vprintf
 </pre>
 <b id="wpa_supplicant-2.2+Recursive">Recursive functions</b>
-<pre>Total/Confirmed/False positive/Unclassified: 4/0/0/4</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <pre>Time: 00:00:45</pre>
 <pre>
 eapol_sm_step sub_88c42 wpa_driver_nl80211_scan wpas_set_pkcs11_engine_and_module_path
 </pre>
 <b id="wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</b>
-<pre>Total/Confirmed/False positive/Unclassified: 11/0/0/11</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 11/0/0/0/11</pre>
 <pre>Time: 00:01:07</pre>
 <pre>
 nl80211_connect_common print_bss_info wpa_config_get_cred_no_key wpa_config_set_cred
@@ -3694,7 +3902,7 @@ wpas_start_assoc_cb
 no incidents found
 </pre>
 <b id="wpa_supplicant-2.2+Null">Null pointer dereference</b>
-<pre>Total/Confirmed/False positive/Unclassified: 20/0/0/20</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 20/0/0/0/20</pre>
 <pre>Time: 02:41:31</pre>
 <pre>
 clean_survey_results  0x8FBF4   eloop_cancel_timeout    0x17C6D   radio_remove_works                0x6022A
@@ -3707,7 +3915,7 @@ dl_list_del           0x751D0   qca_nl80211_avoid_freq  0x7B91A
 eap_sm_processNotify  0x3AE95   qca_nl80211_avoid_freq  0x7B964
 </pre>
 <b id="wpa_supplicant-2.2+Unused">Unused return value</b>
-<pre>Total/Confirmed/False positive/Unclassified: 562/0/0/562</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 562/0/0/0/562</pre>
 <pre>Time: 01:27:04</pre>
 <pre>
 alarm    0x180A1  fprintf  0x1B0BE  memcpy   0x31703  memcpy   0x8D79E  memset   0x5CF97  memset   0x7E907
@@ -3806,17 +4014,17 @@ fprintf  0x1B039  memcpy   0x2E989  memcpy   0x8D5AC  memset   0x5AE9B  memset  
 fprintf  0x1B08B  memcpy   0x2F8A2  memcpy   0x8D737  memset   0x5C403  memset   0x7DF55
 </pre>
 <b id="wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/Unclassified: 7/0/0/7</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 7/0/0/0/7</pre>
 <pre>Time: 00:01:28</pre>
 <b id="wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/Unclassified: 569/0/0/569</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 569/0/0/0/569</pre>
 <pre>Time: 00:01:28</pre>
 <pre>
 memcheck-use-after-release:
 </pre>
 <pre>Time: 00:01:28</pre>
 <b id="wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/Unclassified: 495/0/0/495</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 495/0/0/0/495</pre>
 <pre>Time: 00:01:28</pre>
 </tr>
 </td>
