@@ -33,15 +33,6 @@ let state = Primus.Machine.State.declare
 let taint_finish, taint_reached_finish =
   Primus.Observation.provide ~inspect:Primus.sexp_of_value "taint-reached-finish"
 
-let new_machine, on_new_machine =
-  let inspect (par,id) =
-    Sexp.List [Machine_id.sexp_of_t par; Machine_id.sexp_of_t id] in
-  Primus.Observation.provide ~inspect "new-machine"
-
-let mts = Machine_id.to_string
-let ids = Primus.Value.Id.to_string
-let ids = Set.fold ~init:"" ~f:(fun s i -> sprintf "%s%s " s (ids i))
-
 module Tracker(Machine : Primus.Machine.S) = struct
   module Value = Primus.Value.Make(Machine)
   open Machine.Syntax
@@ -61,7 +52,6 @@ module Tracker(Machine : Primus.Machine.S) = struct
 
   let on_new_machine s id =
     Machine.ancestor [id] >>= fun par ->
-    Machine.Observation.make on_new_machine (par,id) >>= fun () ->
     match Map.find s.owners par with
     | None -> !! s
     | Some vs ->
