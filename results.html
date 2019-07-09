@@ -31,6 +31,32 @@
      display: table-cell;
    }
 
+   .tooltip {
+     position: relative;
+     display: inline-block;
+     border-bottom: 1px dotted black;
+     transition: 0s background-color;
+   }
+
+   .tooltip .tooltiptext {
+     visibility: hidden;
+     background-color: black;
+     color: #fff;
+     border-radius: 10px;
+     padding: 5px 0;
+     position: absolute;
+     z-index: 1;
+     top: -5px;
+     left: 110%;
+
+   }
+
+   .tooltip:hover .tooltiptext {
+     visibility: visible;
+     transition-delay: 1s;
+   }
+
+
   </style>
   </head>
   <body>
@@ -51,7 +77,9 @@ hh:mm:ss</pre></th></tr>
 size:  249K</pre>
                      </td>
 
-<td><a href="#juliet-cwe-252+Test">Testcase</a></td>
+<td><div class="tooltip"><a href="#juliet-cwe-252+(Test"Unchecked Return Value")">Testcase: Unchecked Return Value</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">216</td>
 <td align="center">216</td>
 <td align="center">0</td>
@@ -65,7 +93,9 @@ size:  249K</pre>
 size:  280K</pre>
                      </td>
 
-<td><a href="#juliet-cwe-476+Test">Testcase</a></td>
+<td><div class="tooltip"><a href="#juliet-cwe-476+(Test"NULL Pointer Dereference")">Testcase: NULL Pointer Dereference</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">216</td>
 <td align="center">193</td>
 <td align="center">0</td>
@@ -79,7 +109,19 @@ size:  280K</pre>
 size:  873K</pre>
                      </td>
 
-<td><a href="#httpd-2.4.18+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">12</td>
 <td align="center">0</td>
@@ -88,7 +130,15 @@ size:  873K</pre>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -97,7 +147,21 @@ size:  873K</pre>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">16</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -106,7 +170,16 @@ size:  873K</pre>
 <td align="center">00:00:49</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -115,7 +188,25 @@ size:  873K</pre>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">45</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -124,7 +215,22 @@ size:  873K</pre>
 <td align="center">01:36:00</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">141</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -133,7 +239,9 @@ size:  873K</pre>
 <td align="center">00:54:43</td>
 </tr>
 <tr>
-<td><a href="#httpd-2.4.18+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#httpd-2.4.18+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">67</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -147,7 +255,19 @@ size:  873K</pre>
 size:  46K</pre>
                      </td>
 
-<td><a href="#samba-4.7.6+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">8</td>
 <td align="center">8</td>
 <td align="center">0</td>
@@ -156,7 +276,15 @@ size:  46K</pre>
 <td align="center">00:00:03</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -165,7 +293,21 @@ size:  46K</pre>
 <td align="center">00:00:03</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -174,7 +316,16 @@ size:  46K</pre>
 <td align="center">00:00:04</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -183,7 +334,25 @@ size:  46K</pre>
 <td align="center">00:00:04</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -192,7 +361,22 @@ size:  46K</pre>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">9</td>
 <td align="center">9</td>
 <td align="center">0</td>
@@ -201,7 +385,9 @@ size:  46K</pre>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -210,7 +396,9 @@ size:  46K</pre>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><a href="#samba-4.7.6+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#samba-4.7.6+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -224,7 +412,19 @@ size:  46K</pre>
 size:  745K</pre>
                      </td>
 
-<td><a href="#openssl-1.1.0+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">18</td>
 <td align="center">18</td>
 <td align="center">0</td>
@@ -233,7 +433,15 @@ size:  745K</pre>
 <td align="center">00:00:19</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -242,7 +450,21 @@ size:  745K</pre>
 <td align="center">00:00:20</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -251,7 +473,16 @@ size:  745K</pre>
 <td align="center">00:00:29</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -260,7 +491,25 @@ size:  745K</pre>
 <td align="center">00:00:25</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -269,7 +518,22 @@ size:  745K</pre>
 <td align="center">00:46:44</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">202</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -278,7 +542,9 @@ size:  745K</pre>
 <td align="center">00:32:27</td>
 </tr>
 <tr>
-<td><a href="#openssl-1.1.0+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#openssl-1.1.0+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -292,7 +558,19 @@ size:  745K</pre>
 size:  2.2M</pre>
                      </td>
 
-<td><a href="#smtpd-5.7.3p2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -301,7 +579,15 @@ size:  2.2M</pre>
 <td align="center">00:00:22</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">81</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -310,7 +596,21 @@ size:  2.2M</pre>
 <td align="center">00:00:22</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -319,7 +619,16 @@ size:  2.2M</pre>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -328,7 +637,25 @@ size:  2.2M</pre>
 <td align="center">00:00:28</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -337,7 +664,22 @@ size:  2.2M</pre>
 <td align="center">01:08:20</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">306</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -346,7 +688,9 @@ size:  2.2M</pre>
 <td align="center">00:46:10</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">79</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -355,7 +699,9 @@ size:  2.2M</pre>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">8219</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -364,7 +710,9 @@ size:  2.2M</pre>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td><a href="#smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">425</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -378,7 +726,19 @@ size:  2.2M</pre>
 size:  114K</pre>
                      </td>
 
-<td><a href="#wpa_cli-2.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">21</td>
 <td align="center">21</td>
 <td align="center">0</td>
@@ -387,7 +747,15 @@ size:  114K</pre>
 <td align="center">00:00:05</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -396,7 +764,21 @@ size:  114K</pre>
 <td align="center">00:00:05</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -405,7 +787,16 @@ size:  114K</pre>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -414,7 +805,25 @@ size:  114K</pre>
 <td align="center">00:00:06</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -423,7 +832,22 @@ size:  114K</pre>
 <td align="center">00:12:49</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">144</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -432,7 +856,9 @@ size:  114K</pre>
 <td align="center">00:03:55</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -441,7 +867,9 @@ size:  114K</pre>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
-<td><a href="#wpa_cli-2.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">324</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -455,7 +883,19 @@ size:  114K</pre>
 size:  1.4M</pre>
                      </td>
 
-<td><a href="#swfc-0.9.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">24</td>
 <td align="center">24</td>
 <td align="center">0</td>
@@ -464,7 +904,15 @@ size:  1.4M</pre>
 <td align="center">00:00:47</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">46</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -473,7 +921,21 @@ size:  1.4M</pre>
 <td align="center">00:00:46</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -482,7 +944,16 @@ size:  1.4M</pre>
 <td align="center">00:01:09</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -491,7 +962,25 @@ size:  1.4M</pre>
 <td align="center">00:00:58</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -500,7 +989,22 @@ size:  1.4M</pre>
 <td align="center">02:30:08</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">518</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -509,7 +1013,9 @@ size:  1.4M</pre>
 <td align="center">01:09:32</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Memcheck_double_release">Memory check: double free</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_double_release">Memory check: double free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -518,7 +1024,9 @@ size:  1.4M</pre>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">605</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -527,7 +1035,9 @@ size:  1.4M</pre>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
-<td><a href="#swfc-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">2771</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -541,7 +1051,19 @@ size:  1.4M</pre>
 size:  1.6M</pre>
                      </td>
 
-<td><a href="#tshark-2.6.0+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">15</td>
 <td align="center">15</td>
 <td align="center">0</td>
@@ -550,7 +1072,15 @@ size:  1.6M</pre>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">17</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -559,7 +1089,21 @@ size:  1.6M</pre>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -568,7 +1112,16 @@ size:  1.6M</pre>
 <td align="center">00:00:16</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -577,7 +1130,25 @@ size:  1.6M</pre>
 <td align="center">00:00:15</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -586,7 +1157,22 @@ size:  1.6M</pre>
 <td align="center">00:32:20</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">346</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -595,7 +1181,9 @@ size:  1.6M</pre>
 <td align="center">00:12:48</td>
 </tr>
 <tr>
-<td><a href="#tshark-2.6.0+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#tshark-2.6.0+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">27</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -609,7 +1197,19 @@ size:  1.6M</pre>
 size:  241K</pre>
                      </td>
 
-<td><a href="#wav2swf-0.9.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -618,7 +1218,15 @@ size:  241K</pre>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">13</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -627,7 +1235,21 @@ size:  241K</pre>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -636,7 +1258,16 @@ size:  241K</pre>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -645,7 +1276,25 @@ size:  241K</pre>
 <td align="center">00:00:10</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -654,7 +1303,22 @@ size:  241K</pre>
 <td align="center">00:20:07</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">219</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -663,7 +1327,9 @@ size:  241K</pre>
 <td align="center">00:09:24</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -672,7 +1338,9 @@ size:  241K</pre>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
-<td><a href="#wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">574</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -686,7 +1354,19 @@ size:  241K</pre>
 size:  1.1M</pre>
                      </td>
 
-<td><a href="#ntpdc-4.2.8p5+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">32</td>
 <td align="center">32</td>
 <td align="center">0</td>
@@ -695,7 +1375,15 @@ size:  1.1M</pre>
 <td align="center">00:00:10</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">32</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -704,7 +1392,21 @@ size:  1.1M</pre>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -713,7 +1415,16 @@ size:  1.1M</pre>
 <td align="center">00:00:14</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -722,7 +1433,25 @@ size:  1.1M</pre>
 <td align="center">00:00:14</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">11</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -731,7 +1460,22 @@ size:  1.1M</pre>
 <td align="center">00:25:22</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">572</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -740,7 +1484,9 @@ size:  1.1M</pre>
 <td align="center">00:14:30</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">96</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -749,7 +1495,9 @@ size:  1.1M</pre>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
-<td><a href="#ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">314</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -763,7 +1511,19 @@ size:  1.1M</pre>
 size:  1.1M</pre>
                      </td>
 
-<td><a href="#swfextract-0.9.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">22</td>
 <td align="center">22</td>
 <td align="center">0</td>
@@ -772,7 +1532,15 @@ size:  1.1M</pre>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">27</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -781,7 +1549,21 @@ size:  1.1M</pre>
 <td align="center">00:00:28</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -790,7 +1572,16 @@ size:  1.1M</pre>
 <td align="center">00:00:44</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -799,7 +1590,25 @@ size:  1.1M</pre>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">16</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -808,7 +1617,22 @@ size:  1.1M</pre>
 <td align="center">01:30:19</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">471</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -817,7 +1641,9 @@ size:  1.1M</pre>
 <td align="center">00:33:24</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">178</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -826,7 +1652,9 @@ size:  1.1M</pre>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
-<td><a href="#swfextract-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">1925</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -840,7 +1668,19 @@ size:  1.1M</pre>
 size:  770K</pre>
                      </td>
 
-<td><a href="#lighttpd-1.4.15+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">17</td>
 <td align="center">17</td>
 <td align="center">0</td>
@@ -849,7 +1689,15 @@ size:  770K</pre>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -858,7 +1706,21 @@ size:  770K</pre>
 <td align="center">00:00:09</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -867,7 +1729,16 @@ size:  770K</pre>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -876,7 +1747,25 @@ size:  770K</pre>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -885,7 +1774,22 @@ size:  770K</pre>
 <td align="center">00:15:12</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">153</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -894,7 +1798,9 @@ size:  770K</pre>
 <td align="center">00:09:33</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -903,7 +1809,9 @@ size:  770K</pre>
 <td align="center">03:03:45</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -912,7 +1820,9 @@ size:  770K</pre>
 <td align="center">03:03:45</td>
 </tr>
 <tr>
-<td><a href="#lighttpd-1.4.15+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#lighttpd-1.4.15+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -926,7 +1836,19 @@ size:  770K</pre>
 size:  6.0M</pre>
                      </td>
 
-<td><a href="#libbfd-2.31.1+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">18</td>
 <td align="center">18</td>
 <td align="center">0</td>
@@ -935,7 +1857,15 @@ size:  6.0M</pre>
 <td align="center">00:00:55</td>
 </tr>
 <tr>
-<td><a href="#libbfd-2.31.1+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">90</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -944,7 +1874,21 @@ size:  6.0M</pre>
 <td align="center">00:00:56</td>
 </tr>
 <tr>
-<td><a href="#libbfd-2.31.1+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">79</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -953,7 +1897,16 @@ size:  6.0M</pre>
 <td align="center">00:01:24</td>
 </tr>
 <tr>
-<td><a href="#libbfd-2.31.1+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -962,7 +1915,25 @@ size:  6.0M</pre>
 <td align="center">00:01:17</td>
 </tr>
 <tr>
-<td><a href="#libbfd-2.31.1+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -971,7 +1942,22 @@ size:  6.0M</pre>
 <td align="center">3:02:02</td>
 </tr>
 <tr>
-<td><a href="#libbfd-2.31.1+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#libbfd-2.31.1+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">545</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -985,7 +1971,19 @@ size:  6.0M</pre>
 size:  859K</pre>
                      </td>
 
-<td><a href="#nginx-1.7+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">10</td>
 <td align="center">10</td>
 <td align="center">0</td>
@@ -994,7 +1992,15 @@ size:  859K</pre>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">55</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1003,7 +2009,21 @@ size:  859K</pre>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">41</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1012,7 +2032,16 @@ size:  859K</pre>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">7</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1021,7 +2050,25 @@ size:  859K</pre>
 <td align="center">00:00:46</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1030,7 +2077,22 @@ size:  859K</pre>
 <td align="center">04:47:01</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">81</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1039,7 +2101,9 @@ size:  859K</pre>
 <td align="center">3:40:16</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">392</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1048,7 +2112,9 @@ size:  859K</pre>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
-<td><a href="#nginx-1.7+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#nginx-1.7+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">346</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1062,7 +2128,19 @@ size:  859K</pre>
 size:  1.1M</pre>
                      </td>
 
-<td><a href="#sqlite3-2.27.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">25</td>
 <td align="center">25</td>
 <td align="center">0</td>
@@ -1071,7 +2149,15 @@ size:  1.1M</pre>
 <td align="center">00:00:56</td>
 </tr>
 <tr>
-<td><a href="#sqlite3-2.27.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">180</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1080,7 +2166,21 @@ size:  1.1M</pre>
 <td align="center">00:00:54</td>
 </tr>
 <tr>
-<td><a href="#sqlite3-2.27.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">46</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1089,7 +2189,16 @@ size:  1.1M</pre>
 <td align="center">00:01:20</td>
 </tr>
 <tr>
-<td><a href="#sqlite3-2.27.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">7</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1098,7 +2207,25 @@ size:  1.1M</pre>
 <td align="center">00:01:10</td>
 </tr>
 <tr>
-<td><a href="#sqlite3-2.27.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -1107,7 +2234,22 @@ size:  1.1M</pre>
 <td align="center">5:55:46</td>
 </tr>
 <tr>
-<td><a href="#sqlite3-2.27.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#sqlite3-2.27.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">149</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1121,7 +2263,19 @@ size:  1.1M</pre>
 size:  113K</pre>
                      </td>
 
-<td><a href="#swfcombine-0.9.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -1130,7 +2284,15 @@ size:  113K</pre>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1139,7 +2301,21 @@ size:  113K</pre>
 <td align="center">00:00:06</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1148,7 +2324,16 @@ size:  113K</pre>
 <td align="center">00:00:09</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1157,7 +2342,25 @@ size:  113K</pre>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1166,7 +2369,22 @@ size:  113K</pre>
 <td align="center">00:18:13</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">185</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1175,7 +2393,9 @@ size:  113K</pre>
 <td align="center">00:06:55</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">792</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1184,7 +2404,9 @@ size:  113K</pre>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
-<td><a href="#swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">309</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1198,7 +2420,19 @@ size:  113K</pre>
 size:  3.1M</pre>
                      </td>
 
-<td><a href="#ntpd-4.2.8p5+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">43</td>
 <td align="center">43</td>
 <td align="center">0</td>
@@ -1207,7 +2441,15 @@ size:  3.1M</pre>
 <td align="center">00:00:29</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">77</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1216,7 +2458,21 @@ size:  3.1M</pre>
 <td align="center">00:00:31</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">31</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1225,7 +2481,16 @@ size:  3.1M</pre>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">13</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1234,7 +2499,25 @@ size:  3.1M</pre>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1243,7 +2526,22 @@ size:  3.1M</pre>
 <td align="center">01:35:31</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">909</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1252,7 +2550,9 @@ size:  3.1M</pre>
 <td align="center">01:14:59</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1261,7 +2561,9 @@ size:  3.1M</pre>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1270,7 +2572,9 @@ size:  3.1M</pre>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
-<td><a href="#ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">254</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1284,7 +2588,19 @@ size:  3.1M</pre>
 size:  3.0M</pre>
                      </td>
 
-<td><a href="#sshd-7.3.p1+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">25</td>
 <td align="center">25</td>
 <td align="center">0</td>
@@ -1293,7 +2609,15 @@ size:  3.0M</pre>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">184</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1302,7 +2626,21 @@ size:  3.0M</pre>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1311,7 +2649,16 @@ size:  3.0M</pre>
 <td align="center">00:00:48</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1320,7 +2667,25 @@ size:  3.0M</pre>
 <td align="center">00:00:42</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">3</td>
@@ -1329,7 +2694,22 @@ size:  3.0M</pre>
 <td align="center">01:53:16</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">229</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1338,7 +2718,9 @@ size:  3.0M</pre>
 <td align="center">01:23:37</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">24</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1347,7 +2729,9 @@ size:  3.0M</pre>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
-<td><a href="#sshd-7.3.p1+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">1074</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1361,7 +2745,19 @@ size:  3.0M</pre>
 size:  934K</pre>
                      </td>
 
-<td><a href="#wpa_supplicant-2.2+Forbidden">Forbidden functions</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Forbidden">Forbidden functions</a>
+           <span class="tooltiptext"><pre>
+The next functions shall not be used:
+ - errno shall not be used as an error indicator
+ - &lt;locale.h&gt; and the setlocale function
+ - setjmp and longjmp
+ - signal handling facilities of &lt;signal.h&gt;
+ - The input/output library &lt;stdio.h&gt;
+ - atof, atoi, and atol
+ - abort, exit, getenv and system
+ - the &lt;time.h&gt; interface
+</pre></span>
+           </div></td>
 <td align="center">22</td>
 <td align="center">22</td>
 <td align="center">0</td>
@@ -1370,7 +2766,15 @@ size:  934K</pre>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Recursive">Recursive functions</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Recursive">Recursive functions</a>
+           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
+
+The algorithm.
+
+Apply the depth first search (DFS) algotithm and determine if there are any
+back edges in the program callgraph. And if there are, then destinations
+of these edges are the recursive subroutines.</pre></span>
+           </div></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1379,7 +2783,21 @@ size:  934K</pre>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</a>
+           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
+
+The cyclomatic complexity number is a metric that is used to determine a
+number of linearly independent paths in a subroutine control flow graph (CFG).
+The number is computed using the following formula,
+
+  C = E - N + P
+  
+where `E` is the number of edges, `N` is the number of nodes, and `P` is
+the number of strongly connected components. The CFG exit node is connected
+to its entry node, so that an acyclic function will have one connected component. 
+
+The threshold 20 is a parameter.</pre></span>
+           </div></td>
 <td align="center">11</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1388,7 +2806,16 @@ size:  934K</pre>
 <td align="center">00:01:07</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Non_structural">Functions with non-structural cfg</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Non_structural">Functions with non-structural cfg</a>
+           <span class="tooltiptext"><pre>The goto statement shall not be used
+
+This rule means that a control flow graph of each subroutine
+should be reducible. Or, as vice versa, there should not be
+any subroutine with non-reducible control flow graph.
+
+The CFG is considered as a reducible one if if doesn't contain
+strongly connected components with two and more entries.</pre></span>
+           </div></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1397,7 +2824,25 @@ size:  934K</pre>
 <td align="center">00:00:53</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Null">Null pointer dereference</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Null">Null pointer dereference</a>
+           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
+
+The algorithm.
+Every static constant in a program becomes a source of a taint.
+And if there is a load from or store by the tainted address, then
+a null pointer is actually dereferenced. Additionally,
+we check if the tainted value reaches any conditional
+block. And if does and there is a control dependency between
+pointer dereferencing and condition, we don't consider such
+case as real null pointer dereferencing, because it is under
+the check.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">20</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1406,7 +2851,22 @@ size:  934K</pre>
 <td align="center">02:41:31</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Unused">Unused return value</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Unused">Unused return value</a>
+           <span class="tooltiptext"><pre>detects unused values returned by functions
+
+The algotihm uses function's api information to determine it's output argument.
+Value assigned to the output argument becomes a source of a taint.
+And any read of the tainted value sanitizes this taint, meaning that
+an output argument is actually used.
+Otherwise, if the taint survives and is finalized by garbage collector,
+then a proof of unused result is obtainted.
+
+All checks are reported:
+- to stdout in the user friendly format
+- via the incident report system and are stored
+in the working directory in the `incidents' file.
+The file could be loaded in IDA Pro for further analysis.</pre></span>
+           </div></td>
 <td align="center">562</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1415,7 +2875,9 @@ size:  934K</pre>
 <td align="center">01:27:04</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">7</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1424,7 +2886,9 @@ size:  934K</pre>
 <td align="center">00:01:28</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">569</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1433,7 +2897,9 @@ size:  934K</pre>
 <td align="center">00:01:28</td>
 </tr>
 <tr>
-<td><a href="#wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</a></td>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
 <td align="center">495</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1445,7 +2911,6 @@ size:  934K</pre>
 </br>
 
      <table id="Results" style="width:100%" frame=void rules=rows >
-
 <tr>
 <td><pre><h3>juliet-cwe-252</h3>size:  249K</pre></td>
 <td>
@@ -1453,7 +2918,7 @@ size:  934K</pre>
 <p><a href="#top">Top</a></p>
 </br>
 </div>
-<b id="juliet-cwe-252+Test">Testcase</b>
+<b id="juliet-cwe-252+(Test"Unchecked Return Value")">Testcase: Unchecked Return Value</b>
 <pre>Total/Confirmed/False positive/False negative/Unclassified: 216/216/0/0/0</pre>
 <div>
 <pre>Time: 00:06:02</pre>
@@ -1467,7 +2932,7 @@ size:  934K</pre>
       <td bgcolor=#F7D3CE></td>
       <td bgcolor="#f2f2f2"> false negative </td>
       </tr>
-    </table></br><table><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_18_bad</td><tr></tr></table></br>
+     </table></br><table><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_18_bad</td><tr></tr></table></br>
 </tr>
 </td>
 <tr>
@@ -1477,7 +2942,7 @@ size:  934K</pre>
 <p><a href="#top">Top</a></p>
 </br>
 </div>
-<b id="juliet-cwe-476+Test">Testcase</b>
+<b id="juliet-cwe-476+(Test"NULL Pointer Dereference")">Testcase: NULL Pointer Dereference</b>
 <pre>Total/Confirmed/False positive/False negative/Unclassified: 216/193/0/23/0</pre>
 <div>
 <pre>Time: 00:07:20</pre>
@@ -1491,7 +2956,7 @@ size:  934K</pre>
       <td bgcolor=#F7D3CE></td>
       <td bgcolor="#f2f2f2"> false negative </td>
       </tr>
-    </table></br><table><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_11_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__char_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_68_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_01_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_02_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_03_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_04_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_05_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_06_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_07_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_08_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_09_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_10_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_12_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_13_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_14_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_15_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_16_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_17_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int64_t_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__long_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__struct_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_68_bad</td><tr></tr></table></br>
+     </table></br><table><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_11_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__char_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_68_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_01_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_02_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_03_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_04_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_05_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_06_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_07_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_08_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_09_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_10_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_12_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_13_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_14_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_15_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_16_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_17_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int64_t_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__long_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__struct_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_68_bad</td><tr></tr></table></br>
 </tr>
 </td>
 <tr>
