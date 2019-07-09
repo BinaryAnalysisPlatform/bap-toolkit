@@ -10,5 +10,5 @@ then a proof of unused result is obtainted.
 All checks are reported:
 - to stdout in the user friendly format
 - via the incident report system and are stored
-in the working directory in the `unused-result.incidents' file.
+in the working directory in the `incidents' file.
 The file could be loaded in IDA Pro for further analysis.
