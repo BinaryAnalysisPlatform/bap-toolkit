@@ -242,15 +242,15 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#httpd-2.4.18+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">67</td>
+<td align="center">15</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">67</td>
+<td align="center">15</td>
 <td align="center">01:04:41</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#samba-4.7.6">samba-4.7.6</a>
 size:  46K</pre>
                      </td>
@@ -396,7 +396,18 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Value_was_used_before_check">Value was used before check</a>
+<td><div class="tooltip"><a href="#samba-4.7.6+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">00:00:40</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#samba-4.7.6+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
 <td align="center">0</td>
@@ -553,7 +564,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:27:22</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="9" >
+<td bgcolor="white" rowspan="10" >
                          <pre><a href="#smtpd-5.7.3p2">smtpd-5.7.3p2</a>
 size:  2.2M</pre>
                      </td>
@@ -691,37 +702,48 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">79</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">79</td>
+<td align="center">1</td>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">8219</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">8219</td>
+<td align="center">1</td>
+<td align="center">04:26:32</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">14</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">14</td>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">425</td>
+<td align="center">82</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">425</td>
+<td align="center">82</td>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#wpa_cli-2.2">wpa_cli-2.2</a>
 size:  114K</pre>
                      </td>
@@ -859,26 +881,37 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">12</td>
+<td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">12</td>
+<td align="center">2</td>
+<td align="center">00:20:33</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#wpa_cli-2.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">5</td>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#wpa_cli-2.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">324</td>
+<td align="center">60</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">324</td>
+<td align="center">60</td>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="9" >
+<td bgcolor="white" rowspan="10" >
                          <pre><a href="#swfc-0.9.2">swfc-0.9.2</a>
 size:  1.4M</pre>
                      </td>
@@ -1016,33 +1049,44 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_double_release">Memory check: double free</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">12</td>
+<td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">12</td>
+<td align="center">2</td>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">605</td>
+<td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">605</td>
+<td align="center">10</td>
+<td align="center">01:04:34</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">24</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">24</td>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#swfc-0.9.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">2771</td>
+<td align="center">276</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">2771</td>
+<td align="center">276</td>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
@@ -1184,15 +1228,15 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#tshark-2.6.0+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">27</td>
+<td align="center">19</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">27</td>
+<td align="center">19</td>
 <td align="center">00:17:10</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#wav2swf-0.9.2">wav2swf-0.9.2</a>
 size:  241K</pre>
                      </td>
@@ -1330,26 +1374,37 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">6</td>
+<td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">00:11:03</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#wav2swf-0.9.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">574</td>
+<td align="center">65</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">574</td>
+<td align="center">65</td>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#ntpdc-4.2.8p5">ntpdc-4.2.8p5</a>
 size:  1.1M</pre>
                      </td>
@@ -1487,26 +1542,37 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">96</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">96</td>
+<td align="center">1</td>
+<td align="center">00:18:00</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">4</td>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">314</td>
+<td align="center">87</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">314</td>
+<td align="center">87</td>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#swfextract-0.9.2">swfextract-0.9.2</a>
 size:  1.1M</pre>
                      </td>
@@ -1644,22 +1710,33 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">178</td>
+<td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">178</td>
+<td align="center">10</td>
+<td align="center">00:33:14</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#swfextract-0.9.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">32</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">32</td>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#swfextract-0.9.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">1925</td>
+<td align="center">224</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">1925</td>
+<td align="center">224</td>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
@@ -1966,7 +2043,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:51:55</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#nginx-1.7">nginx-1.7</a>
 size:  859K</pre>
                      </td>
@@ -2104,22 +2181,33 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">392</td>
+<td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">392</td>
+<td align="center">4</td>
+<td align="center">03:27:01</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#nginx-1.7+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">6</td>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#nginx-1.7+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">346</td>
+<td align="center">51</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">346</td>
+<td align="center">51</td>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
@@ -2258,7 +2346,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">04:41:07</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#swfcombine-0.9.2">swfcombine-0.9.2</a>
 size:  113K</pre>
                      </td>
@@ -2396,22 +2484,33 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">792</td>
+<td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">792</td>
+<td align="center">3</td>
+<td align="center">00:08:21</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#swfcombine-0.9.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">27</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">27</td>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">309</td>
+<td align="center">59</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">309</td>
+<td align="center">59</td>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
@@ -2564,26 +2663,26 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">9</td>
+<td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">9</td>
+<td align="center">3</td>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">254</td>
+<td align="center">92</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">254</td>
+<td align="center">92</td>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="8" >
+<td bgcolor="white" rowspan="9" >
                          <pre><a href="#sshd-7.3.p1">sshd-7.3.p1</a>
 size:  3.0M</pre>
                      </td>
@@ -2721,26 +2820,37 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">24</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">24</td>
+<td align="center">1</td>
+<td align="center">01:16:19</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#sshd-7.3.p1+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#sshd-7.3.p1+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">1074</td>
+<td align="center">174</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">1074</td>
+<td align="center">174</td>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
-<td bgcolor="white" rowspan="9" >
+<td bgcolor="white" rowspan="10" >
                          <pre><a href="#wpa_supplicant-2.2">wpa_supplicant-2.2</a>
 size:  934K</pre>
                      </td>
@@ -2878,34 +2988,45 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td><div class="tooltip"><a href="#wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">7</td>
+<td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">7</td>
-<td align="center">00:01:28</td>
+<td align="center">4</td>
+<td align="center">01:28:51</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">569</td>
+<td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">569</td>
-<td align="center">00:01:28</td>
+<td align="center">5</td>
+<td align="center">01:28:51</td>
+</tr>
+<tr>
+<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Memcheck_use_after_release">Use after free</a>
+           <span class="tooltiptext"><pre></pre></span>
+           </div></td>
+<td align="center">25</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">25</td>
+<td align="center">01:28:51</td>
 </tr>
 <tr>
 <td><div class="tooltip"><a href="#wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</a>
            <span class="tooltiptext"><pre></pre></span>
            </div></td>
-<td align="center">495</td>
+<td align="center">138</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
-<td align="center">495</td>
-<td align="center">00:01:28</td>
+<td align="center">138</td>
+<td align="center">01:28:51</td>
 </tr>
 </table>
 </br>
@@ -2932,7 +3053,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
       <td bgcolor=#F7D3CE></td>
       <td bgcolor="#f2f2f2"> false negative </td>
       </tr>
-     </table></br><table><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fgets_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputc_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fputs_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fread_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fscanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_fwrite_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_putchar_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_puts_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_scanf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_snprintf_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_01_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_02_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_04_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_05_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_07_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_08_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_10_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_11_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_13_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_14_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_16_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_17_bad</td><td bgcolor="#D4EFE2">CWE252_Unchecked_Return_Value__char_sscanf_18_bad</td><tr></tr></table></br>
+     </table></br><table id="data"><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fgets_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fprintf_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputc_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fputs_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fread_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fscanf_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_fwrite_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_putchar_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_puts_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_scanf_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_snprintf_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE252_Unchecked_Return_Value__char_sscanf_18_bad&nbsp</td><tr></tr></table></br>
 </tr>
 </td>
 <tr>
@@ -2956,7 +3077,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
       <td bgcolor=#F7D3CE></td>
       <td bgcolor="#f2f2f2"> false negative </td>
       </tr>
-     </table></br><table><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_11_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__binary_if_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__char_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__char_68_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_01_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_02_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_03_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_04_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_05_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_06_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_07_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_08_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_09_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_10_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_12_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_13_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_14_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_15_bad</td><tr></tr><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_16_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_17_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__deref_after_check_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int64_t_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int64_t_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__int_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__int_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__long_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__long_68_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_01_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_02_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_03_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_04_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_05_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_06_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_07_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_08_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_09_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_10_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_11_bad</td><td bgcolor="#F7D3CE">CWE476_NULL_Pointer_Dereference__struct_12_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_13_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_14_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_15_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_16_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_17_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_18_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_21_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_22_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_31_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_32_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_34_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_41_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_44_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_45_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_51_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_52_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_53_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_54_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_63_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_64_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_65_bad</td><tr></tr><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_66_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_67_bad</td><td bgcolor="#D4EFE2">CWE476_NULL_Pointer_Dereference__struct_68_bad</td><tr></tr></table></br>
+     </table></br><table id="data"><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_11_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__binary_if_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__char_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_21_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_22_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_31_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_32_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_34_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_41_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_44_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_45_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_51_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_52_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_53_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_54_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_63_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_64_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_65_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_66_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_67_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__char_68_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_01_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_02_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_03_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_04_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_05_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_06_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_07_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_08_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_09_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_10_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_12_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_13_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_14_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_15_bad&nbsp</td><tr></tr><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_16_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_17_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__deref_after_check_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__int64_t_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_21_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_22_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_31_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_32_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_34_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_41_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_44_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_45_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_51_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_52_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_53_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_54_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_63_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_64_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_65_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_66_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_67_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int64_t_68_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__int_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_21_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_22_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_31_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_32_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_34_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_41_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_44_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_45_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_51_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_52_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_53_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_54_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_63_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_64_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_65_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_66_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_67_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__int_68_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__long_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_21_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_22_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_31_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_32_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_34_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_41_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_44_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_45_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_51_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_52_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_53_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_54_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_63_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_64_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_65_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_66_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_67_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__long_68_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_01_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_02_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_03_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_04_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_05_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_06_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_07_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_08_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_09_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_10_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_11_bad&nbsp</td><td bgcolor="#F7D3CE">&nbspCWE476_NULL_Pointer_Dereference__struct_12_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_13_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_14_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_15_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_16_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_17_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_18_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_21_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_22_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_31_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_32_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_34_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_41_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_44_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_45_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_51_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_52_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_53_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_54_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_63_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_64_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_65_bad&nbsp</td><tr></tr><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_66_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_67_bad&nbsp</td><td bgcolor="#D4EFE2">&nbspCWE476_NULL_Pointer_Dereference__struct_68_bad&nbsp</td><tr></tr></table></br>
 </tr>
 </td>
 <tr>
@@ -3009,7 +3130,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 </br>
 </div>
 <b id="httpd-2.4.18+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 67/0/0/0/67</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 15/0/0/0/15</pre>
 <div>
 <pre>Time: 01:04:41</pre>
 </tr>
@@ -3064,20 +3185,24 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 </br>
 </div>
 <b id="samba-4.7.6+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 0/0/0/0/0</pre>
+
 <div>
-<pre>Time: 00:00:40</pre>
-<pre>
-not found
-Memcheck-use-after-release:
-</pre>
 <pre>Time: 00:00:40</pre>
 <pre>
 no incidents found
 </pre>
 </br>
 </div>
-<b id="samba-4.7.6+Value_was_used_before_check">Value was used before check</b>
+<b id="samba-4.7.6+Memcheck_use_after_release">Use after free</b>
+
+<div>
+<pre>Time: 00:00:40</pre>
+<pre>
+no incidents found
+</pre>
+</br>
+</div>
+<b id="samba-4.7.6+Memcheck_out_of_bound">Memory check: out of bound</b>
 
 <div>
 <pre>Time: 00:00:40</pre>
@@ -3191,23 +3316,25 @@ no incidents found
 </br>
 </div>
 <b id="smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 79/0/0/0/79</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <div>
 <pre>Time: 04:26:32</pre>
 </br>
 </div>
 <b id="smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 8219/0/0/0/8219</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <div>
 <pre>Time: 04:26:32</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="smtpd-5.7.3p2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 14/0/0/0/14</pre>
+<div>
 <pre>Time: 04:26:32</pre>
 </br>
 </div>
 <b id="smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 425/0/0/0/425</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 82/0/0/0/82</pre>
 <div>
 <pre>Time: 04:26:32</pre>
 </tr>
@@ -3262,17 +3389,19 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <div>
 <pre>Time: 00:20:33</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="wpa_cli-2.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 5/0/0/0/5</pre>
+<div>
 <pre>Time: 00:20:33</pre>
 </br>
 </div>
 <b id="wpa_cli-2.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 324/0/0/0/324</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 60/0/0/0/60</pre>
 <div>
 <pre>Time: 00:20:33</pre>
 </tr>
@@ -3327,23 +3456,25 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="swfc-0.9.2+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 12/0/0/0/12</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 2/0/0/0/2</pre>
 <div>
 <pre>Time: 01:04:34</pre>
 </br>
 </div>
 <b id="swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 605/0/0/0/605</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 10/0/0/0/10</pre>
 <div>
 <pre>Time: 01:04:34</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="swfc-0.9.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 24/0/0/0/24</pre>
+<div>
 <pre>Time: 01:04:34</pre>
 </br>
 </div>
 <b id="swfc-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 2771/0/0/0/2771</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 276/0/0/0/276</pre>
 <div>
 <pre>Time: 01:04:34</pre>
 </tr>
@@ -3398,7 +3529,7 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="tshark-2.6.0+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 27/0/0/0/27</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 19/0/0/0/19</pre>
 <div>
 <pre>Time: 00:17:10</pre>
 </tr>
@@ -3453,17 +3584,19 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <div>
 <pre>Time: 00:11:03</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="wav2swf-0.9.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
+<div>
 <pre>Time: 00:11:03</pre>
 </br>
 </div>
 <b id="wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 574/0/0/0/574</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 65/0/0/0/65</pre>
 <div>
 <pre>Time: 00:11:03</pre>
 </tr>
@@ -3518,17 +3651,19 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 96/0/0/0/96</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <div>
 <pre>Time: 00:18:00</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="ntpdc-4.2.8p5+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
+<div>
 <pre>Time: 00:18:00</pre>
 </br>
 </div>
 <b id="ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 314/0/0/0/314</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 87/0/0/0/87</pre>
 <div>
 <pre>Time: 00:18:00</pre>
 </tr>
@@ -3583,17 +3718,19 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 178/0/0/0/178</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 10/0/0/0/10</pre>
 <div>
 <pre>Time: 00:33:14</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="swfextract-0.9.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 32/0/0/0/32</pre>
+<div>
 <pre>Time: 00:33:14</pre>
 </br>
 </div>
 <b id="swfextract-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 1925/0/0/0/1925</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 224/0/0/0/224</pre>
 <div>
 <pre>Time: 00:33:14</pre>
 </tr>
@@ -3652,7 +3789,7 @@ memcheck-use-after-release:
 <div>
 <pre>Time: 03:03:45</pre>
 <pre>
-Total 4
+Total 2
 </pre>
 </br>
 </div>
@@ -3661,7 +3798,7 @@ Total 4
 <div>
 <pre>Time: 03:03:45</pre>
 <pre>
-Total 3
+Total 1
 </pre>
 </br>
 </div>
@@ -3670,7 +3807,7 @@ Total 3
 <div>
 <pre>Time: 03:03:45</pre>
 <pre>
-Total 629
+Total 94
 </pre>
 </tr>
 </td>
@@ -3773,17 +3910,19 @@ Total 629
 </br>
 </div>
 <b id="nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 392/0/0/0/392</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <div>
 <pre>Time: 03:27:01</pre>
-<pre>
-Memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="nginx-1.7+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 6/0/0/0/6</pre>
+<div>
 <pre>Time: 03:27:01</pre>
 </br>
 </div>
 <b id="nginx-1.7+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 346/0/0/0/346</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 51/0/0/0/51</pre>
 <div>
 <pre>Time: 03:27:01</pre>
 </tr>
@@ -3887,17 +4026,19 @@ Memcheck-use-after-release:
 </br>
 </div>
 <b id="swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 792/0/0/0/792</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
 <div>
 <pre>Time: 00:08:21</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="swfcombine-0.9.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 27/0/0/0/27</pre>
+<div>
 <pre>Time: 00:08:21</pre>
 </br>
 </div>
 <b id="swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 309/0/0/0/309</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 59/0/0/0/59</pre>
 <div>
 <pre>Time: 00:08:21</pre>
 </tr>
@@ -3958,13 +4099,13 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 9/0/0/0/9</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
 <div>
 <pre>Time: 01:08:15</pre>
 </br>
 </div>
 <b id="ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 254/0/0/0/254</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 92/0/0/0/92</pre>
 <div>
 <pre>Time: 01:08:15</pre>
 </tr>
@@ -4019,17 +4160,19 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 24/0/0/0/24</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 1/0/0/0/1</pre>
 <div>
 <pre>Time: 01:16:19</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
+</br>
+</div>
+<b id="sshd-7.3.p1+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 3/0/0/0/3</pre>
+<div>
 <pre>Time: 01:16:19</pre>
 </br>
 </div>
 <b id="sshd-7.3.p1+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 1074/0/0/0/1074</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 174/0/0/0/174</pre>
 <div>
 <pre>Time: 01:16:19</pre>
 </tr>
@@ -4084,25 +4227,27 @@ memcheck-use-after-release:
 </br>
 </div>
 <b id="wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 7/0/0/0/7</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 4/0/0/0/4</pre>
 <div>
-<pre>Time: 00:01:28</pre>
+<pre>Time: 01:28:51</pre>
 </br>
 </div>
 <b id="wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 569/0/0/0/569</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 5/0/0/0/5</pre>
 <div>
-<pre>Time: 00:01:28</pre>
-<pre>
-memcheck-use-after-release:
-</pre>
-<pre>Time: 00:01:28</pre>
+<pre>Time: 01:28:51</pre>
+</br>
+</div>
+<b id="wpa_supplicant-2.2+Memcheck_use_after_release">Use after free</b>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 25/0/0/0/25</pre>
+<div>
+<pre>Time: 01:28:51</pre>
 </br>
 </div>
 <b id="wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</b>
-<pre>Total/Confirmed/False positive/False negative/Unclassified: 495/0/0/0/495</pre>
+<pre>Total/Confirmed/False positive/False negative/Unclassified: 138/0/0/0/138</pre>
 <div>
-<pre>Time: 00:01:28</pre>
+<pre>Time: 01:28:51</pre>
 </tr>
 </td>
 </table>
