@@ -78,9 +78,7 @@ hh:mm:ss</pre></th></tr>
 size:  249K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#juliet-cwe-252+(Test Unused)">Testcase: Unused return value</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/252.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/252.html">Testcase: Unused return value</a></td>
 <td align="center">216</td>
 <td align="center">216</td>
 <td align="center">0</td>
@@ -94,9 +92,7 @@ size:  249K</pre>
 size:  280K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#juliet-cwe-476+(Test Null)">Testcase: Null pointer dereference</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/476.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/476.html">Testcase: Null pointer dereference</a></td>
 <td align="center">216</td>
 <td align="center">193</td>
 <td align="center">0</td>
@@ -110,19 +106,7 @@ size:  280K</pre>
 size:  873K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#httpd-2.4.18+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">12</td>
 <td align="center">12</td>
 <td align="center">0</td>
@@ -131,15 +115,7 @@ The next functions shall not be used:
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -148,21 +124,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">16</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -171,16 +133,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:49</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -189,25 +142,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">25</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -216,22 +151,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:36:00</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">141</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -240,9 +160,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:54:43</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#httpd-2.4.18+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">15</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -256,19 +174,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  46K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#samba-4.7.6+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">8</td>
 <td align="center">8</td>
 <td align="center">0</td>
@@ -277,15 +183,7 @@ The next functions shall not be used:
 <td align="center">00:00:03</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -294,21 +192,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:03</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -317,16 +201,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:04</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -335,25 +210,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:04</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -362,22 +219,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">9</td>
 <td align="center">9</td>
 <td align="center">0</td>
@@ -386,9 +228,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -397,9 +237,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -408,9 +246,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:00:40</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#samba-4.7.6+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -424,19 +260,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  745K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#openssl-1.1.0+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">18</td>
 <td align="center">18</td>
 <td align="center">0</td>
@@ -445,15 +269,7 @@ The next functions shall not be used:
 <td align="center">00:00:19</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -462,21 +278,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:20</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -485,16 +287,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:29</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -503,25 +296,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:25</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -530,22 +305,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:46:44</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">202</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -554,9 +314,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:32:27</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#openssl-1.1.0+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -570,19 +328,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  2.2M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -591,15 +337,7 @@ The next functions shall not be used:
 <td align="center">00:00:22</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">81</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -608,21 +346,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:22</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -631,16 +355,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -649,25 +364,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:28</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -676,22 +373,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:08:20</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">306</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -700,9 +382,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:46:10</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_double_release">Memory check: double free</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: double free</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -711,9 +391,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -722,9 +400,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">14</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -733,9 +409,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">04:26:32</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#smtpd-5.7.3p2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">82</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -749,19 +423,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  114K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">21</td>
 <td align="center">21</td>
 <td align="center">0</td>
@@ -770,15 +432,7 @@ The next functions shall not be used:
 <td align="center">00:00:05</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -787,21 +441,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:05</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -810,16 +450,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -828,25 +459,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:06</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -855,22 +468,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:12:49</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">144</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -879,9 +477,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:03:55</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -890,9 +486,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -901,9 +495,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:20:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_cli-2.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">60</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -917,19 +509,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  1.4M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#swfc-0.9.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">24</td>
 <td align="center">24</td>
 <td align="center">0</td>
@@ -938,15 +518,7 @@ The next functions shall not be used:
 <td align="center">00:00:47</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">46</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -955,21 +527,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:46</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -978,16 +536,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:01:09</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -996,25 +545,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:58</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">22</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1023,22 +554,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">02:30:08</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">518</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1047,9 +563,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:09:32</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_double_release">Memory check: double free</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: double free</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1058,9 +572,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1069,9 +581,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">24</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1080,9 +590,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:04:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfc-0.9.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">276</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1096,19 +604,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  1.6M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#tshark-2.6.0+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">15</td>
 <td align="center">15</td>
 <td align="center">0</td>
@@ -1117,15 +613,7 @@ The next functions shall not be used:
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">17</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1134,21 +622,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1157,16 +631,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:16</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1175,25 +640,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:15</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -1202,22 +649,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:32:20</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">346</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1226,9 +658,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:12:48</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#tshark-2.6.0+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">19</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1242,19 +672,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  241K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -1263,15 +681,7 @@ The next functions shall not be used:
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">13</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1280,21 +690,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1303,16 +699,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1321,25 +708,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:10</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1348,22 +717,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:20:07</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">219</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1372,9 +726,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:09:24</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1383,9 +735,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1394,9 +744,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:11:03</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wav2swf-0.9.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">65</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1410,19 +758,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  1.1M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">32</td>
 <td align="center">32</td>
 <td align="center">0</td>
@@ -1431,15 +767,7 @@ The next functions shall not be used:
 <td align="center">00:00:10</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">32</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1448,21 +776,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">8</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1471,16 +785,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:14</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1489,25 +794,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:14</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">11</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1516,22 +803,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:25:22</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">572</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1540,9 +812,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:14:30</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Memcheck_double_release">Memory check: double free</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: double free</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1551,9 +821,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">1</td>
@@ -1562,9 +830,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:18:00</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpdc-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">87</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1578,19 +844,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  1.1M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">22</td>
 <td align="center">22</td>
 <td align="center">0</td>
@@ -1599,15 +853,7 @@ The next functions shall not be used:
 <td align="center">00:00:30</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">27</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1616,21 +862,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:28</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1639,16 +871,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:44</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1657,25 +880,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">16</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1684,22 +889,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:30:19</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">471</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1708,9 +898,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:33:24</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1719,9 +907,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">32</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1730,9 +916,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:33:14</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfextract-0.9.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">224</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1746,19 +930,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  770K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">17</td>
 <td align="center">17</td>
 <td align="center">0</td>
@@ -1767,15 +939,7 @@ The next functions shall not be used:
 <td align="center">00:00:08</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">10</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1784,21 +948,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:09</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1807,16 +957,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:12</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1825,25 +966,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:11</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1852,22 +975,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:15:12</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">153</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1876,9 +984,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:09:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1887,9 +993,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:03:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1898,9 +1002,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:03:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#lighttpd-1.4.15+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1914,19 +1016,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  6.0M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">18</td>
 <td align="center">18</td>
 <td align="center">0</td>
@@ -1935,15 +1025,7 @@ The next functions shall not be used:
 <td align="center">00:00:55</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">90</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1952,21 +1034,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:56</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">79</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1975,16 +1043,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:01:24</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -1993,25 +1052,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:01:17</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2020,22 +1061,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:02:02</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#libbfd-2.31.1+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">545</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2049,19 +1075,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  859K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#nginx-1.7+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">10</td>
 <td align="center">10</td>
 <td align="center">0</td>
@@ -2070,15 +1084,7 @@ The next functions shall not be used:
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">55</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2087,21 +1093,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:34</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">41</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2110,16 +1102,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:51</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">7</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2128,25 +1111,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:46</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2155,22 +1120,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">04:47:01</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">81</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2179,9 +1129,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:40:16</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2190,9 +1138,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2201,9 +1147,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">03:27:01</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#nginx-1.7+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">51</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2217,19 +1161,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  1.1M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">25</td>
 <td align="center">25</td>
 <td align="center">0</td>
@@ -2238,15 +1170,7 @@ The next functions shall not be used:
 <td align="center">00:00:56</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">180</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2255,21 +1179,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:54</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">46</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2278,16 +1188,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:01:20</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">7</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2296,25 +1197,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:01:10</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">18</td>
 <td align="center">0</td>
 <td align="center">2</td>
@@ -2323,22 +1206,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">05:55:46</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sqlite3-2.27.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">149</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2352,19 +1220,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  113K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">20</td>
 <td align="center">20</td>
 <td align="center">0</td>
@@ -2373,15 +1229,7 @@ The next functions shall not be used:
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2390,21 +1238,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:06</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2413,16 +1247,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:09</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">2</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2431,25 +1256,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:07</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2458,22 +1265,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:18:13</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">185</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2482,9 +1274,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:06:55</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2493,9 +1283,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">27</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2504,9 +1292,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">00:08:21</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#swfcombine-0.9.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">59</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2520,19 +1306,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  3.1M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">43</td>
 <td align="center">43</td>
 <td align="center">0</td>
@@ -2541,15 +1315,7 @@ The next functions shall not be used:
 <td align="center">00:00:29</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">77</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2558,21 +1324,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:31</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">31</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2581,16 +1333,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">13</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2599,25 +1342,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">6</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2626,22 +1351,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:35:31</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">909</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2650,9 +1360,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:14:59</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2661,9 +1369,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2672,9 +1378,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:08:15</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#ntpd-4.2.8p5+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">92</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2688,19 +1392,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  3.0M</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">25</td>
 <td align="center">25</td>
 <td align="center">0</td>
@@ -2709,15 +1401,7 @@ The next functions shall not be used:
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">184</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2726,21 +1410,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:33</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">12</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2749,16 +1419,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:00:48</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">9</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2767,25 +1428,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:42</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">3</td>
@@ -2794,22 +1437,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:53:16</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">229</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2818,9 +1446,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:23:37</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2829,9 +1455,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">3</td>
 <td align="center">0</td>
 <td align="center">3</td>
@@ -2840,9 +1464,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:16:19</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#sshd-7.3.p1+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">174</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2856,19 +1478,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 size:  934K</pre>
                      </td>
 
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Forbidden">Forbidden functions</a>
-           <span class="tooltiptext"><pre>
-The next functions shall not be used:
- - errno shall not be used as an error indicator
- - &lt;locale.h&gt; and the setlocale function
- - setjmp and longjmp
- - signal handling facilities of &lt;signal.h&gt;
- - The input/output library &lt;stdio.h&gt;
- - atof, atoi, and atol
- - abort, exit, getenv and system
- - the &lt;time.h&gt; interface
-</pre></span>
-           </div></td>
+<td><a href="">Forbidden functions</a></td>
 <td align="center">22</td>
 <td align="center">22</td>
 <td align="center">0</td>
@@ -2877,15 +1487,7 @@ The next functions shall not be used:
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Recursive">Recursive functions</a>
-           <span class="tooltiptext"><pre>There shall be no direct or indirect use of recursive function calls
-
-The algorithm.
-
-Apply the depth first search (DFS) algotithm and determine if there are any
-back edges in the program callgraph. And if there are, then destinations
-of these edges are the recursive subroutines.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-4/descr">Recursive functions</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2894,21 +1496,7 @@ of these edges are the recursive subroutines.</pre></span>
 <td align="center">00:00:45</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Complex">Functions with cyclomatic complexity > 50</a>
-           <span class="tooltiptext"><pre>All functions shall have a cyclomatic complexity number of 20 or less.
-
-The cyclomatic complexity number is a metric that is used to determine a
-number of linearly independent paths in a subroutine control flow graph (CFG).
-The number is computed using the following formula,
-
-  C = E - N + P
-  
-where `E` is the number of edges, `N` is the number of nodes, and `P` is
-the number of strongly connected components. The CFG exit node is connected
-to its entry node, so that an acyclic function will have one connected component. 
-
-The threshold 20 is a parameter.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-3/descr">Functions with cyclomatic complexity > 50</a></td>
 <td align="center">11</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2917,16 +1505,7 @@ The threshold 20 is a parameter.</pre></span>
 <td align="center">00:01:07</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Non_structural">Functions with non-structural cfg</a>
-           <span class="tooltiptext"><pre>The goto statement shall not be used
-
-This rule means that a control flow graph of each subroutine
-should be reducible. Or, as vice versa, there should not be
-any subroutine with non-reducible control flow graph.
-
-The CFG is considered as a reducible one if if doesn't contain
-strongly connected components with two and more entries.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-189/descr">Functions with non-structural cfg</a></td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2935,25 +1514,7 @@ strongly connected components with two and more entries.</pre></span>
 <td align="center">00:00:53</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Null">Null pointer dereference</a>
-           <span class="tooltiptext"><pre>The null pointer shall not be de-referenced
-
-The algorithm.
-Every static constant in a program becomes a source of a taint.
-And if there is a load from or store by the tainted address, then
-a null pointer is actually dereferenced. Additionally,
-we check if the tainted value reaches any conditional
-block. And if does and there is a control dependency between
-pointer dereferencing and condition, we don't consider such
-case as real null pointer dereferencing, because it is under
-the check.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/av-rule-174/descr">Null pointer dereference</a></td>
 <td align="center">20</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2962,22 +1523,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">02:41:31</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Unused">Unused return value</a>
-           <span class="tooltiptext"><pre>detects unused values returned by functions
-
-The algotihm uses function's api information to determine it's output argument.
-Value assigned to the output argument becomes a source of a taint.
-And any read of the tainted value sanitizes this taint, meaning that
-an output argument is actually used.
-Otherwise, if the taint survives and is finalized by garbage collector,
-then a proof of unused result is obtainted.
-
-All checks are reported:
-- to stdout in the user friendly format
-- via the incident report system and are stored
-in the working directory in the `incidents' file.
-The file could be loaded in IDA Pro for further analysis.</pre></span>
-           </div></td>
+<td><a href="https://raw.githubusercontent.com/BinaryAnalysisPlatform/bap-toolkit/master/jpl-rule-14/descr">Unused return value</a></td>
 <td align="center">562</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2986,9 +1532,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:27:04</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Hardcoded_socket_address">Hardcoded socket address</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Hardcoded socket address</a></td>
 <td align="center">4</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -2997,9 +1541,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:28:51</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Memcheck_out_of_bound">Memory check: out of bound</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Memory check: out of bound</a></td>
 <td align="center">5</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -3008,9 +1550,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:28:51</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Memcheck_use_after_release">Use after free</a>
-           <span class="tooltiptext"><pre><a href=https://cwe.mitre.org/data/definitions/416.html style="color:white">description</a></pre></span>
-           </div></td>
+<td><a href="https://cwe.mitre.org/data/definitions/416.html">Use after free</a></td>
 <td align="center">25</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -3019,9 +1559,7 @@ The file could be loaded in IDA Pro for further analysis.</pre></span>
 <td align="center">01:28:51</td>
 </tr>
 <tr>
-<td><div class="tooltip"><a href="#wpa_supplicant-2.2+Value_was_used_before_check">Value was used before check</a>
-           <span class="tooltiptext"><pre></pre></span>
-           </div></td>
+<td><a href="">Value was used before check</a></td>
 <td align="center">138</td>
 <td align="center">0</td>
 <td align="center">0</td>
