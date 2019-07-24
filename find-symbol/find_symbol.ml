@@ -6,43 +6,50 @@ open Format
 module Cfg = Graphs.Cfg
 module Callg = Graphs.Callgraph
 
+module Incident = Find_symbol_incident
+
+let () = Incident.enable ()
+
 open Find_symbol_utils
+open Find_symbol_types
 
 include Self ()
-
-type reason =
-  | Recursive_call
-  | By_symbol_name
-  | By_symbol_usage
-  | Non_structured of addr
-  | Big_complexity of int
 
 type result = {
   addr : addr;
   reason : reason;
+  data : symbol_data option;
 }
 
 type check =
   | Symbols of (symtab -> result list)
   | Program of (program term -> result list)
 
+let result ?data addr reason = {addr;reason;data}
 
 let find_non_structured symtab =
+  let reason = Non_structural_cfg in
   Symtab.to_sequence symtab |>
     Seq.fold ~init:[] ~f:(fun rs (name,entry,cfg) ->
         match find_nonstructural_component cfg entry with
         | None -> rs
         | Some addr ->
-           {addr = Block.addr entry; reason = Non_structured addr} :: rs)
+           let start = Block.addr entry in
+           Incident.notify reason start;
+           result ~data:(Non_structural_block addr) start reason :: rs)
 
 let find_names names symtab =
+  let reason = Forbidden_function in
   Symtab.to_sequence symtab |>
   Seq.fold ~init:[] ~f:(fun rs (name,entry,_) ->
       if List.mem ~equal:String.equal names name then
-        {addr = Block.addr entry; reason = By_symbol_name} :: rs
+        let addr = Block.addr entry in
+        let () = Incident.notify reason addr in
+        result addr reason :: rs
       else rs)
 
 let find_usage names prog =
+  let reason = Forbidden_function in
   let g = Program.to_graph prog in
   let names = Set.of_list (module String) names in
   let tids =
@@ -50,8 +57,7 @@ let find_usage names prog =
       Seq.fold ~init:(Map.empty (module Tid)) ~f:(fun xs s ->
           if Set.mem names (Sub.name s) then
             Map.set xs (Term.tid s) s
-          else
-            xs) in
+          else xs) in
   Map.fold tids ~init:[] ~f:(fun ~key:tid ~data:sub xs ->
       match Callg.Node.inputs tid g |> Seq.to_list with
       | []  -> xs
@@ -59,53 +65,103 @@ let find_usage names prog =
          match Term.get_attr sub address with
          | None -> xs
          | Some addr ->
-            {addr; reason = By_symbol_usage} :: xs)
+            Incident.notify reason addr;
+            result addr reason :: xs)
 
 let find_recursive prog =
+  let reason = Recursive_function in
   List.filter_map (find_recursive prog)
     ~f:(fun sub ->
       match Term.get_attr sub address with
       | None -> None
       | Some addr ->
-         Some {addr; reason = Recursive_call})
+         Incident.(notify reason addr);
+         Some (result addr reason))
 
-let find_complex threshold symtab = match threshold with
+let find_complex threshold symtab =
+  let reason = Complex_function in
+  match threshold with
   | None -> []
   | Some threshold ->
      Symtab.to_sequence symtab |>
        Seq.fold ~init:[] ~f:(fun rs (name,entry,cfg) ->
            let c = complexity cfg entry in
            if c > threshold then
-             {addr = Block.addr entry; reason = Big_complexity c} :: rs
+             let start = Block.addr entry in
+             let () = Incident.notify reason start in
+             result ~data:(Complexity c) start reason :: rs
            else rs)
 
-let report_symbol symtab addr reasons =
-  let string_of_reason = function
-    | Big_complexity i -> sprintf "Complexity %d" i
-    | By_symbol_name -> sprintf "Name"
-    | By_symbol_usage -> sprintf "Forbidden"
-    | Recursive_call -> sprintf "Recursive-call"
-    | Non_structured addr -> sprintf "Non-structured at %a" Addr.pps addr in
+let report_symbol symtab addr results =
+  let string_of_data = function
+    | None -> ""
+    | Some (Complexity x) -> sprintf "%d" x
+    | Some (Non_structural_block a) -> sprintf "at %a" Addr.pps a in
+  let string_of_reason d  = function
+    | Complex_function -> sprintf "Complexity %s" (string_of_data d)
+    | Forbidden_function -> sprintf "Forbidden"
+    | Recursive_function -> sprintf "Recursive-call"
+    | Non_structural_cfg -> sprintf "Non-structural cfg %s" (string_of_data d) in
   match Symtab.find_by_start symtab addr with
   | None -> ()
   | Some (name,_,_) ->
     printf "%-25s %a [" name Addr.pp addr;
-    match reasons with
-    | [reason] -> printf "%s]\n" @@ string_of_reason reason
-    | reasons ->
-      List.map reasons ~f:string_of_reason |>
-      String.concat ~sep:"; " |>
+    match results with
+    | [sym] -> printf "%s]\n" @@ string_of_reason sym.data sym.reason;
+    | syms ->
+       List.fold syms ~init:[] ~f:(fun ac s ->
+           string_of_reason s.data s.reason :: ac) |>
+         List.rev |>
+         String.concat ~sep:"; " |>
       printf "%s]\n"
 
-let report symtab results =
+
+let plain_report symtab results =
+  let print header names =
+    if Set.is_empty names then ()
+    else
+      printf "\n%s:\n" header;
+      let all = Set.to_list names in
+      let rec pr = function
+        | [] -> ()
+        | xs ->
+           let fst = List.take xs 4 in
+           let lst = List.drop xs 4 in
+           let str = List.fold fst ~init:"" ~f:(sprintf "%s%s ") in
+           printf "%s\n" str;
+           pr lst in
+      pr all in
+  let r = String.Set.empty in
+  let c = String.Set.empty in
+  let f = String.Set.empty in
+  let n = String.Set.empty in
+  let r,c,f,n =
+  Map.fold results ~init:(r,c,f,n) ~f:(fun ~key:addr ~data acc ->
+      match Symtab.find_by_start symtab addr with
+      | None -> acc
+      | Some (name,_,_) ->
+         List.fold data ~init:acc ~f:(fun (r,c,f,n) {reason} ->
+             match reason with
+             | Complex_function -> r, Set.add c name, f, n
+             | Forbidden_function -> r,c,Set.add f name, n
+             | Recursive_function -> Set.add r name, c,f,n
+             | Non_structural_cfg -> r,c,f, Set.add n name)) in
+  print "Forbidden" f;
+  print "Recursive" r;
+  print "Complexity" c;
+  print "Non-structural cfg" n
+
+let detailed_report symtab results =
   let () = printf "%-16s %-7s %s\n" "Symbol found" "Address" "Criteria" in
   Map.iteri results ~f:(fun ~key:addr ~data ->
       report_symbol symtab addr data)
 
+let report = detailed_report
+
 let run checks proj =
   let (++) init results =
     List.fold results ~init ~f:(fun data x ->
-        Map.add_multi data x.addr x.reason) in
+        Map.add_multi data x.addr x) in
   List.fold checks ~init:(Map.empty (module Addr))
     ~f:(fun data -> function
         | Symbols check -> data ++ check (Project.symbols proj)
@@ -115,10 +171,11 @@ let main checks fail_on_found silent proj =
   match checks with
   | [] -> ()
   | checks ->
-    let locs = run checks proj in
-    if not (Map.is_empty locs) then
-      let () = if not silent then report (Project.symbols proj) locs in
-      if fail_on_found then exit 1
+     Incident.notify_symbols (Project.symbols proj);
+     let locs = run checks proj in
+     if not (Map.is_empty locs) then
+       let () = if not silent then report (Project.symbols proj) locs in
+       if fail_on_found then exit 1
 
 let split s =
   List.map s ~f:(String.split ~on:',') |> List.concat

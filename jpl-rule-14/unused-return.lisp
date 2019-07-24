@@ -30,7 +30,8 @@
       (notify-unused taint))))
 
 (defun notify-unused (taint)
-  (incident-report 'value-was-not-used (incident-location)))
+  (let ((loc (dict-get 'unused-return-value taint)))
+    (incident-report 'unused-return-value loc)))
 
 (defmethod written (var val)
   (let ((name (dict-get 'call-return var)))
@@ -41,6 +42,7 @@
           (taint-sanitize-direct 'must-be-used val))
         (dict-del 'call-return var)
         (let ((taint (taint-introduce-directly 'must-be-used val)))
+          (dict-add 'unused-return-value taint (incident-location))
           (check-if-used taint name addr))))))
 
 (defun is-ignored (name)

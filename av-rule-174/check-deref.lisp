@@ -25,13 +25,15 @@
 ;;
 (require taint)
 
-(defun notify-null-deref (start)
-  (let ((pc (get-current-program-counter)))
+(defun notify-null-deref (taint)
+  (let ((pc (get-current-program-counter))
+        (start (dict-get 'intro taint))
+        (intro (dict-get 'intro/location taint)))
     (when (not (is-reported-deref pc))
       (when start
         (msg "pointer was introduced at $0" start))
       (notify-null-ptr-dereference start pc)
-      (incident-report 'null-pointer-dereference (incident-location)))))
+      (incident-report 'null-ptr-deref (incident-location) intro))))
 
 (defun is-null (ptr)
   (and (not ptr) (all-static-constant ptr)))
@@ -50,7 +52,7 @@
       (when (and taint (not (is-safe ptr)) (not checked))
         (taint-introduce-indirectly 'failed ptr 1)
         (taint-introduce-directly   'failed ptr)
-        (notify-null-deref (dict-get 'intro taint))))))
+        (notify-null-deref taint)))))
 
 (defmethod eval-cond (x)
   (let ((taint (taint-get-direct 'const-ptr x)))
@@ -63,7 +65,8 @@
 (defmethod written (v x)
   (when (is-static-const x)
     (let ((taint (taint-introduce-directly 'const-ptr x)))
-      (dict-add 'intro taint (get-current-program-counter)))))
+      (dict-add 'intro taint (get-current-program-counter))
+      (dict-add 'intro/location taint (incident-location)))))
 
 ;; stored method will detach previous indirect taints by the
 ;; address, and we can get a manifestation of the same
@@ -75,7 +78,8 @@
       (taint-introduce-indirectly 'failed a 1))
     (when (and (not known) (is-static-const x))
       (let ((taint (taint-introduce-indirectly 'const-ptr a 1)))
-        (dict-add 'intro taint (get-current-program-counter))))))
+        (dict-add 'intro taint (get-current-program-counter))
+        (dict-add 'intro/location taint (incident-location))))))
 
 (defmethod read (var val)
   (when (is-return-from-unresolved val)
