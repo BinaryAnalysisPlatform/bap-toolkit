@@ -45,7 +45,11 @@ def run_cmd_with_output(cmd, directory=None):
     if directory != None:
         os.chdir(directory)
     cmd = string.split(cmd)
-    res = subprocess.check_output(cmd)
+    res=""
+    try:
+        res = subprocess.check_output(cmd)
+    except:
+        pass;
     os.chdir(cur)
     return res
 
