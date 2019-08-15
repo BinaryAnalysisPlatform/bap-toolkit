@@ -130,26 +130,38 @@ module IsInitialValue(Machine : Primus.Machine.S) = struct
     Value.of_bool (Set.mem s (Value.id x))
 end
 
+module Lisp_primitives(Machine : Primus.Machine.S) = struct
+  module Lisp = Primus.Lisp.Make(Machine)
+  let def name types docs closure = Lisp.define ~docs ~types name closure
+end
 
-module Lisp(Machine : Primus.Machine.S) = struct
+
+module Notify_prim(Machine : Primus.Machine.S) = struct
+  include Lisp_primitives(Machine)
+  open Primus.Lisp.Type.Spec
 
   let init () =
-    let module Lisp = Primus.Lisp.Make(Machine) in
-    let open Primus.Lisp.Type.Spec in
-    let def name types docs closure = Lisp.define ~docs ~types name closure in
     Machine.sequence Primus.Interpreter.[
-        def "is-reported-deref" (tuple [a] @-> bool)
-          "(is-reported-deref ADDR) returns true if
-           a null pointer dereference at ADDR is the known
-           incident and was reported before"
-          (module IsReported);
-
         def "notify-null-ptr-dereference" (tuple [a;b] @-> any)
           "(notify-null-ptr-dereference INTRO ADDR)
            print message to stdout when pointer that was
            introduced at address INTRO is dereferenced at
            address ADDR"
           (module Notify);
+    ]
+end
+
+module Lisp(Machine : Primus.Machine.S) = struct
+  include Lisp_primitives(Machine)
+  open Primus.Lisp.Type.Spec
+
+  let init () =
+    Machine.sequence Primus.Interpreter.[
+        def "is-reported-deref" (tuple [a] @-> bool)
+          "(is-reported-deref ADDR) returns true if
+           a null pointer dereference at ADDR is the known
+           incident and was reported before"
+          (module IsReported);
 
         def "is-untrusted" (unit @-> bool)
           "(is-untrusted) returns true if a machine
@@ -180,16 +192,16 @@ module Lisp(Machine : Primus.Machine.S) = struct
            a value X is read from abi-specific register
            right after unresolved call returned"
           (module Calls_tracker.IsIgnoredReturn);
-
     ]
 end
 
-let main () =
+let main silent =
+  if not silent then
+    Primus.Machine.add_component (module Notify_prim);
   Primus.Machine.add_component (module Lisp);
   Primus.Machine.add_component (module InitialValues);
-  Calls_tracker.init ();
-  No_return.init ()
-
+  No_return.init ();
+  Calls_tracker.init ()
 
 open Config
 
@@ -200,6 +212,7 @@ manpage [
 ];;
 
 let enabled = flag "enable" ~doc:"Enables the analysis"
+let silent  = flag "silent" ~doc:"Don't output results"
 
 let () = when_ready (fun {get=(!!)} ->
-             if !!enabled then  main ())
+             if !!enabled then  main !!silent)

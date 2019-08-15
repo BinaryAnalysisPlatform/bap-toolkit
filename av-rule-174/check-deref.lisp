@@ -39,7 +39,7 @@
   (and (not ptr) (all-static-constant ptr)))
 
 (defun is-safe (ptr)
-  (or (is-untrusted)
+  (or
       (taint-get-indirect 'dont-believe ptr)
       (taint-get-direct 'dont-believe ptr)
       (taint-get-indirect 'failed ptr)
