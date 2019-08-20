@@ -1,7 +1,6 @@
 
 build:
-	make -C src build
+	python makes build
 
 install:
-	make -C src install
-	sh install.sh
+	python makes install
