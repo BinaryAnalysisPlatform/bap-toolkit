@@ -200,7 +200,6 @@ let main silent =
     Primus.Machine.add_component (module Notify_prim);
   Primus.Machine.add_component (module Lisp);
   Primus.Machine.add_component (module InitialValues);
-  No_return.init ();
   Calls_tracker.init ()
 
 open Config
