@@ -3,6 +3,8 @@ open Bap.Std
 open Bap_primus.Std
 open Bap_taint.Std
 
+open Monads.Std
+
 include Self ()
 
 type value = Primus.value
@@ -117,6 +119,7 @@ module HandleUnresolved(Machine : Primus.Machine.S) = struct
 
   let set_zero v =
     match Var.typ v with
+    | Unk -> assert false
     | Mem _ -> !! ()
     | Imm width ->
        Value.of_int ~width 0 >>= fun x ->
@@ -130,6 +133,85 @@ module HandleUnresolved(Machine : Primus.Machine.S) = struct
 
   let init () =  Primus.Linker.unresolved >>> on_unresolved
 end
+
+
+type callsite = {
+    pc  : addr option;
+    pc' : addr option;
+    stack : (addr * string) list;
+    last  :  (addr * string) option;
+  }
+
+let callsite = Primus.Machine.State.declare
+    ~name:"unused-results-callsite"
+    ~uuid:"1715922a-4e6d-4960-bbd4-a6fb8e239ddb"
+    (fun _ -> { pc = None; pc' = None; stack = []; last = None;})
+
+module Callsite (Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  let on_pc_change addr =
+    Machine.Local.update callsite ~f:(fun s ->
+        {s with pc = Some addr; pc' = s.pc})
+
+  let on_call (name,_) =
+    Machine.Local.update callsite ~f:(fun s ->
+        match s.pc' with
+        | None -> s
+        | Some callsite ->
+           {s with stack = (callsite,name) :: s.stack})
+
+  let on_call_return _ =
+    Machine.Local.update callsite ~f:(fun s ->
+        match s.stack with
+        | [] -> s
+        | last :: stack ->
+           {s with stack; last = Some last})
+
+  let on_lisp_call (name,_) =
+    Machine.Local.update callsite ~f:(fun s ->
+        let stack =
+          match s.stack with
+          | (_,name') :: stack when String.(name = name') ->
+             let pc = Option.value_exn s.pc in
+             (pc,name) :: stack
+          | _ -> s.stack in
+        {s with stack})
+
+  let init() =
+    Machine.sequence [
+        Primus.Interpreter.pc_change >>> on_pc_change;
+        Primus.Linker.Trace.call >>> on_call;
+        Primus.Linker.Trace.return >>> on_call_return;
+        Primus.Linker.Trace.lisp_call >>> on_lisp_call;
+      ]
+
+end
+
+module Callsite_addr(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  module Eval = Primus.Interpreter.Make(Machine)
+  open Machine.Syntax
+
+  let place =
+    Machine.current ()  >>= fun id ->
+    Eval.pc >>= fun pc ->
+    let id = Monad.State.Multi.Id.to_string id in
+    let pc = Addr.to_string pc in
+    !! (sprintf "(at %s:%s)" id pc)
+
+  [@@@warning "-P"]
+  let run [sub] =
+    Value.Symbol.of_value sub >>= fun name' ->
+    Machine.Local.get callsite >>= fun s ->
+    match s.last with
+    | None -> Value.b0
+    | Some (addr,name) ->
+       if String.(name = name') then Value.of_word addr
+       else Value.b0
+end
+
 
 module Return_arg(Machine : Primus.Machine.S) = struct
   module Value = Primus.Value.Make(Machine)
@@ -190,6 +272,13 @@ module Interface(Machine : Primus.Machine.S) = struct
           ({|(return-arg SUB) returns the name of output argument of the
             subroutine SUB. Returns NIL if the subroutine SUB doesn't
             return anything or subroutine's api is unknown|});
+
+        Lisp.define "callsite-addr" (module Callsite_addr)
+          ~types:(tuple [a] @-> b)
+          ~docs:
+          ({|(callsite-addr SUB) returns the address of the
+             callsite of the previous call if the previous call
+             was to subroutine SUB. Returns NIL otherwise. |});
       ]
 end
 
@@ -203,4 +292,5 @@ let () = when_ready (fun {get=(!!)} ->
                List.iter ~f:ident [
                    Primus.Machine.add_component (module Interface);
                    Primus.Machine.add_component (module HandleUnresolved);
+                   Primus.Machine.add_component (module Callsite);
            ])

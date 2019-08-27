@@ -36,20 +36,21 @@
 (defmethod written (var val)
   (let ((name (dict-get 'call-return var)))
     (when name
-      (let ((addr (get-current-program-counter))
+      (let ((addr (callsite-addr name))
             (old-taint (taint-get-direct 'must-be-used val)))
-        (when old-taint
-          (taint-sanitize-direct 'must-be-used val))
-        (dict-del 'call-return var)
-        (let ((taint (taint-introduce-directly 'must-be-used val)))
-          (dict-add 'unused-return-value taint (incident-location))
-          (check-if-used taint name addr))))))
+        (when addr
+          (when old-taint
+            (taint-sanitize-direct 'must-be-used val))
+          (dict-del 'call-return var)
+          (let ((taint (taint-introduce-directly 'must-be-used val)))
+            (dict-add 'unused-return-value taint (incident-location))
+            (check-if-used taint name addr)))))))
 
 (defun is-ignored (name)
   (is-in name '__primus_linker_unresolved_call))
 
 (defmethod call-return (name _ )
   (when (not (is-ignored name))
-    (let ((addr (get-current-program-counter))
-          (arg (return-arg name)))
-      (dict-add 'call-return arg name))))
+    (let ((arg (return-arg name)))
+      (when arg
+        (dict-add 'call-return arg name)))))
