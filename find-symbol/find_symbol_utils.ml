@@ -45,28 +45,3 @@ let find_nonstructural_component cfg start =
   Option.(
     Seq.find groups ~f:(fun g -> scc_entries cfg g >= 2) >>= fun g ->
     Some (Block.addr (Group.top g)))
-
-let noreturns =
-  Set.of_list (module String) [
-      "@exit";
-      "@abort";
-    ]
-
-let find_recursive prog =
-  let g = Program.to_graph prog in
-  let g = Seq.fold ~init:g (Callgraph.nodes g)
-            ~f:(fun g tid ->
-              if Set.mem noreturns (Tid.name tid)
-              then
-                Seq.fold ~init:g (Callgraph.Node.outputs tid g) ~f: (fun g e ->
-                    Callgraph.Edge.remove e g)
-              else g) in
-  Graphlib.depth_first_search
-    (module Callgraph)
-    ~init:(Set.empty (module Tid))
-    ~enter_edge:(fun kind edge recs ->
-      match kind with
-      | `Back -> Set.add recs (Callgraph.Edge.dst edge)
-      | _ -> recs) g |>
-    Set.to_list |>
-    List.filter_map ~f:(Term.find sub_t prog)

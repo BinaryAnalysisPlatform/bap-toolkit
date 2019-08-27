@@ -12,6 +12,3 @@ val is_reducible : Cfg.t -> Block.t -> bool
 
 (** [find_nonstructural_component cfg entry ] *)
 val find_nonstructural_component : Cfg.t -> Block.t -> addr option
-
-(** [find_recursive prog]  *)
-val find_recursive : program term -> sub term list

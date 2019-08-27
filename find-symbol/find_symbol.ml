@@ -70,13 +70,10 @@ let find_usage names prog =
 
 let find_recursive prog =
   let reason = Recursive_function in
-  List.filter_map (find_recursive prog)
-    ~f:(fun sub ->
-      match Term.get_attr sub address with
-      | None -> None
-      | Some addr ->
-         Incident.(notify reason addr);
-         Some (result addr reason))
+  List.filter_map (Find_symbol_rec.find prog)
+    ~f:(fun (_name,addr) ->
+      Incident.(notify reason addr);
+      Some (result addr reason))
 
 let find_complex threshold symtab =
   let reason = Complex_function in
