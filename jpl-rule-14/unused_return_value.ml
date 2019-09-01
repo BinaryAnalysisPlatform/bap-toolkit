@@ -36,6 +36,7 @@ let state = Primus.Machine.State.declare
 let _, unused =
   Primus.Observation.provide ~inspect:sexp_of_string "unused"
 
+
 let notify name addr = function
   | Used -> ()
   | Unused ->
@@ -136,55 +137,55 @@ end
 
 
 type callsite = {
-    pc  : addr option;
-    pc' : addr option;
-    stack : (addr * string) list;
-    last  :  (addr * string) option;
+    calls : addr String.Map.t;
+    undef : addr option;
   }
 
 let callsite = Primus.Machine.State.declare
     ~name:"unused-results-callsite"
     ~uuid:"1715922a-4e6d-4960-bbd4-a6fb8e239ddb"
-    (fun _ -> { pc = None; pc' = None; stack = []; last = None;})
+    (fun _ -> { calls = Map.empty (module String); undef = None})
+
 
 module Callsite (Machine : Primus.Machine.S) = struct
-  module Value = Primus.Value.Make(Machine)
-  open Machine.Syntax
+  module Value  = Primus.Value.Make(Machine)
+  module Linker = Primus.Linker.Make(Machine)
+  module Interp = Primus.Interpreter.Make(Machine)
 
-  let on_pc_change addr =
-    Machine.Local.update callsite ~f:(fun s ->
-        {s with pc = Some addr; pc' = s.pc})
+  open Machine.Syntax
 
   let on_call (name,_) =
     Machine.Local.update callsite ~f:(fun s ->
-        match s.pc' with
+        match s.undef with
         | None -> s
-        | Some callsite ->
-           {s with stack = (callsite,name) :: s.stack})
+        | Some prev ->
+           {calls = Map.set s.calls name prev; undef = None})
 
-  let on_call_return _ =
-    Machine.Local.update callsite ~f:(fun s ->
-        match s.stack with
-        | [] -> s
-        | last :: stack ->
-           {s with stack; last = Some last})
+  let on_jump j =
+    match Jmp.kind j with
+    | Goto _ | Int _ | Ret _ -> !! ()
+    | Call c ->
+       Interp.pc >>= fun pc ->
+       match Call.target c with
+       | Indirect _ ->
+          Machine.Local.update callsite
+            ~f:(fun s -> {s with undef = Some pc})
+       | Direct tid ->
+          Linker.resolve_symbol (`tid tid) >>= function
+          | None ->
+             printf "IMPOSSIBLE!!!\n";
+             !! ()
+          | Some name ->
+             Machine.Local.update callsite
+               ~f:(fun s ->
+                 {calls = Map.set s.calls name pc; undef = None})
 
-  let on_lisp_call (name,_) =
-    Machine.Local.update callsite ~f:(fun s ->
-        let stack =
-          match s.stack with
-          | (_,name') :: stack when String.(name = name') ->
-             let pc = Option.value_exn s.pc in
-             (pc,name) :: stack
-          | _ -> s.stack in
-        {s with stack})
+
 
   let init() =
     Machine.sequence [
-        Primus.Interpreter.pc_change >>> on_pc_change;
+        Primus.Interpreter.enter_jmp >>> on_jump;
         Primus.Linker.Trace.call >>> on_call;
-        Primus.Linker.Trace.return >>> on_call_return;
-        Primus.Linker.Trace.lisp_call >>> on_lisp_call;
       ]
 
 end
@@ -203,13 +204,12 @@ module Callsite_addr(Machine : Primus.Machine.S) = struct
 
   [@@@warning "-P"]
   let run [sub] =
-    Value.Symbol.of_value sub >>= fun name' ->
+    Value.Symbol.of_value sub >>= fun name ->
     Machine.Local.get callsite >>= fun s ->
-    match s.last with
+    match Map.find s.calls name with
+    | Some addr -> Value.of_word addr
     | None -> Value.b0
-    | Some (addr,name) ->
-       if String.(name = name') then Value.of_word addr
-       else Value.b0
+
 end
 
 
@@ -235,6 +235,19 @@ module Return_arg(Machine : Primus.Machine.S) = struct
     find sub >>= function
     | None -> Value.b0
     | Some a -> Value.Symbol.to_value (Var.name (Arg.lhs a))
+end
+
+module Is_sym(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  module Linker = Primus.Linker.Make(Machine)
+  open Machine.Syntax
+
+  [@@@warning "-P"]
+  let run [addr] =
+    let addr = `addr (Value.to_word addr) in
+    Linker.resolve_symbol addr >>= function
+    | None -> Value.b0
+    | Some _ -> Value.b1
 end
 
 module Interface(Machine : Primus.Machine.S) = struct
@@ -278,7 +291,14 @@ module Interface(Machine : Primus.Machine.S) = struct
           ~docs:
           ({|(callsite-addr SUB) returns the address of the
              callsite of the previous call if the previous call
-             was to subroutine SUB. Returns NIL otherwise. |});
+            was to subroutine SUB. Returns NIL otherwise. |});
+
+        Lisp.define "is-symbol" (module Is_sym)
+          ~types:(tuple [a] @-> b)
+          ~docs:
+          {|(is-symbol ADDR) returns true if there is a
+            subroutine at ADDR. |};
+
       ]
 end
 

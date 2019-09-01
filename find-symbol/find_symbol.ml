@@ -8,8 +8,6 @@ module Callg = Graphs.Callgraph
 
 module Incident = Find_symbol_incident
 
-let () = Incident.enable ()
-
 open Find_symbol_utils
 open Find_symbol_types
 
@@ -168,6 +166,7 @@ let main checks fail_on_found silent proj =
   match checks with
   | [] -> ()
   | checks ->
+     let () = Incident.enable () in
      Incident.notify_symbols (Project.symbols proj);
      let locs = run checks proj in
      if not (Map.is_empty locs) then

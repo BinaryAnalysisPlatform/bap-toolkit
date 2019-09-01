@@ -12,7 +12,7 @@
 (option constant-tracker-enable)
 
 (option null-ptr-deref-enable)
-
+(option with-no-return)
 (option primus-lisp-add $prefix)
 (option primus-promiscuous-mode)
 (option primus-greedy-scheduler)

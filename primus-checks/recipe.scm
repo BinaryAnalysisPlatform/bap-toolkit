@@ -8,8 +8,7 @@
   taint-sources
   sensitive-sinks
   warn-unused
-  check-hardcoded-values
-  check-null-pointers)
+  check-hardcoded-values)
 
 (option primus-lisp-channel-redirect
   <stdin>:$prefix/stdin

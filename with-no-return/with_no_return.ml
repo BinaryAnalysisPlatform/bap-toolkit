@@ -2,6 +2,8 @@ open Core_kernel
 open Bap.Std
 open Graphlib.Std
 
+include Self ()
+
 module G = Graphlib.Make(Tid)(Unit)
 
 let return_of_call c =
@@ -161,7 +163,6 @@ let of_prog prog =
           | Some _ -> Set.add no_rets (Term.tid s) in
         of_sub s :: subs, no_rets)
 
-
 let is_no_return no_rets sub =
   match sub.graph with
   | None -> false
@@ -193,4 +194,5 @@ let run prog =
 let main p =
   Project.with_program p (run (Project.program p))
 
-let () = Project.register_pass ~deps:["abi"] main
+let () =
+  Config.when_ready (fun _ -> Project.register_pass ~deps:["api"] main)
