@@ -9,3 +9,4 @@
 (extend av-rule-25)
 (extend av-rule-189)
 (extend jpl-rule-4)
+(option log-dir log)

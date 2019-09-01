@@ -6,3 +6,4 @@
 (extend av-rule-23)
 (extend av-rule-24)
 (extend av-rule-25)
+(option log-dir log)

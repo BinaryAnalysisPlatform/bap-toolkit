@@ -33,3 +33,5 @@
         lisp-message
         incident
         incident-location)
+
+(option log-dir log)

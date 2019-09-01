@@ -39,3 +39,5 @@
         machine-fork
         incident
         incident-location)
+
+(option log-dir log)
