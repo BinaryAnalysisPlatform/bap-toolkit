@@ -51,7 +51,7 @@
   (is-in name '__primus_linker_unresolved_call))
 
 (defmethod jumping (_ addr)
-  (when (is-symbol addr)
+  (when (is-known-symbol addr)
     (dict-add 'callsites (get-current-program-counter) (incident-location))))
 
 (defmethod call-return (name _ )

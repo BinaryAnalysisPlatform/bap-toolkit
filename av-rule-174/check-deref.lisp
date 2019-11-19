@@ -63,7 +63,7 @@
   (and (all-static-constant x) (not (is-initial-value x))))
 
 (defmethod written (v x)
-  (when (is-static-const x)
+  (when (and (is-static-const x) (not (is-flag v)))
     (let ((taint (taint-introduce-directly 'const-ptr x)))
       (dict-add 'intro taint (get-current-program-counter))
       (dict-add 'intro/location taint (incident-location)))))
@@ -81,16 +81,16 @@
         (dict-add 'intro taint (get-current-program-counter))
         (dict-add 'intro/location taint (incident-location))))))
 
-(defmethod read (var val)
-  (when (is-return-from-unresolved val)
-    (taint-introduce-directly 'dont-believe val)))
-
-(defmethod loading (ptr)
-  (check-deref-null-ptr ptr))
-
 (defmethod storing (ptr)
   (let ((known (taint-get-indirect 'failed ptr)))
     (when known
       (dict-add 'known-fail (get-current-program-counter) ptr))
     (when (not known)
       (check-deref-null-ptr ptr))))
+
+(defmethod read (var val)
+  (when (is-return-from-unresolved val)
+    (taint-introduce-directly 'dont-believe val)))
+
+(defmethod loading (ptr)
+  (check-deref-null-ptr ptr))

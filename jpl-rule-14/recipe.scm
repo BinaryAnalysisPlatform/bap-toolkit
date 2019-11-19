@@ -1,5 +1,6 @@
 (parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
+(parameter optimization 0 "optimization level")
 
 (option primus-lisp-load
         unused-return
@@ -23,7 +24,10 @@
   <stdout>:$prefix/stdout
   <stderr>:$prefix/stderr)
 
+(option optimization-level $optimization)
+
 (option primus-print-observations
+        exception
         pc-changed
         jumping
         call

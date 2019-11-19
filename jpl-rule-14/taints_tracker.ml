@@ -122,7 +122,10 @@ module Lisp(Machine : Primus.Machine.S) = struct
   open Primus.Lisp.Type.Spec
 
   let init () =
-    Lisp.signal ~doc:"" taint_finish (fun t -> Machine.return [t]);
+    Lisp.signal
+      ~doc:"Lisp signal is called when there is no machines where
+            taint is still alive"
+      taint_finish (fun t -> Machine.return [t]);
 end
 
 

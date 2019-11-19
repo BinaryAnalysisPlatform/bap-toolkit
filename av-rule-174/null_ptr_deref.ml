@@ -39,7 +39,7 @@ module Notify(Machine : Primus.Machine.S) = struct
 
   [@@@warning "-P"]
   let run [intro; addr] =
-    let intro =  Value.to_word intro in
+    let intro = Value.to_word intro in
     let addr = Value.to_word addr in
     Machine.Global.get derefs >>= fun s ->
     if Set.mem s.addrs addr then Value.b1
@@ -108,7 +108,7 @@ module InitialValues (Machine : Primus.Machine.S) = struct
   let init () =
     let get v = match Var.typ v with
       | Imm _ when Var.is_physical v ->
-         Machine.catch (get_env v) (fun _ -> !! None)
+        Machine.catch (get_env v) (fun _ -> !! None)
       | _ -> !! None in
     Machine.Global.get initial_values >>= fun s ->
     Env.all >>= fun all ->
@@ -135,20 +135,48 @@ module Lisp_primitives(Machine : Primus.Machine.S) = struct
   let def name types docs closure = Lisp.define ~docs ~types name closure
 end
 
-
 module Notify_prim(Machine : Primus.Machine.S) = struct
   include Lisp_primitives(Machine)
   open Primus.Lisp.Type.Spec
 
   let init () =
-    Machine.sequence Primus.Interpreter.[
-        def "notify-null-ptr-dereference" (tuple [a;b] @-> any)
-          "(notify-null-ptr-dereference INTRO ADDR)
-           print message to stdout when pointer that was
-           introduced at address INTRO is dereferenced at
-           address ADDR"
-          (module Notify);
-    ]
+    def "notify-null-ptr-dereference" (tuple [a;b] @-> any)
+      "(notify-null-ptr-dereference INTRO ADDR)
+       print message to stdout when pointer that was
+       introduced at address INTRO is dereferenced at
+       address ADDR"
+      (module Notify);
+
+end
+
+let flags =
+  Primus.Machine.State.declare
+    ~uuid:"9b2c0dff-5adf-44e5-8257-d7cfb956165c"
+    ~name:"cpu-flags"
+    (fun _ -> Set.empty (module String))
+
+module Flags(Machine : Primus.Machine.S) = struct
+  open Machine.Syntax
+
+  let init () =
+    Machine.arch >>= fun a ->
+    let module T = (val target_of_arch a) in
+    let known =
+      T.CPU.([sp; zf; cf; vf; nf]) |>
+      List.map ~f:Var.name |>
+      Set.of_list (module String) in
+    Machine.Global.put flags known
+end
+
+module IsFlag(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  [@@@warning "-P"]
+  let run [x] =
+    Value.Symbol.of_value x >>= fun name ->
+    Machine.Global.get flags >>= fun s ->
+    Value.of_bool (Set.mem s name)
 end
 
 module Lisp(Machine : Primus.Machine.S) = struct
@@ -163,11 +191,11 @@ module Lisp(Machine : Primus.Machine.S) = struct
            incident and was reported before"
           (module IsReported);
 
-        def "is-untrusted" (unit @-> bool)
-          "(is-untrusted) returns true if a machine
-           during the execution skipped some function
-           due to scheme in promiscuous mode."
-          (module Calls_tracker.IsUntrusted);
+        (* def "is-untrusted" (unit @-> bool)
+         *   "(is-untrusted) returns true if a machine
+         *    during the execution skipped some function
+         *    due to scheme in promiscuous mode."
+         *   (module Calls_tracker.IsUntrusted); *)
 
         def "is-initial-value" (tuple [a] @-> bool)
           "(is-initial-value X) return true if value X
@@ -187,12 +215,17 @@ module Lisp(Machine : Primus.Machine.S) = struct
            a taint from PTR was marked as checked"
           (module IsChecked);
 
+        def "is-flag" (tuple [a] @-> bool)
+          "(is-flag X) returns true if X is a flag variable"
+          (module IsFlag);
+
         def "is-return-from-unresolved" (tuple [a] @-> bool)
           "(is-return-from-unresolved X) returns true if
            a value X is read from abi-specific register
            right after unresolved call returned"
           (module Calls_tracker.IsIgnoredReturn);
-    ]
+
+      ]
 end
 
 let main silent =
@@ -200,6 +233,7 @@ let main silent =
     Primus.Machine.add_component (module Notify_prim);
   Primus.Machine.add_component (module Lisp);
   Primus.Machine.add_component (module InitialValues);
+  Primus.Machine.add_component (module Flags);
   Calls_tracker.init ()
 
 open Config
@@ -214,4 +248,4 @@ let enabled = flag "enable" ~doc:"Enables the analysis"
 let silent  = flag "silent" ~doc:"Don't output results"
 
 let () = when_ready (fun {get=(!!)} ->
-             if !!enabled then  main !!silent)
+    if !!enabled then  main !!silent)

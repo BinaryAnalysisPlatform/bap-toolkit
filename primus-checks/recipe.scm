@@ -1,5 +1,6 @@
 (parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
+(parameter optimization 0 "optimization level")
 
 (option primus-lisp-load
   posix
@@ -9,6 +10,10 @@
   sensitive-sinks
   warn-unused
   check-hardcoded-values)
+
+(option primus-lisp-add $prefix)
+
+(option with-no-return)
 
 (option primus-lisp-channel-redirect
   <stdin>:$prefix/stdin
@@ -26,8 +31,8 @@
 (option primus-print-output incidents)
 (option primus-limit-max-length $depth)
 
-(option primus-lisp-add $prefix)
 (option primus-print-obs
+  exception
   pc-changed
   jumping
   call
@@ -37,3 +42,5 @@
   lisp-message
   incident
   incident-location)
+
+(option optimization-level $optimization)
