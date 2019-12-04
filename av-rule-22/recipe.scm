@@ -41,4 +41,3 @@
     puts
     ungetc
     perror)
-(option no-optimization)

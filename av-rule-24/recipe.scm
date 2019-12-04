@@ -4,4 +4,3 @@
    exit
    getenv
    system)
-(option no-optimization)

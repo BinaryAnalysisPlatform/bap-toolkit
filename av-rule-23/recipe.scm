@@ -2,4 +2,3 @@
 (option find-symbol-usage atof)
 (option find-symbol-usage atoi)
 (option find-symbol-usage atol)
-(option no-optimization)

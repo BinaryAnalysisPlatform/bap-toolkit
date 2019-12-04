@@ -2,4 +2,3 @@
 
 (option find-symbol)
 (option find-symbol-complexity $threshold)
-(option no-optimization)
