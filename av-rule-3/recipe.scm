@@ -1,4 +1,4 @@
-(parameter threshold 50 "if complexity > then a threshold, a subroutine is finded")
+(parameter threshold 50 "the maximum allowed complexity")
 
 (option find-symbol)
 (option find-symbol-complexity $threshold)
