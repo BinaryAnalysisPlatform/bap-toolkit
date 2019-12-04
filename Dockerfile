@@ -17,5 +17,6 @@ COPY --from=base /home/opam/.opam/4.07/share/bap-api /home/opam/.opam/4.07/share
 COPY --from=base /home/opam/.opam/4.07/share/primus /home/opam/.opam/4.07/share/primus
 
 
+RUN cp -l /usr/bin/ssl_client /artifact
 ENTRYPOINT ["bap"]
-CMD ["/artifact", "--recipe=defective-symbol"]
+CMD ["disassemble", "/artifact", "--recipe=defective-symbol"]
