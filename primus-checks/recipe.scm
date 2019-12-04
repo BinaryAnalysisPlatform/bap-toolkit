@@ -13,7 +13,7 @@
 
 (option primus-lisp-add $prefix)
 
-(option with-no-return)
+(option pass with-no-return)
 
 (option primus-lisp-channel-redirect
   <stdin>:$prefix/stdin
@@ -22,7 +22,7 @@
 (option report-progress)
 (option log-dir log)
 
-(option run)
+(option pass run)
 (option run-entry-points ${entry-points})
 (option constant-tracker-enable)
 

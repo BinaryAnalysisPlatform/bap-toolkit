@@ -1,3 +1,3 @@
-(option with-no-return)
-(option find-symbol)
+(option pass with-no-return)
+(option pass find-symbol)
 (option find-symbol-recursive)

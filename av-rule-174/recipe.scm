@@ -2,7 +2,7 @@
 (parameter entry-points all-subroutines "where to search")
 (parameter optimization 2 "optimization level")
 
-(option with-no-return)
+(option pass with-no-return)
 
 (option primus-lisp-load
         posix
@@ -10,7 +10,7 @@
 
 (option api-path $prefix/api)
 
-(option run)
+(option pass run)
 (option run-entry-points ${entry-points})
 
 (option constant-tracker-enable)
