@@ -1,5 +1,7 @@
-(option pass find-symbol)
-(option find-symbol-usage
+(parameter verbosity 1 "the level of verbosity")
+
+(command find-symbol)
+(option names
     fclose
     clearerr
     feof
@@ -41,3 +43,4 @@
     puts
     ungetc
     perror)
+(option verbose $verbosity)

@@ -1,4 +1,4 @@
-runs all the analysis that checks static properties of subroutines
+runs all the analysis that check the program for a presence of certain functions
 
 The next checks are run:
  - av-rule-17  - The error indicator `errno` shall not be used

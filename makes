@@ -7,27 +7,12 @@ import string
 import subprocess
 import zipfile
 
-def exists(targets, target):
-    def is_same(t):
-        return t['name'] == target['name']
-    inds = [ i for i in range(len(targets)) if is_same(targets[i]) ]
-    return not (inds == [])
-
 
 def find(xs, cond):
     for x in xs:
         if cond(x):
             return x
     return None
-
-
-def filter_map(xs, f):
-    ys = []
-    for x in xs:
-        y = f(x)
-        if y != None:
-            ys.append(y)
-    return ys
 
 
 def run_cmd(cmd, directory=None):
@@ -40,7 +25,6 @@ def run_cmd(cmd, directory=None):
 
 
 def run_cmd_with_output(cmd, directory=None):
-#    print 'cmd %s' % cmd
     cur = path.abspath(os.curdir)
     if directory != None:
         os.chdir(directory)
@@ -77,10 +61,7 @@ def is_scm_file(name): return has_ext(name, "scm")
 def dedashify(name):  return string.replace(name, "-", "_")
 def chop_ext(name): return path.splitext(name)[0]
 def has_opam(): return run_cmd('which opam > /dev/null') == 0
-
-
-def unquote(x):
-    return string.replace(x, "\"", "")
+def unquote(x): return string.replace(x, "\"", "")
 
 
 # When we build a plugin, we need to determine what the main file is.
@@ -104,138 +85,11 @@ def find_main(target):
             mainf = find(files, lambda f: string.find(f, "main") != -1 )
             return find([same1,same2,mainf], lambda f: f != None)
 
-def path_of_list(xs):
-    if xs == []: return None
-    full = xs.pop(0)
-    for x in xs:
-        full = path.join(full, x)
-    return full
-
-# TODO: need to fix parsing: doesn't work well with many nested modules.
-# e.g. in dune pkg
-# TODO: also, as an idea, we can take a look at *.cmi files
-# to be sure we don't expose anything beyond interface
-def parse_meta(p):
-    meta = path.join(p, "META")
-    if not path.exists(meta): return None
-    f = open(meta)
-    lines = f.readlines()
-    f.close()
-    lines = map(string.strip, lines)
-    data = []
-    cma = None
-    fld = None
-    lib = path.basename(p)
-    pkg = [lib]
-    for line in lines:
-        if line == '' or line[0]  == '#': continue
-        p_i = line.find('package')
-        f_i = line.find('directory')
-        a_i = line.find('archive')
-        if p_i == 0:
-            if cma != None:
-                name = string.join(pkg, '.')
-                data.append((name, fld, cma))
-            pkg.append(unquote(line.split()[1]).strip())
-            fld = None
-            cma = None
-        if f_i == 0:
-            fld = unquote(line.split('=')[1]).strip()
-        if a_i == 0:
-            s = line.find('(', a_i)
-            f = line.find(')', s)
-            if s != -1 and f != -1:
-                if line[s:f].find('byte') != -1:
-                    cma = unquote(line.split('=')[1]).strip()
-            if cma == '': cma = None
-        if line.strip() == ')':
-            name = string.join(pkg, '.')
-            data.append((name, fld, cma))
-            fld = None
-            cma = None
-            pkg.pop()
-    name = string.join(pkg, '.')
-    data.append((name, fld, cma))
-    return data
-
-# TODO: delete it, debug only
-cmas = []
-
-# Converts module names with underscores to the dot notation:
-# A__B__c --> A.B__c
-def restore_module_name(line):
-    line = line.strip()
-    if line.find('__') == -1: return line
-    parts = []
-    i = 0
-    while (i + 2 < len(line)):
-        j = line.find('__', i)
-        if j == -1:
-            parts.append(line[i:])
-            break
-        if j > 0:
-             parts.append(line[i:j])
-        parts.append('__')
-        i = j + 2
-    name = ''
-    for j in range(len(parts)):
-        if parts[j] == '__' and j + 1 < len(parts) \
-            and parts[j + 1] == parts[j + 1].capitalize():
-            name = name + '.'
-        else: name = name + parts[j]
-    return name
-
-def read_lib(p, modules):
-    packages = parse_meta(p)
-    if packages == None:
-        return
-    for pkg,fld,cma in packages:
-        if pkg == None or cma == None:
-            continue
-        if fld != None:
-            cma = path.join(p, path.join(fld, cma))
-        else:
-            cma = path.join(p, cma)
-        if path.exists(cma):
-            cmas.append(cma)
-            data = run_cmd_with_output('ocamlobjinfo ' + cma)
-            data = data.split('\n')
-            for line in data:
-                if line.find("Unit name:") != -1:
-                    line = line.split(":", 1)[1]
-                    name = restore_module_name(line)
-                    modules[name] = pkg
-
-def collect_modules():
-    if not has_opam(): return {}
-    pref = run_cmd_with_output('opam config var prefix')
-    libpath = path.join(string.strip(pref), 'lib')
-    modules = {}
-    if path.exists(libpath):
-        for lib in os.listdir(libpath):
-            full = path.join(libpath, lib)
-            read_lib(full, modules)
-    return modules
-
-
-def known_deps(modules, target):
-    files = os.listdir(target['path'])
-    inds = [ i for i in range(len(files)) if is_ml_file(files[i]) ]
-    pkgs = set()
-    for i in inds:
-        deps = run_cmd_with_output('ocamldep -modules ' + files[i], target['path'])
-        deps = string.split(deps)
-        for d in deps:
-            if modules.has_key(d):
-                pkgs.add(modules[d])
-    return list(pkgs)
-
 
 # TODO: need to add some output in case of errors
-def build_ml_target(modules, target):
-    deps = target['deps'] + known_deps(modules, target)
+def build_ml_target(target):
     pkgs = ""
-    for d in deps:
+    for d in target['deps']:
         pkgs += " -pkg " + d
     print "%s: %s" % (target['name'], pkgs)
     main = find_main(target)
@@ -272,7 +126,6 @@ def is_ml_target(target):
     inds = [ True for i in range(len(files)) if is_ml_file(files[i]) ]
     return not (inds == [])
 
-
 def parse_target(target):
     info = path.join(target, "info")
     recipe = path.join(target, "recipe.scm")
@@ -291,7 +144,7 @@ def parse_target(target):
             elif string.strip(fields[0]) == "descr":
                 x['descr'] = string.strip(fields[1])
             elif string.strip(fields[0]) == "depends":
-                x['deps'].append(string.strip(fields[1]))
+                x['deps'] = string.split(string.strip(fields[1]), ' ')
             else: continue
     x['ml_target'] = is_ml_target(x)
     return x
@@ -305,7 +158,6 @@ def parse_target(target):
 # in the second - the choosen one
 def test(recipe_list):
     pass
-
 
 def pack(target):
     if not path.exists(path.join(target['path'], 'recipe.scm')):
@@ -351,14 +203,9 @@ def build(ml_powered_host, targets=[]):
     for t in seq:
         if not t in ordered:
             ordered.append(t)
-
-    modules = {}
-    if ml_powered_host:
-        modules = collect_modules()
-
     for t in ordered:
         if ml_powered_host and t['ml_target']:
-            build_ml_target(modules, t)
+            build_ml_target(t)
         pack(t)
 
 # add description to a bundle(or on the pack stage)!
@@ -448,23 +295,8 @@ def run_command(has_ml_power, command, targets):
         print "error: unknown command %s, exiting ..." % command
         exit(1)
 
-#TODO a prefix to commands ??
 if __name__ == '__main__':
     commands, targets = parse_args()
     args = sys.argv
     has_ml_power = is_ml_powered_host()
     map(lambda c: run_command(has_ml_power, c, targets), commands)
-
-# data = parse_meta("/home/oleg/.opam/4.07.1/lib/zarith")
-# for x,y,z in data:
-#     print "%s %s %s" % (x, y, z)
-
-# modules = {}
-# read_lib("/home/oleg/.opam/4.07.1/lib/zarith", modules)
-
-# modules = collect_modules()
-# for m,lib in modules.items():
-#     print "%s from %s" % (m, lib)
-
-# for cma in cmas:
-#     print path.basename(cma)

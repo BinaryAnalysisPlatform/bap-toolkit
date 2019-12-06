@@ -1,0 +1,2 @@
+main: find_symbol.ml
+depends: bap bap-main monads ogre

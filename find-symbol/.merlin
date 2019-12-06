@@ -1,5 +1,9 @@
-PKG core_kernel
 PKG bap
+PKG monads
+PKG ogre
+PKG bap-main
+PKG bap-llvm
 
-S .
 B _build/
+S .
+REC

@@ -1,3 +1,5 @@
-(option pass find-symbol)
-(option find-symbol-usage setjmp)
-(option find-symbol-usage longjmp)
+(parameter verbosity 1 "the level of verbosity")
+
+(command find-symbol)
+(option names setjmp longjmp)
+(option verbose $verbosity)

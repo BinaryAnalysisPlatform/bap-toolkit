@@ -30,7 +30,7 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - [jpl-rule-11](jpl-rule-11/descr) - `goto` statements are not used
     - [jpl-rule-14](jpl-rule-14/descr) - return values of all non-void functions are used
   - [forbidden-symbols](forbidden-symbol/descr) - detects all forbidden symbols from the av-rule-{17,19,20,21,22,23,24,25}
-  - [defective-symbols](defective-symbol/descr) - detects all defective symbols from the av-rule-{3,17,19,20,21,22,23,24,25,189} and jpl-rule-4
+  - [defective-symbols](defective-symbol/descr) - detects all defective symbols from the av-rule-{3,189} and jpl-rule-4
   - [primus-checks](primus-checks/descr) - an all-in-one analysis that uses Primus to identify the following CWE:
     - CWE-122 (Buffer Overwrite)
     - CWE-125 (Buffer Overread)

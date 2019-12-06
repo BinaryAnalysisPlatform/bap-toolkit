@@ -3,6 +3,8 @@ open Bap.Std
 open Regular.Std
 open Graphlib.Std
 
+open Find_symbol_types
+
 type signal =
   | Hi
   | Lo
@@ -58,7 +60,7 @@ let of_subs subs =
         let names = match Term.get_attr sub address with
           | None -> p.names
           | Some addr ->
-             Map.set p.names (Term.tid sub) (Term.name sub, addr) in
+             Map.set p.names (Term.tid sub) (Sub.name sub, addr) in
         let blks = blks sub in
           match Seq.hd blks with
           | None -> { p with entries; names }
@@ -140,9 +142,11 @@ let find_gen ~init ~f prog =
 let find prog =
   find_gen prog ~init:[] ~f:(fun acc p blk ->
       match Map.find p.names blk with
-      | Some x -> x :: acc
+      | Some (name,addr) -> {name;addr} :: acc
       | None -> acc)
 
+(** [find' prog] returns a list of tids of recursive subroutines
+    and a recursive path for each one. *)
 let find' prog =
   find_gen prog ~init:[] ~f:(fun acc p blk ->
         let inputs = G.Node.inputs blk p.g in

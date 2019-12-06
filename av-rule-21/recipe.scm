@@ -1,3 +1,5 @@
-(option pass find-symbol)
-(option find-symbol-usage signal)
-(option find-symbol-usage raise)
+(parameter verbosity 1 "the level of verbosity")
+
+(command find-symbol)
+(option names signal raise)
+(option verbose $verbosity)
