@@ -1,0 +1,2 @@
+main : restrictness_check.ml
+depends: bap bap-main bap-primus bap-c

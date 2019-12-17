@@ -1,0 +1,2 @@
+main: warn_unused_result.ml
+depends: bap bap-main bap-primus

@@ -1,0 +1,5 @@
+detects an aliasing of functions arguments with 'restrict' type qualifier
+
+The analysis reports a software defect when a restrict-qualified pointer is assigned
+a value based on another restricted pointer whose associated block neither began execution
+before the block associated with this pointer nor ended before the assignment.

@@ -1,0 +1,4 @@
+detects an unused result of a function with warn-unused-result attribute
+
+Ensures the usage of a value returned by a function
+that is tagged wih the GNU warn-unused-result attribute.
