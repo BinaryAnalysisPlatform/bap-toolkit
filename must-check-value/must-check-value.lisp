@@ -8,7 +8,7 @@
       (dict-add 'value-check/required tid pc))
     (dict-add 'value-check/location tid loc)))
 
-
+;; infer an address of a callsite
 (defun update-callee (addr)
   (let ((pc (get-current-program-counter)))
     (dict-add 'callee addr pc)))
@@ -22,23 +22,25 @@
 (defmethod call (name _)
   (update-caller name))
 
-
-
-(defmethod jumping (cnd dst)
-  (update-callee dst)
+(defmethod eval-cond(cnd)
   (let ((taint (taint-get-direct 'value-check/required cnd))
         (loc (dict-get 'value-check/location taint))
         (pc (dict-get 'value-check/required taint)))
     (when taint
+      (dict-add 'value-check/done taint taint)
       (taint-sanitize-direct 'value-check/required cnd))
     (when pc
       (dict-del 'check-value/required taint)
       (dict-del 'check-value/location taint))))
 
+(defmethod jumping (cnd dst)
+  (update-callee dst))
+
 (defmethod taint-finalize (taint live)
   (let ((pc (dict-get 'value-check/required taint))
-        (loc (dict-get 'value-check/location taint)))
-    (when pc
+        (loc (dict-get 'value-check/location taint))
+        (checked (dict-get 'value-check/done taint)))
+    (when (and (not checked) pc)
       (incident-report 'value-was-not-checked loc)
       (notify-unchecked-value pc)
       (dict-del 'value-check/required taint))))

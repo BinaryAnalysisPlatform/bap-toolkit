@@ -1,0 +1,1 @@
+detects that a return value of certain functions is unchecked

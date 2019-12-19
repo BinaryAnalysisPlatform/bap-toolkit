@@ -8,6 +8,8 @@
 
 (option primus-lisp-add $prefix)
 
+(option must-check-value-enable)
+
 (option passes
         with-no-return
         run)
@@ -31,14 +33,21 @@
 (option must-check-value-verbose $verbosity)
 
 (option primus-print-obs
-  taint-finalize
-  exception
-  pc-changed
-  jumping
-  call
-  call-return
-  machine-switch
-  machine-fork
-  lisp-message
-  incident
-  incident-location)
+        all
+        -const
+        -enter-exp
+        -leave-exp
+        -concat
+        -extract
+        )
+  ;;       taint-finalize
+  ;; exception
+  ;; pc-changed
+  ;; jumping
+  ;; call
+  ;; call-return
+  ;; machine-switch
+  ;; machine-fork
+  ;; lisp-message
+  ;; incident
+  ;; incident-location)

@@ -26,16 +26,15 @@
   <stderr>:$prefix/stderr)
 
 (option primus-print-observations
-all)
-        ;; exception
-        ;; pc-changed
-        ;; jumping
-        ;; call
-        ;; call-return
-        ;; machine-switch
-        ;; machine-fork
-        ;; lisp-message
-        ;; incident
-        ;; incident-location)
+        exception
+        pc-changed
+        jumping
+        call
+        call-return
+        machine-switch
+        machine-fork
+        lisp-message
+        incident
+        incident-location)
 
 (option log-dir log)

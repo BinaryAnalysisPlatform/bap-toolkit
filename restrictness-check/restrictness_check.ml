@@ -155,10 +155,11 @@ module Is_violation(Machine : Primus.Machine.S) = struct
               if Arg.equal res arg || is_out arg
               then Machine.return fails
               else
-                is_alias regs arg arg >>= fun is_alias ->
+                is_alias regs res arg >>= fun is_alias ->
                 Machine.return @@
                 if is_alias
-                then (Arg.lhs res, Arg.lhs arg) :: fails
+                then
+                  (Arg.lhs res, Arg.lhs arg) :: fails
                 else fails))
 
   let find_sub jmp =
@@ -188,7 +189,8 @@ module Is_violation(Machine : Primus.Machine.S) = struct
         | None -> Value.b0
         | Some sub ->
           find_aliases (Term.enum arg_t sub) >>= function
-          | [] -> Value.b0
+          | [] ->
+             Value.b0
           | aliases ->
             update_results (Sub.name sub) aliases >>= fun () ->
             Value.b1

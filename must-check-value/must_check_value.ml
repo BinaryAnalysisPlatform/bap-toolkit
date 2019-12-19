@@ -81,6 +81,8 @@ module Interface(Machine : Primus.Machine.S) = struct
     ]
 end
 
+let enabled = Extension.Configuration.flag "enable" ~doc:"Enables the analysis"
+
 let verbose =
   Extension.Configuration.parameter
     ~as_flag:1
@@ -92,9 +94,10 @@ let () =
   let open Extension.Syntax in
   Extension.declare
   @@ fun ctxt ->
-    begin
-      Primus.Machine.add_component (module Interface);
-      Primus.Machine.add_component
-        (module Init(struct let verbose = (ctxt --> verbose) > 1 end));
-    end;
-  Ok ()
+     if ctxt --> enabled then
+       begin
+         Primus.Machine.add_component (module Interface);
+         Primus.Machine.add_component
+           (module Init(struct let verbose = (ctxt --> verbose) > 1 end));
+       end;
+     Ok ()
