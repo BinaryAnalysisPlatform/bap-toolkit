@@ -1,14 +1,12 @@
 (parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
-(parameter verbosity 1 "the level of verbosity")
 
 (option primus-lisp-load
   posix
-  must-check-value)
+  taint-sources
+  sensitive-sinks)
 
 (option primus-lisp-add $prefix)
-
-(option must-check-value-enable)
 
 (option passes
         with-no-return
@@ -28,12 +26,7 @@
 (option primus-print-output incidents)
 (option primus-limit-max-length $depth)
 
-(option primus-taint-gc conservative)
-
-(option must-check-value-verbose $verbosity)
-
 (option primus-print-obs
-  taint-finalize
   exception
   pc-changed
   jumping

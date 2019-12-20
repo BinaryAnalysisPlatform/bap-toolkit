@@ -1,18 +1,14 @@
 (parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
-(parameter verbosity 1 "the level of verbosity")
+(parameter optimization 0 "optimization level")
 
 (option primus-lisp-load
   posix
-  must-check-value)
+  memcheck
+  double-free)
 
 (option primus-lisp-add $prefix)
-
-(option must-check-value-enable)
-
-(option passes
-        with-no-return
-        run)
+(option pass with-no-return)
 
 (option primus-lisp-channel-redirect
   <stdin>:$prefix/stdin
@@ -21,6 +17,7 @@
 (option report-progress)
 (option log-dir log)
 
+(option pass run)
 (option run-entry-points ${entry-points})
 
 (option primus-promiscuous-mode)
@@ -28,12 +25,7 @@
 (option primus-print-output incidents)
 (option primus-limit-max-length $depth)
 
-(option primus-taint-gc conservative)
-
-(option must-check-value-verbose $verbosity)
-
 (option primus-print-obs
-  taint-finalize
   exception
   pc-changed
   jumping
@@ -44,3 +36,5 @@
   lisp-message
   incident
   incident-location)
+
+(option optimization-level $optimization)

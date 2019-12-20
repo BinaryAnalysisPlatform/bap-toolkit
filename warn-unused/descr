@@ -2,3 +2,21 @@ detects an unused result of a function with warn-unused-result attribute
 
 Ensures the usage of a value returned by a function
 that is tagged wih the GNU warn-unused-result attribute.
+
+
+The Algorithm
+================
+
+We use taint analysis and propagate taint from output argument
+of a function that has warn-unused attribute.
+The taint can be sanitized (and therefore, the argument is used)
+in the next two cases:
+
+1) if control flow depends from the tainted value, i.e.
+   a taint reached a condition in a jump term
+
+2) taint reached an external function, i.e. it's in the rhs
+   of a callsite of such function.
+
+Once taint has never reached one of these points, we consider
+an source argument is unused. **)

@@ -20,6 +20,13 @@
 (option primus-print-output incidents)
 (option run-entry-points ${entry-points})
 
+(option primus-lisp-channel-redirect
+        <stdin>:$prefix/stdin
+        <stderr>:$prefix/stderr
+        <stdout>:$prefix/stdout)
+
+(option primus-taint-gc conservative)
+
 (option primus-print-observations
   exception
   pc-changed

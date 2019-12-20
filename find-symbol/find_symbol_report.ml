@@ -32,7 +32,7 @@ module Incidents = struct
     Out_channel.flush ch
 
   let dump results =
-    Out_channel.with_file "incidents.static" ~f:(fun ch ->
+    Out_channel.with_file "incidents" ~f:(fun ch ->
         Map.iteri results ~f:(fun ~key:{name;addr} ~data:results ->
             List.iter results ~f:(fun {check} ->
                 output ch check name addr)))

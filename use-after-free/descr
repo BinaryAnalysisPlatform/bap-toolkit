@@ -1,0 +1,9 @@
+detects access to a memory that has been freed previously
+
+This check covers CWE-416 Use After Free entry.
+
+Motivation
+==========
+
+Referencing memory after it has been freed can cause a program to crash,
+use unexpected values, or execute code.

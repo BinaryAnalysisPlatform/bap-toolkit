@@ -2,7 +2,7 @@
 
 (defun value-must-be-checked (name v)
   (let ((pc (dict-get 'caller name))
-        (loc (incident-location))
+        (loc (dict-get 'caller/location name))
         (tid (taint-introduce-directly 'value-check/required v)))
     (when pc
       (dict-add 'value-check/required tid pc))
@@ -11,13 +11,16 @@
 ;; infer an address of a callsite
 (defun update-callee (addr)
   (let ((pc (get-current-program-counter)))
-    (dict-add 'callee addr pc)))
+    (dict-add 'callee addr pc)
+    (dict-add 'callee/location addr (incident-location))))
 
 (defun update-caller (name)
   (let ((pc (get-current-program-counter))
-        (called (dict-get 'callee pc)))
+        (called (dict-get 'callee pc))
+        (called-loc (dict-get 'callee/location pc)))
     (when called
-      (dict-add 'caller name called))))
+      (dict-add 'caller name called)
+      (dict-add 'caller/location name called-loc))))
 
 (defmethod call (name _)
   (update-caller name))

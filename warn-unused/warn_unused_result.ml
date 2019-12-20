@@ -98,9 +98,8 @@ let find_callsite prog pos =
   | _ -> None
 
 type state = {
-  checked : Tid.Set.t;
-  taints  : tid Primus.Value.Id.Map.t;
-  callsites  : callsite Tid.Map.t;
+    unchecked  : Primus.Value.Id.Set.t;
+    callsites  : callsite Primus.Value.Id.Map.t;
 }
 
 let state =
@@ -108,9 +107,8 @@ let state =
     ~name:"warn-unused-result"
     ~uuid:"1e117d51-3b9d-4c93-b136-e15b77c5ea26"
     (fun _ -> {
-         checked   = Set.empty (module Tid);
-         taints    = Map.empty (module Vid);
-         callsites = Map.empty (module Tid);
+         unchecked = Set.empty (module Primus.Value.Id);
+         callsites = Map.empty (module Primus.Value.Id);
        })
 
 module Output_results(Machine : Primus.Machine.S) = struct
@@ -120,13 +118,11 @@ module Output_results(Machine : Primus.Machine.S) = struct
     Machine.current () >>= fun id ->
     if Machine.Id.(init = id) then
       Machine.Global.get state >>= fun s ->
-      let visited = Set.of_list (module Tid) @@ Map.data s.taints in
-      let unchecked = Set.diff visited s.checked in
-      let unused = Set.fold unchecked ~init:[]
+      let unused = Set.fold s.unchecked ~init:(Map.empty (module Addr))
           ~f:(fun acc tid -> match Map.find s.callsites tid with
               | None -> acc
-              | Some x -> x :: acc) in
-      print_results unused;
+              | Some x -> Map.set acc x.addr x)  in
+      print_results (Map.data unused);
       Machine.return ()
     else Machine.return ()
 
@@ -145,31 +141,12 @@ module Mark(Machine : Primus.Machine.S) = struct
     Machine.get () >>= fun proj ->
     Eval.pos >>= fun pos ->
     Machine.Global.update state ~f:(fun s ->
-        let taints = Map.set s.taints (Value.id taint) (Primus.Pos.tid pos) in
-        let callsite =
-          find_callsite (Project.program proj) pos in
-        let callsites =
-          Option.value_map ~default:s.callsites
-            ~f:(fun c -> Map.set s.callsites (Primus.Pos.tid pos) c)
-            callsite in
-        {s with taints; callsites}) >>= fun () ->
-    Value.b0
-end
-
-module Mark_checked(Machine : Primus.Machine.S) = struct
-  module Eval = Primus.Interpreter.Make(Machine)
-  module Value = Primus.Value.Make(Machine)
-  open Machine.Syntax
-
-  [@@@warning "-P"]
-  let run [taint] =
-    Machine.Global.update state ~f:(fun s ->
-        match Map.find s.taints (Value.id taint) with
+        match find_callsite (Project.program proj) pos with
         | None -> s
-        | Some tid ->
-          {s with checked = Set.add s.checked tid}) >>= fun () ->
+        | Some cs ->
+           { s with callsites =
+                      Map.set s.callsites (Value.id taint) cs }) >>= fun () ->
     Value.b0
-
 end
 
 let is_section name v =
@@ -210,12 +187,23 @@ module Is_external_arg(Machine : Primus.Machine.S) = struct
     | _ -> Value.b0
 end
 
+module NotifyUnused(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  [@@@warning "-P"]
+  let run [taint] =
+    Machine.Global.update state ~f:(fun s ->
+        {s with unchecked = Set.add s.unchecked (Value.id taint) }) >>= fun () ->
+    Value.b0
+end
 
 module Interface(Machine : Primus.Machine.S) = struct
   module Lisp = Primus.Lisp.Make(Machine)
   open Primus.Lisp.Type.Spec
 
-  let init () = Machine.sequence [
+  let init () =
+    Machine.sequence [
       Lisp.define "has-attr" (module HasAttr)
         ~types:(tuple [a; b] @-> bool)
         ~docs:{|(has-attr var attr) returns true if
@@ -225,15 +213,17 @@ module Interface(Machine : Primus.Machine.S) = struct
         ~types:(tuple [a] @-> b)
         ~docs:{|(check-if-used T) marks current position as a source of taint T|};
 
-      Lisp.define "mark-as-used" (module Mark_checked)
-        ~types:(tuple [a] @-> b)
-        ~docs:{|(mark-as-used T) marks a source of taint [T] as a used value|};
-
       Lisp.define "is-external-argument" (module Is_external_arg)
         ~types:(tuple [a] @-> bool)
         ~docs:{|(is-external-argument V)| returns true if [V] is an
                argument of external function in the context of the current term|};
-    ]
+
+      Lisp.define "notify-warn-unused-result" (module NotifyUnused)
+        ~types:(tuple [a] @-> b)
+        ~docs:{|(notify-warn-unused-result T)|
+               notifies that a source of taint T was never used|};
+
+ ]
 end
 
 let enabled = Extension.Configuration.flag "enable" ~doc:"Enables the analysis"

@@ -1,0 +1,11 @@
+detects a double call to 'free' on the same memory address
+
+This check covers CWE-415 Double Free entry.
+
+Motivation
+==========
+
+Calling 'free' twice on the same address can crash the program.
+Also, in some cases, it could cause two subsequent calls to
+'malloc' to return the same pointer, which potentially can
+give an atacker a control over the data written into this memory.
