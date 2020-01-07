@@ -2,6 +2,8 @@
 (parameter entry-points all-subroutines "where to search")
 (parameter optimization 2 "optimization level")
 
+(parameter verbosity 1 "verbosity level")
+
 (option pass with-no-return)
 
 (option primus-lisp-load
@@ -16,6 +18,8 @@
 (option constant-tracker-enable)
 
 (option null-ptr-deref-enable)
+(option null-ptr-deref-verbose $verbosity)
+
 (option primus-lisp-add $prefix)
 (option primus-promiscuous-mode)
 (option primus-greedy-scheduler)
@@ -30,6 +34,8 @@
   <stderr>:$prefix/stderr)
 
 (option primus-print-observations
+        written
+        stored
         exception
         pc-changed
         jumping

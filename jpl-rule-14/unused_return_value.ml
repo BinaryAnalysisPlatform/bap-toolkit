@@ -7,44 +7,94 @@ open Monads.Std
 
 include Self ()
 
-type value = Primus.value
-type machine = Primus.Machine.id
-
-module Machine_id = Monads.Std.Monad.State.Multi.Id
-module Machines = Machine_id.Map
-module Values = Primus.Value.Set
-module Vids = Primus.Value.Id.Set
-module Vid = Primus.Value.Id
+let check_name = "unused return value"
 
 type func = string * addr
-
 type proof = Used | Unused
+type verbose = Brief | Detail
 
 type state = {
-  functions  : func Primus.Value.Id.Map.t;
-  proved     : proof Addr.Map.t;
+  functions : func Primus.Value.Id.Map.t;
+  proved    : proof Addr.Map.t;
+  verbose   : verbose;
 }
 
 let state = Primus.Machine.State.declare
     ~name:"unused-results"
     ~uuid:"af66d451-fb62-44c3-9c2a-8969e111ad91"
     (fun _ -> {
-         functions  = Map.empty (module Primus.Value.Id);
-         proved     = Map.empty (module Addr);
+         functions = Map.empty (module Primus.Value.Id);
+         proved    = Map.empty (module Addr);
+         verbose   = Brief
        })
 
-let _, unused =
-  Primus.Observation.provide ~inspect:sexp_of_string "unused"
+let verbose_of_int = function
+  | 1 -> Brief
+  | _ -> Detail
 
-let notify name addr = function
-  | Used -> ()
-  | Unused ->
-    printf "unused result of %s at %a\n%!" name Addr.ppo addr
+let pp_bold ppf = Format.fprintf ppf "\027[1m"
+let pp_norm ppf = Format.fprintf ppf "\027[0m"
+let print_ok   () = Format.printf "%s   OK\n" check_name
+let print_fail () = Format.printf "%s   FAIL\n" check_name
+
+let print_header () =
+  Format.printf "\n%t%-10s %s\n%t" pp_bold "Function" "Called at" pp_norm
+
+let print_incident name addr =
+  Format.printf "%-10s %s\n%!" name (sprintf "%a" Addr.pps addr)
+
+module Reporter(Machine : Primus.Machine.S) = struct
+  open Machine.Syntax
+
+  let has_proved_fail () =
+    Machine.Global.get state >>| fun s ->
+    Seq.exists (Map.to_sequence s.proved)
+      ~f:(fun (_,proof) -> match proof with
+          | Unused -> true
+          | _ -> false)
+
+  let on_exit () =
+    has_proved_fail () >>= fun has_fails ->
+    if not has_fails then print_ok ();
+    Machine.return ()
+
+  let notify name addr = function
+    | Used -> Machine.return ()
+    | Unused ->
+       has_proved_fail () >>= fun has_fails ->
+       if not has_fails then print_fail ();
+       Machine.Global.get state >>= fun {verbose} ->
+       match verbose with
+       | Brief  -> Machine.return ()
+       | Detail ->
+          if not has_fails then print_header ();
+          print_incident name addr;
+          Machine.return ()
+
+end
+
+module Init(S : sig val verbose : verbose end)(Machine : Primus.Machine.S) = struct
+  module Reporter = Reporter(Machine)
+  open Machine.Syntax
+
+  let on_halt init_id () =
+    Machine.current () >>= fun id ->
+    if Machine.Id.(init_id = id) then
+      Reporter.on_exit ()
+    else Machine.return ()
+
+  let init () =
+    Machine.Global.update state ~f:(fun s -> { s with verbose = S.verbose }) >>= fun () ->
+    Machine.current () >>= fun init ->
+    Primus.Interpreter.halting >>> on_halt init
+end
+
 
 module Results(Machine : Primus.Machine.S) = struct
   module Value = Primus.Value.Make(Machine)
   module Object = Taint.Object.Make(Machine)
   module Tracker = Taints_tracker.Tracker(Machine)
+  module Reporter = Reporter(Machine)
   open Machine.Syntax
 
   let create taint name addr =
@@ -64,7 +114,7 @@ module Results(Machine : Primus.Machine.S) = struct
     match Map.find s.functions vid with
     | None -> Value.b0
     | Some (name,addr) ->
-      notify name addr usage;
+      Reporter.notify name addr usage >>= fun () ->
       let s = {s with proved = Map.set s.proved addr usage} in
       Machine.Global.put state s >>= fun () ->
       Value.b1
@@ -72,7 +122,7 @@ module Results(Machine : Primus.Machine.S) = struct
   let mark_used taint = mark taint Used
   let mark_unused taint = mark taint Unused
 
-  let is_known_usage taint =
+  let is_known taint =
     let vid = Value.id taint in
     Machine.Global.get state >>= fun s ->
     match Map.find s.functions vid with
@@ -82,19 +132,18 @@ module Results(Machine : Primus.Machine.S) = struct
 
 end
 
-module IsKnownUsage(Machine : Primus.Machine.S) = struct
+module IsKnown(Machine : Primus.Machine.S) = struct
   module Results = Results(Machine)
 
   [@@@warning "-P"]
-  let run [v] = Results.is_known_usage v
+  let run [v] = Results.is_known v
 end
 
 module MaybeUnused(Machine : Primus.Machine.S) = struct
   module Results = Results(Machine)
 
   [@@@warning "-P"]
-  let run [taint; name; addr] =
-    Results.create taint name addr
+  let run [taint; name; addr] = Results.create taint name addr
 end
 
 module MarkUnused(Machine : Primus.Machine.S) = struct
@@ -110,29 +159,6 @@ module MarkUsed(Machine : Primus.Machine.S) = struct
   [@@@warning "-P"]
   let run [v] = Results.mark_used v
 end
-
-
-module HandleUnresolved(Machine : Primus.Machine.S) = struct
-  module Value = Primus.Value.Make(Machine)
-  module Interpreter = Primus.Interpreter.Make(Machine)
-  open Machine.Syntax
-
-  let set_zero v =
-    match Var.typ v with
-    | Mem _ -> !! ()
-    | Imm width ->
-      Value.of_int ~width 0 >>= fun x ->
-      Interpreter.set v x
-
-  let on_unresolved _ =
-    Machine.arch >>= function
-    | `x86_64 -> set_zero X86_cpu.AMD64.rax
-    | `x86 -> set_zero X86_cpu.IA32.rax
-    |  _ -> !! ()
-
-  let init () =  Primus.Linker.unresolved >>> on_unresolved
-end
-
 
 type callsite = {
   calls : addr String.Map.t;
@@ -156,12 +182,12 @@ module Callsite (Machine : Primus.Machine.S) = struct
     Machine.Local.update callsite ~f:(fun s ->
         match s.undef with
         | None -> s
-        | Some prev ->
-          {calls = Map.set s.calls name prev; undef = None})
+        | Some pc ->
+          {calls = Map.set s.calls name pc; undef = None})
 
   let on_jump j =
     match Jmp.kind j with
-    | Goto _ | Int _ | Ret _ -> !! ()
+    | Goto _ | Int _ | Ret _ -> Machine.return ()
     | Call c ->
       Interp.pc >>= fun pc ->
       match Call.target c with
@@ -170,13 +196,11 @@ module Callsite (Machine : Primus.Machine.S) = struct
           ~f:(fun s -> {s with undef = Some pc})
       | Direct tid ->
         Linker.resolve_symbol (`tid tid) >>= function
-        | None -> !! ()
+        | None -> Machine.return ()
         | Some name ->
           Machine.Local.update callsite
             ~f:(fun s ->
                 {calls = Map.set s.calls name pc; undef = None})
-
-
 
   let init() =
     Machine.sequence [
@@ -261,6 +285,67 @@ module Is_sym(Machine : Primus.Machine.S) = struct
 
 end
 
+let return_args = Primus.Machine.State.declare
+    ~name:"return-args"
+    ~uuid:"5cf9c862-7f97-4e25-bd41-8f7c76d42855"
+    (fun _ -> Map.empty (module String))
+
+let return_vals = Primus.Machine.State.declare
+    ~name:"return-values"
+    ~uuid:"3ab8d8ee-1304-46d3-9860-0960aaf2ac42"
+    (fun _ -> Map.empty (module Primus.Value.Id))
+
+module Return_args(Machine : Primus.Machine.S) = struct
+  open Machine.Syntax
+
+  let init () =
+    Machine.get () >>= fun proj ->
+    Machine.Global.update return_args (fun rets ->
+    Seq.fold (Project.program proj |> Term.enum sub_t)
+      ~init:rets ~f:(fun rets sub ->
+        match Seq.find (Term.enum arg_t sub) ~f:(fun a ->
+                  match Arg.intent a with
+                  | Some Out -> true
+                  | _ -> false) with
+        | None -> rets
+        | Some a -> Map.set rets (Sub.name sub) (Arg.lhs a)))
+end
+
+module Return_vals(Machine : Primus.Machine.S) = struct
+  module Env = Primus.Env.Make(Machine)
+  module Value = Primus.Value.Make(Machine)
+
+  open Machine.Syntax
+
+  let on_call_return (name, args) =
+    Machine.Global.get return_args >>= fun s ->
+    match Map.find s name with
+    | None -> Machine.return ()
+    | Some _ ->
+       match List.last args with
+       | None -> Machine.return ()
+       | Some value ->
+         Machine.Local.update return_vals ~f:(fun vals ->
+             Map.set vals (Primus.Value.id value) name)
+
+  let init() =
+    Primus.Linker.Trace.return >>> on_call_return
+
+end
+
+module Return_from(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  open Machine.Syntax
+
+  [@@@warning "-P"]
+  let run [v] =
+    Machine.Local.get return_vals >>= fun rets ->
+    match Map.find rets (Primus.Value.id v) with
+    | None -> Value.b0
+    | Some name -> Value.Symbol.to_value name
+
+end
+
 module Interface(Machine : Primus.Machine.S) = struct
   module Lisp = Primus.Lisp.Make(Machine)
   open Primus.Lisp.Type.Spec
@@ -274,35 +359,34 @@ module Interface(Machine : Primus.Machine.S) = struct
                  the return argument of SUB called at ADDR and
                  tainted with T for checking|};
 
-      Lisp.define "is-known-usage" (module IsKnownUsage)
+      Lisp.define "is-known-usage" (module IsKnown)
         ~types:(tuple [a] @-> b)
         ~docs:"(is-known-usage T) returns true if a taint T
-                 from a return value of a function never was
-                 already marked either as a used or as unused";
+                from a return value of a function was
+                marked either as used or unused one";
 
       Lisp.define "mark-unused" (module MarkUnused)
         ~types:(tuple [a] @-> b)
-        ~docs:"(mark-used T) mark a return value of
-                 a function tainted by taint T as the unused one";
+        ~docs:"(mark-unused T) mark a return value of
+               a function tainted by T as the unused one";
 
       Lisp.define "mark-used" (module MarkUsed)
         ~types:(tuple [a] @-> b)
         ~docs:"(mark-used T) mark a return value of
-                 a function tainted by taint T as the used one";
+               a function tainted by T as the used one";
 
-      Lisp.define "return-arg" (module Return_arg)
-        ~types:(tuple [a] @-> b)
-        ~docs:
-          ({|(return-arg SUB) returns the name of output argument of the
-            subroutine SUB. Returns NIL if the subroutine SUB doesn't
-            return anything or subroutine's api is unknown|});
+      (* Lisp.define "return-arg" (module Return_arg)
+       *   ~types:(tuple [a] @-> b)
+       *   ~docs:
+       *     ({|(return-arg SUB) returns the name of output argument of the
+       *       subroutine SUB. Returns NIL if the subroutine SUB doesn't
+       *       return anything or subroutine's api is unknown|}); *)
 
       Lisp.define "callsite-addr" (module Callsite_addr)
         ~types:(tuple [a] @-> b)
         ~docs:
           ({|(callsite-addr SUB) returns the address of the
-             callsite of the previous call if the previous call
-            was to subroutine SUB. Returns NIL otherwise. |});
+             callsite of the previous call to the subroutine SUB. |});
 
       Lisp.define "is-known-symbol" (module Is_sym)
         ~types:(tuple [a] @-> b)
@@ -310,19 +394,47 @@ module Interface(Machine : Primus.Machine.S) = struct
           {|(is-known-symbol ADDR) returns true if there is a
            subroutine at ADDR with a known API. |};
 
+      Lisp.define "return-from-sub" (module Return_from)
+        ~types:(tuple [a] @-> b)
+        ~docs:
+          {|(return-from-sub V) returns a name of a function
+           which return argument is V. Retruns nil if there is no
+           such function. |}
+
     ]
 end
 
-open Config
+open Bap_main
 
-let enabled = flag "enable" ~doc:"Enables the analysis"
+let enabled =
+  Extension.Configuration.flag
+    ~doc:"Enables the analysis"
+    "enable"
 
-let () = when_ready (fun {get=(!!)} ->
-    if !!enabled then
-      let () = Taints_tracker.init () in
-      List.iter ~f:ident [
-        Primus.Machine.add_component (module Interface);
-        Primus.Machine.add_component (module HandleUnresolved);
-        Primus.Machine.add_component (module Callsite);
-        Primus.Machine.add_component (module Known_subs);
-      ])
+let verbose =
+  Extension.Configuration.parameter
+    ~doc:"Level of verbosity. Currently supported
+           1 - prints a result message, if the check passed or not;
+           >1 - prints locations where unchecked values were introduced"
+    Extension.Type.(int =? 1)
+    "verbose"
+
+
+let () =
+  let open Extension.Syntax in
+  Extension.declare
+  @@ fun ctxt ->
+     if ctxt --> enabled then
+       begin
+         Taints_tracker.init ();
+         Primus.Machine.add_component (module Return_args);
+         Primus.Machine.add_component (module Return_vals);
+         Primus.Machine.add_component (module Interface);
+         Primus.Machine.add_component (module Callsite);
+         Primus.Machine.add_component (module Known_subs);
+         Primus.Machine.add_component
+           (module Init(struct
+                       let verbose = verbose_of_int (ctxt --> verbose)
+                     end));
+    end;
+  Ok ()

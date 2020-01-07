@@ -31,6 +31,12 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - [jpl-rule-14](jpl-rule-14/descr) - return values of all non-void functions are used
   - [forbidden-symbols](forbidden-symbol/descr) - detects all forbidden symbols from the av-rule-{17,19,20,21,22,23,24,25}
   - [defective-symbols](defective-symbol/descr) - detects all defective symbols from the av-rule-{3,189} and jpl-rule-4
+  - [untrusted-argument](untrusted-argument/descr) - checks that certain functions never use untrusted data
+  - [must-check-value](must-check-value/descr) - detects an unchecked return value of certain functions
+  - [use-after-free](use-after-free/descr) - detects a usage of a pointer that was freed before
+  - [double-free](double-free/descr) - detects a pointer that is freed twice
+  - [restrictness-check](restrictness-check/descr) - detects an incorrect invocation of a function with strictness requirement
+  - [warn-unused](warn-unused/descr) - detects an unused value returned by a function with warn-unused attribute
   - [primus-checks](primus-checks/descr) - an all-in-one analysis that uses Primus to identify the following CWE:
     - CWE-122 (Buffer Overwrite)
     - CWE-125 (Buffer Overread)
@@ -46,7 +52,6 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - CWE-476 (NULL pointer dereference)
     - CWE-690 (Unchecked Return Value to NULL Pointer Dereference)
     - CWE-252 (Unchecked Return Value)
-
 
 
 ## Installation

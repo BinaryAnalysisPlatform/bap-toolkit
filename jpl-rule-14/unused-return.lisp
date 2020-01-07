@@ -20,10 +20,6 @@
     (taint-sanitize-indirect 'must-be-used ptr)
     (taint-sanitize-direct   'must-be-used val)))
 
-(defun notify-unused (taint)
-  (let ((loc (dict-get 'unused-return-value taint)))
-    (incident-report 'unused-return-value loc)))
-
 (defmethod taint-reached-finish (taint)
   (let ((read (dict-has 'was-read taint))
         (is-new (not (is-known-usage taint))))
@@ -31,10 +27,10 @@
       (mark-used taint))
     (when (and (not read) is-new)
       (mark-unused taint)
-      (notify-unused taint))))
+      (incident-report 'unused-return-value (dict-get 'unused-return-value taint)))))
 
 (defmethod written (var val)
-  (let ((name (dict-get 'call-return var)))
+  (let ((name (return-from-sub val)))
     (when name
       (let ((addr (callsite-addr name))
             (loc (dict-get 'callsites addr))
@@ -47,15 +43,6 @@
             (dict-add 'unused-return-value taint loc)
             (check-if-used taint name addr)))))))
 
-(defun is-ignored (name)
-  (is-in name '__primus_linker_unresolved_call))
-
 (defmethod jumping (_ addr)
   (when (is-known-symbol addr)
     (dict-add 'callsites (get-current-program-counter) (incident-location))))
-
-(defmethod call-return (name _ )
-  (when (not (is-ignored name))
-    (let ((arg (return-arg name)))
-      (when arg
-        (dict-add 'call-return arg name)))))

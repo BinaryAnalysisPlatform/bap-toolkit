@@ -53,9 +53,9 @@ module Tracker(Machine : Primus.Machine.S) = struct
   let on_new_machine s id =
     Machine.ancestor [id] >>= fun par ->
     match Map.find s.owners par with
-    | None -> !! s
+    | None -> Machine.return s
     | Some vs ->
-       !!
+       Machine.return
          { s with
            references =
              Set.fold vs ~init:s.references ~f:(fun ms v ->
@@ -65,7 +65,7 @@ module Tracker(Machine : Primus.Machine.S) = struct
            owners = Map.set s.owners id vs}
 
   let on_last_reference = function
-    | None -> !! ()
+    | None -> Machine.return ()
     | Some t -> Machine.Observation.make taint_reached_finish t
 
   let clear_references s vids machine_id =
@@ -86,11 +86,11 @@ module Tracker(Machine : Primus.Machine.S) = struct
     Machine.Global.put state s >>= fun () ->
     Machine.List.iter rm ~f:on_last_reference
 
-  let on_machine_death () =
+  let on_machine_death _ =
     Machine.current () >>= fun cur ->
     Machine.Global.get state >>= fun s ->
     match Map.find s.owners cur with
-    | None -> !! ()
+    | None -> Machine.return ()
     | Some vids ->
        let s = {s with owners = Map.remove s.owners cur} in
        clear_references s vids cur
@@ -101,7 +101,7 @@ module Tracker(Machine : Primus.Machine.S) = struct
   let detect_forks _ =
     Machine.forks () >>= fun glob ->
     Machine.Global.get state >>= fun s ->
-    if Seq.length glob = Set.length s.forks then !! ()
+    if Seq.length glob = Set.length s.forks then Machine.return ()
     else
       let glob = of_seq glob in
       let diff = Set.diff glob s.forks |> Set.to_list in
@@ -110,7 +110,7 @@ module Tracker(Machine : Primus.Machine.S) = struct
 
   let init () =
     Machine.sequence [
-        Primus.Machine.finished >>> on_machine_death;
+        Primus.Interpreter.halting >>> on_machine_death;
         Primus.Interpreter.jumping  >>> detect_forks;
         Primus.Linker.Trace.call    >>> detect_forks;
       ]
@@ -123,7 +123,7 @@ module Lisp(Machine : Primus.Machine.S) = struct
 
   let init () =
     Lisp.signal
-      ~doc:"Lisp signal is called when there is no machines where
+      ~doc:"Lisp signal is raised when there is no machines where
             taint is still alive"
       taint_finish (fun t -> Machine.return [t]);
 end

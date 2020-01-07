@@ -1,0 +1,5 @@
+(incident-location (1
+                    (1:400500 1:40052e 1:4004fb 1:4004ee 1:400524 1:400404)))
+(incident-location (2
+                    (1:400513 1:40052e 1:4004fb 1:4004ee 1:400524 1:400404)))
+(incident (null-ptr-deref 2 1))

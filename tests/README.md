@@ -1,29 +1,57 @@
 
-# bap-toolkit tests
+# Intro
 
-### Structure
-First of all, every directory in this folder corresponds to the name of a recipe,
-and every file inside of it to the name of an artifact to check.
-Artifacts themselfs are taken from the `binaryanalysisplatform/bap-artifacts` repository.
-Every file (artifact name) contains a list of addresses where
-analysis from recipe must trigger a result. For example, it could be an
-address where null pointer dereference occures or an address of a
-recursive function - a semantic of these addreses depends from every
-particular recipe.
+We base our tests on the incidents comparison, and check new obtained incidents against the expected ones.
+There are the next three possible outcomes of the comparison:
+- false positive is a presence of an incident while there is no confirmed bug in the code.
+- false negative is an absence of an incident while there is a confirmed bug in the code.
+- true  positive is a presence of an incident while there is a confirmed bug in the code.
 
-### How do we build test cases
+The fourth case, true negative, when there is an absence of an incident while there is
+no confirmed bug in the code, is hardly can be reachable.
 
-Test case consists from the next levels, from down to top:
+An expected incident is such one that was checked manually and points to the real bug, i.e.
+is a real true positivite.
 
-- docker container with an artifact from the `binaryanalysisplatform/bap-artifacts` repository
-- docker container with all the `bap-toolkit` recipes and bap included
-- auto generated `Tcl-Expect` test
-- auto generated docker file that runs the `Tcl-Expect` test on the image build stage.
+Tests are devided into two categories: concepts and artifacts.
 
-A Tcl/expect test case checks that every address in the addresses list
-is present either in the `incident` file for primus-based checks or in the `bap`
-output for others.
 
-### Run
-`$ make` will build and run all the tests. One can set a desired recipe(s) to check:
-`$ make test recipe1 recipe2`
+## Concepts
+Concept is a small program that covers only one check and usually contains just one simple test case
+that trigger only one incident. Given a simplicity of the test case, we don't allow neither false
+positivites nor false negativites and require 100% match between expected and testing set of the incidents.
+Concept can't be used as a proof of a check's reliability, but serves as a fast test for
+an idea that stands behind it.
+
+For instance, the concept for null pointer dereference contains two cases:
+```
+1.  void good() {
+2.     int *x = NULL;
+3.     int b = 0;
+4.     if (!x)
+5.         b = *x;
+6.  }
+7
+8.  void bad() {
+9.     int *x = NULL;
+10.    int b = 0;
+11.    b = *x;
+12. }
+```
+Our approach to this check is that if null pointer was checked - even
+in wrong way, like in the example above - then the usage of the pointer is
+considered as a safe one.
+And vice versa - if there was no check on the pointer, before derefence                                                                 then we trigger an incident.
+Thus, if we have an incident by an address corresponded to line '5',
+we consider it as a false positive, meaning something went wrong.
+The same, if we don't have an incident on line `11`, we consider is
+as false negative - and again it means that we have a bug in our implementation.
+(or tests are outdated and need to be reviewed).
+
+
+## Artifacts
+Artifacts contains way more number of test cases and therefore quite useful for us.
+Some of them were taken from Juliet test set, some of them are real programs with
+known bugs. Given that, we slightly relax our comparison rules and allow checks
+to triger false positivites, though the bugs must be still discovered,
+i.e. expected incidents must be a subset of the new obtained incidents.

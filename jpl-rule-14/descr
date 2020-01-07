@@ -1,6 +1,6 @@
 detects unused values returned by functions
 
-The algotihm uses function's api information to determine it's output argument.
+The algorithm uses function's api information to determine it's output argument.
 Value assigned to the output argument becomes a source of a taint.
 And any read of the tainted value sanitizes this taint, meaning that
 an output argument is actually used.

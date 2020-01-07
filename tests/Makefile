@@ -1,8 +1,6 @@
 
-args = `arg="$(filter-out $@,$(MAKECMDGOALS))"`
+test: build
+	sh run.sh
 
-
-test:
-	bash generate $(filter-out $@,$(MAKECMDGOALS))
-
-.PHONY: test
+build:
+	make -C src

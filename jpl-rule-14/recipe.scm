@@ -1,6 +1,6 @@
 (parameter depth 4096 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
-(parameter optimization 0 "optimization level")
+(parameter verbosity 1 "verbosity level")
 
 (option primus-lisp-load
         unused-return
@@ -11,6 +11,7 @@
         run)
 
 (option unused-return-value-enable)
+(option unused-return-value-verbose $verbosity)
 
 (option primus-promiscuous-mode)
 (option primus-greedy-scheduler)
@@ -23,8 +24,6 @@
   <stdin>:$prefix/stdin
   <stdout>:$prefix/stdout
   <stderr>:$prefix/stderr)
-
-(option optimization-level $optimization)
 
 (option primus-print-observations
         exception
