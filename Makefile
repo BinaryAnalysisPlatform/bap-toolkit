@@ -1,15 +1,12 @@
 
 
-full: build install
 
-build: clean
-	sh build.sh build $(TARGET)
+
+build:
+	python makes build
 
 install:
-	sh build.sh install $(TARGET)
+	python makes install
 
 test:
 	make -C tests
-
-clean:
-	sh build.sh clean $(TARGET)
