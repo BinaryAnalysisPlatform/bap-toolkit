@@ -18,9 +18,7 @@
 ;;    returns anything or not, hence we need to taint a value in
 ;;    the abi-specific register which is responsible for the return
 ;;    argument and not use it as a source of incidents.
-;; 3) we also don't want to see multiple manifestations of a single
-;;    dereference
-;; 4) If any subroutine wasn't visited in the current path because it
+;; 3) If any subroutine wasn't visited in the current path because it
 ;;    was visited in the other, we need to drop its result.
 ;;
 
@@ -39,20 +37,16 @@
 (defun is-null (ptr)
   (and (not ptr) (all-static-constant ptr)))
 
-(defun is-unsafe (ptr)
+(defun is-untrusted (ptr)
   (not
    (or (taint-get-indirect 'untrusted ptr)
-       (taint-get-direct 'untrusted ptr)
-       (taint-get-indirect 'known-deref ptr)
-       (taint-get-direct 'known-deref ptr))))
+       (taint-get-direct 'untrusted ptr))))
 
 (defun check-deref-null-ptr (ptr)
   (when (is-null ptr)
     (let ((taint (taint-get-direct 'const-ptr ptr))
           (checked (dict-get 'checked-pointer taint)))
-      (when (and taint (is-unsafe ptr) (not checked))
-        (taint-introduce-indirectly 'known-deref ptr 1)
-        (taint-introduce-directly   'known-deref ptr)
+      (when (and taint (is-untrusted ptr) (not checked))
         (notify-null-deref taint)))))
 
 (defmethod eval-cond (x)
@@ -67,30 +61,19 @@
             (dict-add 'intro taint (get-current-program-counter))
             (dict-add 'intro/location taint (incident-location))))))
 
-;; stored method will detach previous indirect taints by the
-;; address, and we can get a manifestation of the same
-;; dereference that we discovered earlier. That's why we
-;; do this trick in the storing/stored methods.
 (defmethod stored (a x)
-  (let ((known (dict-has 'known-fail (get-current-program-counter))))
-    (when known
-      (taint-introduce-directly 'known-deref x))
-    (when (and (not known) (is-null x))
-      (let ((taint (taint-introduce-directly 'const-ptr x)))
-        (dict-add 'intro taint (get-current-program-counter))
-        (dict-add 'intro/location taint (incident-location))))))
-
-(defmethod storing (ptr)
-  (let ((known (taint-get-indirect 'known-deref ptr)))
-    (when known
-      (dict-add 'known-fail (get-current-program-counter) ptr))
-    (when (not known)
-      (check-deref-null-ptr ptr))))
+  (when (is-null x)
+    (let ((taint (taint-introduce-directly 'const-ptr x)))
+      (dict-add 'intro taint (get-current-program-counter))
+      (dict-add 'intro/location taint (incident-location)))))
 
 (defmethod read (var val)
   (when (is-untrusted-return-value val)
     (when (not (taint-get-direct 'untrusted val))
       (taint-introduce-directly 'untrusted val))))
+
+(defmethod storing (ptr)
+  (check-deref-null-ptr ptr))
 
 (defmethod loading (ptr)
   (check-deref-null-ptr ptr))

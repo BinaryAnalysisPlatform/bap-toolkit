@@ -1,0 +1,12 @@
+incidents
+artifact
+log
+toolkit.log
+Makefile
+README.md
+src/_build
+*.o
+*.cmi
+*.cmo
+*.cmx
+src/compare_incidents.native

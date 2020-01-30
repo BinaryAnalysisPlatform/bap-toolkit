@@ -1,7 +1,4 @@
 
-
-full: build install
-
 build: clean
 	sh build.sh build $(TARGET)
 
@@ -13,3 +10,5 @@ test:
 
 clean:
 	sh build.sh clean $(TARGET)
+
+full: build install

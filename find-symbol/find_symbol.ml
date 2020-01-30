@@ -124,7 +124,7 @@ let verbose =
   Extension.Command.parameters
     ~as_flag:1
     ~doc:"Dumps the results"
-    Extension.Type.("verbose" %: int)
+    Extension.Type.int
     "verbose"
 
 let recursive =
@@ -140,13 +140,13 @@ let non_structured =
 let complexity =
   Extension.Configuration.parameter
     ~doc:"Find symbols with cyclomatic complexity > threshold"
-    Extension.Type.("COMPLEXITY" %: some int) "complexity"
+    Extension.Type.(some int) "complexity"
 
 let verbose' =
   Extension.Configuration.parameters
     ~as_flag:1
     ~doc:"Dumps the results"
-    Extension.Type.("dump" %: int)
+    Extension.Type.int
     "verbose"
 
 let () =

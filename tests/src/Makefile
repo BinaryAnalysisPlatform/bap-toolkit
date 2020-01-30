@@ -1,4 +1,7 @@
+
+install: build
+	mv compare-incidents ../
+
 build:
 	bapbuild compare_incidents.native
-	mv compare_incidents.native compare-incidents
-	mv compare-incidents ../
+	cp _build/compare_incidents.native compare-incidents

@@ -4,7 +4,7 @@ RUN sudo apk add zip python
 
 COPY --chown=opam:nogroup . /bap-toolkit
 WORKDIR /bap-toolkit
-RUN opam exec -- python makes [build, install]
+RUN opam exec -- make
 
 
 FROM alpine
