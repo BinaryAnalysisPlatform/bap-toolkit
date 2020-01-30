@@ -30,3 +30,5 @@ artifact
 incidents
 stdin
 stdout
+tests/toolkit.log
+tests/compare-incidents
