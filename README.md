@@ -65,13 +65,13 @@ system, and a switch is activated, with
 Next, to install all tools in the repository to the default share folder just do
 
 
-        python makes build
-        python makes install
+        make 
+        make install
 
 To install a specific tool, run the same commands but pass the tool name to them, e.g.,
 
-        python makes build primus-checks
-        python makes install primus-checks
+        make TARGET=primus-checks
+        make install TARGET=primus-checks
 
 # Usage
 
