@@ -1,3 +1,4 @@
+
 open Core_kernel
 open Bap.Std
 open Graphlib.Std
@@ -5,6 +6,24 @@ open Graphlib.Std
 include Self ()
 
 module G = Graphlib.Make(Tid)(Unit)
+
+type dest = [
+  | `Call of (tid option * tid option) (* target, return *)
+  | `Goto of tid
+]
+
+type graph = {
+  entry  : tid;
+  exit_  : tid;
+  no_ret : tid;
+  itself : G.t;
+}
+
+type subroutine = {
+  term  : sub term;
+  graph : graph option;
+  dests : dest list Tid.Map.t;
+}
 
 let return_of_call c =
   match Call.return c with
@@ -17,7 +36,7 @@ let dests_of_call c =
   | Indirect _ ->
     match return_of_call c with
     | None -> None
-    | Some _ as x -> Some (None, x)
+    | Some _ as ret -> Some (None, ret)
 
 let dests_of_block b =
   Seq.fold (Blk.elts b) ~init:[] ~f:(fun acc -> function
@@ -31,100 +50,92 @@ let dests_of_block b =
           | None -> acc
           | Some d -> `Call d :: acc)
 
-let tids_of_dests dests =
-  List.fold dests ~init:[]
-    ~f:(fun acc -> function
-        | `Goto tar -> tar :: acc
-        | `Call (tar, ret) ->
-          match ret with
-          | None -> tar :: acc
-          | Some ret -> tar :: ret :: acc)
-
-type graph = {
-  entry  : tid;
-  exit_  : tid;
-  no_ret : tid;
-  itself : G.t;
-}
-
-type subroutine = {
-  term  : sub term;
-  graph : graph option;
-  calls : tid list Tid.Map.t;  (* caller -> callees *)
-}
-
-let make_no_return g caller callee =
+(** [make_no_return g caller callee] removes edge to a
+    non-return function with tid [callee] and connect
+    caller with an synthetic no-ret node *)
+let make_no_return g ~caller ~callee =
   let itself =
     Seq.fold (G.Node.outputs caller g.itself)
       ~init:g.itself
       ~f:(fun g e ->
-          if Tid.(G.Edge.dst e = callee) then
-            G.Edge.remove e g
+          if Tid.(G.Edge.dst e = callee)
+          then G.Edge.remove e g
           else g) in
-  { g with itself =
-             G.Edge.(insert (create caller g.no_ret ()) itself) }
+  let itself = G.Edge.(insert (create caller g.no_ret ()) itself) in
+  { g with itself }
 
+let find_callees dests  =
+  List.filter_map dests ~f:(function
+      | `Call (Some x,_) -> Some x
+      | _ -> None)
+
+(** [update norets sub] updates sub's graph, so
+    any edge to function in [norets] will be replaced
+    with an edge to synthetic no-return node *)
 let update no_rets sub =
   match sub.graph with
   | None -> sub
   | Some g ->
     let g =
-      Map.fold sub.calls ~init:g
-        ~f:(fun ~key:caller ~data:callees init ->
-            List.fold callees ~init ~f:(fun g callee ->
-                if Set.mem no_rets callee then
-                  make_no_return g caller callee
-                else g)) in
+      Map.fold sub.dests ~init:g
+        ~f:(fun ~key:caller ~data:dests init ->
+            List.fold (find_callees dests)
+              ~init ~f:(fun g callee ->
+                  if Set.mem no_rets callee then
+                    make_no_return g caller callee
+                  else g)) in
     {sub with graph = Some g;}
+
+let to_graph start dests =
+  let insert_dest g node = function
+    | `Goto tid ->
+      let g = G.Edge.(insert (create node tid ()) g) in
+      g, [tid]
+    | `Call (tar,ret) ->
+      match tar,ret with
+      | Some tar, Some ret ->
+        let g = G.Edge.(insert (create node tar ()) g) in
+        let g = G.Edge.(insert (create tar ret ()) g)  in
+        g, [tar; ret]
+      | Some tar, None ->
+        G.Edge.(insert (create node tar ()) g), [tar]
+      | None, None -> g, []
+      | None, Some ret ->
+        let tar = Tid.create () in
+        let g = G.Edge.(insert (create node tar ()) g) in
+        let g = G.Edge.(insert (create tar ret ()) g) in
+        g, [ret] in
+  let rec loop g node =
+    let g = G.Node.insert node g in
+    match Map.find dests node with
+    | None -> g
+    | Some dsts ->
+      let g',dsts =
+        List.fold dsts ~init:(g,[])
+          ~f:(fun (g,dsts) dst ->
+              let g, dsts' = insert_dest g node dst in
+              g, dsts' @ dsts) in
+      let dsts = List.filter ~f:(fun n -> not (G.Node.mem n g)) dsts in
+      match dsts with
+      | [] -> g'
+      | dsts -> List.fold dsts ~init:g' ~f:loop in
+  loop G.empty start
+
+let collect_destinations sub =
+  Term.to_sequence blk_t sub |>
+  Seq.fold ~init:(Map.empty (module Tid))
+    ~f:(fun (dests) b ->
+        Map.set dests (Term.tid b) (dests_of_block b))
 
 let of_sub s =
   let blks = Term.to_sequence blk_t s in
+  let dests = collect_destinations s in
   match Seq.hd blks with
-  | None -> {term=s; graph=None; calls = Map.empty (module Tid) }
+  | None -> {term=s; graph=None; dests}
   | Some hd ->
     let no_ret = Tid.create () in
     let exit_ = Tid.create () in
-    let blks,calls =
-      Seq.fold blks ~init:(Map.empty (module Tid),Map.empty (module Tid))
-        ~f:(fun (blks,calls) b ->
-            let dests = dests_of_block b in
-            let blks = Map.set blks (Term.tid b) dests in
-            let callees =
-              List.filter_map dests ~f:(function
-                  | `Call (Some x,_) -> Some x
-                  | _ -> None) in
-            blks, Map.set calls (Term.tid b) callees) in
-    let rec loop g node =
-      let g = G.Node.insert node g in
-      match Map.find blks node with
-      | None -> g
-      | Some dsts ->
-        let g',dsts =
-          List.fold dsts ~init:(g,[])
-            ~f:(fun (g,dsts) dst ->
-                match dst with
-                | `Goto tid ->
-                  let g = G.Edge.(insert (create node tid ()) g) in
-                  g, tid :: dsts
-                | `Call (tar,ret) ->
-                  match tar,ret with
-                  | Some tar, Some ret ->
-                    let g = G.Edge.(insert (create node tar ()) g) in
-                    let g = G.Edge.(insert (create tar ret ()) g)  in
-                    g, tar :: ret :: dsts
-                  | Some tar, None ->
-                    G.Edge.(insert (create node tar ()) g), tar :: dsts
-                  | None, None -> g,dsts
-                  | None, Some ret ->
-                    let tar = Tid.create () in
-                    let g = G.Edge.(insert (create node tar ()) g) in
-                    let g = G.Edge.(insert (create tar ret ()) g) in
-                    g, ret :: dsts) in
-        let dsts = List.filter ~f:(fun n -> not (G.Node.mem n g)) dsts in
-        match dsts with
-        | [] -> g'
-        | dsts -> List.fold dsts ~init:g' ~f:loop in
-    let g = loop G.empty (Term.tid hd) in
+    let g = to_graph (Term.tid hd) dests in
     let entry = Term.tid hd in
     let g =
       G.nodes g |>
@@ -134,7 +145,7 @@ let of_sub s =
           else g) in
     let g = G.Edge.(insert (create no_ret exit_ ()) g) in
     let graph = {entry;exit_;no_ret;itself=g} in
-    {term = s; graph = Some graph; calls}
+    {term = s; graph = Some graph; dests}
 
 
 let map no_returns sub =
@@ -163,7 +174,9 @@ let of_prog prog =
           | Some _ -> Set.add no_rets (Term.tid s) in
         of_sub s :: subs, no_rets)
 
-let is_no_return no_rets sub =
+(** [is_no_return sub] returns true if the no-ret node
+    postdominate sub's entry node *)
+let is_no_return sub =
   match sub.graph with
   | None -> false
   | Some g ->
@@ -176,7 +189,7 @@ let run prog =
         if Set.mem no_rets (Term.tid s.term) then s :: subs, no_rets
         else
           let s = update no_rets s in
-          if is_no_return no_rets s then
+          if is_no_return s then
             s :: subs, Set.add no_rets (Term.tid s.term)
           else s :: subs,no_rets) in
   let rec loop subs no_rets =
