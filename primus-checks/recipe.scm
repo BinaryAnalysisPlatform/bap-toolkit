@@ -33,6 +33,7 @@
 (option primus-limit-max-length $depth)
 
 (option primus-print-obs
+  taint-finalize
   exception
   pc-changed
   jumping

@@ -98,8 +98,8 @@ let find_callsite prog pos =
   | _ -> None
 
 type state = {
-    unchecked  : Primus.Value.Id.Set.t;
-    callsites  : callsite Primus.Value.Id.Map.t;
+  unchecked  : Primus.Value.Id.Set.t;
+  callsites  : callsite Primus.Value.Id.Map.t;
 }
 
 let state =
@@ -114,21 +114,17 @@ let state =
 module Output_results(Machine : Primus.Machine.S) = struct
   open Machine.Syntax
 
-  let output init () =
-    Machine.current () >>= fun id ->
-    if Machine.Id.(init = id) then
-      Machine.Global.get state >>= fun s ->
-      let unused = Set.fold s.unchecked ~init:(Map.empty (module Addr))
-          ~f:(fun acc tid -> match Map.find s.callsites tid with
-              | None -> acc
-              | Some x -> Map.set acc x.addr x)  in
-      print_results (Map.data unused);
-      Machine.return ()
-    else Machine.return ()
+  let on_stop _ =
+    Machine.Global.get state >>| fun s ->
+    let unused = Set.fold s.unchecked ~init:(Map.empty (module Addr))
+        ~f:(fun acc tid -> match Map.find s.callsites tid with
+            | None -> acc
+            | Some x -> Map.set acc x.addr x)  in
+    print_results (Map.data unused)
+
 
   let init () =
-    Machine.current () >>= fun start ->
-    Primus.Interpreter.halting >>> output start
+    Primus.System.stop >>> on_stop
 end
 
 module Mark(Machine : Primus.Machine.S) = struct
@@ -144,8 +140,8 @@ module Mark(Machine : Primus.Machine.S) = struct
         match find_callsite (Project.program proj) pos with
         | None -> s
         | Some cs ->
-           { s with callsites =
-                      Map.set s.callsites (Value.id taint) cs }) >>= fun () ->
+          { s with callsites =
+                     Map.set s.callsites (Value.id taint) cs }) >>= fun () ->
     Value.b0
 end
 
@@ -223,7 +219,7 @@ module Interface(Machine : Primus.Machine.S) = struct
         ~docs:{|(notify-warn-unused-result T)|
                notifies that a source of taint T was never used|};
 
- ]
+    ]
 end
 
 let enabled = Extension.Configuration.flag "enable" ~doc:"Enables the analysis"

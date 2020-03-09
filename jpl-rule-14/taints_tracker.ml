@@ -13,11 +13,11 @@ type machine = Primus.Machine.id
 
 
 type state = {
-    references : machine list Primus.Value.Id.Map.t;
-    owners     : Vids.t Machines.t;
-    taints     : value Primus.Value.Id.Map.t;
-    forks      : Machine_id.Set.t
-  }
+  references : machine list Primus.Value.Id.Map.t;
+  owners     : Vids.t Machines.t;
+  taints     : value Primus.Value.Id.Map.t;
+  forks      : Machine_id.Set.t
+}
 
 let state = Primus.Machine.State.declare
     ~name:"taints-tracker"
@@ -27,7 +27,7 @@ let state = Primus.Machine.State.declare
          owners     = Map.empty (module Machine_id);
          taints     = Map.empty (module Primus.Value.Id);
          forks      = Set.empty (module Machine_id);
-    })
+       })
 
 
 let taint_finish, taint_reached_finish =
@@ -55,14 +55,14 @@ module Tracker(Machine : Primus.Machine.S) = struct
     match Map.find s.owners par with
     | None -> Machine.return s
     | Some vs ->
-       Machine.return
-         { s with
-           references =
-             Set.fold vs ~init:s.references ~f:(fun ms v ->
-                 Map.update ms v ~f:(function
-                     | None -> [id]
-                     | Some ms -> id :: ms));
-           owners = Map.set s.owners id vs}
+      Machine.return
+        { s with
+          references =
+            Set.fold vs ~init:s.references ~f:(fun ms v ->
+                Map.update ms v ~f:(function
+                    | None -> [id]
+                    | Some ms -> id :: ms));
+          owners = Map.set s.owners id vs}
 
   let on_last_reference = function
     | None -> Machine.return ()
@@ -74,10 +74,10 @@ module Tracker(Machine : Primus.Machine.S) = struct
           match Map.find s.references id with
           | None -> s,rm
           | Some [mid] when Machine_id.(mid = machine_id) ->
-             let taint = Map.find s.taints id in
-             let taints = Map.remove s.taints id in
-             let references = Map.remove s.references id in
-             { s with taints; references}, taint :: rm
+            let taint = Map.find s.taints id in
+            let taints = Map.remove s.taints id in
+            let references = Map.remove s.references id in
+            { s with taints; references}, taint :: rm
           | Some machines ->
             let machines =
               List.filter machines
@@ -86,14 +86,13 @@ module Tracker(Machine : Primus.Machine.S) = struct
     Machine.Global.put state s >>= fun () ->
     Machine.List.iter rm ~f:on_last_reference
 
-  let on_machine_death _ =
-    Machine.current () >>= fun cur ->
+  let on_machine_death id =
     Machine.Global.get state >>= fun s ->
-    match Map.find s.owners cur with
+    match Map.find s.owners id with
     | None -> Machine.return ()
     | Some vids ->
-       let s = {s with owners = Map.remove s.owners cur} in
-       clear_references s vids cur
+      let s = {s with owners = Map.remove s.owners id} in
+      clear_references s vids id
 
   let empty = Set.empty (module Machine_id)
   let of_seq = Seq.fold ~init:empty ~f:Set.add
@@ -110,10 +109,10 @@ module Tracker(Machine : Primus.Machine.S) = struct
 
   let init () =
     Machine.sequence [
-        Primus.Interpreter.halting >>> on_machine_death;
-        Primus.Interpreter.jumping  >>> detect_forks;
-        Primus.Linker.Trace.call    >>> detect_forks;
-      ]
+      Primus.Machine.kill     >>> on_machine_death;
+      Primus.Interpreter.jumping  >>> detect_forks;
+      Primus.Linker.Trace.call    >>> detect_forks;
+    ]
 
 end
 

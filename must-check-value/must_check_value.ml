@@ -7,8 +7,8 @@ open Bap_main
 let check_name = "must check value"
 
 type t = {
-    addrs : Addr.Set.t;
-    verbose : bool;
+  addrs : Addr.Set.t;
+  verbose : bool;
 }
 
 let state =
@@ -31,20 +31,17 @@ let print_addr a = Format.printf "%s\n" @@ atos a
 module Init(S : sig val verbose : bool end)(Machine : Primus.Machine.S) = struct
   open Machine.Syntax
 
-  let output init () =
-    Machine.current () >>= fun id ->
-    if Machine.Id.(init = id) then
-      Machine.Global.get state >>= fun {addrs} ->
-      if Set.is_empty addrs then
-        print_ok ();
-      Machine.return ()
-    else Machine.return ()
+  let output _ =
+    Machine.Global.get state >>= fun {addrs} ->
+    if Set.is_empty addrs then
+      print_ok ();
+    Machine.return ()
+
 
   let init () =
     Machine.Global.update state
       ~f:(fun s -> {s with verbose = S.verbose}) >>= fun () ->
-    Machine.current () >>= fun start ->
-    Primus.Interpreter.halting >>> output start
+    Primus.System.stop >>> output
 end
 
 
@@ -76,7 +73,7 @@ module Interface(Machine : Primus.Machine.S) = struct
       Lisp.define "notify-unchecked-value" (module Notify)
         ~types:(tuple [a] @-> b)
         ~docs:
-        {|(notify-unchecked-value addr) prints message that value introduced
+          {|(notify-unchecked-value addr) prints message that value introduced
          at [addr] was never used. |};
     ]
 end
@@ -94,10 +91,10 @@ let () =
   let open Extension.Syntax in
   Extension.declare
   @@ fun ctxt ->
-     if ctxt --> enabled then
-       begin
-         Primus.Machine.add_component (module Interface);
-         Primus.Machine.add_component
-           (module Init(struct let verbose = (ctxt --> verbose) > 1 end));
-       end;
-     Ok ()
+  if ctxt --> enabled then
+    begin
+      Primus.Machine.add_component (module Interface);
+      Primus.Machine.add_component
+        (module Init(struct let verbose = (ctxt --> verbose) > 1 end));
+    end;
+  Ok ()

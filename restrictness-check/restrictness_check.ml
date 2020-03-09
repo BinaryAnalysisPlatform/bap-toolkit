@@ -1,11 +1,11 @@
 (** Restrictness check
 
-The Algorithm
+    The Algorithm
 
-For any pointer with the 'restrict' type qualifier,
-we check if there is another pointer among function
-arguments, which belongs to the same memory location in
-a heap or even exactly equal to the first one.  *)
+    For any pointer with the 'restrict' type qualifier,
+    we check if there is another pointer among function
+    arguments, which belongs to the same memory location in
+    a heap or even exactly equal to the first one.  *)
 
 open Core_kernel
 open Bap.Std
@@ -35,17 +35,17 @@ let print_results rs =
       "Aliased arguments" pp_norm;
     let reported = Map.empty (module Addr) in
     Caml.ignore @@
-      List.fold rs ~init:reported ~f:(fun reported (addr,sub,aliases) ->
-          let args = List.sort aliases ~compare:String.compare in
-          let args = String.concat args ~sep:"," in
-          match Map.find reported addr with
-          | Some a when Set.mem a args -> reported
-          | a ->
-             let a = Option.value ~default:(Set.empty (module String)) a in
-             let reported = Map.set reported addr (Set.add a args) in
-             let addr = sprintf "%a" Addr.pps addr in
-             Format.printf "%-10s %-20s %s\n" addr sub args;
-             reported)
+    List.fold rs ~init:reported ~f:(fun reported (addr,sub,aliases) ->
+        let args = List.sort aliases ~compare:String.compare in
+        let args = String.concat args ~sep:"," in
+        match Map.find reported addr with
+        | Some a when Set.mem a args -> reported
+        | a ->
+          let a = Option.value ~default:(Set.empty (module String)) a in
+          let reported = Map.set reported addr (Set.add a args) in
+          let addr = sprintf "%a" Addr.pps addr in
+          Format.printf "%-10s %-20s %s\n" addr sub args;
+          reported)
 
 module Regions = struct
   module I = Interval_tree.Make(struct
@@ -117,17 +117,12 @@ end
 module Dump_results(Machine : Primus.Machine.S) = struct
   open Machine.Syntax
 
-  let on_exit init_id f () =
-    Machine.current () >>= fun id ->
-    if Machine.Id.(init_id = id) then
-      Machine.Global.get state >>= fun s ->
-      f s;
-      Machine.return ()
-    else Machine.return ()
+  let on_stop _ =
+    Machine.Global.get state >>| fun s ->
+    print_results  s
 
   let init () =
-    Machine.current () >>= fun init ->
-    Primus.Interpreter.halting >>> on_exit init print_results
+    Primus.System.stop >>> on_stop
 end
 
 let is_out a = match Arg.intent a with
@@ -166,11 +161,11 @@ module Is_violation(Machine : Primus.Machine.S) = struct
     match Jmp.kind Primus.Pos.(jmp.me) with
     | Goto _ | Ret _ | Int _ -> Machine.return None
     | Call c -> match Call.target c with
-        | Indirect _ -> Machine.return None
-        | Direct tid ->
-          Machine.get () >>= fun proj ->
-          Machine.return @@
-          Program.lookup sub_t (Project.program proj) tid
+      | Indirect _ -> Machine.return None
+      | Direct tid ->
+        Machine.get () >>= fun proj ->
+        Machine.return @@
+        Program.lookup sub_t (Project.program proj) tid
 
   let update_results sub aliases =
     Eval.pc >>= fun addr ->
@@ -190,7 +185,7 @@ module Is_violation(Machine : Primus.Machine.S) = struct
         | Some sub ->
           find_aliases (Term.enum arg_t sub) >>= function
           | [] ->
-             Value.b0
+            Value.b0
           | aliases ->
             update_results (Sub.name sub) aliases >>= fun () ->
             Value.b1

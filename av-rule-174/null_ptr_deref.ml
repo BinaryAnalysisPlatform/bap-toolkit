@@ -79,17 +79,12 @@ module Init_reports(S : sig val verbose : verbose end)(Machine : Primus.Machine.
   module Reporter = Reporter(Machine)
   open Machine.Syntax
 
-  let on_halt init_id () =
-    Machine.current () >>= fun id ->
-    if Machine.Id.(init_id = id) then
-      Reporter.on_exit ()
-    else Machine.return ()
+  let on_stop _ = Reporter.on_exit ()
 
   let init () =
     Machine.Global.update state
       ~f:(fun s -> {s with verbose = S.verbose}) >>= fun () ->
-    Machine.current () >>= fun init ->
-    Primus.Interpreter.halting >>> on_halt init
+    Primus.System.stop >>> on_stop
 
 end
 
