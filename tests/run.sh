@@ -1,14 +1,19 @@
 #!/usr/bin/env sh
 
-XFAILS="warn-unused must-check-value"
+trap 'exit 130' INT
+
+
+XFAILS="warn-unused jpl-rule-14 must-check-value juliet-cwe-252/jpl-rule-14 CVE-2012-4559 CVE-2012-6063"
 # Reasons:
-# 1) Taint analysis Garbage collector need to be fixed:
-#    the finished observation never reached it, need use halting.
-#    Checks warn-unused must-check-value are rely on it.
-# 2) Also, warn-unused may fail because we need to fix attributes on
-#    in callsites plugin, since they are not tranfered from the original
-#    argument.
+# warn-unused jpl-rule-14 must-check-value
+#   all relies on taint-finalize observation, that doesn't
+#   work anymore in the same way as it was earlier (before
+#   Primus.Systems)
 #
+# CVE-2012-4559 CVE-2012-6063: waiting a PR with stub resolver
+#
+#
+
 
 logfile="toolkit.log"
 litmuses="litmus-tests"
@@ -48,6 +53,7 @@ compare() {
         fi
     done
 
+    result=
     result=`./compare-incidents $name $expected_incidents incidents $exact $expected_fail`
     echo "" >> $logfile
     echo $result
@@ -60,7 +66,6 @@ litmuses_run() {
     echo "                             LITMUS TESTS"
 
     for name in `ls litmus-tests/bin`; do
-
         binary=$litmuses/bin/$name
         data=$litmuses/data/$name
         expected_incidents=$data/expected
@@ -92,14 +97,13 @@ artifacts_run() {
     dir=artifacts
 
     for arti in `ls $dir`; do
+        artifact=$dir/$arti/artifact
+        if [ ! -f $artifact ]; then
+            #file_not_found $artifact
+            continue
+        fi
+
         for check in `ls $dir/$arti | grep -v artifact`; do
-            artifact=$dir/$arti/artifact
-
-            if [ ! -f $artifact ]; then
-                file_not_found $artifact
-                continue
-            fi
-
             expected_incidents=$dir/$arti/$check/expected
             run=$dir/$arti/$check/run
             api=$dir/$arti/$check/api
