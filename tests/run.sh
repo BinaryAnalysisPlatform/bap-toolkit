@@ -3,14 +3,14 @@
 trap 'exit 130' INT
 
 
-XFAILS="warn-unused jpl-rule-14 must-check-value juliet-cwe-252/jpl-rule-14 CVE-2012-4559 CVE-2012-6063"
+XFAILS="warn-unused jpl-rule-14 must-check-value juliet-cwe-252/jpl-rule-14 CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222"
 # Reasons:
 # warn-unused jpl-rule-14 must-check-value
 #   all relies on taint-finalize observation, that doesn't
 #   work anymore in the same way as it was earlier (before
 #   Primus.Systems)
 #
-# CVE-2012-4559 CVE-2012-6063: waiting a PR with stub resolver
+# CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222: waiting a PR with stub resolver and/or PR with memset
 #
 #
 
