@@ -130,4 +130,5 @@ end
 
 let init () =
   Primus.Machine.add_component (module Tracker);
-  Primus.Machine.add_component (module Lisp);
+  Primus.Machine.add_component (module Lisp)
+[@@warning "-D"]

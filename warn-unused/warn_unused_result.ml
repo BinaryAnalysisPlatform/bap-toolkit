@@ -234,3 +234,4 @@ let () =
       Primus.Machine.add_component (module Output_results);
     end;
   Ok ()
+[@@warning "-D"]

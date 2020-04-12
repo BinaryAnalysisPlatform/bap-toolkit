@@ -221,3 +221,4 @@ let () =
       Primus.Machine.add_component (module Interface);
     end;
   Ok ()
+[@@warning "-D"]

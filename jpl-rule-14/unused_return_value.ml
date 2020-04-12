@@ -61,15 +61,15 @@ module Reporter(Machine : Primus.Machine.S) = struct
   let notify name addr = function
     | Used -> Machine.return ()
     | Unused ->
-       has_proved_fail () >>= fun has_fails ->
-       if not has_fails then print_fail ();
-       Machine.Global.get state >>= fun {verbose} ->
-       match verbose with
-       | Brief  -> Machine.return ()
-       | Detail ->
-          if not has_fails then print_header ();
-          print_incident name addr;
-          Machine.return ()
+      has_proved_fail () >>= fun has_fails ->
+      if not has_fails then print_fail ();
+      Machine.Global.get state >>= fun {verbose} ->
+      match verbose with
+      | Brief  -> Machine.return ()
+      | Detail ->
+        if not has_fails then print_header ();
+        print_incident name addr;
+        Machine.return ()
 
 end
 
@@ -296,14 +296,14 @@ module Return_args(Machine : Primus.Machine.S) = struct
   let init () =
     Machine.get () >>= fun proj ->
     Machine.Global.update return_args (fun rets ->
-    Seq.fold (Project.program proj |> Term.enum sub_t)
-      ~init:rets ~f:(fun rets sub ->
-        match Seq.find (Term.enum arg_t sub) ~f:(fun a ->
+        Seq.fold (Project.program proj |> Term.enum sub_t)
+          ~init:rets ~f:(fun rets sub ->
+              match Seq.find (Term.enum arg_t sub) ~f:(fun a ->
                   match Arg.intent a with
                   | Some Out -> true
                   | _ -> false) with
-        | None -> rets
-        | Some a -> Map.set rets (Sub.name sub) (Arg.lhs a)))
+              | None -> rets
+              | Some a -> Map.set rets (Sub.name sub) (Arg.lhs a)))
 end
 
 module Return_vals(Machine : Primus.Machine.S) = struct
@@ -317,11 +317,11 @@ module Return_vals(Machine : Primus.Machine.S) = struct
     match Map.find s name with
     | None -> Machine.return ()
     | Some _ ->
-       match List.last args with
-       | None -> Machine.return ()
-       | Some value ->
-         Machine.Local.update return_vals ~f:(fun vals ->
-             Map.set vals (Primus.Value.id value) name)
+      match List.last args with
+      | None -> Machine.return ()
+      | Some value ->
+        Machine.Local.update return_vals ~f:(fun vals ->
+            Map.set vals (Primus.Value.id value) name)
 
   let init() =
     Primus.Linker.Trace.return >>> on_call_return
@@ -419,17 +419,18 @@ let () =
   let open Extension.Syntax in
   Extension.declare
   @@ fun ctxt ->
-     if ctxt --> enabled then
-       begin
-         Taints_tracker.init ();
-         Primus.Machine.add_component (module Return_args);
-         Primus.Machine.add_component (module Return_vals);
-         Primus.Machine.add_component (module Interface);
-         Primus.Machine.add_component (module Callsite);
-         Primus.Machine.add_component (module Known_subs);
-         Primus.Machine.add_component
-           (module Init(struct
-                       let verbose = verbose_of_int (ctxt --> verbose)
-                     end));
+  if ctxt --> enabled then
+    begin
+      Taints_tracker.init ();
+      Primus.Machine.add_component (module Return_args);
+      Primus.Machine.add_component (module Return_vals);
+      Primus.Machine.add_component (module Interface);
+      Primus.Machine.add_component (module Callsite);
+      Primus.Machine.add_component (module Known_subs);
+      Primus.Machine.add_component
+        (module Init(struct
+             let verbose = verbose_of_int (ctxt --> verbose)
+           end));
     end;
   Ok ()
+[@@warning "-D"]

@@ -98,3 +98,4 @@ let () =
         (module Init(struct let verbose = (ctxt --> verbose) > 1 end));
     end;
   Ok ()
+[@@warning "-D"]
