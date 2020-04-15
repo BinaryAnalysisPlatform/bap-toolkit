@@ -138,9 +138,22 @@ process_cmd() {
 
 }
 
+check() {
+    path=`which $1`
+    if [ "no$path" == "no" ]; then
+        echo "can't find $1, exiting ... "
+        exit 1
+    fi
+}
+
 # usage:
 # run <build|install|clean> check
 run() {
+    check zip
+    check sed
+    check bapbundle
+    check bapbuild
+
     COMMAND=$1
     TARGET=$2
     check_build_tools
