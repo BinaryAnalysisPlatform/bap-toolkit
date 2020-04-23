@@ -140,7 +140,7 @@ process_cmd() {
 
 check() {
     path=`which $1`
-    if [ "no$path" == "no" ]; then
+    if [ "no$path" = "no" ]; then
         echo "can't find $1, exiting ... "
         exit 1
     fi
