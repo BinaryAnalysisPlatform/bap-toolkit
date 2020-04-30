@@ -1,0 +1,2 @@
+main: ddtbd.ml
+depends: bap bap-primus bap-taint bap-future graphlib
