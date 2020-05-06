@@ -9,6 +9,8 @@ include Self()
 
 module Param = struct
   open Config
+  let enable = flag "enable" ~doc:{| enables the analysis |}
+
   let max_length = param int "length" ~default:100 ~doc:{|
       The length of the speculative execution window. Currently,
       it is specified in the number of machine instructions.
@@ -648,10 +650,12 @@ module Primitives (Machine : Primus.Machine.S) = struct
     @@ fun v -> Machine.return [v]
 end
 
-
 let () = Config.when_ready (fun {Config.get} ->
-    Primus.Machine.add_component (module Primitives);
-    Primus.Machine.add_component (module Detector);
-    if get untrust_inputs
-    then Primus.Machine.add_component (module InputDetector))
+    if get enable then
+      begin
+        Primus.Machine.add_component (module Primitives);
+        Primus.Machine.add_component (module Detector);
+        if get untrust_inputs
+        then Primus.Machine.add_component (module InputDetector)
+      end)
 [@@warning "-D"]

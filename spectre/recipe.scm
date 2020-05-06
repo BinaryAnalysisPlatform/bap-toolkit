@@ -24,8 +24,8 @@
 (option primus-greedy-scheduler)
 (option primus-print-output incidents)
 (option ddtbd-length $decay)
+(option ddtbd-enable)
 (option primus-limit-max-length $depth)
-
 (option primus-lisp-add $prefix)
 (option primus-print-obs
         spectre-path
