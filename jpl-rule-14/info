@@ -1,2 +1,2 @@
 main : unused_return_value.ml
-depends: bap bap-main bap-primus bap-taint bap-x86-cpu
+depends: bap bap-main bap-primus bap-x86-cpu

@@ -20,7 +20,6 @@ In terms of the CWE it covers the following entries:
  - CWE-170 (Improper Null Termination)
  - CWE-138 (Improper Neutralization)
  - CWE-74  (Command Injection)
- - CWE-476 (NULL pointer dereference)
  - CWE-690 (Unchecked Return Value to NULL Pointer Dereference)
  - CWE-252 (Unchecked Return Value)
 
