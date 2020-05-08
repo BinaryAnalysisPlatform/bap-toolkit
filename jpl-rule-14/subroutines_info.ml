@@ -138,9 +138,44 @@ module Find(Machine : Primus.Machine.S) = struct
 
 end
 
+module Random_on_unresolved(Machine : Primus.Machine.S) = struct
+  module Value = Primus.Value.Make(Machine)
+  module Interpreter = Primus.Interpreter.Make(Machine)
+  open Machine.Syntax
+
+  let find_return_reg prog =
+    Term.to_sequence sub_t prog |>
+    Seq.find_map ~f:(fun sub ->
+        Term.to_sequence arg_t sub |>
+        Seq.find_map ~f:(fun a ->
+            Option.some_if (Arg.intent a = Some Out) (Arg.rhs a))) |>
+    function
+    | Some (Bil.Var r) -> Some r
+    | _ -> None
+
+  let arch_size =
+    Machine.arch >>= fun a ->
+    Machine.return @@ Size.in_bits (Arch.addr_size a)
+
+  let on_unresolved reg _ =
+    match reg with
+    | None -> Machine.return ()
+    | Some reg ->
+      arch_size >>= fun width ->
+      Value.of_int ~width (Random.int width) >>= fun x ->
+      Interpreter.set reg x
+
+  let init () =
+    Machine.get () >>= fun proj ->
+    let reg = find_return_reg (Project.program proj) in
+    Primus.Linker.unresolved >>> on_unresolved reg
+end
+
+
 
 let init () =
   Primus.Machine.add_component (module Known_subs);
   Primus.Machine.add_component (module Return_values);
-  Primus.Machine.add_component (module Callsite)
+  Primus.Machine.add_component (module Callsite);
+  Primus.Machine.add_component (module Random_on_unresolved);
 [@@warning "-D"]

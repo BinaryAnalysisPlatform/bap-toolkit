@@ -50,7 +50,10 @@ let print_header () =
 let print_incident name addr =
   Format.printf "%-10s %s\n%!" name (sprintf "%a" Addr.pps addr)
 
-module Notify(S : sig val verbose : verbose end)(Machine : Primus.Machine.S) = struct
+module Notify
+    (S : sig val verbose : verbose end)
+    (Machine : Primus.Machine.S) = struct
+
   module Value = Primus.Value.Make(Machine)
   open Machine.Syntax
 
@@ -89,7 +92,8 @@ module Notify(S : sig val verbose : verbose end)(Machine : Primus.Machine.S) = s
     else Machine.return ()
 
   let init () =
-    Machine.Global.update tracker ~f:(fun s -> { s with verbose = S.verbose }) >>= fun () ->
+    Machine.Global.update tracker ~f:
+      (fun s -> { s with verbose = S.verbose }) >>= fun () ->
     Primus.System.fini >>> on_stop
 
 end
