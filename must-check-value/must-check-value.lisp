@@ -25,7 +25,7 @@
 (defmethod call (name _)
   (update-caller name))
 
-(defmethod eval-cond(cnd)
+(defmethod jumping (cnd)
   (let ((taint (taint-get-direct 'value-check/required cnd))
         (loc (dict-get 'value-check/location taint))
         (pc (dict-get 'value-check/required taint)))
