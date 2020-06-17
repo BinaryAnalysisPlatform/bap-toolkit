@@ -5,7 +5,7 @@
       (dict-add 'warn-unused-results/taints taint (incident-location))
       (check-if-used taint))))
 
-(defmethod eval-cond (cnd)
+(defmethod jumping (cnd)
   (let ((taint (taint-get-direct 'warn-unused cnd)))
     (when taint
       (dict-del 'warn-unused-results/taints taint)

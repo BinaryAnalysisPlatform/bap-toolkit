@@ -49,7 +49,7 @@
       (when (and taint (is-untrusted ptr) (not checked))
         (notify-null-deref taint)))))
 
-(defmethod eval-cond (x)
+(defmethod jumping (x)
   (let ((taint (taint-get-direct 'const-ptr x)))
     (when taint
       (dict-add 'checked-pointer taint taint))))
