@@ -18,7 +18,6 @@ COPY --from=binaryanalysisplatform/bap-artifacts:juliet-cwe-416 /artifact artifa
 COPY --from=binaryanalysisplatform/bap-artifacts:juliet-cwe-476 /artifact artifacts/juliet-cwe-476
 COPY --from=binaryanalysisplatform/bap-artifacts:libgd-2.2.5 /artifact artifacts/libgd-2.2.5
 COPY --from=binaryanalysisplatform/bap-artifacts:libssh-0.5.2 /artifact artifacts/libssh-0.5.2
-COPY --from=binaryanalysisplatform/bap-artifacts:log /artifact artifacts/log
 COPY --from=binaryanalysisplatform/bap-artifacts:ntpd-4.2.8p12 /artifact artifacts/ntpd-4.2.8p12
 COPY --from=binaryanalysisplatform/bap-artifacts:tcpreplay-4.3.1 /artifact artifacts/tcpreplay-4.3.1
 RUN sh run.sh
