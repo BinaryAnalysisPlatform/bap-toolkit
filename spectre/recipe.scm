@@ -1,5 +1,5 @@
 (parameter decay 100 "the number of terms while the trail is hot")
-(parameter depth 4096 "a depth of analysis")
+(parameter depth 32768 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
 
 (option primus-lisp-load

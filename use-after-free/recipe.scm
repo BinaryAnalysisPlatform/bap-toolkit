@@ -1,4 +1,4 @@
-(parameter depth 4096 "a depth of analysis")
+(parameter depth 32768 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
 (parameter optimization 0 "optimization level")
 (parameter visits 128 "maximum number of executions of the same block")

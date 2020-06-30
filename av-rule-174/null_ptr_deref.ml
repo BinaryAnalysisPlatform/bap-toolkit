@@ -147,15 +147,6 @@ module Lisp(Machine : Primus.Machine.S) = struct
           "(is-cpu-flag X) returns true if X is a flag variable"
           (module IsFlag);
 
-        def "is-untrusted-return-value" (tuple [a] @-> bool)
-          "(is-untrusted-return-value X) returns true if
-           a value X is read from abi-specific register
-           right after unresolved call returned OR
-           is a return value of a function that wasn't actually
-           called in the current machine because of the forced
-           execution scheme in Primus"
-          (module Untrusted_return.IsUntrustedReturn);
-
         def "notify-null-ptr-dereference" (tuple [a;b] @-> any)
           "(notify-null-ptr-dereference INTRO ADDR)
            print message to stdout when pointer that was
@@ -188,7 +179,6 @@ let () =
     begin
       Primus.Machine.add_component (module Lisp);
       Primus.Machine.add_component (module Flags);
-      Untrusted_return.init ();
       Primus.Machine.add_component
         (module Init_reports(struct
              let verbose = verbose_of_int (ctxt --> verbose)

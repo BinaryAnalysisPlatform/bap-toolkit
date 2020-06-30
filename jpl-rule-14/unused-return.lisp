@@ -17,12 +17,12 @@
       (mark-used value))))
 
 (defmethod written (var val)
-  (let ((name (return-from-sub val)))
+  (let ((name (sub-of-return-value val)))
     (when name
       (let ((addr (callsite-addr name))
             (loc  (get-location addr)))
         (when (and addr loc)
-            (check-if-used val name addr))))))
+          (check-if-used val name addr))))))
 
 (defmethod jumping (_ addr)
   (when (is-known-symbol addr)

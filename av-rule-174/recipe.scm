@@ -1,4 +1,4 @@
-(parameter depth 4096 "a depth of analysis")
+(parameter depth 32768 "a depth of analysis")
 (parameter entry-points all-subroutines "where to search")
 (parameter optimization 2 "optimization level")
 (parameter verbosity 1 "verbosity level")

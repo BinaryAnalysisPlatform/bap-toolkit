@@ -3,17 +3,20 @@
 trap 'exit 130' INT
 
 
-XFAILS="warn-unused jpl-rule-14 must-check-value juliet-cwe-252/jpl-rule-14 CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222"
+XFAILS="jpl-rule-14 warn-unused must-check-value juliet-cwe-252/jpl-rule-14 CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222 CVE-2019-8936"
 # Reasons:
-# warn-unused jpl-rule-14 must-check-value
-#   all relies on taint-finalize observation, that doesn't
+# warn-unused must-check-value
+#   relies on taint-finalize observation, that doesn't
 #   work anymore in the same way as it was earlier (before
 #   Primus.Systems)
 #
-# CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222: waiting a PR with stub resolver and/or PR with memset
+# CVE-2012-4559 CVE-2012-6063 CVE-2018-1000222:
+#   waiting a PR with batched memset/memcpy
 #
-#
-
+# CVE-2019-8936  CVE-2018-1000222
+# need to replace these artifacts or wait until we rewrite
+# checks with symbolic executor - so far we don't have an exact pass
+# that leads us to an incident
 
 logfile="toolkit.log"
 litmuses="litmus-tests"
@@ -40,21 +43,30 @@ run_bap() {
     echo "$finish finished" >> $logfile
 }
 
+check_if_may_fail () {
+    name=$1
+    MAYFAIL=
+    for c in $XFAILS; do
+        if [ "fail$c" = "fail$name" ]; then
+            MAYFAIL=true
+        fi
+    done
+}
+
 compare() {
     name=$1
     expected_incidents=$2
     exact=$3
 
-    expected_fail=""
-
-    for c in $XFAILS; do
-        if [ "expected$c" = "expected$name" ]; then
-            expected_fail="--expect-fail"
-        fi
-    done
+    check_if_may_fail $name
+    expected_fail=
+    if [ "got$MAYFAIL" != "got" ]; then
+        expected_fail="--expect-fail"
+    fi
 
     result=
     result=`./compare-incidents $name $expected_incidents incidents $exact $expected_fail`
+
     echo "" >> $logfile
     echo $result
 
@@ -127,6 +139,12 @@ artifacts_run() {
                 name=$check
             fi
 
+            check_if_may_fail $name
+            if [ "got$MAYFAIL" != "got" ]; then
+                echo "skipping $name" >> $logfile
+                continue
+            fi
+
             run_bap $name $artifact $recipe $api_path
             compare $name $expected_incidents
 
@@ -136,10 +154,10 @@ artifacts_run() {
 }
 
 rm -rf log
-rm -f toolkit.log
+rm -f $logfile
 
 start=`date | cut -d' ' -f4`
-echo "started at $start" >> toolkit.log
+echo "started at $start" >> $logfile
 litmuses_run
 echo ""
 artifacts_run

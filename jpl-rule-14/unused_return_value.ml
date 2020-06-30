@@ -219,7 +219,8 @@ module Interface(Machine : Primus.Machine.S) = struct
           ({|(callsite-addr SUB) returns the address of the
              callsite of the previous call to the subroutine SUB. |});
 
-      Lisp.define "return-from-sub" (module Subs.Find)
+      Lisp.define "sub-of-return-value"
+        (module Subs.Find_by_return_value)
         ~types:(tuple [a] @-> b)
         ~docs:
           {|(return-from-sub V) returns a name of a function
