@@ -9,15 +9,16 @@ bug-reports: "https://github.com/BinaryAnalysisPlatform/bap-toolkit/issues"
 dev-repo: "git://github.com/BinaryAnalysisPlatform/bap-toolkit/"
 
 depends: [
-  "ocaml" {>= "4.04.1"}
+  "ocaml" {>= "4.07.0"}
+  "bap"
 ]
 
 build: [
-  "python" "makes" "build"
+  make
 ]
 
 install: [
-  "python" "makes" "install"
+  make "install"
 ]
 
 
