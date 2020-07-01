@@ -1,0 +1,59 @@
+name: Daily test
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every day at 00:00 UTC, 8 p.m. EDT
+
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    name: run tests
+    steps:
+      - name: Install OCaml
+        uses: avsm/setup-ocaml@v1
+        with:
+          ocaml-version: 4.07.1
+
+      - name: Pin OASIS
+        run: opam pin add oasis https://github.com/BinaryAnalysisPlatform/oasis.git
+
+      - name: Checkout bap
+        uses: actions/checkout@v2
+        with:
+          repository: BinaryAnalysisPlatform/bap
+          path: bap.master
+
+      - name: Pin BAP
+        run: opam pin add bap bap.master --no-action
+
+      - name: Install system dependencies
+        run: opam depext -u bap
+
+      - name: Install opam dependencies
+        run: |
+            opam install bap --deps-only
+            opam install omake
+
+      - name: Install Bap
+        run: |
+          cd bap.master
+          opam exec -- ./configure-omake
+          opam exec -- make
+          opam exec -- make reinstall
+
+      - name: Checkout toolkit
+        uses: actions/checkout@v2
+        with:
+          path: bap-toolkit
+
+      - name: Install Toolkit
+        run: |
+          cd bap-toolkit
+          opam exec -- make
+          opam exec -- make install
+
+      - name: Run tests
+        run: |
+          cd bap-toolkit
+          opam exec -- make test

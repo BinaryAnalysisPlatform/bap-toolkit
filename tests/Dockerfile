@@ -1,10 +1,10 @@
-FROM binaryanalysisplatform/bap:testing as base
+FROM binaryanalysisplatform/bap:latest as base
 
 COPY --chown=opam:nogroup src /src
 WORKDIR /src
 RUN eval "$(opam env)" && make build
 
-FROM binaryanalysisplatform/bap-toolkit:testing as toolkit
+FROM binaryanalysisplatform/bap-toolkit:latest as toolkit
 
 COPY . /tests
 WORKDIR /tests

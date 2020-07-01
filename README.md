@@ -1,3 +1,5 @@
+![](https://github.com/BinaryAnalysisPlatform/bap-toolkit/workflows/Daily%20test/badge.svg)
+
 # Introduction
 
 This repository provides a collection of ready to use binary analysis tools,
@@ -65,7 +67,7 @@ system, and a switch is activated, with
 Next, to install all tools in the repository to the default share folder just do
 
 
-        make 
+        make
         make install
 
 To install a specific tool, run the same commands but pass the tool name to them, e.g.,
