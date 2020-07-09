@@ -8,7 +8,7 @@ RUN eval $(opam env) && make && make install
 
 
 FROM ubuntu:16.04
-RUN apt-get update && apt-get install libgmp-dev --yes
+RUN apt-get update && apt-get install libgmp-dev binutils --yes
 WORKDIR /home/opam
 COPY --from=base /home/opam/.opam/4.09/bin/bap /usr/bin/
 COPY --from=base /home/opam/.opam/4.09/lib/bap/*.plugin /home/opam/.opam/4.09/lib/bap/
