@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 
 gen() {
-    echo "FROM binaryanalysisplatform/bap:testing as base"
+    echo "FROM binaryanalysisplatform/bap:latest as base"
     echo
     echo "COPY --chown=opam:nogroup src /src"
     echo "WORKDIR /src"
     echo "RUN eval \"\$(opam env)\" && make build"
     echo
-    echo "FROM binaryanalysisplatform/bap-toolkit:testing as toolkit"
+    echo "FROM binaryanalysisplatform/bap-toolkit:latest as toolkit"
     echo
     echo "COPY . /tests"
     echo "WORKDIR /tests"
