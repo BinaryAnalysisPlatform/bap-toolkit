@@ -57,3 +57,9 @@ jobs:
         run: |
           cd bap-toolkit
           opam exec -- make test
+
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: toolkit-log
+          path: bap-toolkit/tests/toolkit.log
