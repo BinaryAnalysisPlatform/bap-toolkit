@@ -1,2 +1,2 @@
-(incident-static (forbidden-function raise 0x0))
-(incident-static (forbidden-function signal 0x0))
+(incident-static (forbidden-function raise))
+(incident-static (forbidden-function signal))

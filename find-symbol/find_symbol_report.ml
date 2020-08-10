@@ -21,11 +21,12 @@ module Incidents = struct
 
   let sexp_of_incident check sym addr =
     let open Sexp in
-    List [Atom "incident-static";
-          List
-            [sexp_of_check check;
-             Atom sym;
-             sexp_of_addr addr]]
+    let data = match addr with
+      | None -> [sexp_of_check check; Atom sym]
+      | Some addr ->
+        [ sexp_of_check check; Atom sym; sexp_of_addr addr] in
+    List [Atom "incident-static"; List data]
+
 
   let output ch check name addr =
     output_sexp ch (sexp_of_incident check name addr);
@@ -71,7 +72,12 @@ let string_of_check = function
 let print_table fmt ~print_addrs rs =
   let print_sym name addr results =
     fprintf fmt "%-25s " name;
-    if print_addrs then fprintf fmt "%a " Addr.pp addr;
+    if print_addrs then
+      begin
+        match addr with
+        | Some addr -> fprintf fmt "%a " Addr.pp addr
+        | None -> ()
+      end;
     fprintf fmt "[";
     match results with
     | []  -> fprintf fmt "]\n"

@@ -1,3 +1,3 @@
-(incident-static (forbidden-function atof 0x0))
-(incident-static (forbidden-function atoi 0x0))
-(incident-static (forbidden-function atol 0x0))
+(incident-static (forbidden-function atof))
+(incident-static (forbidden-function atoi))
+(incident-static (forbidden-function atol))

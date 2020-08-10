@@ -1,4 +1,4 @@
-(incident-static (forbidden-function abort 0x0))
-(incident-static (forbidden-function exit 0x0))
-(incident-static (forbidden-function getenv 0x0))
-(incident-static (forbidden-function system 0x0))
+(incident-static (forbidden-function abort))
+(incident-static (forbidden-function exit))
+(incident-static (forbidden-function getenv))
+(incident-static (forbidden-function system))

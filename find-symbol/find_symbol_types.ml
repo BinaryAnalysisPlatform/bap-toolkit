@@ -2,8 +2,8 @@ open Core_kernel
 open Bap.Std
 
 type symbol = {
-    name : string;
-    addr : Addr.t;
+  name : string;
+  addr : Addr.t option;
 } [@@deriving compare,bin_io,hash,sexp]
 
 type check =

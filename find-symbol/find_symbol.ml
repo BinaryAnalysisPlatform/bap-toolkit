@@ -10,32 +10,30 @@ module Report = Find_symbol_report
 
 open Find_symbol_types
 
-module Scheme = struct
-  open Ogre.Type
-  open Image.Scheme
-
-  let rel_addr = "relative-addr" %: int
-
-  let symbol_entry () =
-    Ogre.declare ~name:"symbol-entry"
-      (scheme name $ rel_addr $ size $ off)
-      (fun name addr size off -> name, addr, size, off)
-end
-
 module Symbols = struct
   include Ogre.Make(Monad.Ident)
   open Image.Scheme
-  open Scheme
+
+  let collect_externals =
+    collect Ogre.Query.(select (from external_reference)) >>= fun s ->
+    Seq.fold s ~init:(Map.empty (module String))
+      ~f:(fun syms (addr,name) ->
+          return @@ Map.set syms name {name; addr = None})
+
+  let collect_symbols =
+    collect Ogre.Query.(select (from named_symbol)) >>= fun s ->
+    Seq.fold s ~init:(Map.empty (module String))
+      ~f:(fun syms (addr,name) ->
+          return @@ Map.set syms name
+            {name; addr = Some (Addr.of_int64 addr)})
 
   let symbols =
-    require base_address >>= fun base ->
-    collect Ogre.Query.(select (from symbol_entry)) >>= fun s ->
-    Seq.fold s ~init:(Map.empty (module String))
-      ~f:(fun syms (name, relative_addr , _, _) ->
-          let addr = Int64.(relative_addr + base) in
-          return @@
-          Map.set syms name
-            Symbol.{name;addr=Addr.of_int64 addr})
+    collect_externals >>= fun exts ->
+    collect_symbols   >>= fun syms ->
+    return @@
+    Map.merge exts syms ~f:(fun ~key:_ -> function
+        | `Left x | `Right x -> Some x
+        | `Both (x,_) -> Some x)
 
   let find doc = eval symbols doc
 end
@@ -73,7 +71,7 @@ let find_complex threshold proj = match threshold with
     Seq.fold ~init:empty_results ~f:(fun syms (name,entry,cfg) ->
         let c = Utils.complexity cfg entry in
         if c > threshold then
-          add syms {name;addr=Block.addr entry}
+          add syms {name;addr=Some (Block.addr entry)}
             ~data:(Complexity c) Complex_function
         else syms)
 
@@ -84,7 +82,7 @@ let find_non_structured proj =
       match Utils.find_nonstructural_component cfg entry with
       | None -> syms
       | Some addr ->
-        add syms {name;addr=Block.addr entry}
+        add syms {name;addr=Some (Block.addr entry)}
           ~data:(Non_structural_block addr) Non_structural_cfg)
 
 let with_project recursive non_structural complex level proj =
