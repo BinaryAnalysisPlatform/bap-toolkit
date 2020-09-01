@@ -178,8 +178,13 @@ has one mandatory argument, the name of the recipe to include.
 
 ## The recipe file grammar
 
+The grammar is specified below, but for the details and up-to-date information, 
+please refer to `bap recipe --help`
+
            recipe ::= {<recipe-item>}
-           recipe-item ::= <option> | <parameter> | <extend>
+           recipe-item ::= <option> | <parameter> | <extend> | <command>
            option ::= (option <atom> {<atom>})
            parameter ::= (parameter <atom> <atom> <atom>)
            extend ::= (extend <atom>)
+           command ::= (command <atom>)
+
