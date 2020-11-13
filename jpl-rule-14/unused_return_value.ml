@@ -57,9 +57,9 @@ module Notify
   module Value = Primus.Value.Make(Machine)
   open Machine.Syntax
 
-  let has_fails funcs =
-    Map.to_sequence funcs |>
-    Seq.exists ~f:(fun (_,{status}) -> status = Unused)
+  let has_fails func =
+    Map.to_sequence func |>
+    Seq.exists ~f:(fun (_,{status}) -> Poly.(status = Unused))
 
   let print_result verbose funcs =
     if has_fails funcs then print_fail ()
@@ -76,7 +76,7 @@ module Notify
       ~f:(fun reported (_,{name;callsite=addr;status}) ->
           match status with
           | Unused when not (Set.mem reported addr) ->
-            if verbose = Detail then
+            if Poly.(verbose = Detail) then
               print_incident name addr;
             Value.of_word addr >>= fun addr' ->
             Machine.Observation.make unused_return_value addr' >>=

@@ -5,6 +5,7 @@ open Bap_taint.Std
 open Bap_future.Std
 open Graphlib.Std
 open Format
+open Poly
 include Self()
 
 module Param = struct
@@ -98,16 +99,18 @@ let sexp_of_point p = Sexp.Atom (Addr.string_of_value p)
 
 type taint = Taint.Object.t
 
+let sexp_of_taint = sexp_of_opaque
+
 type step1 = S1 of {
     cond : point;
-    taint : taint sexp_opaque;
+    taint : taint;
   } [@@deriving sexp_of]
 
 (* we found a load from a tainted offset,
    and tainted the result with the specified taint
 *)
 type step2 = S2 of {
-    taint : taint sexp_opaque;
+    taint : taint;
     cond  : point;
     load  : point;
   } [@@deriving sexp_of]

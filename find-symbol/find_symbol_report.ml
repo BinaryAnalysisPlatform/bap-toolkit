@@ -17,7 +17,7 @@ module Incidents = struct
     Sexp.Atom
       (Sexp.to_string (sexp_of_check check) |>
        String.lowercase |>
-       String.map ~f:(fun c -> if c = '_' then '-' else c))
+       String.map ~f:(fun c -> if Char.(c = '_') then '-' else c))
 
   let sexp_of_incident check sym addr =
     let open Sexp in
