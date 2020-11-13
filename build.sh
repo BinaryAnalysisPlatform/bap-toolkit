@@ -59,7 +59,9 @@ pack_recipe() {
 }
 
 build() {
+    set -e
     OLD=`pwd`
+    echo "Entering directory \`$1'"
     cd $1
     read_info $1
     mlfiles=`find . -name "*.ml" | head -n 1`
@@ -87,6 +89,7 @@ build() {
     fi
 
     pack_recipe $1
+    echo "Leaving directory \`$1'"
     cd $OLD
 }
 
