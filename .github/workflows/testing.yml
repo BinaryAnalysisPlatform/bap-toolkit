@@ -13,7 +13,10 @@ jobs:
       - name: Install OCaml
         uses: avsm/setup-ocaml@v1
         with:
-          ocaml-version: 4.07.1
+          ocaml-version: 4.08.1
+
+      - name: Add the testing Repository
+        run: opam repo add bap git://github.com/BinaryAnalysisPlatform/opam-repository#testing
 
       - name: Pin OASIS
         run: opam pin add oasis https://github.com/BinaryAnalysisPlatform/oasis.git
@@ -38,7 +41,10 @@ jobs:
       - name: Install Bap
         run: |
           cd bap.master
-          opam exec -- ./configure-omake
+          opam exec -- ./configure-omake \
+                 --enable-tests \
+                 --with-llvm-version=9 \
+                 --with-llvm-config=llvm-config-9
           opam exec -- make
           opam exec -- make reinstall
 
