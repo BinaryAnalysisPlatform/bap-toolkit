@@ -8,7 +8,7 @@ void bad() {
 }
 
 void good() {
-    int x = atoi("42");
+    int x = atoi("-42");
     if (x <= 0)
         return;
     int *ptr = malloc(x);
