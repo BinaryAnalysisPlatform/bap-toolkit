@@ -198,7 +198,8 @@ module Tracker(Machine : Primus.Machine.S) = struct
       ]
 end
 
-let enabled = Extension.Configuration.flag "enable" ~doc:"Enables the analysis"
+let enabled = Extension.Configuration.flag "enable"
+    ~doc:"Adds the analysis component to the bap:legacy-main system."
 
 let () =
   let open Extension.Syntax in

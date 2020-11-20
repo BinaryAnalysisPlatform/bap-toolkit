@@ -10,13 +10,10 @@
         callsites
         run)
 
-(option warn-unused-result-enable)
-
-(option primus-promiscuous-mode)
-(option primus-greedy-scheduler)
+(option run-system bap:warn-unused-result)
 (option primus-limit-max-length $depth)
-
 (option primus-lisp-add $prefix)
+(option primus-systems-add $prefix)
 (option primus-print-output incidents)
 (option run-entry-points ${entry-points})
 
@@ -25,19 +22,19 @@
         <stderr>:$prefix/stderr
         <stdout>:$prefix/stdout)
 
-(option primus-taint-gc conservative)
-
 (option primus-print-observations
-  exception
-  pc-changed
-  jumping
-  call
-  call-return
-  machine-switch
-  machine-fork
-  lisp-message
-  incident
-  incident-location)
+        bap:warn-unused-result/introduce
+        bap:warn-unused-result/sanitize
+        exception
+        pc-changed
+        jumping
+        call
+        call-return
+        machine-switch
+        machine-fork
+        lisp-message
+        incident
+        incident-location)
 
 (option report-progress)
 (option log-dir log)
