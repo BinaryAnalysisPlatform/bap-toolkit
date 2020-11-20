@@ -3,7 +3,7 @@ name: Daily test
 on:
   schedule:
     - cron: '0 0 * * *' # Every day at 00:00 UTC, 8 p.m. EDT
-
+  workflow_dispatch:
 
 jobs:
   run-tests:
