@@ -1,225 +1,201 @@
 (** The Algorithm
 
-    First, for each def term we deduce, if lhs is
-    an argument of a function with warn-unused-result attribute.
-    (actually this attribute belongs to output argument of
-    such function, that simplify a task a little). And if it's
-    true, then we taint rhs value.
+    When a call to a function that has any of its arguments marked
+    with the warn-unused-result attribute is made we emit the
+    warn-unused-result-call signal parameterized with the values that
+    we have to check. This signal is received by the
+    warn-unused-result Lisp code that defines the policy. The value is
+    tainted and tracked in the dictionary of values to be checked.
 
-    There are two possible points when we sanitize a taint:
-    1) if control flow depends from the tainted value, i.e.
-    a taint reached a condition in a jump term
+    Once we have an external call that consumes a tainted value we
+    dispatch the warn-unused-tainted-external-call signal for each
+    taint of the warn-unused kind. The Lisp code uses this signal to
+    sanitize the taint and mark the corresponding value as checked.
 
-    2) taint reached an external function, i.e. it's in the rhs
-    of a callsite of such function.
+    In addition the Lisp code monitors the `jumping` signal and
+    sanitizes the warn-unused taint associated with its condition.
 
-    All the sources of not sanitized taints are considred as unused. **)
+    Finally, when the taint-finalize signal occurs for a taint that is
+    not marked as sanitized we report an incident.
+
+    See warn-unused-result.lisp for more information.
+ **)
 
 open Core_kernel
 open Bap.Std
 open Bap_primus.Std
 open Bap_main
-
-module Vid = Primus.Value.Id
+open Bap_taint.Std
 
 let check_name = "warn unused result"
 
-type callsite = {
-  addr : addr;
-  arg  : string;
-  sub  : string;
-}
-
 let print_results rs =
-  let pp_bold ppf = Format.fprintf ppf "\027[1m" in
-  let pp_norm ppf = Format.fprintf ppf "\027[0m" in
+  let open Format in
+  let pp_bold ppf = fprintf ppf "\027[1m" in
+  let pp_norm ppf = fprintf ppf "\027[0m" in
   match rs with
-  | [] -> Format.printf "%s   OK\n" check_name
+  | [] -> printf "%s   OK\n" check_name
   | rs ->
-    Format.printf "%s   FAIL\n\n" check_name;
-    Format.printf "%t%-10s %-20s %s\n%t" pp_bold "Address" "Function"
-      "Argument" pp_norm;
-    List.iter rs ~f:(fun {addr; sub; arg} ->
+    printf "%s   FAIL\n\n" check_name;
+    printf "%t%-10s %-20s\n%t" pp_bold "Address" "Function" pp_norm;
+    List.iter rs ~f:(fun (addr,name) ->
         let addr = sprintf "%a" Addr.pps addr in
-        Format.printf "%-10s %-20s %s\n" addr sub arg)
+        printf "%-10s %-20s\n%!" addr name)
 
-let has_attr t attr =
-  Seq.exists (Dict.to_sequence (Term.attrs t))
-    ~f:(fun (typ,_) ->
-        String.is_substring (Value.Typeid.to_string typ) attr)
+let is_wur sub =
+  Term.enum arg_t sub |> Seq.exists ~f:(fun arg ->
+      Dict.mem (Term.attrs arg) Arg.warn_unused)
 
+let is_ext sub = Term.has_attr sub Sub.stub
 
-module HasAttr(Machine : Primus.Machine.S) = struct
-  module Eval = Primus.Interpreter.Make(Machine)
-  module Value = Primus.Value.Make(Machine)
+let select_subs is_our prog =
+  Term.enum sub_t prog |> Seq.fold
+    ~f:(fun subs sub ->
+        if is_our sub
+        then Map.add_exn subs (Term.tid sub) (Sub.name sub)
+        else subs)
+    ~init:(Map.empty (module Tid))
 
-  open Machine.Syntax
-
-  [@@@warning "-P"]
-  let run [var; attr] =
-    Value.Symbol.of_value var  >>= fun var ->
-    Value.Symbol.of_value attr >>= fun attr ->
-    Eval.pos >>= fun pos ->
-    match pos with
-    | Primus.Pos.(Def {me=def}) ->
-      if not (has_attr def attr)
-      then Value.b0
-      else
-        let lhs = Def.lhs def in
-        if String.equal (Var.name lhs) var then Value.b1
-        else
-          Value.of_bool @@
-          Set.exists (Exp.free_vars (Def.rhs def))
-            ~f:(fun v -> String.equal (Var.name v) var)
-    | _ -> Value.b0
+let callsite_collector ours = object
+  inherit [string Map.M(Addr).t] Term.visitor
+  method! enter_jmp t sites =
+    match Jmp.alt t with
+    | None -> sites
+    | Some dst -> match Jmp.resolve dst with
+      | Second _ -> sites
+      | First dst -> match Map.find ours dst with
+        | None -> sites
+        | Some name -> match Term.get_attr t address with
+          | None -> sites
+          | Some addr -> Map.set sites addr name
 end
 
-let find_callee prog def =
-  match Term.get_attr def Term.origin with
-  | None -> None
-  | Some tid -> match Program.lookup jmp_t prog tid with
-    | None -> None
-    | Some jmp -> match Jmp.kind jmp with
-      | Int _ | Goto _ | Ret _ -> None
-      | Call c ->
-        match Call.target c with
-        | Indirect _ -> None
-        | Direct tid -> Program.lookup sub_t prog tid
+let collect_sites pred proj =
+  let prog = Project.program proj in
+  let collector = callsite_collector (select_subs pred prog) in
+  collector#run prog (Map.empty (module Addr))
 
-let find_callsite prog pos =
-  let open Option in
-  match pos with
-  | Primus.Pos.Def {me=def} ->
-    find_callee prog def >>= fun sub ->
-    Term.get_attr def address >>= fun addr ->
-    Some { addr;
-           sub=Sub.name sub;
-           arg=Var.name (Def.lhs def) }
-  | _ -> None
+let warn_unused_introduce,introduced =
+  Primus.Observation.provide "warn-unused-result/introduce"
+    ~package:"bap"
+    ~inspect:Taint.Object.inspect
+    ~desc:"Occurs on a return from a function that has \
+           the GNU warn_unused_result attribute returns. \
+           Parameterized with the returned value."
+
+let warn_unused_sanitize,sanitized =
+  Primus.Observation.provide "warn-unused-result/sanitize"
+    ~package:"bap"
+    ~inspect:Taint.Object.inspect
+    ~desc:"Occurs when a value that has a warn-unused taint \
+           is passed to an external function."
 
 type state = {
-  unchecked  : Primus.Value.Id.Set.t;
-  callsites  : callsite Primus.Value.Id.Map.t;
+  unchecked : addr Map.M(Taint.Object).t;
+  callsites : string Map.M(Addr).t;
+  externals : string Map.M(Addr).t;
+
 }
 
 let state =
   Primus.Machine.State.declare
     ~name:"warn-unused-result"
-    ~uuid:"1e117d51-3b9d-4c93-b136-e15b77c5ea26"
-    (fun _ -> {
-         unchecked = Set.empty (module Primus.Value.Id);
-         callsites = Map.empty (module Primus.Value.Id);
-       })
+    ~uuid:"1e117d51-3b9d-4c93-b136-e15b77c5ea26" @@ fun proj ->
+  {
+    unchecked = Map.empty (module Taint.Object);
+    callsites = collect_sites is_wur proj;
+    externals = collect_sites is_ext proj;
+  }
 
-module Output_results(Machine : Primus.Machine.S) = struct
+module Tracker(Machine : Primus.Machine.S) = struct
   open Machine.Syntax
-
-  let on_stop _ =
-    Machine.Global.get state >>| fun s ->
-    let unused = Set.fold s.unchecked ~init:(Map.empty (module Addr))
-        ~f:(fun acc tid -> match Map.find s.callsites tid with
-            | None -> acc
-            | Some x -> Map.set acc x.addr x)  in
-    print_results (Map.data unused)
-
-
-  let init () =
-    Primus.System.stop >>> on_stop
-end
-
-module Mark(Machine : Primus.Machine.S) = struct
+  open Machine.Let
   module Eval = Primus.Interpreter.Make(Machine)
-  module Value = Primus.Value.Make(Machine)
-  open Machine.Syntax
-
-  [@@@warning "-P"]
-  let run [taint] =
-    Machine.get () >>= fun proj ->
-    Eval.pos >>= fun pos ->
-    Machine.Global.update state ~f:(fun s ->
-        match find_callsite (Project.program proj) pos with
-        | None -> s
-        | Some cs ->
-          { s with callsites =
-                     Map.set s.callsites (Value.id taint) cs }) >>= fun () ->
-    Value.b0
-end
-
-let is_section name v =
-  match Value.get Image.section v with
-  | Some x -> String.(x = name)
-  | _ -> false
-
-module Is_external_arg(Machine : Primus.Machine.S) = struct
-  module Value = Primus.Value.Make(Machine)
-  module Eval = Primus.Interpreter.Make(Machine)
-  open Machine.Syntax
-
-  let section_memory sec_name =
-    Machine.get () >>| fun proj ->
-    Memmap.filter (Project.memory proj) ~f:(is_section sec_name) |>
-    Memmap.to_sequence |>
-    Seq.map ~f:fst
-
-  let is_in_plt addr =
-    section_memory ".plt" >>= fun memory ->
-    Value.of_bool @@
-    Seq.exists memory ~f:(fun mem -> Memory.contains mem addr)
-
-  let is_external_arg def =
-    Machine.get () >>= fun proj ->
-    match find_callee (Project.program proj) def with
-    | None -> Value.b0
-    | Some sub -> match Term.get_attr sub address with
-      | None -> Value.b0
-      | Some addr -> is_in_plt addr
-
-  [@@@warning "-P"]
-  let run [var] =
-    Value.Symbol.of_value var >>= fun name ->
-    Eval.pos >>= fun pos ->
-    match pos with
-    | Primus.Pos.Def {me=def} -> is_external_arg def
-    | _ -> Value.b0
-end
-
-module NotifyUnused(Machine : Primus.Machine.S) = struct
-  module Value = Primus.Value.Make(Machine)
-  open Machine.Syntax
-
-  [@@@warning "-P"]
-  let run [taint] =
-    Machine.Global.update state ~f:(fun s ->
-        {s with unchecked = Set.add s.unchecked (Value.id taint) }) >>= fun () ->
-    Value.b0
-end
-
-module Interface(Machine : Primus.Machine.S) = struct
   module Lisp = Primus.Lisp.Make(Machine)
-  open Primus.Lisp.Type.Spec
+  module Kind = Taint.Kind.Make(Machine)
+  module Object = Taint.Object.Make(Machine)
+  module Tracker = Taint.Tracker.Make(Machine)
+
+  let wur_kind = Kind.create "bap:warn-unused"
+
+  let introduce v =
+    wur_kind >>=
+    Tracker.new_direct v
+
+  let foreach_wur v f =
+    wur_kind >>= fun k ->
+    Tracker.lookup v Taint.Rel.direct >>|
+    Set.to_sequence >>=
+    Machine.Seq.iter ~f:(fun t ->
+        Object.kind t >>= fun k' ->
+        if Taint.Kind.equal k k' then f v t
+        else Machine.return ())
+
+  let summarize _ =
+    Machine.Global.get state >>| fun {unchecked; callsites} ->
+    Map.fold unchecked
+      ~f:(fun ~key:_ ~data:site unchecked ->
+          Map.set unchecked site (Map.find_exn callsites site))
+      ~init:(Map.empty (module Addr)) |>
+    Map.to_alist |>
+    print_results
+
+  let handle_wur_call (_name,args) =
+    let* pc = Eval.pc in
+    let* {callsites} as curr = Machine.Global.get state in
+    if Map.mem callsites pc then match List.rev args with
+      | rval :: _ ->
+        introduce rval >>= fun t ->
+        Machine.sequence [
+          Machine.Global.put state {
+            curr with
+            unchecked = Map.add_exn curr.unchecked t pc
+          };
+          Machine.Observation.make introduced t
+        ]
+      | _ -> Machine.return ()
+    else Machine.return ()
+
+  let sanitize v t = Machine.sequence [
+      wur_kind >>= Tracker.sanitize v Taint.Rel.direct;
+      Machine.Observation.make sanitized t;
+      Machine.Global.update state ~f:(fun curr -> {
+            curr with
+            unchecked = Map.remove curr.unchecked t
+          })
+    ]
+
+  let handle_external (_name,args) =
+    let* pc = Eval.pc in
+    let* {externals} = Machine.Global.get state in
+    if Map.mem externals pc
+    then Machine.List.iter args ~f:(fun arg ->
+        foreach_wur arg sanitize)
+    else Machine.return ()
+
+  let handle_jump (cnd,_) = foreach_wur cnd sanitize
+
+  let reflect_signals =
+    let params = Primus.Lisp.Type.Spec.(one Taint.Object.t) in
+    let reflect obs =
+      Lisp.signal ~params obs @@ fun v ->
+      Object.to_value v >>| fun v -> [v] in
+    Machine.sequence [
+      reflect warn_unused_introduce;
+      reflect warn_unused_sanitize;
+    ]
 
   let init () =
-    Machine.sequence [
-      Lisp.define "has-attr" (module HasAttr)
-        ~types:(tuple [a; b] @-> bool)
-        ~docs:{|(has-attr var attr) returns true if
-               [var] has attribute [attr] in the context of the current term|};
-
-      Lisp.define "check-if-used" (module Mark)
-        ~types:(tuple [a] @-> b)
-        ~docs:{|(check-if-used T) marks current position as a source of taint T|};
-
-      Lisp.define "is-external-argument" (module Is_external_arg)
-        ~types:(tuple [a] @-> bool)
-        ~docs:{|(is-external-argument V)| returns true if [V] is an
-               argument of external function in the context of the current term|};
-
-      Lisp.define "notify-warn-unused-result" (module NotifyUnused)
-        ~types:(tuple [a] @-> b)
-        ~docs:{|(notify-warn-unused-result T)|
-               notifies that a source of taint T was never used|};
-
-    ]
+    let* {callsites} = Machine.Global.get state in
+    if Map.is_empty callsites
+    then !!(print_results [])
+    else Machine.sequence [
+        Primus.System.stop >>> summarize;
+        Primus.Linker.Trace.return >>> handle_wur_call;
+        Primus.Linker.Trace.call >>> handle_external;
+        Primus.Interpreter.jumping >>> handle_jump;
+        reflect_signals;
+      ]
 end
 
 let enabled = Extension.Configuration.flag "enable" ~doc:"Enables the analysis"
@@ -228,10 +204,9 @@ let () =
   let open Extension.Syntax in
   Extension.declare
   @@ fun ctxt ->
-  if ctxt --> enabled then
-    begin
-      Primus.Machine.add_component (module Interface);
-      Primus.Machine.add_component (module Output_results);
-    end;
+  Primus.Components.register_generic "warn-unused-tracker"
+    ~package:"bap" (module Tracker);
+  if ctxt-->enabled
+  then Primus.Machine.add_component (module Tracker)
+       [@warning "-D"];
   Ok ()
-[@@warning "-D"]

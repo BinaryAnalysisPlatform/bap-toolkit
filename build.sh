@@ -54,7 +54,7 @@ pack_recipe() {
     NAME=`basename "$1"`
     recipe=`find . -name "*.scm" | head -n 1`
     if [ "no-$recipe" != "no-" ]; then
-        zip -r $NAME.recipe * -x \*.ml  \*.mli \*.plugin _build/*
+        zip -r $NAME.recipe * -x \*.ml  \*.mli \*.plugin _build/* >/dev/null
     fi
 }
 
@@ -167,6 +167,7 @@ run() {
                 process_cmd $COMMAND $d
             fi
         done
+        wait
     else
         process_cmd $COMMAND $TARGET
     fi

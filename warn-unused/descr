@@ -7,16 +7,18 @@ that is tagged wih the GNU warn-unused-result attribute.
 The Algorithm
 ================
 
-We use taint analysis and propagate taint from output argument
-of a function that has warn-unused attribute.
-The taint can be sanitized (and therefore, the argument is used)
-in the next two cases:
+We use the Primus Taint analysis engine to propagate the taint from the
+return argument of a function that has warn-unused attribute. We
+sanitize taint (thus indicating that the value was used when one of
+the following happens):
 
-1) if control flow depends from the tainted value, i.e.
-   a taint reached a condition in a jump term
+1) some control flow depends on the tainted value, i.e.,
+   a taint reaches the condition of a jump term;
+2) the taint reaches a function with an external linkage.
 
-2) taint reached an external function, i.e. it's in the rhs
-   of a callsite of such function.
+To catch the unused values as soon as possible, we enable the
+conservative Primus taint garbage collector that notifies us when a
+taint is no longer reachable (and thus has no chance on sanitizing).
 
-Once taint has never reached one of these points, we consider
-an source argument is unused. **)
+Finally, when analysis finishes, we indicate all functions
+that weren't sanitized as unused, even if their taint still alive.

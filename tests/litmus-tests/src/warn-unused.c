@@ -4,13 +4,13 @@
 
 /* used as an argument of system call */
 void good1 () {
-    int x = atoi("42");
+    int x = atoi("1");
     putchar(x);
 }
 
 /* has an influence to a control flow */
 void good2 () {
-    int x = atoi("42");
+    int x = atoi("2");
     if (x > 0) {
         return;
     }
@@ -18,7 +18,7 @@ void good2 () {
 }
 
 void bad1 () {
-    int x = atoi("42");
+    int x = atoi("-1");
 }
 
 void even_is_used_as_argument(int arg) {
@@ -26,7 +26,7 @@ void even_is_used_as_argument(int arg) {
 }
 
 void bad2() {
-    int x = atoi("42");
+    int x = atoi("-2");
     even_is_used_as_argument(x);
 }
 
