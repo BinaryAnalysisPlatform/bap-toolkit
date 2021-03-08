@@ -13,9 +13,6 @@ WORKDIR /home/opam
 COPY --from=base /home/opam/.opam/4.09/bin/bap /usr/bin/
 COPY --from=base /home/opam/.opam/4.09/lib/bap/*.plugin /home/opam/.opam/4.09/lib/bap/
 COPY --from=base /home/opam/.opam/4.09/share/bap /home/opam/.opam/4.09/share/bap
-COPY --from=base /home/opam/.opam/4.09/share/bap-api /home/opam/.opam/4.09/share/bap-api
-COPY --from=base /home/opam/.opam/4.09/share/primus /home/opam/.opam/4.09/share/primus
-
 
 RUN cp -l /usr/bin/arch /artifact
 CMD ["bap", "disassemble", "/artifact", "--recipe=defective-symbol"]
