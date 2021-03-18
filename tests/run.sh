@@ -64,6 +64,7 @@ compare() {
         expected_fail="--expect-fail"
     fi
 
+    cp incidents $name.incidents
     result=
     result=`./compare-incidents $name $expected_incidents incidents $exact $expected_fail`
 
