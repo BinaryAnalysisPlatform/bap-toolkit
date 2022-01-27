@@ -55,12 +55,74 @@ the community. PRs are very welcomed and accepted with no questions asked.
     - CWE-690 (Unchecked Return Value to NULL Pointer Dereference)
     - CWE-252 (Unchecked Return Value)
 
+# Usage
+
+You need to install the toolkit before using it. You can either use [docker](#using-bap-toolkit-with-docker) and [install](#installation) it directly on your host machine.
+
+The tools in bap-toolkit are packed as BAP recipes, therefore to run a tool just pass its name to the `--recipe` option, e.g.,
+
+       bap ./exe --recipe=av-rule-3
+
+To get a detailed description of a recipe, use the `--show-recipe` option, e.g.,
+
+       bap --show-recipe=av-rule-3
+
+You can also list all available using the `--list-recipes` option,
+
+       bap --list-recipes
+
+
+## Using bap-toolkit with docker
+
+You don't need to install bap or OCaml to use and develop bap-toolkit if you have deocker installed on your machine.
+
+1. Clone this repository and enter the directory:
+```
+git clone https://github.com/BinaryAnalysisPlatform/bap-toolkit.git
+cd bap-toolkit
+```
+
+2. Build the image (do not miss the dot at the end of the command)
+```
+docker build -t bap-toolkit .
+```
+
+3. Now we have the `bap-toolkit` container that we can use to run any tool. Let's chekc that it works, the default command is to run the `defective-symbol` tool on `/usr/bin/arch`, which should produce one FAIL and two PASSes, e.g.,
+```
+$ docker run bap-toolkit
+Check                     Status
+non structural cfg        FAIL
+recursive function        OK
+complex function          OK
+```
+
+
+## Running an arbitrary tool on an arbitrary file
+
+If you want to run a tool on your binary, the easiest option is to mount the current working directory (that contains your binary) to the `/bap-toolkit` folder, which is the working directory of the container. Let's assume that your binary is called `tests` and that you want to run the `spectre` tool,
+```
+docker run -it --rm -v $(pwd):/bap-toolkit bap-toolkit bap test --recipe=spectre
+```
+
+After analysis finishes, you will then find the `incindents` file in your host current folder, in which you can find all reported spectre vulnerabilities, e.g.,
+```
+
+$ grep spectre-path incidents
+(spectre-path (1:63u#3439 (7 (S3 (cond 4005c8) (load 4005cf) (last 4005de)))))
+```
+
+### Developing tools with docker
+
+You can modify any existing file (including `*.ml` files) in the bap-toolkit folder or [develop an new tool](#developing) and then just rebuild the image with,
+```
+docker build -t bap-toolkit .
+```
+
+Rinse and repeat!
 
 ## Installation
 
-The build and installation system is currently querying the opam tool for all the
-necessary information, therefore make sure that opam 2.x is installed on your
-system, and a switch is activated, with
+To build the toolkit you need to activate opam,
 
         eval $(opam env)
 
@@ -75,21 +137,8 @@ To install a specific tool, run the same commands but pass the tool name to them
         make TARGET=primus-checks
         make install TARGET=primus-checks
 
-# Usage
-
-Tool are packed as BAP recipes,  therefore to run a tool just pass its name to the `--recipe` option, e.g.,
-
-       bap ./exe --recipe=av-rule-3
-
-To get a detailed description of a recipe, use the `--show-recipe` option, e.g.,
-
-       bap --show-recipe=av-rule-3
-
-You can also list all available using the `--list-recipes` option,
-
-       bap --list-recipes
-
 # Results
+
 The results of the checks from this repository applied to [bap-artifacts](https://github.com/BinaryAnalysisPlatform/bap-artifacts) can
 be seen [here](http://htmlpreview.github.io/?https://github.com/BinaryAnalysisPlatform/bap-toolkit/blob/master/results.html)
 
@@ -178,7 +227,7 @@ has one mandatory argument, the name of the recipe to include.
 
 ## The recipe file grammar
 
-The grammar is specified below, but for the details and up-to-date information, 
+The grammar is specified below, but for the details and up-to-date information,
 please refer to `bap recipe --help`
 
            recipe ::= {<recipe-item>}
@@ -187,4 +236,3 @@ please refer to `bap recipe --help`
            parameter ::= (parameter <atom> <atom> <atom>)
            extend ::= (extend <atom>)
            command ::= (command <atom>)
-
