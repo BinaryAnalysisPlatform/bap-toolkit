@@ -16,7 +16,7 @@ jobs:
           ocaml-version: 4.08.1
 
       - name: Add the testing Repository
-        run: opam repo add bap git://github.com/BinaryAnalysisPlatform/opam-repository#testing
+        run: opam repo add bap-testing git+https://github.com/BinaryAnalysisPlatform/opam-repository#testing
 
       - name: Pin OASIS
         run: opam pin add oasis https://github.com/BinaryAnalysisPlatform/oasis.git
