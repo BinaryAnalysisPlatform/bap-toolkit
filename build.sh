@@ -98,7 +98,7 @@ install() {
     OLD=`pwd`
     cd $1
 
-    DST=`opam config var prefix`/share/bap
+    DST=`opam var prefix`/share/bap
     plugin=`find . -name "*.plugin" | head -n 1`
     recipe=`find . -name "*.recipe" | head -n 1`
 
