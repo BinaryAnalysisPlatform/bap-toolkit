@@ -4,6 +4,7 @@ PLUGIN_MAIN=""
 PLUGIN_DEPS=""
 PLUGIN_DESC=""
 HAS_BUILD_TOOLS="FALSE"
+export OPAMCLI=2.0
 
 # checks that necessary build tools are installed
 check_build_tools() {
