@@ -4,6 +4,7 @@ PLUGIN_MAIN=""
 PLUGIN_DEPS=""
 PLUGIN_DESC=""
 HAS_BUILD_TOOLS="FALSE"
+export OPAMCLI=2.0
 
 # checks that necessary build tools are installed
 check_build_tools() {
@@ -98,7 +99,7 @@ install() {
     OLD=`pwd`
     cd $1
 
-    DST=`opam var prefix`/share/bap
+    DST=`opam config var prefix`/share/bap
     plugin=`find . -name "*.plugin" | head -n 1`
     recipe=`find . -name "*.recipe" | head -n 1`
 
