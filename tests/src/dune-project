@@ -1,0 +1,4 @@
+(lang dune 3.1)
+(package
+ (name bap-toolkit)
+ (depends bap core_kernel cmdliner))

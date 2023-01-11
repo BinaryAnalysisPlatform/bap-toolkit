@@ -1,0 +1,5 @@
+(executable
+ (name compare_incidents)
+ (public_name compare-incidents)
+ (preprocess (pps ppx_jane))
+ (libraries bap core_kernel cmdliner))
