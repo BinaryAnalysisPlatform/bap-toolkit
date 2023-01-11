@@ -7,55 +7,27 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     name: run tests
     steps:
-      - name: Install OCaml
-        uses: avsm/setup-ocaml@v1
-        with:
-          ocaml-version: 4.08.1
-
-      - name: Add the testing Repository
-        run: opam repo add bap-testing git+https://github.com/BinaryAnalysisPlatform/opam-repository#testing
-
-      - name: Pin OASIS
-        run: opam pin add oasis https://github.com/BinaryAnalysisPlatform/oasis.git
-
-      - name: Checkout bap
-        uses: actions/checkout@v2
-        with:
-          repository: BinaryAnalysisPlatform/bap
-          path: bap.master
-
-      - name: Pin BAP
-        run: opam pin add bap bap.master --no-action
-
-      - name: Install system dependencies
-        run: opam depext -u bap
 
       - name: Install Ghidra
         run: |
           sudo add-apt-repository ppa:ivg/ghidra -y
+          sudo apt-get update -y
           sudo apt-get install libghidra-dev -y
           sudo apt-get install libghidra-data -y
 
-      - name: Install opam dependencies
-        run: |
-            opam install bap --deps-only
-            opam install omake
+      - name: Checkout BAP
+        uses: actions/checkout@v3
+        with:
+          repository: BinaryAnalysisPlatform/bap
 
-      - name: Install Bap
-        run: |
-          cd bap.master
-          opam exec -- ./configure-omake \
-                 --enable-tests \
-                 --with-llvm-version=9 \
-                 --with-llvm-config=llvm-config-9
-          opam exec -- make
-          opam exec -- make reinstall
+      - name: Install BAP
+        run: opam install .
 
       - name: Checkout toolkit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: bap-toolkit
 
@@ -70,7 +42,7 @@ jobs:
           cd bap-toolkit
           opam exec -- make test
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: toolkit-log
