@@ -23,6 +23,13 @@ jobs:
         with:
           repository: BinaryAnalysisPlatform/bap
 
+      - name: Install OCaml
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 4.14.x
+          dune-cache: true
+          opam-disable-sandboxing: true
+
       - name: Install BAP
         run: opam install .
 
