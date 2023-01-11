@@ -11,12 +11,13 @@ jobs:
     name: run tests
     steps:
 
-      - name: Install Ghidra
+      - name: Install System Dependencies
         run: |
           sudo add-apt-repository ppa:ivg/ghidra -y
           sudo apt-get update -y
           sudo apt-get install libghidra-dev -y
           sudo apt-get install libghidra-data -y
+          sudo apt-get install jq curl -y
 
       - name: Checkout BAP
         uses: actions/checkout@v3
@@ -42,7 +43,6 @@ jobs:
         run: |
           cd bap-toolkit
           opam exec -- make
-          opam exec -- make install
 
       - name: Run tests
         run: |
