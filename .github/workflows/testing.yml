@@ -37,20 +37,20 @@ jobs:
       - name: Checkout toolkit
         uses: actions/checkout@v3
         with:
-          path: bap-toolkit
+          path: /tmp/bap-toolkit
 
       - name: Install Toolkit
         run: |
-          cd bap-toolkit
+          cd /tmp/bap-toolkit
           opam exec -- make
 
       - name: Run tests
         run: |
-          cd bap-toolkit
+          cd /tmp/bap-toolkit
           opam exec -- make test
 
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: toolkit-log
-          path: bap-toolkit/tests/toolkit.log
+          path: /tmp/bap-toolkit/tests/toolkit.log
