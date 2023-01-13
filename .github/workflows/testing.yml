@@ -37,16 +37,16 @@ jobs:
       - name: Checkout toolkit
         uses: actions/checkout@v3
         with:
-          path: /tmp/bap-toolkit
+          path: bap-toolkit
 
       - name: Install Toolkit
         run: |
-          cd /tmp/bap-toolkit
+          cd bap-toolkit
           opam exec -- make
 
       - name: Run tests
         run: |
-          cd /tmp/bap-toolkit
+          cd bap-toolkit
           opam exec -- make test
 
       - uses: actions/upload-artifact@v3
