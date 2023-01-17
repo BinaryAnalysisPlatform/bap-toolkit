@@ -112,7 +112,6 @@ artifacts_run() {
     for arti in `ls $dir`; do
         artifact=$dir/$arti/artifact
         if [ ! -f $artifact ]; then
-            #file_not_found $artifact
             continue
         fi
 

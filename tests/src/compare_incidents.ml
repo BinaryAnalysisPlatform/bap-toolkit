@@ -1,5 +1,8 @@
+[@@@warning "-D"]
 open Core_kernel
 open Bap.Std
+
+module Sys = Caml.Sys
 
 type location_id = string
 type incident_name = string [@@deriving bin_io, compare,sexp]
@@ -67,13 +70,13 @@ module Parse = struct
 
   let of_sexp s =
     try of_sexp s
-    with e -> None
+    with _ -> None
 
   let sexp ch =
     try Some (Sexp.input_sexp ch)
     with _ -> None
 
-  let rec of_in_channel ch =
+  let of_in_channel ch =
     let rec read () =
       match sexp ch with
       | None -> None
@@ -223,4 +226,4 @@ let prg =
   Term.(const main $test_name $real $ours $exact $expected_fail),
   Term.info "compare-incidents" ~doc
 
-let _ = Term.eval prg
+let _ : unit Term.result = Term.eval prg
