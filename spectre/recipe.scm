@@ -4,11 +4,9 @@
 
 (option primus-lisp-load
         posix
-        memcheck-malloc
         limit-malloc
         taint-inputs
-        gather-spectre
-        sensitive-sinks)
+        gather-spectre)
 
 (option primus-lisp-channel-redirect
         <stdin>:$prefix/stdin
