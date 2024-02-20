@@ -484,8 +484,10 @@ module Detector(Machine : Primus.Machine.S) = struct
     Machine.Global.put models m >>= fun () ->
     Machine.Local.put state s >>= fun () ->
     Machine.List.iter step3 ~f:(fun h3 ->
-        let taints = Set.union h3.cnd_taint h3.off_taint |>
-                     Set.to_sequence in
+        Set.to_sequence h3.cnd_taint |>
+        Machine.Seq.filter ~f:(fun t ->
+            Object.kind t >>= Kind.name >>| fun s ->
+            s = "untrusted") >>= fun taints ->
         let taints = if get all_models then taints
           else Seq.take taints 1 in
         Machine.Seq.iter taints ~f:(fun t ->
